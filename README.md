@@ -18,6 +18,7 @@ npm run dev
 Weitere Befehle:
 
 - `npm run diagrams:build` exportiert alle `*.excalidraw.json`-Dateien nach SVG.
+- `npm run zips:build` erstellt für jeden Unterordner in `docs/projects/` eine gleichnamige `.zip`-Datei in `docs/assets/zips/`.
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
@@ -66,6 +67,7 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 - Top-Level-Bereiche wie `modul` oder `jsgame` liegen unter `docs/content/`.
 - Bilder kannst du in `docs/assets/images/` speichern und direkt aus Markdown referenzieren.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
+- Unterordner in `docs/projects/` werden vor jedem Build automatisch zu `.zip`-Dateien in `docs/assets/zips/` verpackt.
 - `docs/assets/diagrams/*.excalidraw.json` werden beim `dev`- und `build`-Prozess automatisch zu `docs/assets/images/*.svg` exportiert.
 - Code-Snippets können direkt aus echten Quelldateien importiert werden.
 
