@@ -1,0 +1,12 @@
+- [ ] Framework definieren 
+      -> Markdown converter
+      -> Grafiken lösung
+      -> Code parser
+- [ ] Lernziele bearbeiten
+- [ ] Script Architektur erstellen 
+      -> Struktur mit Anleitungen / Grafiken / Übungen (Code along)
+      ->
+- [ ] Game Framework definieren
+  -> Anforderungen
+  -> Mit AI erweitern
+- [ ] 
