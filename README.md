@@ -137,6 +137,33 @@ Der Ablauf ist:
 2. `npm run deploy` veröffentlicht genau diesen Build mit dem Paket `gh-pages`.
 3. GitHub Pages liefert danach nur die bereits gebauten statischen Dateien aus.
 
+## Game Framework auf GitHub Pages
+
+Die Quelle für das Framework liegt direkt unter `docs/public/game-framework/`. Alles unter `docs/public/` wird von VitePress unverändert nach GitHub Pages veröffentlicht, deshalb ist kein zusätzlicher Kopier-Schritt mehr nötig.
+
+Beispiel innerhalb dieses Repositories:
+
+```html
+<script src="/288-javascript/game-framework/bbzgame.js"></script>
+```
+
+Mit der GitHub-Pages-Domain entspricht das:
+
+```html
+<script src="https://bbz-biel-informatik.github.io/288-javascript/game-framework/bbzgame.js"></script>
+```
+
+Danach steht die API als `window.BBZGame` zur Verfügung:
+
+```html
+<script>
+  BBZGame.initGame();
+  BBZGame.setPosition(document.getElementById("player"), 120, 40);
+</script>
+```
+
+Das ist technisch kein externes CDN wie unpkg oder jsDelivr, aber es verhält sich für eure eigenen Seiten ähnlich: GitHub Pages liefert die Datei als statisches Asset über eine feste URL aus.
+
 Wichtig: GitHub Pages muss einmalig so konfiguriert sein, dass es die veröffentlichte Pages-Branch verwendet.
 
 ## Base Path und Repository-Name
