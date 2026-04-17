@@ -4,8 +4,7 @@ Dieses Repository verwendet **eine** VitePress-App für die komplette Website:
 
 - Landingpage auf `/`
 - Moduldokumentation auf `/modul/`
-- Game-Doku auf `/game/`
-- Library-Doku auf `/library/`
+- Game-Doku auf `/jsgame/`
 
 Alles bleibt markdown-first, gemeinsam gestylt und lokal deploybar nach GitHub Pages.
 
@@ -23,57 +22,21 @@ Weitere Befehle:
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
 
-## Ordnerstruktur
-
-```text
-.
-├── docs
-│   ├── .vitepress
-│   │   ├── config.mts
-│   │   └── theme
-│   │       ├── Layout.vue
-│   │       ├── custom.css
-│   │       ├── index.ts
-│   │       └── shared
-│   │           └── global.ts
-│   ├── assets
-│   │   ├── diagrams
-│   │   │   └── README.txt
-│   │   └── images
-│   │       └── dom-selection-flow.svg
-│   ├── modul
-│   ├── examples
-│   │   └── dom-demo
-│   ├── game
-│   ├── library
-│   ├── public
-│   │   ├── .nojekyll
-│   │   └── logo.svg
-│   └── index.md
-├── planning
-├── package.json
-├── scripts
-│   └── excalidraw
-│       ├── build-diagrams.mjs
-│       ├── export.mjs
-│       └── vite-plugin.mjs
-└── site.config.mjs
-```
 
 ## Shared Layout
 
 VitePress verwendet kein einzelnes rohes HTML-Template pro Seite. Die maintainable Entsprechung in diesem Projekt ist:
 
-1. Gemeinsame Site-Konfiguration in [site.config.mjs](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/site.config.mjs)
-2. Gemeinsame Head-Konfiguration und Navigation in [docs/.vitepress/config.mts](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/config.mts)
-3. Gemeinsamer Seiten-Wrapper in [docs/.vitepress/theme/Layout.vue](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/theme/Layout.vue)
-4. Gemeinsames Styling in [docs/.vitepress/theme/custom.css](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/theme/custom.css)
+1. Gemeinsame Site-Konfiguration in [site.config.mjs](site.config.mjs)
+2. Gemeinsame Head-Konfiguration und Navigation in [docs/.vitepress/config.mts](docs/.vitepress/config.mts)
+3. Gemeinsamer Seiten-Wrapper in [docs/.vitepress/theme/Layout.vue](docs/.vitepress/theme/Layout.vue)
+4. Gemeinsames Styling in [docs/.vitepress/theme/custom.css](docs/.vitepress/theme/custom.css)
 
 `Layout.vue` wrappt das Standard-Layout von VitePress einmal zentral. Dort ist der richtige Ort für gemeinsame Body-nahe Strukturen, Shell-Elemente und spätere globale UI-Erweiterungen.
 
 ## Shared CSS
 
-Das gemeinsame Styling liegt in [docs/.vitepress/theme/custom.css](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/theme/custom.css).
+Das gemeinsame Styling liegt in [docs/.vitepress/theme/custom.css](docs/.vitepress/theme/custom.css).
 
 Dort sind:
 
@@ -84,7 +47,7 @@ Dort sind:
 
 ## Shared JavaScript
 
-Der globale Einstiegspunkt für zukünftiges gemeinsames JavaScript ist [docs/.vitepress/theme/shared/global.ts](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/theme/shared/global.ts).
+Der globale Einstiegspunkt für zukünftiges gemeinsames JavaScript ist [docs/.vitepress/theme/shared/global.ts](docs/.vitepress/theme/shared/global.ts).
 
 Aktuell ist die Datei absichtlich klein und SSR-sicher. Sie wird über das Theme global geladen und ist damit der zentrale Ort für spätere Dinge wie:
 
@@ -107,8 +70,8 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
 Ein Beispiel dafür findest du in:
 
-- [docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
-- [docs/examples/dom-demo/main.js](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/examples/dom-demo/main.js)
+- [docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
+- [docs/examples/dom-demo/main.js](docs/examples/dom-demo/main.js)
 
 VitePress-Code-Import:
 
@@ -146,7 +109,7 @@ Für ein neues Kapitel im Modul:
 
 1. Neue Markdown-Datei unter `docs/modul/` anlegen.
 2. Falls nötig einen Unterordner für zusammengehörige Kapitel erstellen.
-3. Einen Sidebar-Eintrag in [docs/.vitepress/config.mts](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/config.mts) ergänzen.
+3. Einen Sidebar-Eintrag in [docs/.vitepress/config.mts](docs/.vitepress/config.mts) ergänzen.
 
 Die Modulstruktur ist bewusst flach und lesbar gehalten, damit neue Kapitel ohne Speziallogik ergänzt werden können.
 
@@ -156,8 +119,8 @@ Für einen neuen Bereich wie `/workshops/` oder `/api/`:
 
 1. Einen neuen Ordner unter `docs/` anlegen, zum Beispiel `docs/workshops/`.
 2. Eine `index.md` in diesem Ordner anlegen.
-3. Navigation und Sidebar in [docs/.vitepress/config.mts](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/config.mts) erweitern.
-4. Die Landingpage in [docs/index.md](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/index.md) um einen Link ergänzen.
+3. Navigation und Sidebar in [docs/.vitepress/config.mts](docs/.vitepress/config.mts) erweitern.
+4. Die Landingpage in [docs/index.md](docs/index.md) um einen Link ergänzen.
 
 ## GitHub Pages lokal deployen
 
@@ -173,7 +136,7 @@ Wichtig: GitHub Pages muss einmalig so konfiguriert sein, dass es die veröffent
 
 ## Base Path und Repository-Name
 
-Der zentrale Ort für den GitHub-Pages-Basispfad ist [site.config.mjs](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/site.config.mjs).
+Der zentrale Ort für den GitHub-Pages-Basispfad ist [site.config.mjs](site.config.mjs).
 
 Standard:
 
