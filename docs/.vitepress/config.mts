@@ -1,5 +1,10 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitepress";
 import { base, siteConfig } from "../../site.config.mjs";
+import { createExcalidrawExportPlugin } from "../../scripts/excalidraw/vite-plugin.mjs";
+
+const docsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const courseSidebar = [
   {
@@ -46,6 +51,9 @@ export default defineConfig({
     ["meta", { name: "theme-color", content: "#165f68" }],
     ["meta", { name: "apple-mobile-web-app-title", content: siteConfig.title }]
   ],
+  vite: {
+    plugins: [createExcalidrawExportPlugin({ docsRoot })]
+  },
   themeConfig: {
     logo: "/logo.svg",
     search: {

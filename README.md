@@ -18,6 +18,7 @@ npm run dev
 
 Weitere Befehle:
 
+- `npm run diagrams:build` exportiert alle `*.excalidraw.json`-Dateien nach SVG.
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
@@ -51,6 +52,11 @@ Weitere Befehle:
 │   └── index.md
 ├── planning
 ├── package.json
+├── scripts
+│   └── excalidraw
+│       ├── build-diagrams.mjs
+│       ├── export.mjs
+│       └── vite-plugin.mjs
 └── site.config.mjs
 ```
 
@@ -96,6 +102,7 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 - Neue Kurskapitel legst du als Markdown-Dateien in `docs/course/` oder in einem Unterordner davon an.
 - Bilder kannst du in `docs/assets/images/` speichern und direkt aus Markdown referenzieren.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
+- `docs/assets/diagrams/*.excalidraw.json` werden beim `dev`- und `build`-Prozess automatisch zu `docs/assets/images/*.svg` exportiert.
 - Code-Snippets können direkt aus echten Quelldateien importiert werden.
 
 Ein Beispiel dafür findest du in:
@@ -108,6 +115,30 @@ VitePress-Code-Import:
 ```md
 <<< @/examples/dom-demo/main.js#query-example
 ```
+
+Diagramm-Einbindung nach dem automatischen Export:
+
+```md
+![Datenmodell](../assets/images/diagram.svg)
+```
+
+## Excalidraw-Workflow
+
+Die Excalidraw-Integration ist lokal in den Vite-Prozess eingebaut.
+
+- Beim Start von `npm run dev` werden vorhandene `*.excalidraw.json`-Dateien zuerst nach SVG exportiert.
+- Wenn du eine solche Datei speicherst, erzeugt der Vite-Prozess die passende SVG-Datei neu und lädt die Seite neu.
+- Beim `npm run build` passiert derselbe Export vor dem eigentlichen statischen Build.
+
+Die Implementierung liegt in:
+
+- `scripts/excalidraw/export.mjs` für den eigentlichen Export
+- `scripts/excalidraw/vite-plugin.mjs` für die Integration in den Dev- und Build-Prozess
+
+Die Zuordnung ist bewusst einfach:
+
+- Quelle: `docs/assets/diagrams/foo.excalidraw.json`
+- Ziel: `docs/assets/images/foo.svg`
 
 ## Kurskapitel erweitern
 
