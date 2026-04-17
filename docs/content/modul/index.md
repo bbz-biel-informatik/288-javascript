@@ -5,9 +5,9 @@ Willkommen zum Javascript-Modul. Dieser Bereich bündelt die Kapitel für den Un
 ## Überblick
 
 - [Javascript in Webseiten einbinden](/modul/javascript-in-webseiten-einbinden)
-- [HTML Elemente mit Javascript verändern](/modul/html-elemente-mit-javascript-veraendern/)
+- [HTML Elemente mit Javascript verändern](/modul/2-html-elemente-mit-javascript-veraendern/)
 - [Funktionen](/modul/funktionen)
 - [Loops / Listen](/modul/loops-listen)
 - [If / Else](/modul/if-else)
 
-> Tipp: Lege neue Kapitel als Markdown-Dateien unter `docs/modul/` ab und ergänze sie danach in der Sidebar-Konfiguration.
+> Tipp: Lege neue Kapitel als Markdown-Dateien unter `docs/content/modul/` ab. Navigation und Sidebar werden aus dem Dateibaum erzeugt.

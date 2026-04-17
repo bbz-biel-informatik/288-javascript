@@ -4,7 +4,7 @@ Damit Javascript etwas auf einer Website verändern kann, muss der Code zuerst e
 
 ## Beispielbild
 
-![Visualisierung einer DOM-Auswahl](../../assets/images/dom-selection-flow.svg)
+![Visualisierung einer DOM-Auswahl](../../../assets/images/dom-selection-flow.svg)
 
 ## Beispiel aus einer echten Quelldatei
 

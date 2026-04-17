@@ -4,7 +4,7 @@ Dieser Bereich ist für die Dokumentation eines kleinen Game-Projekts vorbereite
 
 ## Inhalt
 
-- [Getting Started](/game/getting-started)
+- [Getting Started](/jsgame/getting-started)
 
 ## Ziel
 

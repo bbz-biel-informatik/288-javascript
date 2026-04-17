@@ -62,7 +62,8 @@ Wenn du später mehr Logik brauchst, erweitere diese Datei oder teile sie in wei
 
 Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
-- Neue Modulkapitel legst du als Markdown-Dateien in `docs/modul/` oder in einem Unterordner davon an.
+- Neue Modulkapitel legst du als Markdown-Dateien in `docs/content/modul/` oder in einem Unterordner davon an.
+- Top-Level-Bereiche wie `modul` oder `jsgame` liegen unter `docs/content/`.
 - Bilder kannst du in `docs/assets/images/` speichern und direkt aus Markdown referenzieren.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
 - `docs/assets/diagrams/*.excalidraw.json` werden beim `dev`- und `build`-Prozess automatisch zu `docs/assets/images/*.svg` exportiert.
@@ -70,7 +71,7 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
 Ein Beispiel dafür findest du in:
 
-- [docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
+- [docs/content/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](docs/content/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
 - [docs/examples/dom-demo/main.js](docs/examples/dom-demo/main.js)
 
 VitePress-Code-Import:
@@ -107,19 +108,21 @@ Die Zuordnung ist bewusst einfach:
 
 Für ein neues Kapitel im Modul:
 
-1. Neue Markdown-Datei unter `docs/modul/` anlegen.
+1. Neue Markdown-Datei unter `docs/content/modul/` anlegen.
 2. Falls nötig einen Unterordner für zusammengehörige Kapitel erstellen.
-3. Einen Sidebar-Eintrag in [docs/.vitepress/config.mts](docs/.vitepress/config.mts) ergänzen.
+3. Die Sidebar wird beim nächsten Dev-Server-Neustart oder Build automatisch aus dem Dateibaum erzeugt.
 
 Die Modulstruktur ist bewusst flach und lesbar gehalten, damit neue Kapitel ohne Speziallogik ergänzt werden können.
+
+Änderungen unter `docs/content/` lösen im Dev-Server automatisch einen Neustart aus, damit Navigation, Sidebars und Rewrites neu aufgebaut werden.
 
 ## Weitere Top-Level-Bereiche ergänzen
 
 Für einen neuen Bereich wie `/workshops/` oder `/api/`:
 
-1. Einen neuen Ordner unter `docs/` anlegen, zum Beispiel `docs/workshops/`.
+1. Einen neuen Ordner unter `docs/content/` anlegen, zum Beispiel `docs/content/workshops/`.
 2. Eine `index.md` in diesem Ordner anlegen.
-3. Navigation und Sidebar in [docs/.vitepress/config.mts](docs/.vitepress/config.mts) erweitern.
+3. Navigation und Sidebar werden daraus automatisch erzeugt.
 4. Die Landingpage in [docs/index.md](docs/index.md) um einen Link ergänzen.
 
 ## GitHub Pages lokal deployen
