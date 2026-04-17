@@ -1,6 +1,8 @@
 // Expose the framework as a classic browser script so it can be loaded from GitHub Pages.
 (function exposeBBZGame(global) {
   function initGame() {
+    console.log("Initializing BBZGame Script...");
+
     const playground = document.querySelector(".playground");
 
     if (playground) {
