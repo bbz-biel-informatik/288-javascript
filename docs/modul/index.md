@@ -1,0 +1,13 @@
+# Index
+
+Willkommen zum Javascript-Modul. Dieser Bereich bündelt die Kapitel für den Unterricht und bleibt bewusst einfach aufgebaut, damit du neue Seiten schnell ergänzen kannst.
+
+## Überblick
+
+- [Javascript in Webseiten einbinden](/modul/javascript-in-webseiten-einbinden)
+- [HTML Elemente mit Javascript verändern](/modul/html-elemente-mit-javascript-veraendern/)
+- [Funktionen](/modul/funktionen)
+- [Loops / Listen](/modul/loops-listen)
+- [If / Else](/modul/if-else)
+
+> Tipp: Lege neue Kapitel als Markdown-Dateien unter `docs/modul/` ab und ergänze sie danach in der Sidebar-Konfiguration.

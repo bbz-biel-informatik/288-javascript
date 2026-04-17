@@ -6,35 +6,35 @@ import { createExcalidrawExportPlugin } from "../../scripts/excalidraw/vite-plug
 
 const docsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const courseSidebar = [
+const modulSidebar = [
   {
-    text: "Kurs",
+    text: "Modul",
     items: [
-      { text: "Index", link: "/course/" },
-      { text: "Javascript in Webseiten einbinden", link: "/course/javascript-in-webseiten-einbinden" },
+      { text: "Index", link: "/modul/" },
+      { text: "Javascript in Webseiten einbinden", link: "/modul/javascript-in-webseiten-einbinden" },
       {
         text: "HTML Elemente mit Javascript verändern",
         collapsed: false,
         items: [
-          { text: "HTML Elemente mit Javascript verändern", link: "/course/html-elemente-mit-javascript-veraendern/" },
+          { text: "HTML Elemente mit Javascript verändern", link: "/modul/html-elemente-mit-javascript-veraendern/" },
           {
             text: "HTML Elemente ansprechen",
-            link: "/course/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen"
+            link: "/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen"
           },
           {
             text: "Variablen in Javascript",
-            link: "/course/html-elemente-mit-javascript-veraendern/variablen-in-javascript"
+            link: "/modul/html-elemente-mit-javascript-veraendern/variablen-in-javascript"
           },
-          { text: "Style verändern", link: "/course/html-elemente-mit-javascript-veraendern/style-veraendern" },
+          { text: "Style verändern", link: "/modul/html-elemente-mit-javascript-veraendern/style-veraendern" },
           {
             text: "HTML Elemente löschen / hinzufügen",
-            link: "/course/html-elemente-mit-javascript-veraendern/html-elemente-loeschen-hinzufuegen"
+            link: "/modul/html-elemente-mit-javascript-veraendern/html-elemente-loeschen-hinzufuegen"
           }
         ]
       },
-      { text: "Funktionen", link: "/course/funktionen" },
-      { text: "Loops / Listen", link: "/course/loops-listen" },
-      { text: "If / Else", link: "/course/if-else" }
+      { text: "Funktionen", link: "/modul/funktionen" },
+      { text: "Loops / Listen", link: "/modul/loops-listen" },
+      { text: "If / Else", link: "/modul/if-else" }
     ]
   }
 ];
@@ -55,19 +55,17 @@ export default defineConfig({
     plugins: [createExcalidrawExportPlugin({ docsRoot })]
   },
   themeConfig: {
-    logo: "/logo.svg",
+    logo: "/logo.png",
     search: {
       provider: "local"
     },
     nav: [
-      { text: "Start", link: "/" },
-      { text: "Kurs", link: "/course/" },
-      { text: "Game", link: "/game/" },
-      { text: "Library", link: "/library/" }
+      { text: "Modul", link: "/modul/" },
+      { text: "JSGame", link: "/jsgame/" },
     ],
     sidebar: {
-      "/course/": courseSidebar,
-      "/game/": [
+      "/modul/": modulSidebar,
+      "/jsgame/": [
         {
           text: "Game",
           items: [
@@ -76,16 +74,7 @@ export default defineConfig({
           ]
         }
       ],
-      "/library/": [
-        {
-          text: "Library",
-          items: [
-            { text: "Index", link: "/library/" },
-            { text: "Getting Started", link: "/library/getting-started" }
-          ]
-        }
-      ]
-    },
+   },
     outline: {
       level: [2, 3],
       label: "Auf dieser Seite"

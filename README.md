@@ -3,7 +3,7 @@
 Dieses Repository verwendet **eine** VitePress-App für die komplette Website:
 
 - Landingpage auf `/`
-- Kursdokumentation auf `/course/`
+- Moduldokumentation auf `/modul/`
 - Game-Doku auf `/game/`
 - Library-Doku auf `/library/`
 
@@ -41,7 +41,7 @@ Weitere Befehle:
 │   │   │   └── README.txt
 │   │   └── images
 │   │       └── dom-selection-flow.svg
-│   ├── course
+│   ├── modul
 │   ├── examples
 │   │   └── dom-demo
 │   ├── game
@@ -99,7 +99,7 @@ Wenn du später mehr Logik brauchst, erweitere diese Datei oder teile sie in wei
 
 Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
-- Neue Kurskapitel legst du als Markdown-Dateien in `docs/course/` oder in einem Unterordner davon an.
+- Neue Modulkapitel legst du als Markdown-Dateien in `docs/modul/` oder in einem Unterordner davon an.
 - Bilder kannst du in `docs/assets/images/` speichern und direkt aus Markdown referenzieren.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
 - `docs/assets/diagrams/*.excalidraw.json` werden beim `dev`- und `build`-Prozess automatisch zu `docs/assets/images/*.svg` exportiert.
@@ -107,7 +107,7 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 
 Ein Beispiel dafür findest du in:
 
-- [docs/course/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/course/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
+- [docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/modul/html-elemente-mit-javascript-veraendern/html-elemente-ansprechen.md)
 - [docs/examples/dom-demo/main.js](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/examples/dom-demo/main.js)
 
 VitePress-Code-Import:
@@ -140,15 +140,15 @@ Die Zuordnung ist bewusst einfach:
 - Quelle: `docs/assets/diagrams/foo.excalidraw.json`
 - Ziel: `docs/assets/images/foo.svg`
 
-## Kurskapitel erweitern
+## Modulkapitel erweitern
 
-Für ein neues Kapitel im Kurs:
+Für ein neues Kapitel im Modul:
 
-1. Neue Markdown-Datei unter `docs/course/` anlegen.
+1. Neue Markdown-Datei unter `docs/modul/` anlegen.
 2. Falls nötig einen Unterordner für zusammengehörige Kapitel erstellen.
 3. Einen Sidebar-Eintrag in [docs/.vitepress/config.mts](/Users/nicolasmueller/Repositories/bbz-biel/288-javascript/docs/.vitepress/config.mts) ergänzen.
 
-Die Kursstruktur ist bewusst flach und lesbar gehalten, damit neue Kapitel ohne Speziallogik ergänzt werden können.
+Die Modulstruktur ist bewusst flach und lesbar gehalten, damit neue Kapitel ohne Speziallogik ergänzt werden können.
 
 ## Weitere Top-Level-Bereiche ergänzen
 
