@@ -39,8 +39,12 @@ let items = document.querySelectorAll(".item");
 // Wähle das Element mit der id "image"
 let myElement = document.querySelector("#image");
 
-// Text und HTML verändern
-myElement.style.color = "red";
+// Style verändern
+myElement.style.color = "red"; // Farbe ändern
+myElement.style.fontSize = "12px"; // Textgrösse ändern
+myElement.style.width = "100px"; // Grösser - kleiner machen
+
+// Inhalt verändern
 myElement.textContent = "Hello";
 myElement.innerHTML = "<b>Hello</b>";
 
