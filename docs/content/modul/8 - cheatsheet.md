@@ -23,8 +23,6 @@
 ```js
 // Gib mir das Objekt mit der id "image"
 let myImage = document.querySelector("#image");
-// Oder auch:
-let myImage = document.getElementById("image");
 
 // Gib mir das Objekt mit der Klasse "item"
 let item = document.querySelector(".item");

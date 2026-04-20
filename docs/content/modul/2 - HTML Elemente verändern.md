@@ -1,132 +1,184 @@
-# HTML Elemente verändern
+# 2 - HTML Elemente verändern
 
-Mit Javascript kannst du HTML-Elemente auswählen und danach ihren Text, ihr HTML, ihr CSS oder ihre Klassen verändern.
+## HTML Objekte
 
-## Elemente auswählen
+Alles, was wir auf einer Webseite sehen, sind **HTML-Elemente**.
+Diese Elemente bilden zusammen das sogenannte **DOM (Document Object Model)**.
 
-Bevor du ein Element verändern kannst, musst du es zuerst im DOM auswählen.
+Wichtig:
 
-```js
-let myImage = document.getElementById("image");
+* Jedes HTML-Element kann mit JavaScript verändert werden
+* Elemente können gelöscht oder hinzugefügt werden
+* JavaScript kann auf Ereignisse reagieren (z. B. Klicks, Tastatureingaben)
+
+Beispiel aus unserem Projekt:
+
+```html
+<div id="wrapper">
+  <div id="playground">
+    <h1 id="title">Welcome to my little game!</h1>
+    <div id="score">Score: 0</div>
+    <img id="player" src="./assets/player_pink.png" />
+  </div>
+</div>
 ```
 
-Das sucht ein Element mit `id="image"` und speichert es in der Variable `myImage`.
+Hier hat jedes wichtige Element eine **id**, damit wir es später gezielt ansprechen können.
 
-Mit `querySelector()` kannst du CSS-Selektoren verwenden:
+---
+
+## HTML Elemente auswählen
+
+Bevor wir ein Element verändern können, müssen wir es **auswählen**.
+
+Das machen wir mit `document.querySelector()`:
 
 ```js
-let myImage = document.querySelector("#image");
-let item = document.querySelector(".item");
+let playground = document.querySelector("#playground");
 ```
 
-- `#image` sucht nach einer `id`
-- `.item` sucht nach einer Klasse
+Erklärung:
 
-Wenn du mehrere Elemente auswählen willst, verwendest du `querySelectorAll()`:
+* `document` → steht für die gesamte Webseite
+* `querySelector(...)` → sucht ein Element
+* `#playground` → CSS-Selector für eine id
+
+Das Ergebnis speichern wir in einer Variable (Konzept schauen wir später an). Diese Variable enthält jetzt das HTML-Element, das wir später verändern können.
+
+## HTML Elemente verändern
+
+Jedes HTML-Element hat Eigenschaften, die wir verändern können.
+
+Beispiel:
 
 ```js
-let items = document.querySelectorAll(".item");
+playground.style.backgroundColor = "red";
 ```
 
-## Elemente verändern
+Damit ändern wir die Hintergrundfarbe.
 
-Wenn du ein Element ausgewählt hast, kannst du es mit Javascript anpassen.
+Allgemein:
+
+* playground: das ausgewählte Element
+* style.backgroundColor: die Eigenschaft
+* "red": der neue Wert
+
+## Style verändern
+
+Damit können wir CSS direkt über JavaScript beeinflussen.
 
 ```js
-let myElement = document.querySelector("#player");
-```
+let myElement = document.querySelector("#myElement");
 
-### Styles ändern
+// Farbe ändern
+myElement.style.color = "red";
 
-```js
+// Hintergrund ändern
 myElement.style.backgroundColor = "blue";
-myElement.style.color = "white";
+
+// Grösse ändern
 myElement.style.width = "100px";
 ```
 
-Damit änderst du CSS-Eigenschaften direkt mit Javascript.
-
-### Text ändern
+## Inhalt verändern
 
 ```js
+let myElement = document.querySelector("#myElement");
+
+// Text setzen
 myElement.textContent = "Hello";
-```
 
-Mit `textContent` setzt du normalen Text in ein Element.
-
-### HTML einfügen
-
-```js
+// HTML setzen
 myElement.innerHTML = "<b>Hello</b>";
 ```
 
-Mit `innerHTML` fügst du HTML-Code in ein Element ein.
+Unterschied:
 
-### Klassen hinzufügen oder entfernen
+* `textContent` → nur Text
+* `innerHTML` → kann auch HTML enthalten
 
-```js
-myElement.classList.add("active");
-myElement.classList.remove("active");
-```
-
-Damit kannst du CSS-Klassen dynamisch steuern.
-
-### Elemente löschen oder hinzufügen
+## Element löschen
 
 ```js
+let myElement = document.querySelector("#myElement");
+
 myElement.remove();
-
-let newElement = document.createElement("div");
-newElement.textContent = "New Element";
-document.body.appendChild(newElement);
 ```
 
-So kannst du Elemente entfernen, neue Elemente erstellen und ins Dokument einfügen.
+Damit wird das Element komplett aus der Seite entfernt.
 
-## Für das Click Game
 
-Im Click Game brauchst du Zugriff auf diese HTML-Elemente:
+Hier ist eine passende Aufgabe, die direkt auf dem bestehenden Projekt aufbaut:
+
+## 🎮 Aufgabe – Erste Schritte mit JavaScript
+
+Tipp: Nutze das [Cheat Sheet](./8-cheatsheet) als Hilfe, um die Aufgaben zu lösen.
+
+
+### 1: JavaScript Datei erstellen & verbinden
+
+Erstelle im Projekt eine neue Datei:
+
+```text
+script.js
+```
+
+Verbinde nun das Javascript im HTML (immer am Ende vom Body).
+
+-> Wichtig: Das Script **immer am Ende vom Body**, damit alle HTML Elemente bereits geladen sind.
+
+Teste kurz:
 
 ```js
-let player = document.getElementById("player");
-let scoreDisplay = document.getElementById("score");
-let playground = document.getElementById("playground");
+console.log("JS verbunden!");
 ```
 
-Damit kannst du später den Player verändern, den Score anzeigen und die Grösse des Spielfelds auslesen.
+Wenn du die Seite öffnest, solltest du die Ausgabe in der [Konsole](./1-javascript-intro#browser-konsole) sehen.
 
-## Aufgabe - Click Game vorbereiten
 
-Wir bauen Schritt für Schritt ein kleines Spiel, bei dem man auf ein Element klickt, Punkte sammelt und sich das Element bewegt.
+### 2: Score verändern
 
-### 1: Player auswählen
+Überlege dir, wie du nun mit Javascript den score verändern kannst, sodass steht "Score: 10".
 
-Selektiere mit Javascript das HTML-Element mit der ID `player`.
+<details>
+<summary>Tipps</summary>
+- Wähle das Element mit der id `score` aus <br>
+- Setze den Text auf `Score: 10`
+</details>
 
-```js
-let player = document.getElementById("player");
-```
+### 3: Titel verändern
 
-### 2: Farbe ändern
+Ändere die Farbe des Titels mit JavaScript
 
-Ändere danach die Hintergrundfarbe des Players.
+<details>
+<summary>Tipps</summary>
+- Wähle das Element mit der id `title` aus <br>
+- Ändere die Farbe über `style.color`
+</details>
 
-```js
-player.style.backgroundColor = "blue";
-```
 
-### 3: Score-Anzeige auswählen
+### 4: Spielfeld stylen
 
-Selektiere das HTML-Element mit der ID `score`.
+Ändere die Hintergrundfarbe des Spielfelds (`#playground`) über JavaScript.
 
-```js
-let scoreDisplay = document.getElementById("score");
-```
+<details>
+<summary>Tipps</summary>
+Wähle zuerst das Element `#playground` aus und ändere dann die Hintergrundfarbe mit `style.backgroundColor` (z. B. auf "lightblue").
+</details>
 
-Ändere danach den angezeigten Text.
 
-```js
-scoreDisplay.textContent = "Score: 0";
-```
+### 5: Spieler verändern
 
-Wenn das funktioniert, kannst du im nächsten Thema Events verwenden, damit diese Änderungen erst bei einem Klick passieren.
+* Vergrössere den Spieler auf 150 x 150 Pixel (Mit JavaScript)
+* Verschiebe den Spieler nach rechts (z. B. 200px) und nach oben (z. B. 100px)
+
+### 6: Spieler entfernen
+Entferne den Spieler komplett von der Seite (Mit JavaScript).
+
+-> Nimm den Code danach wieder raus, damit der Spieler wieder da ist.
+
+💡 Ziel der Aufgabe:
+
+* JavaScript Datei einbinden
+* Elemente auswählen (`querySelector`)
+* Inhalte und Styles verändern
