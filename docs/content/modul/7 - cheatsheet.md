@@ -11,6 +11,7 @@
 
 <!-- Direkt im HTML -->
 <script>
+  // Beispielcode
   alert("Hello World");
 </script>
 ```
@@ -22,6 +23,7 @@
 ```js
 // Gib mir das Objekt mit der id "image"
 let myImage = document.querySelector("#image");
+// Oder auch:
 let myImage = document.getElementById("image");
 
 // Gib mir das Objekt mit der Klasse "item"
@@ -34,17 +36,20 @@ let items = document.querySelectorAll(".item");
 ## HTML Elemente bearbeiten
 
 ```js
+// Wähle das Element mit der id "image"
+let myElement = document.querySelector("#image");
+
 // Text und HTML verändern
-myImage.style.color = "red";
-myImage.textContent = "Hello";
-myImage.innerHTML = "<b>Hello</b>";
+myElement.style.color = "red";
+myElement.textContent = "Hello";
+myElement.innerHTML = "<b>Hello</b>";
 
 // Klasse hinzufügen / entfernen
-myImage.classList.add("active");
-myImage.classList.remove("active");
+myElement.classList.add("myClass");
+myElement.classList.remove("myClass");
 
 // Element löschen
-myImage.remove();
+myElement.remove();
 
 // Element hinzufügen
 let newElement = document.createElement("div"); // Neues div-Element erstellen
@@ -68,6 +73,30 @@ document.addEventListener("keydown", function (event) {
     console.log("you pressed s");
   }
 });
+```
+
+---
+
+## Variablen
+Variablen sind Platzhalter für Werte. Es gibt verschiedene Arten von Variablen, zum Beispiel:
+
+- Zahlen
+- Texte
+- Objekte (Zum Beispiel HTML Objekte)
+- undefined / null
+
+```js
+let zahl = 1; // Zahl definieren
+let lieblingsfarbe = "blau"; // Text definieren
+
+zahl = 2; // Variable verändern
+let neueZahl = zahl + 10; // Variable berechnen
+
+// Berechnungen
+zahl + 10; // Addition
+zahl - 10; // Subtraktion
+zahl * 10; // Multiplikation
+zahl / 10; // Division
 ```
 
 ---
@@ -101,21 +130,28 @@ greet("Max");
 ## If / Else
 
 ```js
-if (x > 10) {
-  console.log("big");
-} else if (x > 5) {
-  console.log("medium");
+let year = 10;
+
+// Führt den Block aus, wenn das Jahr grösser oder gleich 2000 ist.
+if (year >= 2000) {
+  console.log("welcome to the 2000s");
+}
+
+// Wenn das Jahr grösser als 2000 ist
+if (year >= 2000) {
+  console.log("welcome to the 2000s");
+  // Sonst, wenn das Jahr aber grösser als 1990 ist.
+} else if (year >= 1990) {
+  console.log("welcome to the 90s!");
+  // Sonst, wenn das Jahr grösser als 1980 ist.
+} else if (year >= 1980) {
+  console.log("welcome to the 80s!");
+  // Sonst, wenn nichts von allem zutrifft
 } else {
-  console.log("small");
+  console.log("Welcome to the 70s or before!");
 }
 ```
 
 ---
 
-## Variablen
 
-```js
-let x = 10; // changeable
-```
-
----
