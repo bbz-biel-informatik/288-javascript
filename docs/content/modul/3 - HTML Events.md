@@ -143,9 +143,17 @@ Ziel:
 Der Spieler soll sich bei jedem Klick an eine zufällige Position bewegen.
 
 Schritte:
-* Verwende `Math.random()`, um Zufallszahlen zu generieren
-* Berechne zufällige `x` und `y` Werte basierend auf der Grösse des Spielfelds
-* Rufe `setPosition(...)` mit den neuen Werten auf  
+* Verwende `Math.random() * 500`, um eine Zahl zwischen 0 und 500 zu erhalten
+* Rufe `setPosition(...)` mit den neuen Werten auf
+
+<details>
+<summary>Tipp</summary>
+Der Code, um den Spieler an eine zufällige Position zu setzen, sieht so aus:
+
+```js
+setPosition(player, Math.random() * 500, Math.random() * 500);
+```
+</details>
 
 ---
 

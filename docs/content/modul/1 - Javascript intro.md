@@ -195,9 +195,9 @@ Hilfestellungen:
 * Ändere die Schriftgrösse des Titels und der Score-Anzeige auf 24px (`#title`, `#score`)
 
 Hilfestellungen:
-[CSS Background](https://www.w3schools.com/cssref/pr_background-color.asp)
-[CSS Size](https://www.w3schools.com/cssref/pr_dim_width.asp)
-[CSS Font Size](https://www.w3schools.com/cssref/pr_font_font-size.asp)
+- [CSS Background](https://www.w3schools.com/cssref/pr_background-color.asp)
+- [CSS Size](https://www.w3schools.com/cssref/pr_dim_width.asp)
+- [CSS Font Size](https://www.w3schools.com/cssref/pr_font_font-size.asp)
 
 ---
 
