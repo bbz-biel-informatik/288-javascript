@@ -1,16 +1,12 @@
 # Index
 
-Willkommen zum Javascript-Modul. Dieser Bereich bündelt die Kapitel für den Unterricht und bleibt bewusst einfach aufgebaut, damit du neue Seiten schnell ergänzen kannst.
-
 ## Überblick
 
-- [Javascript Intro](/modul/1-javascript-intro)
-- [HTML Elemente verändern](/modul/2-html-elemente-veraendern)
-- [HTML Events](/modul/3-html-events)
-- [Variablen](/modul/4-variablen)
-- [Listen und Loops](/modul/5-listen-und-loops)
-- [if - else](/modul/6-if-else)
-- [Funktionen](/modul/7-funktionen)
-- [Cheatsheet](/modul/8-cheatsheet)
-
-> Tipp: Lege neue Kapitel als Markdown-Dateien unter `docs/content/modul/` ab. Navigation und Sidebar werden aus dem Dateibaum erzeugt.
+- [1 - Javascript Intro](/modul/1-javascript-intro)
+- [2 - HTML Elemente verändern](/modul/2-html-elemente-veraendern)
+- [3 - HTML Events](/modul/3-html-events)
+- [4 - Variablen](/modul/4-variablen)
+- [5 - Listen und Loops](/modul/5-listen-und-loops)
+- [6 - if - else](/modul/6-if-else)
+- [7 - Funktionen](/modul/7-funktionen)
+- [8 - Cheatsheet](/modul/8-cheatsheet)

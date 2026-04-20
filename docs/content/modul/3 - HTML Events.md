@@ -1,146 +1,156 @@
 # HTML Events
 
-Mit Events reagiert dein Javascript auf Aktionen von Benutzerinnen und Benutzern. Zum Beispiel auf einen Klick oder auf eine Taste.
+## Was sind Events?
+
+Mit **Events** kann JavaScript auf Aktionen reagieren, die im Browser passieren.
+
+Das bedeutet:
+
+* Der Benutzer macht etwas (z. B. klicken oder tippen)
+* JavaScript reagiert darauf
+
+Typische Events:
+
+* `click` → Mausklick
+* `keydown` → Taste wird gedrückt
+* `scroll` → Seite wird gescrollt
+
+Mehr Events gibt es hier: [W3Schools Events](https://www.w3schools.com/jsref/dom_obj_event.asp)
+
+## Event Listener
+
+Damit JavaScript auf ein Event reagieren kann, nutzen wir sogenannte **Event Listener**.
+
+Grundaufbau:
+
+```js
+element.addEventListener("event", function() {
+  // Code wird ausgeführt
+});
+```
+
+Erklärung:
+
+* `element` → das HTML Element
+* `"event"` → z. B. `"click"` oder `"keydown"`
+* `function()` → Code, der ausgeführt wird
+
+## Tastatur Events
+
+Wir können auf Tastatureingaben reagieren:
+
+```js
+let playground = document.querySelector("#playground");
+
+document.addEventListener("keydown", function(event) {
+  playground.style.backgroundColor = "blue";
+});
+```
+
+Erklärung:
+
+* Das Event wird auf dem ganzen Dokument registriert
+* Jedes Mal, wenn eine Taste gedrückt wird, wird der Code ausgeführt
+
+👉 `event` enthält zusätzliche Infos (z. B. welche Taste gedrückt wurde)
 
 ## Click Events
 
-Mit einem Click Event reagierst du darauf, dass auf ein Element geklickt wird.
+Wir können auch auf Klicks reagieren:
 
 ```js
-player.addEventListener("click", function (event) {
-  player.style.backgroundColor = "blue";
+let player = document.querySelector("#player");
+
+player.addEventListener("click", function() {
+  player.style.width = "200px";
+  player.style.height = "200px";
 });
 ```
 
-Sobald auf `player` geklickt wird, wird die Funktion ausgeführt.
+Erklärung:
 
-## Aufbau
+* Das Event wird direkt am Element registriert
+* Der Code läuft nur, wenn genau dieses Element angeklickt wird
 
-```js
-element.addEventListener("click", function (event) {
-  // Code bei Klick
-});
+## Wichtig
+
+* Events machen Webseiten **interaktiv**
+* Ohne Events passiert nichts dynamisch
+* Sehr häufig genutzt in Spielen und Apps
+
+## 🎮 Aufgabe – Klickspiel erweitern
+
+Jetzt bauen wir unser Spiel weiter aus.
+
+### 1: Spieler mit Taste vergrössern
+
+Ziel:
+Wenn eine Taste gedrückt wird, soll der Spieler grösser werden.
+
+Schritte:
+
+* Wähle das Element `#player`
+* Verwende ein `keydown` Event
+* Verändere die Grösse des Spielers
+
+<details>
+<summary>Tipps</summary>
+- Selektiere den Spieler mit `querySelector` <br>
+- Verwende `addEventListener("keydown", ...)` <br>
+- Verwende `style.width` und `style.height`
+</details>
+
+
+### 2: Library einbinden
+Ziel:
+Wir binden eine Library ein, um die Position des Spielers zu verändern.
+
+Schritte:
+* Füge am Ende des Body folgende Zeile ein:
+
+```html
+<script src="https://bbz-biel-informatik.github.io/288-javascript/game-framework/bbzgame.js"></script>
 ```
 
-- `element` ist das HTML-Element
-- `"click"` ist das Event
-- `event` enthält Informationen zum Klick
+Öffne die Konsole und schaue, ob etwas geloggt wird. Wenn ja, ist die Library erfolgreich eingebunden.
 
-## Keyboard Events
+### 3: Spieler bewegen bei Klick
 
-Mit Keyboard Events reagiert dein Javascript auf Tastatureingaben.
+Ziel:
+Wenn du auf den Spieler klickst, soll er sich an eine neue Position bewegen.
 
-```js
-document.addEventListener("keydown", function (event) {
-  if (event.key == "s") {
-    console.log("you pressed s");
-  }
-});
-```
+Da wir nun die Library eingebunden haben, können wir die Funktion `setPosition(...)` verwenden, um die Position zu verändern.
 
-Hier wird geprüft, ob die Taste `s` gedrückt wurde.
-
-Der Aufbau sieht so aus:
-
-```js
-document.addEventListener("keydown", function (event) {
-  // Code bei Tastendruck
-});
-```
-
-- `"keydown"` bedeutet: eine Taste wurde gedrückt
-- `event.key` sagt dir, welche Taste gedrückt wurde
-
-Keyboard Events brauchst du zum Beispiel für Figurensteuerung, Shortcuts oder Spiele mit Tastatursteuerung.
-
-## Aufgabe - Click Game fertigstellen
-
-In der ersten Aufgabe hast du den Player und die Score-Anzeige ausgewählt. Jetzt reagiert das Spiel auf Klicks.
-
-### 1: Hintergrundfarbe erst bei Klick ändern
-
-Die Hintergrundfarbe soll sich erst ändern, wenn man auf den Player klickt.
-
-```js
-player.addEventListener("click", function () {
-  player.style.backgroundColor = "blue";
-});
-```
-
-### 2: Position bei jedem Klick verändern
-
-Bei jedem Klick soll sich der Player an eine zufällige Position bewegen.
-
-Tipps:
-
-- Mit `Math.random()` erhältst du eine Zufallszahl zwischen `0` und `1`.
-- Mit `playground.clientWidth` und `playground.clientHeight` kannst du Breite und Höhe des Spielfelds auslesen.
-- Verwende die Funktion `setPosition(element, x, y)`. Diese Funktion kommt aus dem BBZ-Game-Framework und setzt das Element an die Position `x` und `y`.
+-> Diese Funktion setzt die Position eines Elements.
 
 Beispiel:
 
 ```js
-setPosition(player, 100, 200);
+let player = document.querySelector("#player");
+
+// Setzt den Spieler an die Position x=100, y=50
+setPosition(player, 100, 50);
 ```
 
-Möglicher Aufbau:
+Schritte:
 
-```js
-let playground = document.getElementById("playground");
+* Füge einen `click` Event Listener zum Spieler hinzu
+* Rufe darin `setPosition(...)` auf
+* Setze neue Werte für `x` und `y`
 
-player.addEventListener("click", function () {
-  let x = Math.random() * playground.clientWidth;
-  let y = Math.random() * playground.clientHeight;
+### 4: Spieler zufällig bewegen
+Ziel:
+Der Spieler soll sich bei jedem Klick an eine zufällige Position bewegen.
 
-  setPosition(player, x, y);
-});
-```
+Schritte:
+* Verwende `Math.random()`, um Zufallszahlen zu generieren
+* Berechne zufällige `x` und `y` Werte basierend auf der Grösse des Spielfelds
+* Rufe `setPosition(...)` mit den neuen Werten auf  
 
-### 3: Score hinzufügen
+---
 
-Erstelle einen Score, der bei jedem Klick um `1` erhöht wird.
+💡 Ziel:
 
-Tipps:
-
-- Erstelle eine Variable: `let score = 0;`
-- Erhöhe den Score im Click Event.
-- Verwende `textContent`, um den Score im HTML anzuzeigen.
-
-Beispiel:
-
-```js
-let score = 0;
-
-player.addEventListener("click", function () {
-  score = score + 1;
-  scoreDisplay.textContent = "Score: " + score;
-});
-```
-
-### 4: Alles kombinieren
-
-Am Ende sollen Farbe, Position und Score im gleichen Click Event verändert werden.
-
-```js
-let player = document.getElementById("player");
-let scoreDisplay = document.getElementById("score");
-let playground = document.getElementById("playground");
-let score = 0;
-
-player.addEventListener("click", function () {
-  score = score + 1;
-  scoreDisplay.textContent = "Score: " + score;
-
-  player.style.backgroundColor = "blue";
-
-  let x = Math.random() * playground.clientWidth;
-  let y = Math.random() * playground.clientHeight;
-  setPosition(player, x, y);
-});
-```
-
-## Bonus
-
-- Ändere die Farbe bei jedem Klick zufällig.
-- Mache das Element kleiner, je höher der Score ist.
-- Verwende ein Keyboard Event, um das Spiel mit einer Taste neu zu starten.
+* Events verstehen (`click`, `keydown`)
+* Interaktion ins Spiel bringen
+* Erste Logik mit JavaScript umsetzen
