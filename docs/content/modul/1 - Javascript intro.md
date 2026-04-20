@@ -176,8 +176,8 @@ Du solltest nun Dateien wie `index.html` und `style.css` sehen.
 ### 4: Erste Änderungen machen
 
 Öffne die Datei `index.html` und `style.css` und nimm zur Wiederholung von HTML und CSS erste Änderungen vor:
--> Das HTML und CSS sollte nun automatisch formatiert werden, wenn du speicherst (z. B. `Cmd + S` oder `Ctrl + S`)
--> Sehe dir die Änderungen mittels Live Server im Browser an (Rechtsklick auf `index.html` → **Open with Live Server**)
+- Das HTML und CSS sollte nun automatisch formatiert werden, wenn du speicherst (z. B. `Cmd + S` oder `Ctrl + S`)
+- Sehe dir die Änderungen mittels Live Server im Browser an (Rechtsklick auf `index.html` → **Open with Live Server**)
 
 #### HTML Aufgaben
 
