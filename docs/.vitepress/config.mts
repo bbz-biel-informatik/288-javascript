@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitepress";
 import { base, siteConfig } from "../../site.config.mjs";
 import { createContentNavigation } from "../../scripts/content/navigation.mjs";
+import { createZipAssetsPlugin } from "../../scripts/assets/vite-plugin.mjs";
 import { createContentStructurePlugin } from "../../scripts/content/vite-plugin.mjs";
 import { createExcalidrawExportPlugin } from "../../scripts/excalidraw/vite-plugin.mjs";
 
@@ -23,7 +24,11 @@ export default defineConfig({
     ["meta", { name: "apple-mobile-web-app-title", content: siteConfig.title }]
   ],
   vite: {
-    plugins: [createContentStructurePlugin({ docsRoot, linkAliases }), createExcalidrawExportPlugin({ docsRoot })]
+    plugins: [
+      createContentStructurePlugin({ docsRoot, linkAliases }),
+      createExcalidrawExportPlugin({ docsRoot }),
+      createZipAssetsPlugin({ docsRoot, base })
+    ]
   },
   themeConfig: {
     logo: "/logo.png",
