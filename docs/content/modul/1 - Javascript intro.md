@@ -139,7 +139,8 @@ Das Ziel ist es, ein bestehendes Projekt zu öffnen und erste Änderungen daran 
 
 ### 1: Projekt herunterladen
 
-Lade das vorbereitete Projekt als `.zip` herunter (Link wird im Unterricht bereitgestellt) und entpacke es auf deinem Computer.
+Lade das vorbereitete Projekt als `.zip` herunter [Click Game Starter ZIP](/assets/zips/click-game-starter.zip)
+ und entpacke es auf deinem Computer.
 
 -> Wichtig: Merke dir, wo du den Ordner gespeichert hast.
 
