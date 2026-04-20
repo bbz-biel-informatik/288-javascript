@@ -25,7 +25,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      createContentStructurePlugin({ docsRoot, linkAliases }),
+      createContentStructurePlugin({ docsRoot, linkAliases, base }),
       createExcalidrawExportPlugin({ docsRoot }),
       createZipAssetsPlugin({ docsRoot, base })
     ]

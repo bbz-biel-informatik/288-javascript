@@ -1,5 +1,7 @@
 import { createReadStream } from "node:fs";
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
+import syncFs from "node:fs";
 import path from "node:path";
 
 const zipsUrlPrefix = "/assets/zips/";
@@ -46,9 +48,73 @@ async function copyZipAssets(sourceRoot, outputRoot) {
   }
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getZipAssetVersion(zipName, zipsRoot, zipVersionCache) {
+  const filePath = path.join(zipsRoot, zipName);
+
+  try {
+    const stats = syncFs.statSync(filePath);
+    const cached = zipVersionCache.get(filePath);
+
+    if (cached && cached.mtimeMs === stats.mtimeMs && cached.size === stats.size) {
+      return cached.version;
+    }
+
+    const version = crypto
+      .createHash("sha256")
+      .update(syncFs.readFileSync(filePath))
+      .digest("hex")
+      .slice(0, 12);
+
+    zipVersionCache.set(filePath, {
+      mtimeMs: stats.mtimeMs,
+      size: stats.size,
+      version
+    });
+
+    return version;
+  } catch {
+    return null;
+  }
+}
+
+function createZipUrlPattern(base) {
+  const prefixes = [zipsUrlPrefix];
+
+  if (base && base !== "/") {
+    prefixes.push(`${base}${zipsUrlPrefix.slice(1)}`);
+  }
+
+  return new RegExp(
+    `(${prefixes.map(escapeRegExp).join("|")})([A-Za-z0-9._-]+\\.zip)(\\?[^"'\\s<>)]*)?`,
+    "g"
+  );
+}
+
+function addZipUrlVersions(source, { zipsRoot, base, zipVersionCache }) {
+  const zipUrlPattern = createZipUrlPattern(base);
+
+  return source.replace(zipUrlPattern, (match, prefix, zipName, query = "") => {
+    const version = getZipAssetVersion(zipName, zipsRoot, zipVersionCache);
+
+    if (!version) {
+      return match;
+    }
+
+    const searchParams = new URLSearchParams(query.startsWith("?") ? query.slice(1) : "");
+    searchParams.set("v", version);
+
+    return `${prefix}${zipName}?${searchParams.toString()}`;
+  });
+}
+
 export function createZipAssetsPlugin({ docsRoot, base }) {
   const zipsRoot = path.join(docsRoot, "assets", "zips");
   const copiedOutputRoots = new Set();
+  const zipVersionCache = new Map();
   let resolvedConfig;
 
   return {
@@ -89,6 +155,18 @@ export function createZipAssetsPlugin({ docsRoot, base }) {
 
         createReadStream(filePath).pipe(res);
       });
+    },
+    generateBundle(options, bundle) {
+      for (const asset of Object.values(bundle)) {
+        if (asset.type === "chunk") {
+          asset.code = addZipUrlVersions(asset.code, { zipsRoot, base, zipVersionCache });
+          continue;
+        }
+
+        if (asset.type === "asset" && typeof asset.source === "string") {
+          asset.source = addZipUrlVersions(asset.source, { zipsRoot, base, zipVersionCache });
+        }
+      }
     },
     async writeBundle(options) {
       const outputRoot = options.dir

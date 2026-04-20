@@ -69,6 +69,7 @@ Die Inhalte leben direkt als `.md`-Dateien unter `docs/`.
 - Diagrammquellen können in `docs/assets/diagrams/` abgelegt werden.
 - Unterordner in `docs/projects/` werden vor jedem Build automatisch zu `.zip`-Dateien in `docs/assets/zips/` verpackt.
 - ZIP-Dateien aus `docs/assets/zips/` werden beim Dev-Server und Build unter `/assets/zips/<datei>.zip` bereitgestellt. Auf GitHub Pages ist der vollständige Pfad wegen des Base Paths z. B. `/288-javascript/assets/zips/click-game-starter.zip`.
+- Links auf ZIP-Dateien bekommen beim Build automatisch einen Content-Hash als Query-Parameter, damit Browser und GitHub Pages nach Änderungen keine alte ZIP-Version aus dem Cache ausliefern.
 - `docs/assets/diagrams/*.excalidraw.json` werden beim `dev`- und `build`-Prozess automatisch zu `docs/assets/images/*.svg` exportiert.
 - Code-Snippets können direkt aus echten Quelldateien importiert werden.
 
