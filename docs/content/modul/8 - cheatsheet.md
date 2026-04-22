@@ -16,8 +16,6 @@
 </script>
 ```
 
----
-
 ## HTML Elemente auswählen
 
 ```js
@@ -77,8 +75,6 @@ document.addEventListener("keydown", function (event) {
 });
 ```
 
----
-
 ## Variablen
 Variablen sind Platzhalter für Werte. Es gibt verschiedene Arten von Variablen, zum Beispiel:
 
@@ -101,8 +97,6 @@ zahl * 10; // Multiplikation
 zahl / 10; // Division
 ```
 
----
-
 ## Listen und Loops
 
 ```js
@@ -115,8 +109,6 @@ items.forEach(function (item) {
 });
 ```
 
----
-
 ## Funktionen
 
 ```js
@@ -126,8 +118,6 @@ function greet(name) {
 
 greet("Max");
 ```
-
----
 
 ## If / Else
 
@@ -154,4 +144,3 @@ if (year >= 2000) {
 }
 ```
 
----

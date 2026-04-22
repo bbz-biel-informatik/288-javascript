@@ -54,8 +54,10 @@ value = value / 2;   // 13
 Kurzschreibweise:
 
 ```js
-value += 1; // +1
-value -= 1; // -1
+value += 1;    // +1
+value -= 1;    // -1
+value++;       // +1
+value--;       // -1
 ```
 
 ## Variablen kombinieren
@@ -86,12 +88,111 @@ let myObject = { value: 1 } // Objekt
 let el = document.querySelector("#myElement");
 ```
 
-# Aufgabe – Score mit Variable
+## Texte kombinieren 
+Wir haben nun verschiedene Datentypen. Nur Zahlen können miteinander verrechnet werden [siehe vorheriges Kapitel](#mit-variablen-rechnen). Was ist aber mit Texten?
 
-Jetzt erweitern wir unser Spiel mit einem Score.
+Texte können aneinander gehängt werden:
 
-Das Ziel ist folgendes:
+```js
+let firstName = "Max";
+let lastName = "Mustermann";
+let fullName = firstName + " " + lastName; // "Max Mustermann"
+```
 
-* Der Score wird in einer **Variable gespeichert**.
-* Wenn auf den Spieler geklickt wird, wird der Score um 1 erhöht.  
-* Der neue Wert wird im HTML angezeigt.
+... oder auch mit Zahlen kombiniert werden:
+
+```js
+let score = 10;
+let scoreText = "Score: " + score; // "Score: 10"
+```
+
+## Scope von Variablen
+Der **Scope** (Geltungsbereich) einer Variable bestimmt, wo sie verwendet werden kann.
+
+Ein Block ist z. B. eine Funktion oder Code innerhalb von `{ ... }`.
+
+
+Wir unterscheiden zwischen:
+* **Globaler Scope** → überall im Code verfügbar
+* **Lokaler Scope** → nur innerhalb eines bestimmten Blocks (z. B. Funktion)
+
+
+Beispiel **Globaler** Scope:
+```js
+let score = 10; // globaler Scope
+
+player.addEventListener("click", function() {
+    score += 1; // score ist hier verfügbar
+});
+```
+
+Beispiel **Lokaler** Scope:
+```js
+let player = document.querySelector("#player"); // globaler Scope
+
+player.addEventListener("click", function() {
+    // x und y werden "vergessen", sobald die Funktion hier fertig ist
+    let x = Math.random() * 500; // x hat lokalen Scope
+    let y = Math.random() * 500; // y hat lokalen Scope
+    setPosition(player, x, y);
+}); // Funktion endet hier, x und y sind nicht mehr verfügbar
+```
+
+## 🎮 Aufgabe – Score mit Variable
+
+Wir erweitern nun unser Spiel mit einem Score und einem Timer. Das Ziel ist es, den Score zu erhöhen, wenn auf den Spieler geklickt wird. Außerdem soll ein Timer herunterzählen, und wenn er 0 erreicht, soll das Spiel vorbei sein.
+
+### 1: Score mit Variable
+
+Der Score, welcher oben rechts angezeigt wird, soll nun immer um 1 erhöht werden, wenn auf den Spieler geklickt wird.
+Gehe dabei wie folgt vor:
+
+* Erstelle eine [globale](#scope-von-variablen) Variable `scoreValue` und setze sie auf 0.
+* Im Click Event des Spielers, erhöhe `scoreValue` um 1.
+* **Aktualisiere (ebenfalls im Click Event) den Text im HTML, damit der neue Score angezeigt wird. Die Theorie dazu findest tu im Kapitel [Texte kombinieren](#texte-kombinieren).
+
+** Die Variable `scoreValue` speichert den score. Die Variable existiert aber nur "im computer". Um den Score auch für die Spieler sichtbar zu machen, müssen wir dann den Text im HTML anpassen:
+
+
+<details>
+<summary>Tipps</summary>
+Score erhöhen und Text aktualisieren:
+
+```js
+scoreValue += 1; // Score erhöhen
+score.textContent = "Score: " + scoreValue; // Text im HTML aktualisieren
+```
+</details>
+
+
+### 2: Timer mit Variable
+
+Der Timer soll von 10 Sekunden herunterzählen. Sobald er 0 erreicht, soll das Spiel vorbei sein.
+
+
+Gehe nun wie folgt vor:
+* Erstelle eine [globale](#scope-von-variablen) Variable `timeLeft` und setze sie auf 10.
+* Erstelle ein HTML Element (Direkt im HTML File), um die verbleibende Zeit anzuzeigen. Gibe diesem Element die ID `timer`. [Selektiere](./8-cheatsheet#html-elemente-auswahlen) das Element dann direkt im JavaScript.
+* Verwende [`setInterval`](#setinterval), um jede Sekunde `timeLeft` um 1 zu verringern.
+* Aktualisiere ebenfalls den Text im HTML, damit die verbleibende Zeit angezeigt wird. (Gleiche Vorgehensweise wie beim Score)
+* Sobald `timeLeft` 0 erreicht, soll eine Nachricht "Game Over" angezeigt werden. Dazu brauchen wir ein if statement, welches wir später anschauen. Für jetzt kannst du einfach das hier nehmen:
+
+```js
+if (timeLeft === 0) {
+    alert("Game Over. Dein Score: " + scoreValue);
+    scoreValue = 0; // Score zurücksetzen
+    timeLeft = 10;  // Timer zurücksetzen
+}
+```
+
+
+#### setInterval
+-> Wird später genauer erklärt..
+
+`setInterval` ist eine Funktion, welche einen Codeblock immer wiederholt ausführt. Zum Beispiel jede Sekunde:
+```js
+setInterval(function() {
+  // Code, der jede Sekunde ausgeführt wird
+  console.log("Eine Sekunde ist vergangen");
+}, 1000); // 1000 ms = 1 Sekunde
+```
