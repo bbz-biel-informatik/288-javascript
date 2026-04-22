@@ -122,25 +122,30 @@ greet("Max");
 ## If / Else
 
 ```js
-let year = 10;
+let score = 10; // Score ist eine Zahl
+let city = "Warschau"; // City ist ein Text
 
-// Führt den Block aus, wenn das Jahr grösser oder gleich 2000 ist.
-if (year >= 2000) {
-  console.log("welcome to the 2000s");
+// Führt den Block aus, wenn die Zahl Score grösser als 100 ist.
+if (score > 100) {
+  console.log("Guter score!");
 }
 
-// Wenn das Jahr grösser als 2000 ist
-if (year >= 2000) {
-  console.log("welcome to the 2000s");
-  // Sonst, wenn das Jahr aber grösser als 1990 ist.
-} else if (year >= 1990) {
-  console.log("welcome to the 90s!");
-  // Sonst, wenn das Jahr grösser als 1980 ist.
-} else if (year >= 1980) {
-  console.log("welcome to the 80s!");
-  // Sonst, wenn nichts von allem zutrifft
+// Vergleiche
+if (city == "Warschau") // Gleichheit
+if (city != "Warschau") // Ungleichheit
+if (score > 10) // Grösser
+if (score < 10) // Kleiner
+if (score >= 10) // Grösser oder gleich
+if (score <= 10) // Kleiner oder gleich
+
+// If Else aneinander reihen
+if (score > 100) {
+  console.log("Guter score!");
+} else if (score > 50) {
+  console.log("Nicht schlecht!");
 } else {
-  console.log("Welcome to the 70s or before!");
+  console.log("Du kannst es besser!");
 }
+
 ```
 
