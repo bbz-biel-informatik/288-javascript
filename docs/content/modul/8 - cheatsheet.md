@@ -97,28 +97,6 @@ zahl * 10; // Multiplikation
 zahl / 10; // Division
 ```
 
-## Listen und Loops
-
-```js
-// Wähle alle Elemente mit der Klasse "item"
-let items = document.querySelectorAll(".item");
-
-// Gehe durch alle Elemente und ändere die Farbe
-items.forEach(function (item) {
-  item.style.color = "red";
-});
-```
-
-## Funktionen
-
-```js
-function greet(name) {
-  return "Hello " + name;
-}
-
-greet("Max");
-```
-
 ## If / Else
 
 ```js
@@ -148,4 +126,61 @@ if (score > 100) {
 }
 
 ```
+
+
+## Listen und Loops
+
+```js
+// Wähle alle Elemente mit der Klasse "item" (items ist eine Liste)
+let items = document.querySelectorAll(".item");
+
+// Gehe durch alle Elemente und ändere die Farbe
+items.forEach(function (item) {
+  item.style.color = "red";
+});
+
+//for loop: Zähle von 0 bis 10
+for (let i = 0; i <= 10; i++) {
+  console.log(i); // i ist die Variable, welche von 0 bis 10 zählt
+}
+
+// Interval loop
+setInterval(function() {
+  console.log("Dieser Code wird jede Sekunde ausgeführt");
+}, 1000); // 1000 ms = 1 Sekunde
+
+```
+
+## Funktionen
+
+```js
+// Funktion definieren (ohne Parameter)
+function sayHello() {
+  console.log("Hello");
+}
+
+// Funktion aufrufen
+sayHello();
+
+// Funktion mit Parameter definieren
+function greet(name) {
+  console.log("Hello " + name);
+}
+
+// Funktion mit Argumenten aufrufen
+greet("Max"); // "Hello Max"
+
+// Funktion mit mehreren Parametern definieren
+function styleElement(element, color, size) {
+  element.style.color = color;
+  element.style.width = size + "px";
+  element.style.height = size + "px";
+} 
+
+// Funktion mit Argumenten aufrufen
+let myElement = document.querySelector("#myElement");
+styleElement(myElement, "red", 100); // Das Element wird rot und 100px gross 
+
+```
+
 
