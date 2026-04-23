@@ -230,7 +230,6 @@ player.addEventListener("click", function () {
 ```
 </details>
 
-
 <details>
 <summary>Tipps (If statement)</summary>
 
@@ -248,3 +247,4 @@ if (scoreValue > 20) {
 ```
 
 </details>
+

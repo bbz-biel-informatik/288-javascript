@@ -1,5 +1,15 @@
 // Expose the framework as a classic browser script so it can be loaded from GitHub Pages.
 (function exposeBBZGame(global) {
+    const pressedKeys = {};
+
+    window.addEventListener("keydown", (event) => {
+        pressedKeys[event.key] = true;
+    });
+
+    window.addEventListener("keyup", (event) => {
+        pressedKeys[event.key] = false;
+    });
+
     function initGame() {
         console.log("Initializing BBZGame Script...");
 
@@ -21,8 +31,22 @@
         element.style.bottom = `${y}px`;
     }
 
+    function movePlayer(deltaX, deltaY) {
+        const player = document.querySelector("#player");
+        const currentX = parseInt(player.style.left) || 0;
+        const currentY = parseInt(player.style.bottom) || 0;
+
+        setPosition(player, currentX + deltaX, currentY + deltaY);
+    }
+
+    function isKeyPressed(key) {
+        return !!pressedKeys[key];
+    }
+
     global.initBBZGame = initGame;
     global.setPosition = setPosition;
+    global.isKeyPressed = isKeyPressed;
+    global.movePlayer = movePlayer;
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initGame, { once: true });
