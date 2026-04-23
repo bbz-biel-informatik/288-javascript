@@ -39,12 +39,25 @@
         setPosition(player, currentX + deltaX, currentY + deltaY);
     }
 
+    function isColliding(firstElement, secondElement) {
+        const firstRect = firstElement.getBoundingClientRect();
+        const secondRect = secondElement.getBoundingClientRect();
+
+        return !(
+            firstRect.right < secondRect.left ||
+            firstRect.left > secondRect.right ||
+            firstRect.bottom < secondRect.top ||
+            firstRect.top > secondRect.bottom
+        );
+    }
+
     function isKeyPressed(key) {
         return !!pressedKeys[key];
     }
 
     global.initBBZGame = initGame;
     global.setPosition = setPosition;
+    global.isColliding = isColliding;
     global.isKeyPressed = isKeyPressed;
     global.movePlayer = movePlayer;
 

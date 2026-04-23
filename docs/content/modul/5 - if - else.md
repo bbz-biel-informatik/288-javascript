@@ -133,118 +133,125 @@ Merke:
 * `if / else if / else` → genau eine passende Variante auswählen
 * mehrere `if` → mehrere Dinge unabhängig voneinander prüfen
 
-## Aufgabe 1: Game Over Meldung verbessern
+## Aufgabe 1: Eat Game starten
 
-In der Variablen-Aufgabe haben wir bereits eine Game Over Logik eingebaut:
+Nun starten wir ein neues Spiel: Eat Game.
 
-```js
-if (timeLeft == 0) {
-  alert("Game Over. Dein Score: " + scoreValue);
-  scoreValue = 0;
-  timeLeft = 10;
-}
-```
+Lade das vorbereitete Projekt herunter:
 
-Jetzt soll die Meldung genauer werden. Je nach Score soll eine andere Bewertung angezeigt werden:
+[Eat Game Starter ZIP](/assets/zips/eat-game-starter.zip)
 
-* Mehr als 20 Punkte: `"Sehr gut!"`
-* Mehr als 10 Punkte: `"Gut!"`
-* Mehr als 5 Punkte: `"Das kannst du besser"`
-* 5 Punkte oder weniger: `"Schlecht!"`
+In diesem Spiel wird der Spieler mit der Tastatur bewegt. Ziel ist es, Food einzusammeln. Jedes Mal, wenn der Spieler Food berührt, gibt es einen Punkt.
+
+## Aufgabe 2: Spieler mit der Tastatur bewegen
+
+Der Spieler soll mit den Pfeiltasten bewegt werden.
 
 Gehe dabei wie folgt vor:
 
-* Prüfe den `scoreValue` mit `if`, `else if` und `else`. Theorie: [Else if](#if--else-if--else-oder-mehrere-if)
-* Baue die entsprechende Meldung in das `alert` ein.
+* Selektiere den Spieler mit `document.querySelector("#player")`.
+* Verwende ein `keydown` Event.
+* Prüfe mit `if`, `else if`, welche Taste gedrückt wurde.
+* Verwende `movePlayer(...)`, um den Spieler zu bewegen.
 
 <details>
-<summary>Tipps</summary>
-
-(Es gibt mehrere Möglichkeiten, hier eine davon)
+<summary>Tipp</summary>
 
 ```js
-if (scoreValue > 20) {
-  alert("Game Over. Dein Score: " + scoreValue + ". Sehr gut!");
-} else if (scoreValue > 10) {
-  alert("Game Over. Dein Score: " + scoreValue + ". Gut!");
-} else if (scoreValue > 5) {
-  alert("Game Over. Dein Score: " + scoreValue + ". Das kannst du besser");
-} else {
-  alert("Game Over. Dein Score: " + scoreValue + ". Schlecht!");
-}
-```
-</details>
+let player = document.querySelector("#player");
 
-## Aufgabe 2: Highscore einbauen
-
-Nun soll sich das Spiel den besten Score merken.
-
-Gehe dabei wie folgt vor:
-
-* Erstelle eine [globale](4-variablen#scope-von-variablen) Variable `highscore` und setze sie auf 0.
-* Erstelle ein HTML Element für den Highscore und gib ihm die ID `highscore`.
-* Selektiere das Element im JavaScript mit `document.querySelector("#highscore")`.
-* Wenn das Spiel vorbei ist, prüfe ob `scoreValue` grösser als `highscore` ist.
-* Wenn ja, speichere den neuen Highscore und aktualisiere den Text im HTML.
-
-<details>
-<summary>Lösung</summary>
-
-```js
-let highscore = 0;
-let highscoreElement = document.querySelector("#highscore");
-
-if (scoreValue > highscore) {
-  highscore = scoreValue;
-  highscoreElement.textContent = "Highscore: " + highscore;
-}
-```
-
-</details>
-
-## Aufgabe 3: Spieler wird kleiner 
-
-Wenn der Score steigt, soll der Spieler schwieriger zu treffen sein.
-
-Gehe dabei wie folgt vor:
-
-* Setze die Breite und Höhe des Spielers am Anfang auf `100px`.
-* Wenn `scoreValue` grösser als 10 ist, mache den Spieler kleiner.
-* Wenn `scoreValue` grösser als 20 ist, mache den Spieler nochmals kleiner.
-
-```js
-player.style.width = "100px"; // So setzt du die Breite eines HTML Elements
-player.style.height = "100px"; // So setzt du die Höhe eines HTML Elements
-```
-
-<details>
-<summary>Tipp: Wo platzieren wir den code?</summary>
-Der Code kommt am besten in die Click Event Funktion des Spielers. Denn dort wird der Score erhöht, und wir wollen ja direkt danach prüfen, ob der Spieler kleiner werden soll.
-
-```js
-player.addEventListener("click", function () {
-  scoreValue += 1;
-  score.textContent = "Score: " + scoreValue;
-  // Hier kommt der Code hin, um den Spieler kleiner zu machen
+document.addEventListener("keydown", function(event) {
+  if (event.key == "ArrowRight") {
+    movePlayer(10, 0);
+  } else if (event.key == "ArrowLeft") {
+    movePlayer(-10, 0);
+  } else if (event.key == "ArrowUp") {
+    movePlayer(0, 10);
+  } else if (event.key == "ArrowDown") {
+    movePlayer(0, -10);
+  }
 });
 ```
+
 </details>
 
-<details>
-<summary>Tipps (If statement)</summary>
+## Aufgabe 3: Food essen
+
+Jetzt soll geprüft werden, ob der Spieler das Food berührt.
+
+Das Game Framework hat dafür die Funktion:
 
 ```js
-if (scoreValue > 20) {
-  player.style.width = "50px";
-  player.style.height = "50px";
-} else if (scoreValue > 10) {
-  player.style.width = "75px";
-  player.style.height = "75px";
-} else {
-  player.style.width = "100px";
-  player.style.height = "100px";
-}
+isColliding(player, food);
+```
+
+Gehe dabei wie folgt vor:
+
+* Selektiere das Food Element mit `document.querySelector("#food")`.
+* Erstelle eine Variable `scoreValue` und setze sie auf 0.
+* Prüfe nach jeder Bewegung, ob `isColliding(player, food)` stimmt.
+* Wenn ja, erhöhe den Score um 1.
+* Aktualisiere den Score Text.
+
+<details>
+<summary>Tipp</summary>
+
+```js
+let food = document.querySelector("#food");
+let score = document.querySelector("#score");
+let scoreValue = 0;
+
+document.addEventListener("keydown", function(event) {
+  if (event.key == "ArrowRight") {
+    movePlayer(10, 0);
+  } else if (event.key == "ArrowLeft") {
+    movePlayer(-10, 0);
+  } else if (event.key == "ArrowUp") {
+    movePlayer(0, 10);
+  } else if (event.key == "ArrowDown") {
+    movePlayer(0, -10);
+  }
+
+  if (isColliding(player, food)) {
+    scoreValue += 1;
+    score.textContent = "Score: " + scoreValue;
+  }
+});
 ```
 
 </details>
 
+## Aufgabe 4 (Zusatz): Bewegung begrenzen
+-> Mache diese Aufgabe, wenn du noch genügend Zeit hast.
+
+Der Spieler soll nicht links aus dem Spielfeld laufen.
+
+Für den Anfang lösen wir nur die linke Seite.
+
+Gehe dabei wie folgt vor:
+
+* Erstelle eine Variable `playerX` und setze sie auf 0.
+* Wenn `ArrowLeft` gedrückt wird, prüfe zuerst ob `playerX > 0` ist.
+* Nur dann darf der Spieler nach links bewegt werden.
+* Passe `playerX` bei jeder Rechts- und Linksbewegung an.
+
+<details>
+<summary>Tipp</summary>
+
+```js
+let playerX = 0;
+
+document.addEventListener("keydown", function(event) {
+  if (event.key == "ArrowRight") {
+    movePlayer(10, 0);
+    playerX += 10;
+  } else if (event.key == "ArrowLeft") {
+    if (playerX > 0) {
+      movePlayer(-10, 0);
+      playerX -= 10;
+    }
+  }
+});
+```
+
+</details>

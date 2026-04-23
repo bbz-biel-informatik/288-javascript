@@ -27,7 +27,7 @@ setInterval(function() {
 `1000` bedeutet 1000 Millisekunden. Das ist eine Sekunde.
 Würden wir `500` schreiben, würde der Code alle 0.5 Sekunden ausgeführt werden. (500 ms = 0.5 s)
 
-Die `setInterval(...)` Funktion ist besonders nützlich für Timer. Genau das brauchen wir im Click Game für den herunterzählenden Timer.
+Die `setInterval(...)` Funktion ist besonders nützlich für Timer. Im Eat Game brauchen wir sie für den Countdown.
 
 ## for loop
 
@@ -77,10 +77,10 @@ Listen speichern mehrere Werte.
 Eine Liste wird in JavaScript mit eckigen Klammern geschrieben:
 
 ```js
-let feedbackMessages = ["Sehr gut!", "Gut!", "Das kannst du besser", "Schlecht!"];
+let foodColors = ["red", "green", "blue", "yellow"];
 ```
 
-Die Liste `feedbackMessages` enthält vier Texte.
+Die Liste `foodColors` enthält vier Texte.
 
 Wir können auch HTML Elemente als Liste erhalten. Das ist nützlich, wenn wir z. B. alle Elemente mit einer bestimmten Klasse auswählen wollen:
 
@@ -90,17 +90,14 @@ let hudElements = document.querySelectorAll(".hud");
 
 `querySelectorAll(...)` wählt mehrere Elemente aus. Das Resultat kann mit einem Loop durchlaufen werden.
 
-## Aufgabe 1: Timer mit setInterval
+## Aufgabe 1: Countdown Timer
 
-Wir bleiben beim Click Game.
-
-Der Timer soll jede Sekunde um 1 kleiner werden.
+Im Eat Game soll die Zeit herunterzählen.
 
 Gehe dabei wie folgt vor:
 
-* Erstelle eine Variable `timeLeft` und setze sie auf 10.
-* Erstelle ein HTML Element mit der ID `timer`, falls du es noch nicht hast.
-* Selektiere das Element mit `document.querySelector("#timer")`.
+* Erstelle eine Variable `timeLeft` und setze sie auf 20.
+* Selektiere das HTML Element `#timer`.
 * Verwende `setInterval(...)`.
 * Verringere `timeLeft` jede Sekunde um 1.
 * Aktualisiere den Text im HTML.
@@ -109,7 +106,7 @@ Gehe dabei wie folgt vor:
 <summary>Tipp</summary>
 
 ```js
-let timeLeft = 10;
+let timeLeft = 20;
 let timer = document.querySelector("#timer");
 
 setInterval(function() {
@@ -126,86 +123,82 @@ Der Timer soll nicht unter 0 zählen.
 
 Erweitere den Code aus Aufgabe 1:
 
+* Speichere `setInterval(...)` in einer Variable `timerInterval`.
 * Prüfe mit `if`, ob `timeLeft > 0` ist.
 * Nur dann soll `timeLeft` kleiner werden.
-* Wenn `timeLeft == 0` ist, soll `"Game Over"` in der Konsole ausgegeben werden.
+* Wenn `timeLeft == 0` ist, soll das Spiel stoppen.
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-setInterval(function() {
+let timerInterval = setInterval(function() {
   if (timeLeft > 0) {
     timeLeft -= 1;
     timer.textContent = "Time: " + timeLeft;
   } else {
-    console.log("Game Over");
+    clearInterval(timerInterval);
+    alert("Game Over");
   }
 }, 1000);
 ```
 
 </details>
 
-## Aufgabe 3: Countdown mit for loop testen
+## Aufgabe 3: Food zufällig neu platzieren
 
-Teste einen normalen `for` loop für einen Countdown.
+Wenn der Spieler das Food isst, soll das Food an eine neue zufällige Position springen.
 
-Gib in der Konsole die Zahlen 10 bis 0 aus.
+Gehe dabei wie folgt vor:
+
+* Erstelle zwei zufällige Zahlen `x` und `y`.
+* Verwende `setPosition(food, x, y)`.
+* Platziere diesen Code dort, wo der Score erhöht wird.
 
 <details>
-<summary>Lösung</summary>
+<summary>Tipp</summary>
 
 ```js
-for (let i = 10; i >= 0; i--) {
-  console.log(i);
+if (isColliding(player, food)) {
+  scoreValue += 1;
+  score.textContent = "Score: " + scoreValue;
+
+  let x = Math.random() * 500;
+  let y = Math.random() * 300;
+  setPosition(food, x, y);
 }
 ```
 
 </details>
 
-## Aufgabe 4: HUD Elemente mit forEach stylen
+## Aufgabe 4: Hintergrundfarbe zufällig ändern
 
-Im Click Game gibt es mehrere Anzeige-Elemente, zum Beispiel:
+Erstelle eine Liste mit möglichen Hintergrundfarben:
 
-* Score
-* Timer
-* Highscore
+```js
+let backgroundColors = ["lightblue", "lightgreen", "lightyellow", "lightpink"];
+```
 
-Gib diesen HTML Elementen die Klasse `hud`.
+Wenn Food gegessen wird, soll eine zufällige Farbe aus dieser Liste gewählt werden.
 
-Danach sollen alle HUD Elemente mit `querySelectorAll(...)` ausgewählt und mit `forEach(...)` gestylt werden.
+Der Hintergrund des Spielfelds soll dann diese Farbe bekommen.
+
+Gehe dabei wie folgt vor:
+
+* Selektiere das Spielfeld mit `document.querySelector("#playground")`.
+* Erstelle eine Liste `backgroundColors`.
+* Wähle mit `Math.random()` eine zufällige Farbe aus der Liste.
+* Ändere `playground.style.backgroundColor`.
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-let hudElements = document.querySelectorAll(".hud");
+let playground = document.querySelector("#playground");
+let backgroundColors = ["lightblue", "lightgreen", "lightyellow", "lightpink"];
 
-hudElements.forEach(function (hudElement) {
-  hudElement.style.fontSize = "20px";
-  hudElement.style.fontWeight = "bold";
-});
-```
-
-</details>
-
-## Aufgabe 5: Feedback Texte als Liste
-
-Erstelle eine Liste mit den Feedback Texten aus dem if-else Kapitel:
-
-```js
-let feedbackMessages = ["Sehr gut!", "Gut!", "Das kannst du besser", "Schlecht!"];
-```
-
-Gib danach alle Texte mit `forEach(...)` in der Konsole aus.
-
-<details>
-<summary>Tipp</summary>
-
-```js
-feedbackMessages.forEach(function (message) {
-  console.log(message);
-});
+let randomIndex = Math.floor(Math.random() * backgroundColors.length);
+playground.style.backgroundColor = backgroundColors[randomIndex];
 ```
 
 </details>

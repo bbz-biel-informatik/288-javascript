@@ -79,33 +79,31 @@ console.log(result);
 
 `result` hat danach den Wert `10`.
 
-## Warum Funktionen im Click Game?
+## Warum Funktionen im Eat Game?
 
-Im Click Game passiert vieles immer wieder:
+Im Eat Game passiert vieles immer wieder:
 
+* Spieler bewegen
 * Score Text aktualisieren
-* Spieler zufällig platzieren
-* Spielergrösse anpassen
-* Game Over Meldung anzeigen
+* Food neu platzieren
+* Timer aktualisieren
 * Spiel zurücksetzen
 
 Wenn wir dafür Funktionen schreiben, bleibt der Code übersichtlicher.
 
-## Vorbereitung im Click Game
+## Vorbereitung im Eat Game
 
 Für die nächsten Aufgaben brauchen wir diese Elemente und Variablen:
 
 ```js
 let player = document.querySelector("#player");
+let food = document.querySelector("#food");
 let score = document.querySelector("#score");
 let timer = document.querySelector("#timer");
 
 let scoreValue = 0;
-let timeLeft = 10;
-let highscore = 0;
+let timeLeft = 20;
 ```
-
-Falls du `#timer` oder `#highscore` noch nicht im HTML hast, erstelle diese Elemente zuerst.
 
 ## Aufgabe 1: Score Text als Funktion
 
@@ -122,157 +120,147 @@ function updateScore() {
 }
 ```
 
-Rufe `updateScore()` immer dann auf, wenn sich `scoreValue` verändert.
+</details>
+
+## Aufgabe 2: Bewegung auslagern
+
+Im if-else Kapitel steht die Bewegung direkt im `keydown` Event.
+
+Jetzt lagern wir die Bewegung in eine Funktion aus.
+
+Erstelle eine Funktion `handlePlayerMovement(event)`.
+
+Diese Funktion soll:
+
+* prüfen, welche Taste gedrückt wurde
+* `movePlayer(...)` mit den passenden Werten aufrufen
+
+<details>
+<summary>Tipp</summary>
+
+```js
+function handlePlayerMovement(event) {
+  if (event.key == "ArrowRight") {
+    movePlayer(10, 0);
+  } else if (event.key == "ArrowLeft") {
+    movePlayer(-10, 0);
+  } else if (event.key == "ArrowUp") {
+    movePlayer(0, 10);
+  } else if (event.key == "ArrowDown") {
+    movePlayer(0, -10);
+  }
+}
+```
+
+Danach wird dein Event kürzer:
+
+```js
+document.addEventListener("keydown", function(event) {
+  handlePlayerMovement(event);
+});
+```
 
 </details>
 
-## Aufgabe 2: Spieler zufällig platzieren
 
-Erstelle eine Funktion `movePlayerRandom()`.
+
+## Aufgabe 3: Food neu platzieren
+
+Erstelle eine Funktion `moveFoodRandom()`.
 
 Diese Funktion soll:
 
 * eine zufällige x-Position erstellen
 * eine zufällige y-Position erstellen
-* den Spieler mit `setPosition(player, x, y)` platzieren
+* das Food mit `setPosition(food, x, y)` platzieren
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-function movePlayerRandom() {
+function moveFoodRandom() {
   let x = Math.random() * 500;
   let y = Math.random() * 300;
 
-  setPosition(player, x, y);
+  setPosition(food, x, y);
 }
 ```
 
-Rufe `movePlayerRandom()` im Click Event des Spielers auf.
-
 </details>
 
-## Aufgabe 3: Spielergrösse als Funktion
+## Aufgabe 4: Food essen als Funktion
 
-Im if-else Kapitel hast du den Spieler kleiner gemacht, wenn der Score steigt.
-
-Erstelle nun eine Funktion `updatePlayerSize()`.
+Erstelle eine Funktion `checkFoodCollision()`.
 
 Diese Funktion soll:
 
-* prüfen, wie hoch `scoreValue` ist
-* die passende Grösse setzen
+* prüfen, ob `isColliding(player, food)` stimmt
+* wenn ja, den Score erhöhen
+* den Score Text aktualisieren
+* das Food neu platzieren
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-function updatePlayerSize() {
-  if (scoreValue > 20) {
-    player.style.width = "50px";
-    player.style.height = "50px";
-  } else if (scoreValue > 10) {
-    player.style.width = "75px";
-    player.style.height = "75px";
-  } else {
-    player.style.width = "100px";
-    player.style.height = "100px";
+function checkFoodCollision() {
+  if (isColliding(player, food)) {
+    scoreValue += 1;
+    updateScore();
+    moveFoodRandom();
   }
 }
 ```
 
-Rufe `updatePlayerSize()` im Click Event direkt nach dem Erhöhen des Scores auf.
+Rufe `checkFoodCollision()` direkt nach der Bewegung auf.
 
 </details>
 
-## Aufgabe 4: Feedback Funktion mit return
+## Aufgabe 5: Timer als Funktion
 
-Erstelle eine Funktion `getFeedback(score)`.
-
-Diese Funktion soll je nach Score einen Text zurückgeben.
-
-<details>
-<summary>Tipp</summary>
-
-```js
-function getFeedback(score) {
-  if (score > 20) {
-    return "Sehr gut!";
-  } else if (score > 10) {
-    return "Gut!";
-  } else if (score > 5) {
-    return "Das kannst du besser";
-  } else {
-    return "Schlecht!";
-  }
-}
-```
-
-So kannst du die Funktion verwenden:
-
-```js
-let feedback = getFeedback(scoreValue);
-alert("Game Over. Dein Score: " + scoreValue + ". " + feedback);
-```
-
-</details>
-
-## Aufgabe 5: Game Over als Funktion
-
-Erstelle eine Funktion `showGameOver()`.
+Erstelle eine Funktion `updateTimer()`.
 
 Diese Funktion soll:
 
-* den Feedback Text mit `getFeedback(scoreValue)` holen
-* den Highscore prüfen
-* die Game Over Meldung anzeigen
-* Score und Timer zurücksetzen
-* HTML Texte aktualisieren
+* prüfen, ob `timeLeft > 0` ist
+* den Timer verringern
+* den Text im HTML aktualisieren
+* bei 0 das Spiel beenden
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-function showGameOver() {
-  let feedback = getFeedback(scoreValue);
-
-  if (scoreValue > highscore) {
-    highscore = scoreValue;
+function updateTimer() {
+  if (timeLeft > 0) {
+    timeLeft -= 1;
+    timer.textContent = "Time: " + timeLeft;
+  } else {
+    alert("Game Over. Dein Score: " + scoreValue);
   }
-
-  alert("Game Over. Dein Score: " + scoreValue + ". " + feedback);
-
-  scoreValue = 0;
-  timeLeft = 10;
-
-  updateScore();
-  timer.textContent = "Time: " + timeLeft;
 }
-```
 
-Rufe `showGameOver()` auf, wenn `timeLeft == 0` ist.
+setInterval(updateTimer, 1000);
+```
 
 </details>
 
-## Aufgabe 6: Click Event aufräumen
+## Aufgabe 6: Event aufräumen
 
-Am Schluss soll dein Click Event kürzer werden.
+Am Schluss soll dein `keydown` Event kurz bleiben.
 
 Beispiel:
 
 ```js
-player.addEventListener("click", function () {
-  scoreValue += 1;
-
-  updateScore();
-  updatePlayerSize();
-  movePlayerRandom();
+document.addEventListener("keydown", function(event) {
+  handlePlayerMovement(event);
+  checkFoodCollision();
 });
 ```
 
 Teste danach:
 
-* Beim Klick steigt der Score.
-* Der Spieler springt an eine zufällige Position.
-* Der Spieler wird bei höherem Score kleiner.
-* Bei Game Over erscheint die passende Meldung.
+* Der Spieler bewegt sich mit den Pfeiltasten.
+* Wenn der Spieler Food berührt, steigt der Score.
+* Das Food springt an eine neue zufällige Position.
+* Der Timer zählt herunter.
