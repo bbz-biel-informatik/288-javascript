@@ -185,6 +185,8 @@ if (timeLeft === 0) {
 }
 ```
 
+-> Du bist jetzt fertig mit dem Click game! 🎉
+
 
 #### setInterval
 -> Wird später genauer erklärt..

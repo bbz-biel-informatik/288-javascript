@@ -133,26 +133,32 @@ Merke:
 * `if / else if / else` → genau eine passende Variante auswählen
 * mehrere `if` → mehrere Dinge unabhängig voneinander prüfen
 
-## Aufgabe 1: Eat Game starten
+## 🎮 Aufgaben
+
+### Aufgabe 1: Eat Game starten
 
 Nun starten wir ein neues Spiel: Eat Game.
 
-Lade das vorbereitete Projekt herunter:
+
+In diesem Spiel wird der Spieler mit der Tastatur bewegt. Ziel ist es, Food (Etwas zu essen) einzusammeln. Jedes Mal, wenn der Spieler Food berührt, gibt es einen Punkt.
+
+Lade das vorbereitete Projekt herunter und schaue dir das HTML / Javascript an. Das meiste wird dir bereits bekannt vorkommen!
 
 [Eat Game Starter ZIP](/assets/zips/eat-game-starter.zip)
 
-In diesem Spiel wird der Spieler mit der Tastatur bewegt. Ziel ist es, Food einzusammeln. Jedes Mal, wenn der Spieler Food berührt, gibt es einen Punkt.
-
-## Aufgabe 2: Spieler mit der Tastatur bewegen
+### Aufgabe 2: Spieler mit der Tastatur bewegen
 
 Der Spieler soll mit den Pfeiltasten bewegt werden.
 
 Gehe dabei wie folgt vor:
 
-* Selektiere den Spieler mit `document.querySelector("#player")`.
-* Verwende ein `keydown` Event.
+* Verwende einen [`keydown`](./8-cheatsheet#events) Event.
 * Prüfe mit `if`, `else if`, welche Taste gedrückt wurde.
 * Verwende `movePlayer(...)`, um den Spieler zu bewegen.
+
+`movePlayer(deltaX, deltaY)` bewegt den Spieler um `deltaX` Pixel nach rechts und `deltaY` Pixel nach oben.
+
+---Bis hier gecheckt---
 
 <details>
 <summary>Tipp</summary>
@@ -175,7 +181,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-## Aufgabe 3: Food essen
+### Aufgabe 3: Food essen
 
 Jetzt soll geprüft werden, ob der Spieler das Food berührt.
 
@@ -221,7 +227,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-## Aufgabe 4 (Zusatz): Bewegung begrenzen
+### Aufgabe 4 (Zusatz): Bewegung begrenzen
 -> Mache diese Aufgabe, wenn du noch genügend Zeit hast.
 
 Der Spieler soll nicht links aus dem Spielfeld laufen.
