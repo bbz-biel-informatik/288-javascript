@@ -105,7 +105,9 @@ let scoreValue = 0;
 let timeLeft = 20;
 ```
 
-## Aufgabe 1: Score Text als Funktion
+## 🎮 Aufgaben
+
+### Aufgabe 1: Score Text als Funktion
 
 Erstelle eine Funktion `updateScore()`, welche den Score erhöht und den Text im HTML aktualisiert und rufe die Funktion dort auf, wo der Score erhöht wird. Solchen Code in eine Funktion zu packen, dient einerseits der Übersicht, andererseits können wir die Funktion dann überall aufrufen, wenn wir den Score erhöhen wollen.
 
@@ -121,7 +123,7 @@ function updateScore() {
 
 </details>
 
-## Aufgabe 2: Bewegung auslagern
+### Aufgabe 2: Bewegung auslagern
 
 Im if-else Kapitel steht die Bewegung direkt im `keydown` Event.
 
@@ -164,7 +166,7 @@ document.addEventListener("keydown", function(event) {
 
 
 
-## Aufgabe 3: Feinde platzieren
+### Aufgabe 3: Feinde platzieren
 
 Nun wollen wir Feinde auf dem Spielfeld platzieren, welche der Spieler vermeiden muss. Wir gehen in zwei Schritten vor:
 
@@ -217,7 +219,7 @@ setInterval(() => {
 ```
 </details>
 
-## Aufgabe 4: Gameover bei Gegnerberührung
+### Aufgabe 4: Gameover bei Gegnerberührung
 Damit unser Spiel fertig ist, brauchen wir nur noch genau ein if statement am richtigen ort, welches prüft, ob die Feinde uns bewegen. Weisst du, wo wir das brauchen?
 
 Tipp: Wir müssen die Kollision nach jeder Bewegung der Feinde prüfen.

@@ -106,7 +106,7 @@ enemies.forEach(enemy => {
 
 ## 🎮 Aufgaben
 
-## 1: Countdown Timer
+### 1: Countdown Timer
 
 Im Eat Game soll die Zeit herunterzählen. Wenn die Zeit 0 erreicht, ist das Spiel vorbei. Wenn der Spieler das Food isst, soll die Zeit wieder auf 20 Sekunden zurückgesetzt werden.
 
@@ -147,7 +147,7 @@ setInterval(function() {
 </details>
 
 
-## 2: Food zufällig neu platzieren
+### 2: Food zufällig neu platzieren
 
 Wenn der Spieler das Food isst, soll das Food an eine neue, zufällige Position springen. Überlege dir, wie du das lösen könntest. Du brauchst sicher die Funktion `setPosition(...)` und die Funktion `Math.random()`, um zufällige Zahlen zu generieren. Wenn du nicht weiterkommst, findest du hier einen Tipp:
 
