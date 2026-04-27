@@ -72,6 +72,12 @@ document.addEventListener("keydown", function (event) {
   if (event.key == "s") {
     console.log("you pressed s");
   }
+  // Wenn auf "ArrowRight" gedrückt wird
+  if (event.key == "ArrowRight") {
+    console.log("you pressed the right arrow");
+  }
+
+  // Alle möglichen Tasten findest du hier: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
 });
 ```
 

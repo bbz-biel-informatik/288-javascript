@@ -85,29 +85,58 @@ Die Liste `foodColors` enthält vier Texte.
 Wir können auch HTML Elemente als Liste erhalten. Das ist nützlich, wenn wir z. B. alle Elemente mit einer bestimmten Klasse auswählen wollen:
 
 ```js
-let hudElements = document.querySelectorAll(".hud");
+let enemies = document.querySelectorAll(".enemy");
 ```
+
+Somit haben wir alle elemente mit der Klasse "enemy" in einer Liste gespeichert. Wollen wir nun jedes einzelne Element verändern, können wir das so machen:
+
+```js
+enemies.forEach(enemy => {
+  // Zum beispiel das Bild von allen Feinden verändern
+  enemy.src = "/assets/some-image.png"
+
+  // oder alle feinde nach links bewegen
+  moveElment(enemy, -10, 0);
+})
+```
+
+
 
 `querySelectorAll(...)` wählt mehrere Elemente aus. Das Resultat kann mit einem Loop durchlaufen werden.
 
-## Aufgabe 1: Countdown Timer
+## 🎮 Aufgaben
 
-Im Eat Game soll die Zeit herunterzählen.
+## 1: Countdown Timer
 
-Gehe dabei wie folgt vor:
+Im Eat Game soll die Zeit herunterzählen. Wenn die Zeit 0 erreicht, ist das Spiel vorbei. Wenn der Spieler das Food isst, soll die Zeit wieder auf 20 Sekunden zurückgesetzt werden.
 
-* Erstelle eine Variable `timeLeft` und setze sie auf 20.
-* Selektiere das HTML Element `#timer`.
-* Verwende `setInterval(...)`.
-* Verringere `timeLeft` jede Sekunde um 1.
-* Aktualisiere den Text im HTML.
+Überlege dir, wie du das lösen könntest. Du brauchst sicher eine Variable für die Zeit, ein [`setInterval(...)`](./8-cheatsheet#listen-und-loops) und eine [`if`](./8-cheatsheet#if-else) Bedingung, um zu prüfen, ob die Zeit 0 erreicht hat. Wenn du nicht weiterkommst, findest du hier einen Tipp:
 
 <details>
-<summary>Tipp</summary>
+<summary>Vorgehen</summary>
+
+```js
+
+/*
+* Erstelle eine Variable `timeLeft` und setze sie auf 20.
+* Selektiere das HTML Element `#timer`.
+* Verwende `setInterval(...)` mit 1000ms.
+* Im setInterval, verringere `timeLeft` jeweils um 1.
+* Aktualisiere ebenfalls den Text im HTML.
+* Wenn `timeLeft` 0 erreicht, stoppe den Timer und zeige "Game Over" an (mit Alert).
+*/
+```
+
+</details>
+
+<details>
+<summary>Lösung</summary>
 
 ```js
 let timeLeft = 20;
 let timer = document.querySelector("#timer");
+
+// ...
 
 setInterval(function() {
   timeLeft -= 1;
@@ -117,46 +146,28 @@ setInterval(function() {
 
 </details>
 
-## Aufgabe 2: Timer bei 0 stoppen
 
-Der Timer soll nicht unter 0 zählen.
+## 2: Food zufällig neu platzieren
 
-Erweitere den Code aus Aufgabe 1:
+Wenn der Spieler das Food isst, soll das Food an eine neue, zufällige Position springen. Überlege dir, wie du das lösen könntest. Du brauchst sicher die Funktion `setPosition(...)` und die Funktion `Math.random()`, um zufällige Zahlen zu generieren. Wenn du nicht weiterkommst, findest du hier einen Tipp:
 
-* Speichere `setInterval(...)` in einer Variable `timerInterval`.
-* Prüfe mit `if`, ob `timeLeft > 0` ist.
-* Nur dann soll `timeLeft` kleiner werden.
-* Wenn `timeLeft == 0` ist, soll das Spiel stoppen.
+
+`Math.random()` gibt eine zufällige Zahl zwischen 0 und 1 zurück. Wenn du z. B. eine Zahl zwischen 0 und 500 möchtest, kannst du `let myNumber = Math.random() * 500` verwenden.
 
 <details>
-<summary>Tipp</summary>
+<summary>Vorgehen</summary>
 
 ```js
-let timerInterval = setInterval(function() {
-  if (timeLeft > 0) {
-    timeLeft -= 1;
-    timer.textContent = "Time: " + timeLeft;
-  } else {
-    clearInterval(timerInterval);
-    alert("Game Over");
-  }
-}, 1000);
-```
-
-</details>
-
-## Aufgabe 3: Food zufällig neu platzieren
-
-Wenn der Spieler das Food isst, soll das Food an eine neue zufällige Position springen.
-
-Gehe dabei wie folgt vor:
-
-* Erstelle zwei zufällige Zahlen `x` und `y`.
+/*
+* Erstelle zwei zufällige Zahlen `x` und `y` (2 Verschiedene Variablen x und y).
 * Verwende `setPosition(food, x, y)`.
 * Platziere diesen Code dort, wo der Score erhöht wird.
+*/
+```
+</details>
 
-<details>
-<summary>Tipp</summary>
+  <details>
+  <summary>Lösung</summary>
 
 ```js
 if (isColliding(player, food)) {
@@ -167,38 +178,6 @@ if (isColliding(player, food)) {
   let y = Math.random() * 300;
   setPosition(food, x, y);
 }
-```
-
-</details>
-
-## Aufgabe 4: Hintergrundfarbe zufällig ändern
-
-Erstelle eine Liste mit möglichen Hintergrundfarben:
-
-```js
-let backgroundColors = ["lightblue", "lightgreen", "lightyellow", "lightpink"];
-```
-
-Wenn Food gegessen wird, soll eine zufällige Farbe aus dieser Liste gewählt werden.
-
-Der Hintergrund des Spielfelds soll dann diese Farbe bekommen.
-
-Gehe dabei wie folgt vor:
-
-* Selektiere das Spielfeld mit `document.querySelector("#playground")`.
-* Erstelle eine Liste `backgroundColors`.
-* Wähle mit `Math.random()` eine zufällige Farbe aus der Liste.
-* Ändere `playground.style.backgroundColor`.
-
-<details>
-<summary>Tipp</summary>
-
-```js
-let playground = document.querySelector("#playground");
-let backgroundColors = ["lightblue", "lightgreen", "lightyellow", "lightpink"];
-
-let randomIndex = Math.floor(Math.random() * backgroundColors.length);
-playground.style.backgroundColor = backgroundColors[randomIndex];
 ```
 
 </details>

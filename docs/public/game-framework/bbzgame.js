@@ -31,12 +31,11 @@
         element.style.bottom = `${y}px`;
     }
 
-    function movePlayer(deltaX, deltaY) {
-        const player = document.querySelector("#player");
-        const currentX = parseInt(player.style.left) || 0;
-        const currentY = parseInt(player.style.bottom) || 0;
+    function moveElement(element, deltaX, deltaY) {
+        const currentX = parseInt(element.style.left) || 0;
+        const currentY = parseInt(element.style.bottom) || 0;
 
-        setPosition(player, currentX + deltaX, currentY + deltaY);
+        setPosition(element, currentX + deltaX, currentY + deltaY);
     }
 
     function isColliding(firstElement, secondElement) {
@@ -59,7 +58,7 @@
     global.setPosition = setPosition;
     global.isColliding = isColliding;
     global.isKeyPressed = isKeyPressed;
-    global.movePlayer = movePlayer;
+    global.moveElement = moveElement;
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initGame, { once: true });

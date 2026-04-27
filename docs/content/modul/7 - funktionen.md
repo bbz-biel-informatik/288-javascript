@@ -107,16 +107,15 @@ let timeLeft = 20;
 
 ## Aufgabe 1: Score Text als Funktion
 
-Erstelle eine Funktion `updateScore()`.
-
-Diese Funktion soll den Score Text im HTML aktualisieren.
+Erstelle eine Funktion `updateScore()`, welche den Score erhöht und den Text im HTML aktualisiert und rufe die Funktion dort auf, wo der Score erhöht wird. Solchen Code in eine Funktion zu packen, dient einerseits der Übersicht, andererseits können wir die Funktion dann überall aufrufen, wenn wir den Score erhöhen wollen.
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
 function updateScore() {
-  score.textContent = "Score: " + scoreValue;
+  scoreValue += 1; // Score erhöhen
+  score.textContent = "Score: " + scoreValue; // Text im HTML aktualisieren
 }
 ```
 
@@ -136,7 +135,7 @@ Diese Funktion soll:
 * `movePlayer(...)` mit den passenden Werten aufrufen
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
 function handlePlayerMovement(event) {
@@ -157,6 +156,7 @@ Danach wird dein Event kürzer:
 ```js
 document.addEventListener("keydown", function(event) {
   handlePlayerMovement(event);
+  // ... Weiterer code
 });
 ```
 
@@ -164,103 +164,82 @@ document.addEventListener("keydown", function(event) {
 
 
 
-## Aufgabe 3: Food neu platzieren
+## Aufgabe 3: Feinde platzieren
 
-Erstelle eine Funktion `moveFoodRandom()`.
+Nun wollen wir Feinde auf dem Spielfeld platzieren, welche der Spieler vermeiden muss. Wir gehen in zwei Schritten vor:
 
-Diese Funktion soll:
+1. Erstelle eine Funktion `createEnemy()`, welche ein [neues HTML Element erstellt](2-html-elemente-veraendern#element-hinzufugen), (img) es mit einem Bild füllt und es an eine zufällige Position setzt [setPosition](/jsgame/setposition). Rufe die Funktion mit [setInverval](/modul/8-cheatsheet#listen-und-loops) alle 3 Sekunden auf.
 
-* eine zufällige x-Position erstellen
-* eine zufällige y-Position erstellen
-* das Food mit `setPosition(food, x, y)` platzieren
+2. Bewegung: erstelle ein neues [setInverval](/modul/8-cheatsheet#listen-und-loops), in welchem du jede 0.1 Sekunden [alle feinde selektierst](/modul/6-listen-und-loops#listen) und nach links bewegst.
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung Teil 1</summary>
 
 ```js
-function moveFoodRandom() {
-  let x = Math.random() * 500;
-  let y = Math.random() * 300;
+function createEnemy() {
+    const enemy = document.createElement("img");
 
-  setPosition(food, x, y);
+    // Das Element ist ein Bild und soll src="./assets/enemy.png" haben.
+    enemy.src = "./assets/enemy.png"; 
+    enemy.classList.add("enemy");
+
+    // Das Element positionieren
+    setPosition(enemy, 1400, Math.random() * 500);
+
+    // Das Element soll im playground positioniert werden.
+    document.querySelector("#playground").appendChild(enemy);
 }
-```
 
+
+// Alle 2 Sekunden ufrufen
+setInterval(() => {
+    createEnemy();
+}, 2000);
+
+```
 </details>
 
-## Aufgabe 4: Food essen als Funktion
-
-Erstelle eine Funktion `checkFoodCollision()`.
-
-Diese Funktion soll:
-
-* prüfen, ob `isColliding(player, food)` stimmt
-* wenn ja, den Score erhöhen
-* den Score Text aktualisieren
-* das Food neu platzieren
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung Teil 2</summary>
 
 ```js
-function checkFoodCollision() {
-  if (isColliding(player, food)) {
-    scoreValue += 1;
-    updateScore();
-    moveFoodRandom();
-  }
-}
+// Führe jede 0.1 Sekunde aus
+setInterval(() => {
+    // Alle Feinde selektieren
+    let enemies = document.querySelectorAll(".enemy")
+
+    enemies.forEach(enemy => {
+        // Jeder einzelne Feind bewegen
+        moveElement(enemy, -10, 0)
+    })
+}, 100)
 ```
-
-Rufe `checkFoodCollision()` direkt nach der Bewegung auf.
-
 </details>
 
-## Aufgabe 5: Timer als Funktion
+## Aufgabe 4: Gameover bei Gegnerberührung
+Damit unser Spiel fertig ist, brauchen wir nur noch genau ein if statement am richtigen ort, welches prüft, ob die Feinde uns bewegen. Weisst du, wo wir das brauchen?
 
-Erstelle eine Funktion `updateTimer()`.
+Tipp: Wir müssen die Kollision nach jeder Bewegung der Feinde prüfen.
 
-Diese Funktion soll:
-
-* prüfen, ob `timeLeft > 0` ist
-* den Timer verringern
-* den Text im HTML aktualisieren
-* bei 0 das Spiel beenden
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
-function updateTimer() {
-  if (timeLeft > 0) {
-    timeLeft -= 1;
-    timer.textContent = "Time: " + timeLeft;
-  } else {
-    alert("Game Over. Dein Score: " + scoreValue);
-  }
-}
+// Führe jede 0.1 Sekunde aus
+setInterval(() => {
+    let enemies = document.querySelectorAll(".enemy")
+    enemies.forEach(enemy => {
+        moveElement(enemy, -10, 0)
 
-setInterval(updateTimer, 1000);
+        // ----- Hier kommt der collision check hin -----
+        if(isColliding(enemy, player)) {
+            alert("Game over")
+        }
+    })
+}, 100)
 ```
-
 </details>
 
-## Aufgabe 6: Event aufräumen
-
-Am Schluss soll dein `keydown` Event kurz bleiben.
-
-Beispiel:
-
-```js
-document.addEventListener("keydown", function(event) {
-  handlePlayerMovement(event);
-  checkFoodCollision();
-});
-```
-
-Teste danach:
-
-* Der Spieler bewegt sich mit den Pfeiltasten.
-* Wenn der Spieler Food berührt, steigt der Score.
-* Das Food springt an eine neue zufällige Position.
-* Der Timer zählt herunter.
+Wir sind nun fertig mit unserem zweiten Spiel!! Well done 🎉

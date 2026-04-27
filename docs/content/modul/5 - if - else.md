@@ -135,7 +135,7 @@ Merke:
 
 ## 🎮 Aufgaben
 
-### Aufgabe 1: Eat Game starten
+### 1: Eat Game starten
 
 Nun starten wir ein neues Spiel: Eat Game.
 
@@ -146,7 +146,7 @@ Lade das vorbereitete Projekt herunter und schaue dir das HTML / Javascript an. 
 
 [Eat Game Starter ZIP](/assets/zips/eat-game-starter.zip)
 
-### Aufgabe 2: Spieler mit der Tastatur bewegen
+### 2: Spieler mit der Tastatur bewegen
 
 Der Spieler soll mit den Pfeiltasten bewegt werden.
 
@@ -154,11 +154,10 @@ Gehe dabei wie folgt vor:
 
 * Verwende einen [`keydown`](./8-cheatsheet#events) Event.
 * Prüfe mit `if`, `else if`, welche Taste gedrückt wurde.
-* Verwende `movePlayer(...)`, um den Spieler zu bewegen.
+* Verwende `moveElement(...)`, um den Spieler zu bewegen.
 
-`movePlayer(deltaX, deltaY)` bewegt den Spieler um `deltaX` Pixel nach rechts und `deltaY` Pixel nach oben.
+`moveElement(element, deltaX, deltaY)` bewegt das zuvor selektierte Element um `deltaX` Pixel nach rechts und `deltaY` Pixel nach oben.
 
----Bis hier gecheckt---
 
 <details>
 <summary>Tipp</summary>
@@ -168,20 +167,20 @@ let player = document.querySelector("#player");
 
 document.addEventListener("keydown", function(event) {
   if (event.key == "ArrowRight") {
-    movePlayer(10, 0);
+    moveElement(player, 10, 0);
   } else if (event.key == "ArrowLeft") {
-    movePlayer(-10, 0);
+    moveElement(player, -10, 0);
   } else if (event.key == "ArrowUp") {
-    movePlayer(0, 10);
+    moveElement(player, 0, 10);
   } else if (event.key == "ArrowDown") {
-    movePlayer(0, -10);
+    moveElement(player, 0, -10);
   }
 });
 ```
 
 </details>
 
-### Aufgabe 3: Food essen
+### 3: Food essen (collision)
 
 Jetzt soll geprüft werden, ob der Spieler das Food berührt.
 
@@ -194,10 +193,8 @@ isColliding(player, food);
 Gehe dabei wie folgt vor:
 
 * Selektiere das Food Element mit `document.querySelector("#food")`.
-* Erstelle eine Variable `scoreValue` und setze sie auf 0.
 * Prüfe nach jeder Bewegung, ob `isColliding(player, food)` stimmt.
-* Wenn ja, erhöhe den Score um 1.
-* Aktualisiere den Score Text.
+* Wenn ja, zeige mit `alert` an, dass das Food gegessen wurde.
 
 <details>
 <summary>Tipp</summary>
@@ -205,59 +202,54 @@ Gehe dabei wie folgt vor:
 ```js
 let food = document.querySelector("#food");
 let score = document.querySelector("#score");
-let scoreValue = 0;
 
 document.addEventListener("keydown", function(event) {
   if (event.key == "ArrowRight") {
-    movePlayer(10, 0);
+    moveElement(player, 10, 0);
   } else if (event.key == "ArrowLeft") {
-    movePlayer(-10, 0);
+    moveElement(player, -10, 0);
   } else if (event.key == "ArrowUp") {
-    movePlayer(0, 10);
+    moveElement(player, 0, 10);
   } else if (event.key == "ArrowDown") {
-    movePlayer(0, -10);
+    moveElement(player, 0, -10);
   }
 
   if (isColliding(player, food)) {
-    scoreValue += 1;
-    score.textContent = "Score: " + scoreValue;
+    alert("Food gegessen!");
   }
 });
 ```
 
 </details>
 
-### Aufgabe 4 (Zusatz): Bewegung begrenzen
--> Mache diese Aufgabe, wenn du noch genügend Zeit hast.
+### 4: Food essen (score)
+Nun soll anstelle von `alert` der Score erhöht werden, wenn das Food gegessen wird.
+(Tipp: Alert können wir oft nutzen, um zu schauen, ob etwas funktioniert. Sobald es aber funktioniert, wollen wir meistens etwas anderes machen, damit das Spiel besser wird. In diesem Fall den Score erhöhen)
 
-Der Spieler soll nicht links aus dem Spielfeld laufen.
+Das Ziel ist es, dass wir eine score Variable haben, welche jedes Mal um 1 erhöht wird, wenn das Food gegessen wird. Außerdem soll der neue Score auch im HTML angezeigt werden. Gehe dabei wie folgt vor:
 
-Für den Anfang lösen wir nur die linke Seite.
+* Erstelle eine Variable `scoreValue` und setze sie auf 0.
+* Selektiere das Score Element mit `document.querySelector("#score")`.
+* Wenn das Food gegessen wird, erhöhe `scoreValue` um 1.
+* Aktualisiere den Score Text.
 
-Gehe dabei wie folgt vor:
-
-* Erstelle eine Variable `playerX` und setze sie auf 0.
-* Wenn `ArrowLeft` gedrückt wird, prüfe zuerst ob `playerX > 0` ist.
-* Nur dann darf der Spieler nach links bewegt werden.
-* Passe `playerX` bei jeder Rechts- und Linksbewegung an.
+-> Hinweis: Der Score wird sich nun immer weiter erhöhen, wenn du mit dem Food in Berührung bleibst. Das ist in diesem Fall nicht schlimm, da es ja nur ein Test ist. Später werden wir das so lösen, dass das Food an eine neue Position springt, sobald es gegessen wird.
 
 <details>
 <summary>Tipp</summary>
 
 ```js
-let playerX = 0;
+let scoreValue = 0;
+let score = document.querySelector("#score");
 
 document.addEventListener("keydown", function(event) {
-  if (event.key == "ArrowRight") {
-    movePlayer(10, 0);
-    playerX += 10;
-  } else if (event.key == "ArrowLeft") {
-    if (playerX > 0) {
-      movePlayer(-10, 0);
-      playerX -= 10;
-    }
+  // ... Bewegungscode ...
+  
+
+  if (isColliding(player, food)) {
+    scoreValue += 1; // Score erhöhen
+    score.textContent = "Score: " + scoreValue; // Text im HTML aktualisieren
   }
 });
 ```
-
 </details>

@@ -110,6 +110,28 @@ Damit wird das Element komplett aus der Seite entfernt.
 
 Hier ist eine passende Aufgabe, die direkt auf dem bestehenden Projekt aufbaut:
 
+## Element hinzufügen
+
+Wir können mit Javascript auch neue Elemente erstellen und hinzufügen. Dazu müssen wir zuerst ein neues Element erstellen, es bearbeiten und dann dort einfügen, wo wir es haben wollen.
+
+```js
+let newElement = document.createElement("div"); // Neues div-Element erstellen
+newElement.textContent = "New Element"; // Element bearbeiten
+document.body.appendChild(newElement); // Ins Dokument einfügen
+```
+
+Hier erstellen wir ein neues `div` Element, setzen den Text und fügen es am Ende des Body ein. Der Ort ist wichtig. Wenn wir ein neues Element erstellen, wollen wir das meinst nicht im body haben, sondern z. B. im Playground. Dann müssen wir `playground.appendChild(newElement)` machen.
+
+Wollen wir zum Beispiel in einem Spiel einen Gegener spawnen, können wir das so machen:
+
+```js
+let playground = document.querySelector("#playground");
+
+let enemy = document.createElement("img");
+enemy.src = "./assets/some-enemy-image.png"
+playground.appendChild(enemy)
+```
+
 ## 🎮 Aufgabe – Erste Schritte mit JavaScript
 
 Tipp: Nutze das [Cheat Sheet](./8-cheatsheet) als Hilfe, um die Aufgaben zu lösen.
