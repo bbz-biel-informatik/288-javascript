@@ -167,34 +167,42 @@ score.textContent = "Score: " + scoreValue; // Text im HTML aktualisieren
 
 ### 2: Timer mit Variable
 
-Der Timer soll von 10 Sekunden herunterzählen. Sobald er 0 erreicht, soll das Spiel vorbei sein.
+Der Timer soll von 10 Sekunden herunterzählen. Sobald er 0 erreicht, soll das Spiel dann vorbei sein.
 
 
 Gehe nun wie folgt vor:
 * Erstelle eine [globale](#scope-von-variablen) Variable `timeLeft` und setze sie auf 10.
-* Erstelle ein HTML Element (Direkt im HTML File), um die verbleibende Zeit anzuzeigen. Gibe diesem Element die ID `timer`. [Selektiere](./8-cheatsheet#html-elemente-auswahlen) das Element dann direkt im JavaScript.
-* Verwende [`setInterval`](#setinterval), um jede Sekunde `timeLeft` um 1 zu verringern.
+* Erstelle ein HTML `<div>` Element direkt im HTML file neben `<score>`, um die verbleibende Zeit anzuzeigen. Gibe diesem Element die ID `timer`. [Selektiere](./8-cheatsheet#html-elemente-auswahlen) das Element dann direkt im JavaScript.
+* Verwende [`setInterval`](/modul/6-listen-und-loops#setinterval) (Schauen wir später genauer an), um jede Sekunde `timeLeft` um 1 zu verringern.
 * Aktualisiere ebenfalls den Text im HTML, damit die verbleibende Zeit angezeigt wird. (Gleiche Vorgehensweise wie beim Score)
-* Sobald `timeLeft` 0 erreicht, soll eine Nachricht "Game Over" angezeigt werden. Dazu brauchen wir ein if statement, welches wir später anschauen. Für jetzt kannst du einfach das hier nehmen:
+
+<details>
+<summary>Tipp Variable</summary>
+
+Die Variable setzen wir mit let und das HTML Element selektieren wir wie gewohnt.
 
 ```js
-if (timeLeft === 0) {
-    alert("Game Over. Dein Score: " + scoreValue);
-    scoreValue = 0; // Score zurücksetzen
-    timeLeft = 10;  // Timer zurücksetzen
-}
+let timeLeft = 10;
+let timer = document.querySelector("#timer")
 ```
+</details>
 
--> Du bist jetzt fertig mit dem Click game! 🎉
+<details>
+<summary>Tipp Timer</summary>
 
+So brauchen wir die timer funktion:
 
-#### setInterval
--> Wird später genauer erklärt..
-
-`setInterval` ist eine Funktion, welche einen Codeblock immer wiederholt ausführt. Zum Beispiel jede Sekunde:
 ```js
-setInterval(function() {
-  // Code, der jede Sekunde ausgeführt wird
-  console.log("Eine Sekunde ist vergangen");
-}, 1000); // 1000 ms = 1 Sekunde
+setInterval(() => {
+    // Timer nach unten zählen
+    timeLeft -= 1;
+
+    // HTML Element anpassen
+    timer.textContent = timeLeft + "s";
+}, 1000)
 ```
+</details>
+
+
+
+-> Wir sind fast fertig mit dem click game. Es fehlt nur noch game over! 

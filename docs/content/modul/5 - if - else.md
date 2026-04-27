@@ -135,7 +135,48 @@ Merke:
 
 ## 🎮 Aufgaben
 
-### 1: Eat Game starten
+### 1 - Click game fertig machen
+
+Wir beenden nun das click game. Was noch fehlt ist ein klassisches "game over" wenn die Zeit abgelaufen ist. Dazu verwenden wir ein [if](#if) statement in der timer funktion. Überlege dir, wie du das machen würdest!
+
+<details>
+<summary>Tipp Vortehensweise</summary>
+
+- Prüfe in der timer funktion, ob die Variable "timeLeft" [kleiner oder gleich 0](#vergleiche) ist.
+- Wenn ja, mache ein `alert('Game Over!')`
+
+```js
+setInterval(() => {
+    timeLeft -= 1;
+    timer.textContent = timeLeft + "s";
+
+    // Hier kommt der check
+}, 1000)
+```
+
+</details>
+
+<details>
+<summary>Lösung</summary>
+
+```js
+setInterval(() => {
+   timeLeft -= 1;
+   timer.textContent = timeLeft + "s";
+
+   if(timeLeft <= 0){
+    alert('Game Over! du hast ' + score + ' Punkte!')
+   }
+}, 1000)
+
+```
+</details>
+
+-> Gratuliere, du hast jetzt das click game fertig! 🎉
+
+
+
+### 2: Eat Game starten
 
 Nun starten wir ein neues Spiel: Eat Game.
 
@@ -146,7 +187,7 @@ Lade das vorbereitete Projekt herunter und schaue dir das HTML / Javascript an. 
 
 [Eat Game Starter ZIP](/assets/zips/eat-game-starter.zip)
 
-### 2: Spieler mit der Tastatur bewegen
+### 3: Spieler mit der Tastatur bewegen
 
 Der Spieler soll mit den Pfeiltasten bewegt werden.
 
@@ -160,7 +201,7 @@ Gehe dabei wie folgt vor:
 
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
 let player = document.querySelector("#player");
@@ -180,7 +221,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-### 3: Food essen (collision)
+### 4: Food essen (collision)
 
 Jetzt soll geprüft werden, ob der Spieler das Food berührt.
 
@@ -222,7 +263,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-### 4: Food essen (score)
+### 5: Food essen (score)
 Nun soll anstelle von `alert` der Score erhöht werden, wenn das Food gegessen wird.
 (Tipp: Alert können wir oft nutzen, um zu schauen, ob etwas funktioniert. Sobald es aber funktioniert, wollen wir meistens etwas anderes machen, damit das Spiel besser wird. In diesem Fall den Score erhöhen)
 
