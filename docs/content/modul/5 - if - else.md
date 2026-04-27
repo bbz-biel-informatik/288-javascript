@@ -238,7 +238,7 @@ Gehe dabei wie folgt vor:
 * Wenn ja, zeige mit `alert` an, dass das Food gegessen wurde.
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
 let food = document.querySelector("#food");
@@ -277,7 +277,7 @@ Das Ziel ist es, dass wir eine score Variable haben, welche jedes Mal um 1 erhö
 -> Hinweis: Der Score wird sich nun immer weiter erhöhen, wenn du mit dem Food in Berührung bleibst. Das ist in diesem Fall nicht schlimm, da es ja nur ein Test ist. Später werden wir das so lösen, dass das Food an eine neue Position springt, sobald es gegessen wird.
 
 <details>
-<summary>Tipp</summary>
+<summary>Lösung</summary>
 
 ```js
 let scoreValue = 0;
