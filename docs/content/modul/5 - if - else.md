@@ -140,7 +140,7 @@ Merke:
 Wir beenden nun das click game. Was noch fehlt ist ein klassisches "game over" wenn die Zeit abgelaufen ist. Dazu verwenden wir ein [if](#if) statement in der timer funktion. Überlege dir, wie du das machen würdest!
 
 <details>
-<summary>Tipp Vortehensweise</summary>
+<summary>Tipp Vorgehensweise</summary>
 
 - Prüfe in der timer funktion, ob die Variable "timeLeft" [kleiner oder gleich 0](#vergleiche) ist.
 - Wenn ja, mache ein `alert('Game Over!')`
