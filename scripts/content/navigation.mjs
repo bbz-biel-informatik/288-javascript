@@ -3,7 +3,23 @@ import path from "node:path";
 
 const TITLE_OVERRIDES = {
   modul: "Modul",
-  jsgame: "JSGame"
+  jsgame: "JSGame",
+  initBBZGame: "initBBZGame",
+  isColliding: "isColliding",
+  isKeyPressed: "isKeyPressed",
+  moveElement: "moveElement",
+  setPosition: "setPosition"
+};
+
+const SECTION_ENTRY_ORDER = {
+  jsgame: [
+    "getting-started.md",
+    "initBBZGame.md",
+    "setPosition.md",
+    "moveElement.md",
+    "isColliding.md",
+    "isKeyPressed.md"
+  ]
 };
 
 function stripNumericPrefix(segment) {
@@ -49,13 +65,35 @@ function humanizeName(name) {
   return normalized.charAt(0).toUpperCase() + normalized.slice(1);
 }
 
-function sortEntries(entries) {
-  return entries.sort((left, right) =>
-    left.name.localeCompare(right.name, "de-CH", {
+function getEntryOrder(sectionSlug, relativeDir, entryName) {
+  if (relativeDir !== "") {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const order = SECTION_ENTRY_ORDER[sectionSlug];
+
+  if (!order) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const index = order.indexOf(entryName);
+  return index === -1 ? Number.POSITIVE_INFINITY : index;
+}
+
+function sortEntries(entries, sectionSlug = null, relativeDir = "") {
+  return entries.sort((left, right) => {
+    const leftOrder = getEntryOrder(sectionSlug, relativeDir, left.name);
+    const rightOrder = getEntryOrder(sectionSlug, relativeDir, right.name);
+
+    if (leftOrder !== rightOrder) {
+      return leftOrder - rightOrder;
+    }
+
+    return left.name.localeCompare(right.name, "de-CH", {
       numeric: true,
       sensitivity: "base"
-    })
-  );
+    });
+  });
 }
 
 function getTopLevelSections(contentRoot) {
@@ -131,7 +169,9 @@ function buildDirectoryItems(sectionSlug, absoluteDir, relativeDir = "") {
   const entries = sortEntries(
     fs
       .readdirSync(absoluteDir, { withFileTypes: true })
-      .filter((entry) => !entry.name.startsWith("."))
+      .filter((entry) => !entry.name.startsWith(".")),
+    sectionSlug,
+    relativeDir
   );
 
   const items = [];

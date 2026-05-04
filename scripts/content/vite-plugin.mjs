@@ -108,11 +108,13 @@ function rewriteMarkdownLinks(source, context) {
 
 export function createContentStructurePlugin({ docsRoot, linkAliases, base }) {
   const contentRoot = path.join(docsRoot, "content");
+  const contentScriptsRoot = path.resolve(docsRoot, "..", "scripts", "content");
   const vitepressRoot = path.join(docsRoot, ".vitepress");
   const zipVersionCache = new Map();
   let restartTimer;
   let restartInFlight = false;
   const transformContext = { docsRoot, linkAliases, base, zipVersionCache };
+  const restartWatchRoots = [contentRoot, contentScriptsRoot].map((watchedRoot) => path.normalize(watchedRoot));
 
   const normalizeWatchedPath = (filePath) => {
     const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
@@ -131,12 +133,12 @@ export function createContentStructurePlugin({ docsRoot, linkAliases, base }) {
       return rewriteMarkdownLinks(code, transformContext);
     },
     configureServer(server) {
-      server.watcher.add(contentRoot);
+      server.watcher.add([contentRoot, contentScriptsRoot]);
 
       const scheduleRestart = (filePath) => {
         const normalizedPath = normalizeWatchedPath(filePath);
 
-        if (!normalizedPath.startsWith(path.normalize(contentRoot))) {
+        if (!restartWatchRoots.some((watchedRoot) => normalizedPath.startsWith(watchedRoot))) {
           return;
         }
 
