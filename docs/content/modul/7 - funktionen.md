@@ -142,13 +142,13 @@ Diese Funktion soll:
 ```js
 function handlePlayerMovement(event) {
   if (event.key == "ArrowRight") {
-    movePlayer(10, 0);
+    moveElement(player, 10, 0);
   } else if (event.key == "ArrowLeft") {
-    movePlayer(-10, 0);
+    moveElement(player, -10, 0);
   } else if (event.key == "ArrowUp") {
-    movePlayer(0, 10);
+    moveElement(player, 0, 10);
   } else if (event.key == "ArrowDown") {
-    movePlayer(0, -10);
+    moveElement(player, 0, -10);
   }
 }
 ```

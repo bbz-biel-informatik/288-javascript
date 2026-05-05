@@ -2,9 +2,7 @@
 
 ## Worum geht es?
 
-Loops führen Code mehrmals aus.
-
-Das ist praktisch, wenn wir nicht jede Zeile einzeln schreiben möchten.
+Loops führen Code mehrmals aus. Wir nutzen Loops, um 
 
 ```js
 setInterval(function() {
