@@ -6,9 +6,7 @@ Das Framework stellt einfache Funktionen bereit, mit denen du HTML Elemente in e
 
 ## Inhalt
 
-- [Getting Started](/jsgame/getting-started)
-- [initBBZGame](/jsgame/initbbzgame)
-- [setPosition](/jsgame/setposition)
-- [moveElement](/jsgame/moveelement)
-- [isColliding](/jsgame/iscolliding)
-- [isKeyPressed](/jsgame/iskeypressed)
+- [Erste Schritte](./1 - erste schritte)
+- [Anleitungen](./2 - anleitungen)
+- [Framework Dokumentation](./3 - framework docs)
+

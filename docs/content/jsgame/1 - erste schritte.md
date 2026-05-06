@@ -127,4 +127,4 @@ function gameLoop(){
 gameLoop();
 ```
 
-Nun bist du soweit und kannst die Funktionen deines Spiels programmieren. Schaue dir die passenden Anleitungen an. Sie sollten dir einen Anhaltspunkt geben: [Anleitungen](../anleitungen.md)
+Nun bist du soweit und kannst die Funktionen deines Spiels programmieren. Schaue dir die passenden Anleitungen an. Sie sollten dir einen Anhaltspunkt geben: [Anleitungen](./2 - anleitungen)

@@ -170,7 +170,7 @@ document.addEventListener("keydown", function(event) {
 
 Nun wollen wir Feinde auf dem Spielfeld platzieren, welche der Spieler vermeiden muss. Wir gehen in zwei Schritten vor:
 
-1. Erstelle eine Funktion `createEnemy()`, welche ein [neues HTML Element erstellt](2-html-elemente-veraendern#element-hinzufugen), (img) es mit einem Bild füllt und es an eine zufällige Position setzt [setPosition](/jsgame/setposition). Rufe die Funktion mit [setInverval](/modul/8-cheatsheet#listen-und-loops) alle 3 Sekunden auf.
+1. Erstelle eine Funktion `createEnemy()`, welche ein [neues HTML Element erstellt](2-html-elemente-veraendern#element-hinzufugen), (img) es mit einem Bild füllt und es an eine zufällige Position setzt [setPosition](/jsgame/3 - framework docs#setposition). Rufe die Funktion mit [setInverval](/modul/8-cheatsheet#listen-und-loops) alle 3 Sekunden auf.
 
 2. Bewegung: erstelle ein neues [setInverval](/modul/8-cheatsheet#listen-und-loops), in welchem du jede 0.1 Sekunden [alle feinde selektierst](/modul/6-listen-und-loops#listen) und nach links bewegst.
 

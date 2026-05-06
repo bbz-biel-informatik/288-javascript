@@ -45,7 +45,7 @@ Ihr müsst euch das Spielfeld wie ein Koordinatensystem vorstellen. Wir können 
 
 Im game gibt es einige Elemente, mit denen der Spieler interagieren kann. Ein typisches Element ist der Spieler selber. Er kann in einem Top Down Game, wie Space Invaders, durch die horizontalen Achsen nach links und rechts bewegt werden. Oder in einem Platformer, wie Super Mario, sowohl horizontal als auch vertikal bewegt werden.
 
-Wir brauchen die beiden Methoden [`isKeyPressed(...)`](./iskeypressed) und [`moveElement(...)`](./moveelement). Mit einem `if` prüfen wir, ob eine Taste gedrückt wird. Wenn ja, dann bewegen wir das Objekt mit `moveElement(...)` in die entsprechende Richtung.
+Wir brauchen die beiden Methoden [`isKeyPressed(...)`](./3 - framework docs#iskeypressed) und [`moveElement(...)`](./3 - framework docs#moveelement). Mit einem `if` prüfen wir, ob eine Taste gedrückt wird. Wenn ja, dann bewegen wir das Objekt mit `moveElement(...)` in die entsprechende Richtung.
 
 **Beispiel**
 
