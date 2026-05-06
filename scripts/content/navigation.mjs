@@ -11,16 +11,7 @@ const TITLE_OVERRIDES = {
   setPosition: "setPosition"
 };
 
-const SECTION_ENTRY_ORDER = {
-  jsgame: [
-    "getting-started.md",
-    "initBBZGame.md",
-    "setPosition.md",
-    "moveElement.md",
-    "isColliding.md",
-    "isKeyPressed.md"
-  ]
-};
+const SECTION_ENTRY_ORDER = {};
 
 function stripNumericPrefix(segment) {
   return segment.replace(/^\d+(?:-\d+)*-(.+)$/i, "$1");
