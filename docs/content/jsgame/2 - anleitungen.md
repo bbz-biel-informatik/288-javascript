@@ -522,3 +522,95 @@ function gameLoop(){
     window.requestAnimationFrame(gameLoop)
 }
 ```
+
+
+### Schiessen
+
+Folge diesem Tutorial, wenn du in deinem Game Schüsse einbauen möchtest.
+
+Zum Beispiel in einem Space Shooter: Beim Drücken der Leertaste spawnen wir einen neuen Schuss. Im gameLoop bewegen wir alle Schüsse nach oben.
+
+**HTML**
+
+Wir brauchen kein HTML für die Schüsse – wir erstellen sie dynamisch per JavaScript.
+
+**CSS**
+
+Jeder Schuss wird ein `<div>` mit der Klasse `.bullet` sein. So können wir das ein wenig designen. Wichtig ist `position: absolute` und `z-index: 20`, damit der Schuss über dem Spieler liegt.
+```css
+.bullet {
+    width: 10px;
+    height: 20px;
+    background-color: yellow;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 20;
+}
+```
+
+**JavaScript**
+
+Wir erstellen die Funktion `spawnBullet()`, welche einen neuen `<div>` erstellt, ihm die Klasse `bullet` gibt und ihn an der aktuellen Spielerposition positioniert. Im gameLoop können wir dann Schüsse spawnen und nach oben bewegen.
+
+```js
+let player = document.querySelector("#player");
+
+// Schuss spawnen
+function spawnBullet() {
+
+    // Neues Element erstellen und Klasse zuweisen
+    let bullet = document.createElement("div");
+    bullet.classList.add("bullet");
+    document.querySelector("#playground").appendChild(bullet);
+
+    // Schuss an der aktuellen Spielerposition starten
+    setPosition(bullet, getX(player), getY(player));
+}
+
+function gameLoop(){
+
+    // Leertaste: neuen Schuss spawnen
+    if (isKeyPressed(" ")) {
+        spawnBullet();
+    }
+
+    // Alle Schüsse nach oben bewegen
+    document.querySelectorAll(".bullet").forEach(function(bullet) {
+        moveElement(bullet, 0, 10);
+
+        // Schuss entfernen, wenn er oben raus ist
+        if (getY(bullet) > 500) {
+            bullet.remove();
+        }
+    });
+
+    window.requestAnimationFrame(gameLoop)
+}
+```
+> 💡 Wenn wir nach rechts schiessen wollen, müssen wir im gameloop die x-Koordinate des Schusses erhöhen, anstatt die y-Koordinate:
+
+```js
+moveElement(bullet, 10, 0);
+```
+
+> 💡 Weil `isKeyPressed` jeden Frame `true` zurückgibt solange die Taste gedrückt ist, werden sehr viele Schüsse auf einmal gespawnt. Tipp: Füge eine Cooldown-Variable hinzu, damit nur alle paar Frames ein Schuss abgefeuert wird.
+
+<details>
+<summary>Tipp: Cooldown</summary>
+
+```js
+let bulletCooldown = 0;
+
+function gameLoop(){
+
+    if (isKeyPressed(" ") && bulletCooldown <= 0) {
+        spawnBullet();
+        bulletCooldown = 15; // 15 Frames warten bis zum nächsten Schuss
+    }
+
+    bulletCooldown -= 1;
+
+    // ...
+}
+```
+</details>
