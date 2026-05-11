@@ -83,21 +83,31 @@ Der Spieler bewegt sich zur aktuellen Mausposition, sobald die Maus bewegt wird:
 
 ```js
 let player = document.querySelector("#player");
+
+// --- Neue Variablen ---
 let mouseX = 0;
 let mouseY = 0;
+// ------------------------
 
+
+// --- Neuer Code ---
 document.addEventListener("mousemove", function(event) {
     let rect = playground.getBoundingClientRect();
     // Wir müssen die Koordinaten der Maus noch auf das Spielfeld umrechnen
     mouseX = event.clientX - rect.left;
     mouseY = rect.bottom - event.clientY;
 });
+// ------------------------
+
 ```
 
 Nun setzen wir im gameLoop den Spieler direkt auf die Mausposition:
 ```js
 function gameLoop(){
+    // --- Neuer Code ---
     setPosition(player, mouseX, mouseY);
+    // ------------------------
+
     window.requestAnimationFrame(gameLoop)
 }
 ```
