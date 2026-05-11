@@ -1,68 +1,83 @@
 // Expose the framework as a classic browser script so it can be loaded from GitHub Pages.
 (function exposeBBZGame(global) {
-    const pressedKeys = {};
+  const pressedKeys = {};
 
-    window.addEventListener("keydown", (event) => {
-        pressedKeys[event.key] = true;
+  window.addEventListener("keydown", (event) => {
+    pressedKeys[event.key] = true;
+  });
+
+  window.addEventListener("keyup", (event) => {
+    pressedKeys[event.key] = false;
+  });
+
+  function initGame() {
+    console.log("Initializing BBZGame Script...");
+
+    const playground = document.querySelector("#playground");
+
+    if (playground) {
+      playground.style.position = "relative";
+    }
+
+    const gameObjects = document.querySelectorAll(".gameobject, #player");
+
+    gameObjects.forEach((obj) => {
+      obj.style.position = "absolute";
     });
+  }
 
-    window.addEventListener("keyup", (event) => {
-        pressedKeys[event.key] = false;
-    });
+  function setPosition(element, x, y) {
+    element.style.left = `${x}px`;
+    element.style.bottom = `${y}px`;
+  }
 
-    function initGame() {
-        console.log("Initializing BBZGame Script...");
+  function moveElement(element, deltaX, deltaY) {
+    const currentX = parseInt(element.style.left) || 0;
+    const currentY = parseInt(element.style.bottom) || 0;
 
-        const playground = document.querySelector("#playground");
+    setPosition(element, currentX + deltaX, currentY + deltaY);
+  }
 
-        if (playground) {
-            playground.style.position = "relative";
-        }
+  function isColliding(firstElement, secondElement) {
+    const firstRect = firstElement.getBoundingClientRect();
+    const secondRect = secondElement.getBoundingClientRect();
 
-        const gameObjects = document.querySelectorAll(".gameobject, #player");
+    return !(
+      firstRect.right < secondRect.left ||
+      firstRect.left > secondRect.right ||
+      firstRect.bottom < secondRect.top ||
+      firstRect.top > secondRect.bottom
+    );
+  }
 
-        gameObjects.forEach((obj) => {
-            obj.style.position = "absolute";
-        });
-    }
+  function isKeyPressed(key) {
+    return !!pressedKeys[key];
+  }
 
-    function setPosition(element, x, y) {
-        element.style.left = `${x}px`;
-        element.style.bottom = `${y}px`;
-    }
+  function getY(element) {
+    return parseFloat(element.style.bottom) || 0;
+  }
 
-    function moveElement(element, deltaX, deltaY) {
-        const currentX = parseInt(element.style.left) || 0;
-        const currentY = parseInt(element.style.bottom) || 0;
+  function getX(element) {
+    return parseFloat(element.style.left) || 0;
+  }
 
-        setPosition(element, currentX + deltaX, currentY + deltaY);
-    }
+  function isOnGround(element, groundLevel = 10) {
+    return getY(element) <= groundLevel;
+  }
 
-    function isColliding(firstElement, secondElement) {
-        const firstRect = firstElement.getBoundingClientRect();
-        const secondRect = secondElement.getBoundingClientRect();
+  global.initBBZGame = initGame;
+  global.setPosition = setPosition;
+  global.isColliding = isColliding;
+  global.isKeyPressed = isKeyPressed;
+  global.moveElement = moveElement;
+  global.getY = getY;
+  global.getX = getX;
+  global.isOnGround = isOnGround;
 
-        return !(
-            firstRect.right < secondRect.left ||
-            firstRect.left > secondRect.right ||
-            firstRect.bottom < secondRect.top ||
-            firstRect.top > secondRect.bottom
-        );
-    }
-
-    function isKeyPressed(key) {
-        return !!pressedKeys[key];
-    }
-
-    global.initBBZGame = initGame;
-    global.setPosition = setPosition;
-    global.isColliding = isColliding;
-    global.isKeyPressed = isKeyPressed;
-    global.moveElement = moveElement;
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initGame, { once: true });
-    } else {
-        initGame();
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGame, { once: true });
+  } else {
+    initGame();
+  }
 })(window);
