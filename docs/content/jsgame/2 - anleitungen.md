@@ -202,7 +202,7 @@ function gameLoop(){
 
 ### Gegner / Hindernisse spawnen
 
-Gegner oder Hindernisse erscheinen oft regelmässig am Rand des Spielfeldes. Wir erstellen sie dynamisch mit JavaScript und fügen sie dem `playground` hinzu.
+Gegner oder Hindernisse erscheinen oft regelmässig am Rand des Spielfeldes. Wir erstellen sie dynamisch mit JavaScript und fügen sie dem `playground` hinzu. Wir benutzen direkt eine Funktion, um den Code übersichtlicher zu gestalten. Die Funktion schreiben wir zuerst (ich würde das nach dem Gameloop machen) und dann rufen wir sie in einem intervall auf.
 
 **Beispiel**
 
@@ -212,21 +212,32 @@ Alle 2 Sekunden erscheint ein neuer Gegner auf der rechten Seite:
 function spawnEnemy() {
     // Neues img-Element erstellen
     let enemy = document.createElement("img");
-    enemy.src = "assets/images/enemy.png";
-    enemy.classList.add("gameobject", "enemy");
-    enemy.style.width = "80px";
-    enemy.style.height = "80px";
+    enemy.src = "/assets/images/enemy.png";
+
+    // Diese Klasse können wir im CSS dann so anpassen, wie wir wollen
+    enemy.classList.add("enemy");
 
     // Dem Spielfeld hinzufügen
     let playground = document.querySelector("#playground");
     playground.appendChild(enemy);
 
     // An eine Startposition setzen (rechts, zufällige Höhe)
-    setPosition(enemy, 1000, Math.random() * 400);
+    setPosition(enemy, 700, Math.random() * 400);
 }
 
 // Alle 2000 Millisekunden einen neuen Gegner spawnen
 setInterval(spawnEnemy, 2000);
+```
+
+Im CSS ist wichtig, dass wir `position: absolute` setzen, ansonsten wird das Element nicht an der richtigen Position platziert. `z-index` ist ebenfalls nützlich, damit die Gegner über dem Spieler liegen.
+
+```css
+.enemy {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 20;
+}
 ```
 
 
@@ -240,16 +251,19 @@ Alle Gegner bewegen sich im gameLoop nach links:
 
 ```js
 function gameLoop(){
+
+    // --- Neuer Code ---
     let enemies = document.querySelectorAll(".enemy");
 
     enemies.forEach(function(enemy) {
         moveElement(enemy, -4, 0);
 
         // Gegner entfernen, wenn er links raus ist
-        if (parseFloat(enemy.style.left) < -100) {
+        if (getX(enemy) < -100) {
             enemy.remove();
         }
     });
+    // --- Ende des neuen Codes ---
 
     window.requestAnimationFrame(gameLoop)
 }
@@ -276,10 +290,14 @@ function gameLoop(){
     enemies.forEach(function(enemy) {
         moveElement(enemy, -4, 0);
 
+        // ---- Neuer Code ----
+
         if (isColliding(player, enemy)) {
             console.log("Game Over!");
             // Hier kannst du z.B. das Spiel stoppen oder eine Game-Over-Anzeige einblenden
         }
+
+        // ---- Ende des neuen Codes ----
     });
 
     window.requestAnimationFrame(gameLoop)
