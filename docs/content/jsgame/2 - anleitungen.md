@@ -333,30 +333,42 @@ Füge im HTML ein Element für den Score hinzu – ausserhalb des `playground`:
 <div id="score">Score: 0</div>
 ```
 
-Im CSS kannst du es oben links positionieren:
+Im CSS kannst du es oben links positionieren und ein wenig stylen (hier ein Vorschlag):
 ```css
 #score {
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 20px;
     font-size: 24px;
     font-weight: bold;
     color: white;
+    background-color: black;
+    padding: 5px;
 }
 ```
 
 **Beispiel**
+Hier erhöhen wir den Score um 1, wenn der Spieler einen coin berührt. Wichtig sind die Variablen `score` und `scoreDisplay`. Wir deklarieren diese ausserhalb des GameLoops, da diese während der ganzen Spiellaufzeit bestehen bleiben.
+
+Im gameloop selbst erhöhen wir den Score um 1 und schreiben das ergebnis in den scoreDisplay.
 
 ```js
 let player = document.querySelector("#player");
 let coin = document.querySelector("#coin");
-let scoreDisplay = document.querySelector("#score");
+
+// ----  Neuer score code ----
 let score = 0;
+let scoreDisplay = document.querySelector("#score");
+// ---------------------------
 
 function gameLoop(){
     if (isColliding(player, coin)) {
+        // ---- Neuer score code -----
         score += 1;
         scoreDisplay.textContent = "Score: " + score;
+        // ---------------------------
+
+        // nicht score relevant, wir setzen nur das coin an eine neue Position.
         setPosition(coin, Math.random() * 900, Math.random() * 400);
     }
 
@@ -365,51 +377,37 @@ function gameLoop(){
 ```
 
 
-### Highscoreliste
+### Highscore speichern
 
-Den Highscore speichern wir im `localStorage` des Browsers. So bleibt er auch nach dem Neuladen der Seite erhalten. Wir speichern mehrere Einträge und zeigen die Top 5 an.
+Den Highscore speichern wir im `localStorage` des Browsers. So bleibt er auch nach dem Neuladen der Seite erhalten. Mehr zu `localStorage` findest du hier: [W3Schools: localStorage](https://www.w3schools.com/jsref/prop_win_localstorage.asp)
 
 **Beispiel**
 
+Hier prüfen wir, ob der aktuelle Score besser ist als der gespeicherte Highscore. Ist dies der Fall, wird der neue Score gespeichert. Dazu definieren wir direkt eine Funktion, welche wir später aufrufen. Wir müssen das nicht, machen es aber, damit wir den Code übersichtlicher gestalten können. 
+
 ```js
-// Score am Ende des Spiels speichern
-function saveHighscore(playerName, score) {
-    // Bestehende Highscores laden (oder leeres Array, falls noch keine vorhanden)
-    let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+// Highscore speichern – nur wenn der neue Score besser ist
+function saveHighscore(score) {
+    let currentHighscore = localStorage.getItem("highscore") || 0;
 
-    // Neuen Eintrag hinzufügen
-    highscores.push({ name: playerName, score: score });
-
-    // Nach Score absteigend sortieren
-    highscores.sort(function(a, b) { return b.score - a.score });
-
-    // Nur die Top 5 behalten
-    highscores = highscores.slice(0, 5);
-
-    // Zurück in localStorage speichern
-    localStorage.setItem("highscores", JSON.stringify(highscores));
+    if (score > currentHighscore) {
+        localStorage.setItem("highscore", score);
+    }
 }
 
-// Highscores anzeigen
-function showHighscores() {
-    let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-    let list = document.querySelector("#highscore-list");
-    list.innerHTML = "";
-
-    highscores.forEach(function(entry) {
-        let item = document.createElement("li");
-        item.textContent = entry.name + ": " + entry.score;
-        list.appendChild(item);
-    });
+// Highscore anzeigen
+function showHighscore() {
+    let highscore = localStorage.getItem("highscore") || 0;
+    document.querySelector("#highscore").textContent = "Highscore: " + highscore;
 }
 ```
 
-Füge im HTML eine Liste hinzu:
+Füge im HTML ein Element für den Highscore hinzu:
 ```html
-<ol id="highscore-list"></ol>
+<div id="highscore">Highscore: 0</div>
 ```
 
-Rufe `saveHighscore("Spieler1", score)` auf, wenn das Spiel endet, und `showHighscores()` beim Laden der Highscore-Seite.
+Rufe `saveHighscore(score)` auf, wenn das Spiel endet, und `showHighscore()` beim Laden der Seite.
 
 
 ### Leveldesign (Platformer)
