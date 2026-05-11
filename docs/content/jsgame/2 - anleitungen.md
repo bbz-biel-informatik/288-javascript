@@ -164,71 +164,41 @@ function gameLoop(){
 }
 ```
 
-> 💡 `speedY` ist die Geschwindigkeit in Y-Richtung. Positiv = nach oben, negativ = nach unten. Gravitation bedeutet: sie wird jedes Frame um 1 kleiner.
-> 💡 `gravitation` ist die Stärke der Gravitation. Je höher, desto stärker die Gravitation.
-> 💡 `groundLevel` ist die Y-Position des Bodens. Je höher, desto tiefer der Boden.
-> 💡 `jumpPower` ist die Sprungkraft. Je höher, desto höher der Sprung.
+> 💡 `speedY` ist die Geschwindigkeit in Y-Richtung. Positiv = nach oben, negativ = nach unten. Gravitation bedeutet: sie wird jedes Frame um 1 kleiner. <br>
+> 💡 `gravitation` ist die Stärke der Gravitation. Je höher, desto stärker die Gravitation.<br>
+> 💡 `groundLevel` ist die Y-Position des Bodens. Je höher, desto tiefer der Boden.<br>
+> 💡 `jumpPower` ist die Sprungkraft. Je höher, desto höher der Sprung.<br>
 
 ### Hintergrund scrolling
 
-Bei einem Side-Scroller soll der Hintergrund scrollen, um eine Bewegung zu simulieren. Das machen wir mit einem breiten Hintergrundbild, das wir kontinuierlich nach links verschieben. Sobald es komplett raus ist, setzen wir es zurück.
+Bei einem Side-Scroller soll der Hintergrund scrollen, um eine Bewegung zu simulieren. Anstatt ein Bild zu verschieben, nutzen wir den Playground selbst als Hintergrund und verschieben dessen `backgroundPosition`.
 
-Füge im HTML ein Hintergrundbild hinzu:
-```html
-<img id="background" src="assets/images/background.png">
-```
-
-Im CSS machen wir es breit genug, dass es das ganze Spielfeld füllt:
+Füge im CSS dem Playground ein Hintergrundbild hinzu:
 ```css
-#background {
-    width: 2000px;
-    height: 500px;
+#playground {
+    background-image: url(/assets/images/background.png);
+    background-size: cover;
+    background-repeat: repeat-x;
 }
 ```
 
-**Beispiel**
+Im JavaScript verschieben wir die Hintergrundposition jedes Frame um ein paar Pixel nach links:
 
 ```js
-let background = document.querySelector("#background");
-setPosition(background, 0, 0);
+let playground = document.querySelector("#playground");
+let backgroundPosition = 0;
 
 function gameLoop(){
-    moveElement(background, -3, 0);
 
-    // Wenn das Bild komplett links raus ist, zurück nach rechts setzen
-    let currentX = parseFloat(background.style.left);
-    if (currentX < -2000) {
-        setPosition(background, 0, 0);
-    }
+    // Hintergrund nach links scrollen
+    backgroundPosition -= 3; 
+    playground.style.backgroundPosition = backgroundPosition + "px 0px";
 
     window.requestAnimationFrame(gameLoop)
 }
 ```
 
-<details>
-<summary>Tipp: Nahtloses Scrolling</summary>
-
-Für ein nahtloses Scrolling ohne Unterbrechung kannst du zwei Hintergrundbilder verwenden, die direkt hintereinander platziert werden. Sobald das erste Bild raus ist, nimmt das zweite seinen Platz ein und umgekehrt.
-
-```js
-let bg1 = document.querySelector("#background1");
-let bg2 = document.querySelector("#background2");
-
-setPosition(bg1, 0, 0);
-setPosition(bg2, 1000, 0); // 1000 = Breite des Spielfeldes
-
-function gameLoop(){
-    moveElement(bg1, -3, 0);
-    moveElement(bg2, -3, 0);
-
-    if (parseFloat(bg1.style.left) < -1000) setPosition(bg1, 1000, 0);
-    if (parseFloat(bg2.style.left) < -1000) setPosition(bg2, 1000, 0);
-
-    window.requestAnimationFrame(gameLoop)
-}
-```
-</details>
-
+> 💡 Der Hintergrund wird laufend nach links verschoben. Durch das `background-repeat: repeat-x` wird das Bild immer wieder aneinandergereiht, sodass ein endloser Hintergrund entsteht. Überlege dir, was du verändern musst, damit der Hintergrund schneller oder langsamer scrollt.
 
 ### Gegner / Hindernisse spawnen
 
