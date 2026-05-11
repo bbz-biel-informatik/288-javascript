@@ -118,15 +118,18 @@ In einem Platformer fällt der Spieler nach unten, wenn er nicht auf dem Boden s
 ```js
 let player = document.querySelector("#player");
 
-// Neue Variablen, welche du brauchst:
+// ---- Neue Variablen ---
 let speedY = 0;  // Startgeschwindigkeit: keine Bewegung
 let gravitation = 0.8
 let groundLevel = 10
 let jumpPower = 18;
+// ------------------------
 
 setPosition(player, 100, 10);
 
 function gameLoop(){
+
+    // --- Neuer Code ---
 
     // 1. Gravitation: Geschwindigkeit jedes Frame etwas verringern
     speedY = speedY - gravitation;
@@ -144,6 +147,8 @@ function gameLoop(){
     if (isKeyPressed(" ") && isOnGround(player, groundLevel)) {
         speedY = jumpPower;
     }
+
+    // --- Ende des neuen Codes ---
 
     window.requestAnimationFrame(gameLoop)
 }
