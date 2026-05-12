@@ -614,3 +614,44 @@ function gameLoop(){
 }
 ```
 </details>
+
+### Autonome Gegner
+
+In manchen Spielen bewegen sich Gegner selbständig auf den Spieler zu oder von ihm weg. Wir berechnen dazu die Richtung vom Gegner zum Spieler und bewegen den Gegner jeden Frame ein Stück in diese Richtung.
+
+**Beispiel**
+
+Gegner platzieren:
+
+```js
+
+// Das habt ihr bereits im Code
+let player = document.querySelector("#player");
+let enemy = document.querySelector("#enemy");
+
+// Hier setzen wir die Anfangsposition des Gegners.
+setPosition(enemy, 800, 300);
+```
+
+Im gameLoop berechnen wir die Richtung und bewegen den Gegner:
+
+```js
+function gameLoop(){
+
+    // ---- Neuer Code ----
+
+    // Abstand zwischen Gegner und Spieler berechnen
+    let dx = getX(player) - getX(enemy);
+    let dy = getY(player) - getY(enemy);
+
+    // Gegner 2px pro Frame in Richtung Spieler bewegen
+    let speed = 2;
+    moveElement(enemy, dx * speed / 100, dy * speed / 100);
+
+    // ---- Ende Neuer Code ----
+
+    window.requestAnimationFrame(gameLoop)
+}
+```
+
+> 💡 `dx` und `dy` sind die Abstände in X- und Y-Richtung. Wenn wir diese als Bewegung verwenden, bewegt sich der Gegner immer direkt auf den Spieler zu. Mit einem negativen `speed` bewegt er sich vom Spieler weg.
