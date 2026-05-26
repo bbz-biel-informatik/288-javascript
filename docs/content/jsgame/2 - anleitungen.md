@@ -669,13 +669,26 @@ if(isColliding(player, enemy)) {
 ### Sound
 In einem Spiel dürfen Soundeffekte nicht fehlen. Zum Beispiel ein Schussgeräusch, wenn der Spieler schiesst, oder ein Explosionston, wenn ein Gegner zerstört wird.
 
-**Beispiel**
+**Beispiel Soundeffekt abspielen**
+
+```js
+// Soundeffekt laden (Füge das oben in den Code ein.)
+let shootSound = new Audio("/assets/sounds/shoot.mp3");
+
+// Soundeffekt abspielen
+shootSound.play();
+```
+
+**Beispiel Gameover Sound**
+Beim Gameover müssen wir jeweils warten, bis der Soundeffekt fertig abgespielt ist, bevor wir z.B. ein Gameover alert anzeigen oder die Seite neu laden. Das machen wir mit dem `onended` Event des Audio-Objekts.
+
 ```js
 // Soundeffekt laden (Füge das oben in den Code ein.)
 let gameoversound = new Audio("/assets/sounds/gameover.mp3");
 
-// Wenn das Spiel vorbei ist. Muss nicht in einer Funktion sein.
 function gameOver(){
+    // Hier kannst du z.B. den Spieler verstecken oder die Bewegung stoppen, damit er nicht mehr mit dem Gegner kollidieren kann.
+    
 
     // Soundeffekt abspielen im gameOver Zustand
     gameoversound.play();
