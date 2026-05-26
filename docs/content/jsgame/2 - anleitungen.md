@@ -655,3 +655,27 @@ function gameLoop(){
 ```
 
 > 💡 `dx` und `dy` sind die Abstände in X- und Y-Richtung. Wenn wir diese als Bewegung verwenden, bewegt sich der Gegner immer direkt auf den Spieler zu. Mit einem negativen `speed` bewegt er sich vom Spieler weg.
+
+### Sound
+In einem Spiel dürfen Soundeffekte nicht fehlen. Zum Beispiel ein Schussgeräusch, wenn der Spieler schiesst, oder ein Explosionston, wenn ein Gegner zerstört wird.
+
+**Beispiel**
+```js
+// Soundeffekt laden (Füge das oben in den Code ein.)
+let gameoversound = new Audio("/assets/sounds/gameover.mp3");
+
+// Wenn das Spiel vorbei ist. Muss nicht in einer Funktion sein.
+function gameOver(){
+
+    // Soundeffekt abspielen im gameOver Zustand
+    gameoversound.play();
+
+    // Wenn der sound fertig ist, können wir z.B ein Gameover alert anzeigen.
+    gameoversound.onended = function() {
+        alert("Game Over!");
+        window.location.href = "/"; // Zurück zum Hauptmenü oder Seite neu laden
+    };
+}
+``` 
+
+
