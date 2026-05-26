@@ -656,6 +656,16 @@ function gameLoop(){
 
 > 💡 `dx` und `dy` sind die Abstände in X- und Y-Richtung. Wenn wir diese als Bewegung verwenden, bewegt sich der Gegner immer direkt auf den Spieler zu. Mit einem negativen `speed` bewegt er sich vom Spieler weg.
 
+### Gameover
+Das Gameover kannn an verschiedenen Orten vorkommen. z.B bei einer Kollision, wenn eine Zeit abläuft oder wenn der Spieler eine bestimmte Anzahl Leben verloren hat. An dieser Stelle kannst du dann z.B folgendes machen:
+
+```js
+if(isColliding(player, enemy)) {
+    alert("Game Over!");    // Gameover anzeigen
+    window.location.href = "/"; // Zurück zum Hauptmenü oder Seite neu laden
+}
+```
+
 ### Sound
 In einem Spiel dürfen Soundeffekte nicht fehlen. Zum Beispiel ein Schussgeräusch, wenn der Spieler schiesst, oder ein Explosionston, wenn ein Gegner zerstört wird.
 
