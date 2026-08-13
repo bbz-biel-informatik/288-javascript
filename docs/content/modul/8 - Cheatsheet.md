@@ -1,4 +1,4 @@
-# 7 - JavaScript Cheatsheet
+# 8 - JavaScript Cheatsheet
 
 ## Javascript in HTML einbinden
 
@@ -155,6 +155,14 @@ setInterval(function() {
   console.log("Dieser Code wird jede Sekunde ausgeführt");
 }, 1000); // 1000 ms = 1 Sekunde
 
+// Game Loop: bei jedem neuen Bild erneut ausführen
+function gameLoop() {
+  // Spiel aktualisieren
+  window.requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
 ```
 
 ## Funktionen
@@ -181,11 +189,24 @@ function styleElement(element, color, size) {
   element.style.color = color;
   element.style.width = size + "px";
   element.style.height = size + "px";
-} 
+}
 
 // Funktion mit Argumenten aufrufen
 let myElement = document.querySelector("#myElement");
-styleElement(myElement, "red", 100); // Das Element wird rot und 100px gross 
+styleElement(myElement, "red", 100); // Das Element wird rot und 100px gross
 
 ```
 
+## Debugging
+
+```js
+// Nachricht in der Browser-Konsole anzeigen
+console.log("JavaScript wurde gestartet");
+
+// Wert einer Variable mit einer Beschriftung anzeigen
+console.log("Score:", scoreValue);
+
+// Prüfen, ob querySelector(...) ein HTML-Element gefunden hat
+let player = document.querySelector("#player");
+console.log("Player:", player);
+```

@@ -1,8 +1,16 @@
-# 3 - If-Else
+# 4 - If-Else
 
 Mit `if`, `else if` und `else` kann JavaScript abhängig von einer Bedingung unterschiedliche Wege nehmen.
 
-Die Schreibweise findest du auch im Abschnitt [If-Else](../7-cheatsheet#if-else) des Cheatsheets.
+Die Schreibweise findest du auch im Abschnitt [If-Else](./8-cheatsheet#if-else) des Cheatsheets.
+
+## Lernziele
+
+Nach diesem Kapitel kannst du:
+
+* mit `if` und `else` Entscheidungen programmieren,
+* Entscheidungen mit `else if` aneinanderketten und
+* Werte mit `==`, `!=`, `>`, `<`, `>=` und `<=` vergleichen.
 
 ## Eine Bedingung wird geprüft
 
@@ -16,6 +24,8 @@ JavaScript prüft zuerst `score >= 10`. Das Ergebnis kann nur **stimmen** oder *
 
 * Stimmt die Bedingung, wird der Code zwischen `{` und `}` ausgeführt.
 * Stimmt sie nicht, wird dieser Code übersprungen.
+
+Die Schreibweise von `if` findest du im [Cheatsheet](./8-cheatsheet#if-else).
 
 ## Vergleiche
 
@@ -33,8 +43,8 @@ score <= 10  // kleiner oder gleich
 Besonders wichtig ist der Unterschied zwischen Setzen und Vergleichen:
 
 ```js
-score = 10;       // setzt den Wert
-score == 10       // vergleicht den Wert
+score = 10;  // setzt den Wert
+score == 10  // vergleicht den Wert
 ```
 
 ## Was macht `else`?
@@ -81,7 +91,7 @@ Mehrere einzelne `if` werden unabhängig voneinander geprüft:
 
 ```js
 if (isColliding(player, food)) {
-  score += 1;
+  score = score + 1;
 }
 
 if (timeLeft <= 0) {
@@ -94,3 +104,7 @@ Hier können bei einem Durchlauf beide Bedingungen stimmen und beide Blöcke aus
 Merke:
 
 > `if` prüft eine Frage. `else if` stellt eine weitere Frage. `else` bestimmt, was in allen anderen Fällen passiert.
+
+## Aufgaben
+
+In den Übungen erweitern wir das bestehende Weltraum-Roboter-Projekt mit Entscheidungen. Wir starten kein neues Spiel. Die genauen Aufgaben werden später ergänzt.

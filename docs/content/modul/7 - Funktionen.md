@@ -1,8 +1,16 @@
-# 5 - Funktionen
+# 7 - Funktionen
 
 Eine Funktion fasst mehrere Befehle unter einem Namen zusammen. Wir können diesen Code danach gezielt aufrufen und wiederverwenden.
 
-Die Schreibweise findest du auch im Abschnitt [Funktionen](../7-cheatsheet#funktionen) des Cheatsheets.
+Die Schreibweise findest du auch im Abschnitt [Funktionen](./8-cheatsheet#funktionen) des Cheatsheets.
+
+## Lernziele
+
+Nach diesem Kapitel kannst du:
+
+* erklären, wozu Funktionen dienen,
+* eine Funktion mit und ohne Parameter definieren und
+* eine Funktion aufrufen.
 
 ## Funktion definieren und aufrufen
 
@@ -13,7 +21,7 @@ function updateScore() {
 }
 ```
 
-Mit `function updateScore()` definieren wir die Funktion. Der Code zwischen `{` und `}` wird dabei noch nicht ausgeführt.
+Mit [`function updateScore()`](./8-cheatsheet#funktionen) definieren wir die Funktion. Der Code zwischen `{` und `}` wird dabei noch nicht ausgeführt.
 
 Erst dieser Befehl ruft die Funktion auf:
 
@@ -112,6 +120,12 @@ gameLoop();
 
 Kleine, passend benannte Funktionen machen sichtbar, welche Aufgaben in jedem Durchlauf erledigt werden.
 
+Den vollständigen Aufbau mit [`requestAnimationFrame(...)`](./8-cheatsheet#listen-und-loops) findest du im Kapitel [Game Loop](./3-game-loop).
+
 Merke:
 
 > Eine Funktion wird zuerst definiert und später aufgerufen. Parameter machen dieselbe Funktion für verschiedene Werte nutzbar.
+
+## Aufgaben
+
+In den Übungen strukturieren wir das bestehende Weltraum-Roboter-Projekt mit Funktionen. Wir starten kein neues Spiel. Die genauen Aufgaben werden später ergänzt.

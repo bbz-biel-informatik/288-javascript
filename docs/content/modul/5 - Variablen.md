@@ -1,8 +1,17 @@
-# 2 - Variablen
+# 5 - Variablen
 
 Eine Variable gibt einem Wert einen Namen. Dadurch kann JavaScript den Wert später wiederfinden, verwenden und verändern.
 
-Die Befehle findest du auch im Abschnitt [Variablen](../7-cheatsheet#variablen) des Cheatsheets.
+Die Befehle findest du auch im Abschnitt [Variablen](./8-cheatsheet#variablen) des Cheatsheets.
+
+## Lernziele
+
+Nach diesem Kapitel kannst du:
+
+* eine Variable mit `let` definieren,
+* den Wert einer Variable verändern,
+* mit Variablen und den Operatoren `+`, `-`, `*` und `/` rechnen und
+* Zahlen und Texte unterscheiden.
 
 ## Eine beschriftete Box im Speicher
 
@@ -49,9 +58,11 @@ Die Kurzform bedeutet dasselbe:
 score += 1;
 ```
 
+Weitere Rechnungen funktionieren mit `-`, `*` und `/` gleich. Die Schreibweisen findest du im [Cheatsheet](./8-cheatsheet#variablen).
+
 ## Zahl oder Text?
 
-In diesem Kurs verwenden wir vor allem Zahlen und Texte:
+In diesem Kurs verwenden wir Zahlen und Texte:
 
 ```js
 let score = 10;
@@ -68,8 +79,8 @@ let text = "10";
 Beide sehen für uns ähnlich aus, aber JavaScript behandelt sie unterschiedlich. Mit Zahlen kann gerechnet werden. Texte werden mit `+` aneinandergehängt.
 
 ```js
-let points = 10 + 5;         // 15
-let label = "Score: " + 5;  // "Score: 5"
+let points = 10 + 5;        // 15
+let label = "Score: " + 5; // "Score: 5"
 ```
 
 ## Gespeicherter Wert und sichtbarer Text
@@ -87,6 +98,8 @@ scoreValue += 1;
 scoreText.textContent = "Score: " + scoreValue;
 ```
 
+[`textContent`](./8-cheatsheet#html-elemente-bearbeiten) verändert den sichtbaren Text eines HTML-Elements.
+
 Hier haben `scoreValue` und `scoreText` verschiedene Aufgaben:
 
 * `scoreValue` speichert die Zahl.
@@ -98,12 +111,7 @@ Hier haben `scoreValue` und `scoreText` verschiedene Aufgaben:
 let player = document.querySelector("#player");
 ```
 
-`querySelector(...)` liefert das gefundene HTML-Element zurück. Die Variable `player` merkt sich dieses Element. Deshalb können wir es später verwenden:
-
-```js
-player.style.width = "100px";
-player.remove();
-```
+[`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) liefert das gefundene HTML-Element zurück. Die Variable `player` merkt sich dieses Element. Deshalb können wir es später verwenden.
 
 ## Wo ist eine Variable verfügbar?
 
@@ -123,3 +131,7 @@ function updateScore() {
 Merke:
 
 > Eine Variable speichert einen Wert unter einem Namen. `let` brauchst du beim Erstellen, aber nicht beim späteren Verändern.
+
+## Aufgaben
+
+In den Übungen erweitern wir das bestehende Weltraum-Roboter-Projekt mit Variablen. Wir starten kein neues Spiel. Die genauen Aufgaben werden später ergänzt.
