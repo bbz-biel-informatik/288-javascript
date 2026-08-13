@@ -1,5 +1,9 @@
 # 288 Javascript Documentation Workspace
 
+## Link
+
+https://bbz-biel-informatik.github.io/288-javascript/modul/
+
 Dieses Repository verwendet **eine** VitePress-App für die komplette Website:
 
 - Landingpage auf `/`
@@ -22,7 +26,6 @@ Weitere Befehle:
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
-
 
 ## Shared Layout
 
