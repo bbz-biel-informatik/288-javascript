@@ -92,7 +92,7 @@ h1 {
   z-index: 2;
   bottom: 85px;
   left: calc(50% - 130px);
-  width: 260px;
+  width: 160px;
   height: auto;
   image-rendering: pixelated;
 }

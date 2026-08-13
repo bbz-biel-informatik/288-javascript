@@ -23,22 +23,22 @@ So installierst du eine Extension:
 
 Installiere diese Extensions:
 
-* [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Zeigt deine Webseite im Browser an und aktualisiert sie nach dem Speichern.
-* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Formatiert deinen Code automatisch.
-* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): Hilft dir, Fehler im JavaScript-Code zu erkennen.
-* [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare): Ermöglicht gemeinsames Arbeiten an einem Projekt.
+- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Zeigt deine Webseite im Browser an und aktualisiert sie nach dem Speichern.
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Formatiert deinen Code automatisch.
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): Hilft dir, Fehler im JavaScript-Code zu erkennen.
+- [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare): Ermöglicht gemeinsames Arbeiten an einem Projekt.
 
 ## Prettier einrichten
 
-Damit Prettier deinen Code beim Speichern automatisch formatiert, passen wir zwei Einstellungen an.
+Damit Prettier deinen Code beim Speichern automatisch formatiert, passen wir zwei Einstellungen an:
 
-### Format On Save aktivieren
+**Format On Save**
 
 1. Öffne die Einstellungen mit `Cmd + ,` auf dem Mac oder `Ctrl + ,` unter Windows.
 2. Suche nach `Format On Save`.
 3. Aktiviere die Einstellung **Editor: Format On Save**.
 
-### Prettier als Standard-Formatter auswählen
+**Prettier als Standard-Formatter auswählen**
 
 1. Suche in den Einstellungen nach `Default Formatter`.
 2. Wähle **Prettier - Code formatter** aus.
@@ -77,9 +77,9 @@ Die Webseite öffnet sich nun im Browser. Wenn du eine Datei veränderst und spe
 
 Du bist bereit, wenn:
 
-* VS Code installiert ist,
-* Live Server, Prettier, ESLint und Live Share installiert sind,
-* Format On Save aktiviert ist und
-* Prettier als Standard-Formatter ausgewählt ist.
+- VS Code installiert ist,
+- Live Server, Prettier, ESLint und Live Share installiert sind,
+- Format On Save aktiviert ist und
+- Prettier als Standard-Formatter ausgewählt ist.
 
 Im nächsten Kapitel lädst du das erste vorbereitete Projekt herunter und machst eine Webseite mit JavaScript interaktiv.
