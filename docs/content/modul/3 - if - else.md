@@ -1,4 +1,4 @@
-# if - else
+# 3 - If-Else
 
 ## Worum geht es?
 
@@ -156,6 +156,8 @@ setInterval(() => {
 
 </details>
 
+Mehr Hintergrund findest du in der Theorie zu [If-Else](./6-theorie/3-if-else).
+
 <details>
 <summary>Lösung</summary>
 
@@ -193,7 +195,7 @@ Der Spieler soll mit den Pfeiltasten bewegt werden.
 
 Gehe dabei wie folgt vor:
 
-* Verwende einen [`keydown`](./8-cheatsheet#events) Event.
+* Verwende einen [`keydown`](./7-cheatsheet#events) Event.
 * Prüfe mit `if`, `else if`, welche Taste gedrückt wurde.
 * Verwende `moveElement(...)`, um den Spieler zu bewegen.
 

@@ -1,4 +1,4 @@
-# Funktionen
+# 5 - Funktionen
 
 ## Worum geht es?
 
@@ -170,9 +170,9 @@ document.addEventListener("keydown", function(event) {
 
 Nun wollen wir Feinde auf dem Spielfeld platzieren, welche der Spieler vermeiden muss. Wir gehen in zwei Schritten vor:
 
-1. Erstelle eine Funktion `createEnemy()`, welche ein [neues HTML Element erstellt](2-html-elemente-veraendern#element-hinzufugen), (img) es mit einem Bild füllt und es an eine zufällige Position setzt [setPosition](/jsgame/3 - framework docs#setposition). Rufe die Funktion mit [setInverval](/modul/8-cheatsheet#listen-und-loops) alle 3 Sekunden auf.
+1. Erstelle eine Funktion `createEnemy()`, welche ein [neues HTML Element erstellt](./7-cheatsheet#html-elemente-bearbeiten), (img) es mit einem Bild füllt und es an eine zufällige Position setzt [setPosition](/jsgame/3 - framework docs#setposition). Rufe die Funktion mit [setInverval](/modul/7-cheatsheet#listen-und-loops) alle 3 Sekunden auf.
 
-2. Bewegung: erstelle ein neues [setInverval](/modul/8-cheatsheet#listen-und-loops), in welchem du jede 0.1 Sekunden [alle feinde selektierst](/modul/6-listen-und-loops#listen) und nach links bewegst.
+2. Bewegung: erstelle ein neues [setInverval](/modul/7-cheatsheet#listen-und-loops), in welchem du jede 0.1 Sekunden [alle feinde selektierst](/modul/4-listen-und-loops#listen) und nach links bewegst.
 
 <details>
 <summary>Lösung Teil 1</summary>
@@ -245,3 +245,5 @@ setInterval(() => {
 </details>
 
 Wir sind nun fertig mit unserem zweiten Spiel!! Well done 🎉
+
+Mehr Hintergrund findest du in der Theorie zu den [Funktionen](./6-theorie/5-funktionen).

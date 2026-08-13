@@ -94,7 +94,7 @@ body {
 console.log("hello from game.js")
 ```
 
-Du solltest nun in der [console](../modul/1-javascript-intro.md#browser-konsole) folgende Ausgabe sehen:
+Du solltest nun in der Browser-Konsole folgende Ausgabe sehen:
 
 ```
 hello from game.js

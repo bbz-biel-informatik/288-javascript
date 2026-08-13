@@ -1,4 +1,4 @@
-# JavaScript Cheatsheet
+# 7 - JavaScript Cheatsheet
 
 ## Javascript in HTML einbinden
 
@@ -188,5 +188,4 @@ let myElement = document.querySelector("#myElement");
 styleElement(myElement, "red", 100); // Das Element wird rot und 100px gross 
 
 ```
-
 

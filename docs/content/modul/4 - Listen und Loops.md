@@ -1,4 +1,4 @@
-# Listen und Loops
+# 4 - Listen und Loops
 
 ## Worum geht es?
 
@@ -108,7 +108,7 @@ enemies.forEach(enemy => {
 
 Im Eat Game soll die Zeit herunterzählen. Wenn die Zeit 0 erreicht, ist das Spiel vorbei. Wenn der Spieler das Food isst, soll die Zeit wieder auf 20 Sekunden zurückgesetzt werden.
 
-Überlege dir, wie du das lösen könntest. Du brauchst sicher eine Variable für die Zeit, ein [`setInterval(...)`](./8-cheatsheet#listen-und-loops) und eine [`if`](./8-cheatsheet#if-else) Bedingung, um zu prüfen, ob die Zeit 0 erreicht hat. Wenn du nicht weiterkommst, findest du hier einen Tipp:
+Überlege dir, wie du das lösen könntest. Du brauchst sicher eine Variable für die Zeit, ein [`setInterval(...)`](./7-cheatsheet#listen-und-loops) und eine [`if`](./7-cheatsheet#if-else) Bedingung, um zu prüfen, ob die Zeit 0 erreicht hat. Wenn du nicht weiterkommst, findest du hier einen Tipp:
 
 <details>
 <summary>Vorgehen</summary>
@@ -126,6 +126,8 @@ Im Eat Game soll die Zeit herunterzählen. Wenn die Zeit 0 erreicht, ist das Spi
 ```
 
 </details>
+
+Mehr Hintergrund findest du in der Theorie zu [Listen und Loops](./6-theorie/4-listen-und-loops).
 
 <details>
 <summary>Lösung</summary>

@@ -1,4 +1,4 @@
-# Variablen
+# 2 - Variablen
 
 ## Was sind Variablen?
 
@@ -172,8 +172,8 @@ Der Timer soll von 10 Sekunden herunterzählen. Sobald er 0 erreicht, soll das S
 
 Gehe nun wie folgt vor:
 * Erstelle eine [globale](#scope-von-variablen) Variable `timeLeft` und setze sie auf 10.
-* Erstelle ein HTML `<div>` Element direkt im HTML file neben `<score>`, um die verbleibende Zeit anzuzeigen. Gibe diesem Element die ID `timer`. [Selektiere](./8-cheatsheet#html-elemente-auswahlen) das Element dann direkt im JavaScript.
-* Verwende [`setInterval`](/modul/6-listen-und-loops#setinterval) (Schauen wir später genauer an), um jede Sekunde `timeLeft` um 1 zu verringern.
+* Erstelle ein HTML `<div>` Element direkt im HTML file neben `<score>`, um die verbleibende Zeit anzuzeigen. Gibe diesem Element die ID `timer`. [Selektiere](./7-cheatsheet#html-elemente-auswahlen) das Element dann direkt im JavaScript.
+* Verwende [`setInterval`](/modul/4-listen-und-loops#setinterval) (Schauen wir später genauer an), um jede Sekunde `timeLeft` um 1 zu verringern.
 * Aktualisiere ebenfalls den Text im HTML, damit die verbleibende Zeit angezeigt wird. (Gleiche Vorgehensweise wie beim Score)
 
 <details>
@@ -206,3 +206,5 @@ setInterval(() => {
 
 
 -> Wir sind fast fertig mit dem click game. Es fehlt nur noch game over! 
+
+Mehr Hintergrund findest du in der Theorie zu den [Variablen](./6-theorie/2-variablen).
