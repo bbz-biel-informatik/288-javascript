@@ -3,7 +3,7 @@
 ## Überblick
 
 - [0 - JavaScript Setup](/modul/0-javascript-setup)
-- [1 - JavaScript macht HTML interaktiv](/modul/1-javascript-macht-html-interaktiv)
+- [1 - HTML-Elemente auswählen, bearbeiten, Events](/modul/1-html-elemente-auswaehlen-bearbeiten-events)
 - [2 - Variablen](/modul/2-variablen)
 - [3 - if - else](/modul/3-if-else)
 - [4 - Listen und Loops](/modul/4-listen-und-loops)

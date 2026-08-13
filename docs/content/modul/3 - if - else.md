@@ -133,9 +133,9 @@ Merke:
 * `if / else if / else` → genau eine passende Variante auswählen
 * mehrere `if` → mehrere Dinge unabhängig voneinander prüfen
 
-## 🎮 Aufgaben
+## Aufgaben
 
-### 1 - Click game fertig machen
+### 🎯 3.1 – Click Game fertig machen
 
 Wir beenden nun das click game. Was noch fehlt ist ein klassisches "game over" wenn die Zeit abgelaufen ist. Dazu verwenden wir ein [if](#if) statement in der timer funktion. Überlege dir, wie du das machen würdest!
 
@@ -178,7 +178,7 @@ setInterval(() => {
 
 
 
-### 2: Eat Game starten
+### 🎯 3.2 – Eat Game starten
 
 Nun starten wir ein neues Spiel: Eat Game.
 
@@ -189,7 +189,7 @@ Lade das vorbereitete Projekt herunter und schaue dir das HTML / Javascript an. 
 
 [Eat Game Starter ZIP](/assets/zips/eat-game-starter.zip)
 
-### 3: Spieler mit der Tastatur bewegen
+### 🎯 3.3 – Spieler mit der Tastatur bewegen
 
 Der Spieler soll mit den Pfeiltasten bewegt werden.
 
@@ -223,7 +223,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-### 4: Food essen (collision)
+### 🎯 3.4 – Food essen (Collision)
 
 Jetzt soll geprüft werden, ob der Spieler das Food berührt.
 
@@ -265,7 +265,7 @@ document.addEventListener("keydown", function(event) {
 
 </details>
 
-### 5: Food essen (score)
+### 🎯 3.5 – Food essen (Score)
 Nun soll anstelle von `alert` der Score erhöht werden, wenn das Food gegessen wird.
 (Tipp: Alert können wir oft nutzen, um zu schauen, ob etwas funktioniert. Sobald es aber funktioniert, wollen wir meistens etwas anderes machen, damit das Spiel besser wird. In diesem Fall den Score erhöhen)
 

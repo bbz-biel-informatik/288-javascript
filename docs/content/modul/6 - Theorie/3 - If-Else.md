@@ -71,9 +71,9 @@ Eine Kette wählt genau einen passenden Weg:
 
 ```js
 if (mode == "alarm") {
-  controlRoom.style.backgroundColor = "red";
+  spaceScene.style.backgroundColor = "red";
 } else if (mode == "night") {
-  controlRoom.style.backgroundColor = "darkblue";
+  spaceScene.style.backgroundColor = "darkblue";
 }
 ```
 

@@ -1,6 +1,6 @@
-# 1 - HTML verändern mit Events
+# 1 - HTML-Elemente auswählen, bearbeiten, Events
 
-Im Control Room hast du zuerst eine funktionierende Interaktion programmiert. Jetzt schauen wir genauer an, was dabei im Hintergrund geschieht.
+In der Weltraum-Roboter-Übung hast du zuerst eine funktionierende Interaktion programmiert. Jetzt schauen wir genauer an, was dabei im Hintergrund geschieht.
 
 Die Befehle dazu findest du auch im Cheat Sheet:
 
@@ -15,16 +15,16 @@ HTML beschreibt, welche Elemente beim Laden der Seite vorhanden sind. CSS bestim
 Deshalb ist diese CSS-Regel nicht dasselbe wie eine Veränderung mit JavaScript:
 
 ```css
-#controlRoom {
+#spaceScene {
   background-color: blue;
 }
 ```
 
-Mit CSS ist der Control Room von Anfang an blau. Mit JavaScript kann er erst nach einem Klick blau werden:
+Mit CSS ist die Weltraum-Szene von Anfang an blau. Mit JavaScript kann sie erst nach einem Klick blau werden:
 
 ```js
 blueButton.addEventListener("click", function() {
-  controlRoom.style.backgroundColor = "blue";
+  spaceScene.style.backgroundColor = "blue";
 });
 ```
 
@@ -66,11 +66,11 @@ Bei einer Interaktion gibt es oft zwei verschiedene Elemente:
 
 ```js
 let blueButton = document.querySelector("#blueButton");
-let controlRoom = document.querySelector("#controlRoom");
+let spaceScene = document.querySelector("#spaceScene");
 ```
 
 * `blueButton` ist der **Auslöser**. Auf dieses Element wird geklickt.
-* `controlRoom` ist das **Ziel**. Dieses Element wird verändert.
+* `spaceScene` ist das **Ziel**. Dieses Element wird verändert.
 
 Auslöser und Ziel können dasselbe Element sein, müssen es aber nicht.
 
@@ -80,7 +80,7 @@ Ein Event ist ein Ereignis im Browser, zum Beispiel ein Klick oder ein Tastendru
 
 ```js
 blueButton.addEventListener("click", function() {
-  controlRoom.style.backgroundColor = "blue";
+  spaceScene.style.backgroundColor = "blue";
 });
 ```
 
@@ -96,7 +96,7 @@ Der Event Listener muss wissen, welcher Code später ausgeführt werden soll. Di
 
 ```js
 function() {
-  controlRoom.style.backgroundColor = "blue";
+  spaceScene.style.backgroundColor = "blue";
 }
 ```
 
@@ -107,8 +107,8 @@ Die Funktion wird nicht sofort ausgeführt. Der Event Listener ruft sie beim Kli
 Das ausgewählte HTML-Element besitzt Eigenschaften, die JavaScript verändern kann:
 
 ```js
-controlRoom.style.backgroundColor = "blue";
-statusText.textContent = "System ist bereit!";
+spaceScene.style.backgroundColor = "blue";
+statusText.textContent = "Roboter ist bereit!";
 robot.style.width = "150px";
 ```
 
@@ -124,7 +124,7 @@ JavaScript führt die Befehle in der Funktion von oben nach unten aus:
 
 ```js
 alarmButton.addEventListener("click", function() {
-  controlRoom.style.backgroundColor = "red";
+  spaceScene.style.backgroundColor = "red";
   statusText.textContent = "Alarm!";
   robot.style.width = "80px";
 });
@@ -135,7 +135,7 @@ Ein einziger Klick kann deshalb mehrere Veränderungen auslösen.
 ## Was passiert bei `remove()`?
 
 ```js
-obstacle.remove();
+energy.remove();
 ```
 
 [`remove()`](../7-cheatsheet#html-elemente-bearbeiten) entfernt das ausgewählte Element aus dem aktuellen DOM. Die ursprüngliche HTML-Datei wird dabei nicht umgeschrieben. Beim Neuladen baut der Browser die Seite wieder aus dem HTML auf. Deshalb erscheint das Element erneut.

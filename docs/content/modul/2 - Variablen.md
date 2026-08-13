@@ -138,11 +138,11 @@ player.addEventListener("click", function() {
 }); // Funktion endet hier, x und y sind nicht mehr verfügbar
 ```
 
-## 🎮 Aufgabe – Score mit Variable
+## Aufgaben
 
 Wir erweitern nun unser Spiel mit einem Score und einem Timer. Das Ziel ist es, den Score zu erhöhen, wenn auf den Spieler geklickt wird. Außerdem soll ein Timer herunterzählen, und wenn er 0 erreicht, soll das Spiel vorbei sein.
 
-### 1: Score mit Variable
+### 🎯 2.1 – Score mit Variable
 
 Der Score, welcher oben rechts angezeigt wird, soll nun immer um 1 erhöht werden, wenn auf den Spieler geklickt wird.
 Gehe dabei wie folgt vor:
@@ -165,7 +165,7 @@ score.textContent = "Score: " + scoreValue; // Text im HTML aktualisieren
 </details>
 
 
-### 2: Timer mit Variable
+### 🎯 2.2 – Timer mit Variable
 
 Der Timer soll von 10 Sekunden herunterzählen. Sobald er 0 erreicht, soll das Spiel dann vorbei sein.
 

@@ -6,7 +6,7 @@ Du musst diese Seiten nicht alle auf einmal lesen. Nutze sie nach einer Aufgabe 
 
 ## Themen
 
-1. [HTML verändern mit Events](./1-html-veraendern-mit-events)
+1. [HTML-Elemente auswählen, bearbeiten, Events](./1-html-elemente-auswaehlen-bearbeiten-events)
 2. [Variablen](./2-variablen)
 3. [If-Else](./3-if-else)
 4. [Listen und Loops](./4-listen-und-loops)
