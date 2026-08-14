@@ -224,13 +224,15 @@ Achte dabei auf die [Teile einer Interaktion](#die-teile-einer-interaktion):
 <details>
 <summary>Tipp: Diese Befehle brauchst du</summary>
 
-Die Weltraum-Szene sollte aus der ersten Aufgabe bereits ausgewählt sein:
+Die Weltraum-Szene sollte aus der ersten Aufgabe bereits ausgewählt sein.
+
+Um den Alarmbutton auszuwählen, schreibe:
 
 ```js
-let spaceScene = document.querySelector("#spaceScene");
+let alarmButton = document.querySelector("#alarmButton");
 ```
 
-Wähle zusätzlich den Alarm-Button mit [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) aus. Verwende danach [`addEventListener(...)`](./8-cheatsheet#events) und [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten).
+Verwende danach [`addEventListener(...)`](./8-cheatsheet#events) und [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten).
 
 </details>
 
@@ -238,8 +240,10 @@ Wähle zusätzlich den Alarm-Button mit [`document.querySelector(...)`](./8-chea
 <summary>Lösung anzeigen</summary>
 
 ```js
-let alarmButton = document.querySelector("#alarmButton");
+// Die spaceScene sollte bereits definiert sein. Brauchen wir nicht 2x zu haben.
 let spaceScene = document.querySelector("#spaceScene");
+
+let alarmButton = document.querySelector("#alarmButton");
 
 alarmButton.addEventListener("click", function () {
   spaceScene.style.backgroundColor = "red";
