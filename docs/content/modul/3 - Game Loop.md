@@ -53,16 +53,24 @@ Der Game Loop ist ein endloser Loop. Bei jedem neuen Bild führt er seine Befehl
 
 > `gameLoop()` wird einmal gestartet. Danach plant der Game Loop seinen nächsten Durchlauf immer wieder selbst.
 
-## Game Framework einbinden
+## Framework einbinden
 
-Für die Bewegung verwenden wir Funktionen aus unserem Game Framework. Füge in `index.html` direkt **vor** der bestehenden Zeile für `script.js` diese Zeile ein:
+Manchmal benötigen wir Code, den jemand anderes bereits geschrieben hat. Statt diesen Code selbst zu kopieren, können wir eine weitere JavaScript-Datei als **Framework** einbinden. Ein Framework ist wie ein Werkzeugkoffer: Es stellt fertige Funktionen bereit, die wir in unserem eigenen Code verwenden können.
+
+Eine solche Datei wird mit `script` eingebunden, genau wie unser eigenes `script.js`. Die Datei kann im Projekt liegen oder von einer anderen Quelle im Internet geladen werden. Wie JavaScript-Dateien mit [`script`](./8-cheatsheet#javascript-in-html-einbinden) eingebunden werden, findest du im Cheatsheet.
+
+### 🎯 Vorbereitung – Unser Game Framework einbinden
+
+Wir verwenden für das Roboter-Spiel das BBZ Game Framework. Es enthält Funktionen, mit denen wir später Spielelemente positionieren, bewegen und auf gedrückte Tasten reagieren können.
+
+Füge in `index.html` direkt **vor** der bestehenden Zeile für `script.js` die Zeile für das Game Framework ein:
 
 ```html
 <script src="https://bbz-biel-informatik.github.io/288-javascript/game-framework/bbzgame.js"></script>
 <script src="./script.js"></script>
 ```
 
-Die Reihenfolge ist wichtig: Zuerst lädt der Browser das Game Framework. Danach kann dein eigenes `script.js` dessen Funktionen verwenden. Wie JavaScript-Dateien mit `script` eingebunden werden, findest du im [Cheatsheet](./8-cheatsheet#javascript-in-html-einbinden).
+Die Reihenfolge ist wichtig: Zuerst lädt der Browser das Game Framework. Danach kann dein eigenes `script.js` dessen Funktionen verwenden. Du musst die Funktionen des Frameworks nicht in dein `script.js` kopieren.
 
 ## Ein Element fortlaufend bewegen
 
@@ -109,11 +117,11 @@ Einmalige Vorbereitungen gehören nicht in den Game Loop. HTML-Elemente wählen 
 
 ## Aufgaben
 
-### 🎯 3.1 – Autopilot nach rechts
+### 🎯 3.1 – Spielerbewegung
 
 Lass den Roboter automatisch nach rechts fahren:
 
-1. Binde das [Game Framework](#game-framework-einbinden) in `index.html` ein.
+1. Stelle sicher, dass du das [Game Framework](#framework-einbinden) in `index.html` eingebunden hast.
 2. Wähle den Roboter in `script.js` mit [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) aus.
 3. Setze ihn mit [`setPosition(...)`](/jsgame/3-framework-docs#setposition) an die Startposition `50, 85`.
 4. Erstelle und starte einen [Game Loop](#aufbau-eines-game-loops).
@@ -173,3 +181,65 @@ gameLoop();
 Statt `5` kannst du auch eine andere positive Zahl ausprobieren. Je grösser die Zahl ist, desto weiter bewegt sich der Roboter bei jedem Durchlauf und desto schneller fährt er nach rechts.
 
 </details>
+
+## Steuerung
+
+Bis jetzt fährt der Roboter bei jedem Durchlauf automatisch nach rechts. Für eine Steuerung soll die Bewegung nur stattfinden, wenn die passende Taste gedrückt ist.
+
+Mit [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) kann das Game Framework prüfen, ob eine Taste gerade gedrückt ist. Wir stellen diese Prüfung in eine `if`-Anweisung:
+
+```js
+function gameLoop() {
+  if (isKeyPressed("ArrowRight")) {
+    moveElement(robot, 5, 0);
+  }
+
+  window.requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+```
+
+`if` bedeutet **wenn**. Bei jedem Durchlauf fragt JavaScript:
+
+> Wenn die rechte Pfeiltaste gedrückt ist, was soll passieren?
+
+Ist die Taste gedrückt, führt JavaScript den Code zwischen `{` und `}` aus und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) bewegt den Roboter. Ist die Taste nicht gedrückt, wird die Bewegung übersprungen. Weil der Game Loop diese Frage immer wieder stellt, reagiert der Roboter flüssig auf die Taste.
+
+Die Schreibweise von [`if`](./8-cheatsheet#if-else) findest du im Cheatsheet. Wie Bedingungen, `else if`, `else` und Vergleiche genau funktionieren, lernst du im nächsten Kapitel [If-Else](./4-if-else).
+
+### 🎯 3.3 – Den Roboter steuern
+
+Ersetze die automatische Bewegung aus Aufgabe 3.2 durch die Steuerung mit der rechten Pfeiltaste:
+
+1. Prüfe im Game Loop mit [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed), ob `"ArrowRight"` gedrückt ist.
+2. Bewege den Roboter nur dann mit [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) nach rechts.
+3. Lade die Webseite neu und halte die rechte Pfeiltaste gedrückt.
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
+let robot = document.querySelector("#robot");
+setPosition(robot, 50, 85);
+
+function gameLoop() {
+  if (isKeyPressed("ArrowRight")) {
+    moveElement(robot, 5, 0);
+  }
+
+  window.requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+```
+
+Die verwendeten Befehle findest du bei [HTML-Elemente auswählen](./8-cheatsheet#html-elemente-auswahlen), [If / Else](./8-cheatsheet#if-else), [Listen und Loops](./8-cheatsheet#listen-und-loops), [Funktionen](./8-cheatsheet#funktionen) und in der [Dokumentation des Game Frameworks](/jsgame/3-framework-docs).
+
+</details>
+
+### 🚀 Zusatzaufgabe – In alle Richtungen
+
+Schaffst du es, die Bewegungen nach oben, unten, links und rechts alle zu programmieren?
+
+Ergänze für jede Pfeiltaste eine eigene `if`-Anweisung. Die Tastennamen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed). Welche positiven und negativen Werte den Roboter in die verschiedenen Richtungen bewegen, ist bei [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.

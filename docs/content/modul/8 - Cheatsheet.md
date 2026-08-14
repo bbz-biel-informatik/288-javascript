@@ -57,6 +57,16 @@ newElement.textContent = "New Element"; // Element bearbeiten
 document.body.appendChild(newElement); // Ins Dokument einfügen
 ```
 
+## Eingabefeld auslesen
+
+```js
+// Wähle ein Eingabefeld aus.
+let commandInput = document.querySelector("#commandInput");
+
+// Lies den eingegebenen Text mit value aus.
+let command = commandInput.value;
+```
+
 ## Events
 
 ```js
