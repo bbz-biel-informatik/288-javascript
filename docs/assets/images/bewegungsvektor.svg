@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" aria-labelledby="title description">
+  <title id="title">Startposition und Bewegungsvektor des Roboters</title>
+  <desc id="description">Die roten Hilfslinien markieren die Startposition 50 Pixel von links und 85 Pixel von unten. Ein blauer Pfeil zeigt den Bewegungsvektor 2, 0 nach rechts.</desc>
+
+  <defs>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+    </marker>
+    <marker id="vector-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+    </marker>
+  </defs>
+
+  <rect width="1000" height="520" rx="20" fill="#f8fafc" />
+  <rect x="140" y="70" width="780" height="360" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+
+  <!-- Koordinatenachsen: Ein Spiel-Pixel entspricht hier drei SVG-Pixeln. -->
+  <path d="M 140 430 H 940" fill="none" stroke="#dc2626" stroke-width="4" marker-end="url(#axis-arrow)" />
+  <path d="M 140 430 V 48" fill="none" stroke="#dc2626" stroke-width="4" marker-end="url(#axis-arrow)" />
+  <text x="948" y="438" fill="#991b1b" font-family="Arial, sans-serif" font-size="24" font-weight="700">X</text>
+  <text x="126" y="42" fill="#991b1b" font-family="Arial, sans-serif" font-size="24" font-weight="700">Y</text>
+
+  <!-- Startposition (50, 85): 50 × 3 nach rechts und 85 × 3 nach oben. -->
+  <path d="M 290 430 V 175" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="9 9" />
+  <path d="M 140 175 H 290" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="9 9" />
+  <text x="268" y="462" fill="#991b1b" font-family="Arial, sans-serif" font-size="21" font-weight="700">50 px</text>
+  <text x="66" y="182" fill="#991b1b" font-family="Arial, sans-serif" font-size="21" font-weight="700">85 px</text>
+
+  <circle cx="290" cy="175" r="9" fill="#111827" />
+  <text x="310" y="158" fill="#111827" font-family="Arial, sans-serif" font-size="22" font-weight="700">Roboter (50, 85)</text>
+
+  <!-- Der 2-Pixel-Vektor ist zur besseren Lesbarkeit vergrössert. -->
+  <path d="M 290 175 H 475" fill="none" stroke="#2563eb" stroke-width="6" marker-end="url(#vector-arrow)" />
+  <text x="335" y="222" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="22" font-weight="700">Bewegungsvektor (2, 0)</text>
+  <text x="335" y="248" fill="#64748b" font-family="Arial, sans-serif" font-size="16">vergrössert dargestellt</text>
+</svg>
