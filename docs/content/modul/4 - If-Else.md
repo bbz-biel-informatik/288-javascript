@@ -194,7 +194,7 @@ Mit [`src`](./9-cheatsheet#html-elemente-bearbeiten) kannst du die Bilddatei ein
 robot.src = "./assets/robot-walk.gif";
 ```
 
-Setze das Fahrbild in jeden `if`-Block, der den Roboter bewegt. Im `else`-Block der ersten Bedingung setzt du wieder das normale Bild `./assets/robot.png`. Danach können die weiteren Bedingungen das Fahrbild setzen, wenn eine andere Pfeiltaste gedrückt ist.
+Setze das Fahrbild in jeden `if`-Block, der den Roboter bewegt. Ergänze bei jeder Richtung einen `else`-Block, der wieder das normale Bild `./assets/robot.png` setzt.
 
 </details>
 
@@ -213,16 +213,22 @@ function gameLoop() {
   if (isKeyPressed("ArrowLeft")) {
     moveElement(robot, -2, 0);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, 2);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -2);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   window.requestAnimationFrame(gameLoop);
@@ -272,16 +278,22 @@ function gameLoop() {
   if (isKeyPressed("ArrowLeft")) {
     moveElement(robot, -2, 0);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, 2);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -2);
     robot.src = "./assets/robot-walk.gif";
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   // NEU: Kollision prüfen und Energiekiste löschen

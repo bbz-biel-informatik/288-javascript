@@ -261,18 +261,24 @@ function moveRobot() {
     moveElement(robot, -speed, 0);
     robot.src = "./assets/robot-walk.gif";
     life -= 1;
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, speed);
     robot.src = "./assets/robot-walk.gif";
     life -= 1;
+  } else {
+    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -speed);
     robot.src = "./assets/robot-walk.gif";
     life -= 1;
+  } else {
+    robot.src = "./assets/robot.png";
   }
 }
 
