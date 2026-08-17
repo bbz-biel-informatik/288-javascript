@@ -1,4 +1,4 @@
-# 8 - JavaScript Cheatsheet
+# 9 - JavaScript Cheatsheet
 
 ## Javascript in HTML einbinden
 
@@ -37,12 +37,16 @@ let myElement = document.querySelector("#image");
 
 // Style verändern
 myElement.style.color = "red"; // Farbe ändern
+myElement.style.backgroundColor = "red"; // Hintergrundfarbe ändern
 myElement.style.fontSize = "12px"; // Textgrösse ändern
 myElement.style.width = "100px"; // Grösser - kleiner machen
 
 // Inhalt verändern
 myElement.textContent = "Hello";
 myElement.innerHTML = "<b>Hello</b>";
+
+// Bilddatei verändern
+myElement.src = "./assets/anderes-bild.png";
 
 // Klasse hinzufügen / entfernen
 myElement.classList.add("myClass");
@@ -111,6 +115,12 @@ zahl + 10; // Addition
 zahl - 10; // Subtraktion
 zahl * 10; // Multiplikation
 zahl / 10; // Division
+
+// Kurzschreibweisen zum Verändern
+zahl += 1; // gleich wie: zahl = zahl + 1
+zahl -= 1; // gleich wie: zahl = zahl - 1
+zahl *= 2; // gleich wie: zahl = zahl * 2
+zahl /= 2; // gleich wie: zahl = zahl / 2
 ```
 
 ## If / Else

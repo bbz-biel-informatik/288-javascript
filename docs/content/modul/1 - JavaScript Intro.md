@@ -62,10 +62,10 @@ blueButton.addEventListener("click", function () {
 <details>
 <summary>Die neuen Befehle im Überblick – wir erklären sie später noch genau</summary>
 
-- Mit [`let`](./8-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
-- Mit [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
-- Mit [`addEventListener(...)`](./8-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
-- Mit [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
+- Mit [`let`](./9-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
+- Mit [`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
+- Mit [`addEventListener(...)`](./9-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
+- Mit [`style.backgroundColor`](./9-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
 
 </details>
 
@@ -85,7 +85,7 @@ Wir schauen uns den funktionierenden Code nun Schritt für Schritt an.
 let blueButton = document.querySelector("#blueButton");
 ```
 
-[`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) sucht ein Element im HTML. `#blueButton` bedeutet: Suche das Element mit der ID `blueButton`.
+[`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) sucht ein Element im HTML. `#blueButton` bedeutet: Suche das Element mit der ID `blueButton`.
 
 JavaScript merkt sich dieses Element unter dem Namen `blueButton`.
 
@@ -111,7 +111,7 @@ blueButton.addEventListener("click", function () {
 });
 ```
 
-Der [`addEventListener(...)`](./8-cheatsheet#events) wartet auf ein Ereignis. `"click"` bedeutet, dass der Code zwischen den geschweiften Klammern bei einem Mausklick ausgeführt wird.
+Der [`addEventListener(...)`](./9-cheatsheet#events) wartet auf ein Ereignis. `"click"` bedeutet, dass der Code zwischen den geschweiften Klammern bei einem Mausklick ausgeführt wird.
 
 Ein Ereignis nennt man in JavaScript **Event**. Wie Events funktionieren und was der Event Listener genau macht, lernst du im nächsten Kapitel in der [Event-Theorie](./2-html-elemente-auswaehlen-bearbeiten-events#was-macht-ein-event-listener).
 
@@ -121,6 +121,6 @@ Ein Ereignis nennt man in JavaScript **Event**. Wie Events funktionieren und was
 spaceScene.style.backgroundColor = "blue";
 ```
 
-Sobald der blaue Knopf angeklickt wird, führt JavaScript diese Zeile aus. Mit [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten) verändert JavaScript die CSS-Hintergrundfarbe der ausgewählten Weltraum-Szene. Der neue Wert ist `"blue"`, also blau.
+Sobald der blaue Knopf angeklickt wird, führt JavaScript diese Zeile aus. Mit [`style.backgroundColor`](./9-cheatsheet#html-elemente-bearbeiten) verändert JavaScript die CSS-Hintergrundfarbe der ausgewählten Weltraum-Szene. Der neue Wert ist `"blue"`, also blau.
 
 Im nächsten Kapitel zerlegen wir diese erste Interaktion noch genauer in ihre Teile. Danach programmierst du eigene Interaktionen für den Weltraum-Roboter.

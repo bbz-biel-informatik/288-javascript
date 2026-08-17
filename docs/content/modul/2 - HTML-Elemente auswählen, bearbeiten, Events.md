@@ -15,9 +15,9 @@ Nach diesem Kapitel kannst du:
 
 Die verwendeten Befehle findest du im Cheatsheet:
 
-- [HTML-Elemente auswählen](./8-cheatsheet#html-elemente-auswahlen)
-- [HTML-Elemente bearbeiten](./8-cheatsheet#html-elemente-bearbeiten)
-- [Events](./8-cheatsheet#events)
+- [HTML-Elemente auswählen](./9-cheatsheet#html-elemente-auswahlen)
+- [HTML-Elemente bearbeiten](./9-cheatsheet#html-elemente-bearbeiten)
+- [Events](./9-cheatsheet#events)
 
 ## Theorie: HTML Elemente auf Knopfdruck verändern.
 
@@ -62,7 +62,7 @@ Auf einer Webseite gibt es viele Elemente. JavaScript muss deshalb zuerst wissen
 document.querySelector("#blueButton");
 ```
 
-[`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) durchsucht das Dokument. `"#blueButton"` ist ein CSS-Selektor und bezeichnet das Element mit der ID `blueButton`.
+[`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) durchsucht das Dokument. `"#blueButton"` ist ein CSS-Selektor und bezeichnet das Element mit der ID `blueButton`.
 
 Der Befehl liefert das gefundene HTML-Element zurück. Damit wir es später wiederverwenden können, speichern wir es in einer Variable:
 
@@ -114,7 +114,7 @@ Der JavaScript-Roboter steht also nicht die ganze Zeit vor dem Knopf und fragt n
 
 **Was bedeutet `function()` im Event Listener?**
 
-Das ist eine Funktion. Sie enthält den Code, der beim Event ausgeführt wird. Den genauen Aufbau erklären wir später im Kapitel [Funktionen](./7-funktionen).
+Das ist eine Funktion. Sie enthält den Code, der beim Event ausgeführt wird. Den genauen Aufbau erklären wir später im Kapitel [Funktionen](./8-funktionen).
 
 ### HTML Elemente verändern
 
@@ -124,7 +124,7 @@ Ein ausgewähltes HTML-Element besitzt Eigenschaften, die JavaScript verändern 
 spaceScene.style.backgroundColor = "blue";
 ```
 
-Mit [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten) verändern wir die CSS-Hintergrundfarbe. Mit `=` setzen wir den neuen Wert.
+Mit [`style.backgroundColor`](./9-cheatsheet#html-elemente-bearbeiten) verändern wir die CSS-Hintergrundfarbe. Mit `=` setzen wir den neuen Wert.
 
 Steht dieser Befehl in einem Click Event, ändert sich die Farbe erst beim Klick:
 
@@ -143,10 +143,10 @@ robot.style.borderColor = "yellow";
 energy.remove();
 ```
 
-- [`textContent`](./8-cheatsheet#html-elemente-bearbeiten) verändert den sichtbaren Text.
-- [`style.width`](./8-cheatsheet#html-elemente-bearbeiten) verändert die Breite eines Elements.
-- [`style.borderColor`](./8-cheatsheet#html-elemente-bearbeiten) verändert seine Rahmenfarbe.
-- [`remove()`](./8-cheatsheet#html-elemente-bearbeiten) entfernt ein Element aus der Webseite.
+- [`textContent`](./9-cheatsheet#html-elemente-bearbeiten) verändert den sichtbaren Text.
+- [`style.width`](./9-cheatsheet#html-elemente-bearbeiten) verändert die Breite eines Elements.
+- [`style.borderColor`](./9-cheatsheet#html-elemente-bearbeiten) verändert seine Rahmenfarbe.
+- [`remove()`](./9-cheatsheet#html-elemente-bearbeiten) entfernt ein Element aus der Webseite.
 
 Auch hier setzen wir mit `=` jeweils einen neuen Wert. Welche Eigenschaft wir verändern, hängt davon ab, was auf der Webseite passieren soll.
 
@@ -162,11 +162,11 @@ alarmButton.addEventListener("click", function () {
 });
 ```
 
-Ein einziger Klick kann deshalb mehrere Veränderungen auslösen. Die verwendeten Befehle findest du bei [Events](./8-cheatsheet#events) und [HTML-Elemente bearbeiten](./8-cheatsheet#html-elemente-bearbeiten) im Cheatsheet.
+Ein einziger Klick kann deshalb mehrere Veränderungen auslösen. Die verwendeten Befehle findest du bei [Events](./9-cheatsheet#events) und [HTML-Elemente bearbeiten](./9-cheatsheet#html-elemente-bearbeiten) im Cheatsheet.
 
 ### Ein HTML-Element entfernen
 
-Mit [`remove()`](./8-cheatsheet#html-elemente-bearbeiten) können wir ein ausgewähltes Element aus der Webseite entfernen:
+Mit [`remove()`](./9-cheatsheet#html-elemente-bearbeiten) können wir ein ausgewähltes Element aus der Webseite entfernen:
 
 ```js
 energy.remove();
@@ -206,7 +206,7 @@ blueButton.addEventListener("click", function () {
 });
 ```
 
-Die Befehle sind im Cheatsheet unter [Events](./8-cheatsheet#events) und [HTML-Elemente bearbeiten](./8-cheatsheet#html-elemente-bearbeiten) erklärt.
+Die Befehle sind im Cheatsheet unter [Events](./9-cheatsheet#events) und [HTML-Elemente bearbeiten](./9-cheatsheet#html-elemente-bearbeiten) erklärt.
 
 </details>
 
@@ -232,7 +232,7 @@ Um den Alarmbutton auszuwählen, schreibe:
 let alarmButton = document.querySelector("#alarmButton");
 ```
 
-Verwende danach [`addEventListener(...)`](./8-cheatsheet#events) und [`style.backgroundColor`](./8-cheatsheet#html-elemente-bearbeiten).
+Verwende danach [`addEventListener(...)`](./9-cheatsheet#events) und [`style.backgroundColor`](./9-cheatsheet#html-elemente-bearbeiten).
 
 </details>
 
@@ -256,7 +256,7 @@ alarmButton.addEventListener("click", function () {
 
 Wenn der Button `statusButton` angeklickt wird, soll im Element `statusText` der Text `Roboter ist bereit!` erscheinen.
 
-Verwende dafür [`textContent`](./8-cheatsheet#html-elemente-bearbeiten).
+Verwende dafür [`textContent`](./9-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp: Codegerüst</summary>
@@ -279,7 +279,7 @@ statusButton.addEventListener("click", function () {
 
 Wenn der Button `sizeButton` angeklickt wird, soll der Roboter mit der ID `robot` breiter werden. Denke wiederum an die drei Teile, welche wir brauchen.
 
-Lies bei Bedarf nochmals die Theorie zum [Verändern von HTML-Elementen](#html-elemente-verandern). Was du verändern musst, ist [`style.width`](./8-cheatsheet#html-elemente-bearbeiten).
+Lies bei Bedarf nochmals die Theorie zum [Verändern von HTML-Elementen](#html-elemente-verandern). Was du verändern musst, ist [`style.width`](./9-cheatsheet#html-elemente-bearbeiten).
 
 ### 🎯 2.5 – Mehrere Dinge gleichzeitig verändern
 
@@ -303,7 +303,7 @@ alarmButton.addEventListener("click", function () {
 
 Wenn der Button `removeButton` angeklickt wird, soll das Element `energy` verschwinden.
 
-Lies bei Bedarf nochmals, wie man [ein HTML-Element entfernt](#ein-html-element-entfernen). Verwende dafür [`remove()`](./8-cheatsheet#html-elemente-bearbeiten).
+Lies bei Bedarf nochmals, wie man [ein HTML-Element entfernt](#ein-html-element-entfernen). Verwende dafür [`remove()`](./9-cheatsheet#html-elemente-bearbeiten).
 
 Beachte: Nach einem Neuladen der Seite ist die Energie wieder da. Das HTML definiert den Startzustand der Seite neu.
 
@@ -316,10 +316,10 @@ Die benötigte Theorie findest du unter [Ein HTML-Element entfernen](#ein-html-e
 Gehe dabei wie folgt vor:
 
 - Erstelle im HTML einen neuen Button mit der ID `destroyPlanetButton`.
-- Wähle den neuen Button mit [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) aus.
+- Wähle den neuen Button mit [`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) aus.
 - Wähle den Hintergrundplaneten aus.
 - Füge dem Button einen Click Event Listener hinzu.
-- Entferne darin den Hintergrundplaneten mit [`remove()`](./8-cheatsheet#html-elemente-bearbeiten).
+- Entferne darin den Hintergrundplaneten mit [`remove()`](./9-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp für das HTML</summary>
@@ -352,7 +352,7 @@ Dein Modus soll:
 Mögliche Ideen:
 
 - Nachtmodus
-- Party-Modus – später kannst du mit [`setInterval(...)`](./6-listen-und-loops#wiederholung-nach-zeit) die Farben automatisch wiederholt wechseln
+- Party-Modus – später kannst du mit [`setInterval(...)`](./7-listen-und-loops#wiederholung-nach-zeit) die Farben automatisch wiederholt wechseln
 - Sicherheitsmodus
 - Roboter-Wartung
 - Weltraum-Notfall
@@ -367,9 +367,9 @@ HTML und CSS bestimmen, wie die Weltraum-Szene am Anfang aussieht. JavaScript ma
 
 Du kannst nun:
 
-- Elemente mit [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) auswählen,
-- Elemente mit JavaScript [verändern und löschen](./8-cheatsheet#html-elemente-bearbeiten) und
-- mit [`addEventListener(...)`](./8-cheatsheet#events) auf Klicks reagieren.
+- Elemente mit [`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) auswählen,
+- Elemente mit JavaScript [verändern und löschen](./9-cheatsheet#html-elemente-bearbeiten) und
+- mit [`addEventListener(...)`](./9-cheatsheet#events) auf Klicks reagieren.
 
 In einem Spiel müssen Bewegung, Tastatur und Kollisionen ständig geprüft werden. Dafür verwenden wir im nächsten Kapitel den Game Loop.
 
@@ -378,8 +378,8 @@ In einem Spiel müssen Bewegung, Tastatur und Kollisionen ständig geprüft werd
 Die gleichen Schritte werden auch in echten Webseiten verwendet. In einem Onlineshop kann zum Beispiel neben jedem Produkt im Warenkorb ein Knopf **Entfernen** stehen:
 
 1. JavaScript wählt den Entfernen-Knopf und das zugehörige Produkt aus.
-2. Ein [`addEventListener(...)`](./8-cheatsheet#events) wartet auf den Klick.
-3. Nach dem Klick entfernt [`remove()`](./8-cheatsheet#html-elemente-bearbeiten) das Produkt aus der sichtbaren Liste.
-4. Mit [`textContent`](./8-cheatsheet#html-elemente-bearbeiten) kann JavaScript danach die angezeigte Anzahl der Produkte aktualisieren.
+2. Ein [`addEventListener(...)`](./9-cheatsheet#events) wartet auf den Klick.
+3. Nach dem Klick entfernt [`remove()`](./9-cheatsheet#html-elemente-bearbeiten) das Produkt aus der sichtbaren Liste.
+4. Mit [`textContent`](./9-cheatsheet#html-elemente-bearbeiten) kann JavaScript danach die angezeigte Anzahl der Produkte aktualisieren.
 
 Das Thema ist anders als beim Weltraum-Roboter, aber das Muster bleibt gleich: **Elemente auswählen, auf ein Event warten und eine Aktion ausführen.**

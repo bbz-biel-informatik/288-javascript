@@ -1,8 +1,8 @@
-# 7 - Funktionen
+# 8 - Funktionen
 
 Eine Funktion fasst mehrere Befehle unter einem Namen zusammen. Wir können diesen Code danach gezielt aufrufen und wiederverwenden.
 
-Die Schreibweise findest du auch im Abschnitt [Funktionen](./8-cheatsheet#funktionen) des Cheatsheets.
+Die Schreibweise findest du auch im Abschnitt [Funktionen](./9-cheatsheet#funktionen) des Cheatsheets.
 
 ## Lernziele
 
@@ -21,7 +21,7 @@ function updateScore() {
 }
 ```
 
-Mit [`function updateScore()`](./8-cheatsheet#funktionen) definieren wir die Funktion. Der Code zwischen `{` und `}` wird dabei noch nicht ausgeführt.
+Mit [`function updateScore()`](./9-cheatsheet#funktionen) definieren wir die Funktion. Der Code zwischen `{` und `}` wird dabei noch nicht ausgeführt.
 
 Erst dieser Befehl ruft die Funktion auf:
 
@@ -120,7 +120,7 @@ gameLoop();
 
 Kleine, passend benannte Funktionen machen sichtbar, welche Aufgaben in jedem Durchlauf erledigt werden.
 
-Den vollständigen Aufbau mit [`requestAnimationFrame(...)`](./8-cheatsheet#listen-und-loops) findest du im Kapitel [Game Loop](./3-game-loop).
+Den vollständigen Aufbau mit [`requestAnimationFrame(...)`](./9-cheatsheet#listen-und-loops) findest du im Kapitel [Game Loop](./3-game-loop).
 
 Merke:
 

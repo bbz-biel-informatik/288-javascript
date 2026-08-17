@@ -1,10 +1,10 @@
-# 9 - Debugging
+# 10 - Debugging
 
 Beim Programmieren funktioniert etwas oft nicht beim ersten Versuch. Das ist normal. **Debugging** bedeutet, einen Fehler systematisch zu suchen, zu verstehen und zu beheben.
 
 Der JavaScript-Goblin verändert die Webseite im Hintergrund. Wenn er unterwegs stolpert, hinterlässt er meistens Hinweise in der Browser-Konsole. Wir müssen diese Hinweise lesen und Schritt für Schritt herausfinden, wo das Problem liegt.
 
-Den wichtigsten Debugging-Befehl findest du auch im Abschnitt [Debugging](./8-cheatsheet#debugging) des Cheatsheets.
+Den wichtigsten Debugging-Befehl findest du auch im Abschnitt [Debugging](./9-cheatsheet#debugging) des Cheatsheets.
 
 ## Bevor du nach einem Fehler suchst
 
@@ -47,7 +47,7 @@ Lies die Meldung langsam. Du musst nicht jedes englische Wort verstehen. Der Nam
 
 ## Mit `console.log(...)` prüfen, was passiert
 
-Mit [`console.log(...)`](./8-cheatsheet#debugging) kannst du Nachrichten und Werte in der Konsole anzeigen.
+Mit [`console.log(...)`](./9-cheatsheet#debugging) kannst du Nachrichten und Werte in der Konsole anzeigen.
 
 ```js
 console.log("JavaScript wurde gestartet");
@@ -72,7 +72,7 @@ let player = document.querySelector("#player");
 console.log("Player:", player);
 ```
 
-Die Befehle [`let`](./8-cheatsheet#variablen) und [`document.querySelector(...)`](./8-cheatsheet#html-elemente-auswahlen) findest du ebenfalls im Cheatsheet.
+Die Befehle [`let`](./9-cheatsheet#variablen) und [`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) findest du ebenfalls im Cheatsheet.
 
 Zeigt die Konsole das HTML-Element, wurde es gefunden. Zeigt sie `null`, passt der Selektor nicht zu deinem HTML. Prüfe dann:
 
@@ -93,7 +93,7 @@ button.addEventListener("click", function() {
 });
 ```
 
-Den [`addEventListener(...)`](./8-cheatsheet#events) findest du im Cheatsheet.
+Den [`addEventListener(...)`](./9-cheatsheet#events) findest du im Cheatsheet.
 
 * Erscheint die Nachricht, funktioniert das Event. Der Fehler liegt wahrscheinlich bei der Aktion danach.
 * Erscheint die Nachricht nicht, prüfe den ausgewählten Button und den Event Listener.
@@ -151,7 +151,7 @@ JavaScript kann den Code nicht lesen. Häufig fehlt kurz vor der markierten Stel
 TypeError: ... is not a function
 ```
 
-JavaScript versucht etwas wie eine Funktion aufzurufen. Prüfe den Funktionsnamen und seine Schreibweise. Vergleiche den Befehl mit dem [Cheatsheet](./8-cheatsheet).
+JavaScript versucht etwas wie eine Funktion aufzurufen. Prüfe den Funktionsnamen und seine Schreibweise. Vergleiche den Befehl mit dem [Cheatsheet](./9-cheatsheet).
 
 ## Fehler systematisch eingrenzen
 
