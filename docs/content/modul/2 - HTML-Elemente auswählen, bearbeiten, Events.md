@@ -114,7 +114,7 @@ Der JavaScript-Roboter steht also nicht die ganze Zeit vor dem Knopf und fragt n
 
 **Was bedeutet `function()` im Event Listener?**
 
-Das ist eine Funktion. Sie enthält den Code, der beim Event ausgeführt wird. Den genauen Aufbau erklären wir später im Kapitel [Funktionen](./8-funktionen).
+Das ist eine Funktion. Sie enthält den Code, der beim Event ausgeführt wird. Den genauen Aufbau erklären wir später im Kapitel [Funktionen](./7-funktionen).
 
 ### HTML Elemente verändern
 
@@ -352,7 +352,7 @@ Dein Modus soll:
 Mögliche Ideen:
 
 - Nachtmodus
-- Party-Modus – später kannst du mit [`setInterval(...)`](./7-listen-und-loops#wiederholung-nach-zeit) die Farben automatisch wiederholt wechseln
+- Party-Modus – später kannst du mit [`setInterval(...)`](./8-listen-und-loops#wiederholung-nach-zeit) die Farben automatisch wiederholt wechseln
 - Sicherheitsmodus
 - Roboter-Wartung
 - Weltraum-Notfall

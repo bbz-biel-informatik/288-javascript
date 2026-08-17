@@ -1,4 +1,4 @@
-# 7 - Listen und Loops
+# 8 - Listen und Loops
 
 Listen fassen mehrere Werte zusammen. Loops führen Code wiederholt aus. Zusammen helfen sie uns, viele Spielelemente mit wenig Code zu bearbeiten.
 
