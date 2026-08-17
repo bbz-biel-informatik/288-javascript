@@ -135,17 +135,31 @@ h1 {
   background-color: #39415f;
 }
 
-#statusText {
+.status-display {
   width: 360px;
+  display: grid;
+  gap: 10px;
+}
+
+#statusText,
+#gameStatus {
   margin: 0;
-  padding: 15px;
+  padding: 12px 15px;
   border: 3px solid #1c2032;
   border-radius: 8px;
-  color: #51d88a;
   background-color: #0b1020;
   font-family: monospace;
   font-weight: bold;
   text-align: center;
+}
+
+#statusText {
+  color: #51d88a;
+}
+
+#gameStatus {
+  color: #ffd166;
+  letter-spacing: 0.04em;
 }
 
 .button-row {
@@ -238,7 +252,7 @@ h1 {
     flex-direction: column;
   }
 
-  #statusText {
+  .status-display {
     width: 100%;
   }
 }
