@@ -1,5 +1,14 @@
 # 5 - Variablen
 
+::: tip 📦 Projektstand zu Beginn dieses Kapitels
+Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 4 - If-Else:
+
+👉 [Projektstand nach Kapitel 4 herunterladen](/assets/zips/space-robot-loesung-4.zip)
+
+Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
+bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
+:::
+
 Unser Roboter kann sich bewegen und Energie einsammeln. Ein Spiel braucht aber auch Werte, die sich während des Spielens verändern. Der Roboter soll deshalb eine bestimmte Anzahl Leben besitzen:
 
 1. Zu Beginn hat der Roboter `1000` Leben.
@@ -296,38 +305,26 @@ let life = 1000;
 function gameLoop() {
   if (isKeyPressed("ArrowRight")) {
     moveElement(robot, speed, 0);
-    robot.src = "./assets/robot-walk.gif";
     // NEU: Beim Fahren ein Leben abziehen
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowLeft")) {
     moveElement(robot, -speed, 0);
-    robot.src = "./assets/robot-walk.gif";
     // NEU: Beim Fahren ein Leben abziehen
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, speed);
-    robot.src = "./assets/robot-walk.gif";
     // NEU: Beim Fahren ein Leben abziehen
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -speed);
-    robot.src = "./assets/robot-walk.gif";
     // NEU: Beim Fahren ein Leben abziehen
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isColliding(robot, energy)) {

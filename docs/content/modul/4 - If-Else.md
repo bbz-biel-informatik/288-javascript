@@ -1,5 +1,14 @@
 # 4 - If-Else
 
+::: tip 📦 Projektstand zu Beginn dieses Kapitels
+Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 3 - Game Loop:
+
+👉 [Projektstand nach Kapitel 3 herunterladen](/assets/zips/space-robot-loesung-3.zip)
+
+Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
+bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
+:::
+
 Wir wissen nun, wie wir Objekte bewegen können. Ein Spiel ist aber kein Film, sondern reagiert auf Eingaben. Die nächste Frage ist also: Wie können wir den Roboter mit den Tasten steuern? Dazu brauchen wir `if` und `else`. Übersetzt bedeuten diese Wörter **wenn** und **sonst**.
 
 ## Lernziele
@@ -176,72 +185,7 @@ Die verwendeten Befehle findest du im Cheatsheet unter [If / Else](./9-cheatshee
 
 </details>
 
-### 🎯 4.2 – Roboter animieren
-
-Lass das Bild des Roboters passend zur Bewegung wechseln:
-
-- Während eine Pfeiltaste gedrückt ist, soll das animierte Fahrbild `robot-walk.gif` angezeigt werden.
-- Wenn keine Pfeiltaste gedrückt ist, soll wieder das normale Bild `robot.png` erscheinen.
-
-Lege das Bild `robot-walk.gif` zuerst im Ordner `assets` deines Projekts ab.
-
-<details>
-<summary>💡 Tipp anzeigen</summary>
-
-Mit [`src`](./9-cheatsheet#html-elemente-bearbeiten) kannst du die Bilddatei eines ausgewählten HTML-Elements wechseln:
-
-```js
-robot.src = "./assets/robot-walk.gif";
-```
-
-Setze das Fahrbild in jeden `if`-Block, der den Roboter bewegt. Ergänze bei jeder Richtung einen `else`-Block, der wieder das normale Bild `./assets/robot.png` setzt.
-
-</details>
-
-<details>
-<summary>✅ Lösung anzeigen</summary>
-
-```js
-function gameLoop() {
-  if (isKeyPressed("ArrowRight")) {
-    moveElement(robot, 2, 0);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
-  }
-
-  if (isKeyPressed("ArrowLeft")) {
-    moveElement(robot, -2, 0);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
-  }
-
-  if (isKeyPressed("ArrowUp")) {
-    moveElement(robot, 0, 2);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
-  }
-
-  if (isKeyPressed("ArrowDown")) {
-    moveElement(robot, 0, -2);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
-  }
-
-  window.requestAnimationFrame(gameLoop);
-}
-
-gameLoop();
-```
-
-Die Entscheidung steht unter [If / Else](./9-cheatsheet#if-else). Das Ändern von `src` findest du bei [HTML-Elemente bearbeiten](./9-cheatsheet#html-elemente-bearbeiten).
-
-</details>
-
-### 🎯 4.3 – Energie einsammeln
+### 🎯 4.2 – Energie einsammeln
 
 Lass die Energiekiste verschwinden, wenn der Roboter sie berührt.
 
@@ -270,30 +214,18 @@ let energy = document.querySelector("#energy");
 function gameLoop() {
   if (isKeyPressed("ArrowRight")) {
     moveElement(robot, 2, 0);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowLeft")) {
     moveElement(robot, -2, 0);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, 2);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -2);
-    robot.src = "./assets/robot-walk.gif";
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   // NEU: Kollision prüfen und Energiekiste löschen

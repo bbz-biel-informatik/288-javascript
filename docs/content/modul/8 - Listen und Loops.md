@@ -1,5 +1,14 @@
 # 8 - Listen und Loops
 
+::: tip 📦 Projektstand zu Beginn dieses Kapitels
+Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 7 - Funktionen:
+
+👉 [Projektstand nach Kapitel 7 herunterladen](/assets/zips/space-robot-loesung-7.zip)
+
+Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
+bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
+:::
+
 Listen fassen mehrere Werte zusammen. Loops führen Code wiederholt aus. Zusammen helfen sie uns, viele Spielelemente mit wenig Code zu bearbeiten.
 
 Die wichtigsten Schreibweisen findest du im Abschnitt [Listen und Loops](./9-cheatsheet#listen-und-loops) des Cheatsheets.

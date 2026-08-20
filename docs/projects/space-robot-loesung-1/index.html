@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weltraum-Roboter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <h1>Weltraum-Roboter</h1>
+
+      <!-- Space Scene -->
+      <section id="spaceScene" class="space-scene">
+        <div id="backgroundPlanet" class="background-planet"></div>
+
+        <div class="star star-1"></div>
+        <div class="star star-2"></div>
+        <div class="star star-3"></div>
+        <div class="star star-4"></div>
+        <div class="star star-5"></div>
+
+        <div class="ground-planet"></div>
+        <img id="robot" src="./assets/robot.png" />
+
+        <div id="energy" class="energy-crate">
+          <span class="crate-icon">⚡</span>
+          <span>Energie</span>
+        </div>
+      </section>
+
+      <!-- Control Panel -->
+      <section class="control-panel">
+        <div class="status-display">
+          <p id="statusText">Roboter wartet auf einen Befehl.</p>
+          <p id="gameStatus">Spiel läuft.</p>
+        </div>
+
+        <div class="button-row">
+          <div class="control">
+            <button
+              id="blueButton"
+              class="control-button blue"
+              type="button"
+            ></button>
+            <span class="control-label">Licht</span>
+          </div>
+
+          <div class="control">
+            <button
+              id="alarmButton"
+              class="control-button red"
+              type="button"
+            ></button>
+            <span class="control-label">Alarm</span>
+          </div>
+
+          <div class="control">
+            <button
+              id="statusButton"
+              class="control-button green"
+              type="button"
+            ></button>
+            <span class="control-label">Status</span>
+          </div>
+
+          <div class="control">
+            <button
+              id="sizeButton"
+              class="control-button yellow"
+              type="button"
+            ></button>
+            <span class="control-label">Boost</span>
+          </div>
+
+          <div class="control">
+            <button
+              id="removeButton"
+              class="control-button orange"
+              type="button"
+            ></button>
+            <span class="control-label">Energie</span>
+          </div>
+
+          <div class="control">
+            <button
+              id="modeButton"
+              class="control-button purple"
+              type="button"
+            ></button>
+            <span class="control-label">Modus</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://bbz-biel-informatik.github.io/288-javascript/game-framework/bbzgame.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

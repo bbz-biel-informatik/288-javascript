@@ -1,5 +1,14 @@
 # 2 - HTML-Elemente auswählen, bearbeiten, Events
 
+::: tip 📦 Projektstand zu Beginn dieses Kapitels
+Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 1 - JavaScript Intro:
+
+👉 [Projektstand nach Kapitel 1 herunterladen](/assets/zips/space-robot-loesung-1.zip)
+
+Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
+bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
+:::
+
 Nach deiner ersten Interaktion schauen wir nun genauer an, was dabei im Hintergrund geschieht. Anschliessend programmierst du weitere Interaktionen für den Weltraum-Roboter.
 
 ## Lernziele

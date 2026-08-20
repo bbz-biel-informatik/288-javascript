@@ -1,5 +1,14 @@
 # 7 - Funktionen
 
+::: tip 📦 Projektstand zu Beginn dieses Kapitels
+Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 6 - Vergleiche:
+
+👉 [Projektstand nach Kapitel 6 herunterladen](/assets/zips/space-robot-loesung-6.zip)
+
+Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
+bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
+:::
+
 Unser Roboter kann sich inzwischen bewegen, Leben verlieren, Energie einsammeln und seinen Spielzustand anzeigen. Dadurch ist der Game Loop aber immer länger geworden.
 
 In diesem Kapitel räumen wir diesen Code auf. Dafür verwenden wir **Funktionen**: Eine Funktion fasst Befehle unter einem passenden Namen zusammen. Danach können wir diese Befehle mit ihrem Namen ausführen.
@@ -251,34 +260,22 @@ Rufe `moveRobot()` danach dort im Game Loop auf, wo vorher die vier Bedingungen 
 function moveRobot() {
   if (isKeyPressed("ArrowRight")) {
     moveElement(robot, speed, 0);
-    robot.src = "./assets/robot-walk.gif";
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowLeft")) {
     moveElement(robot, -speed, 0);
-    robot.src = "./assets/robot-walk.gif";
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(robot, 0, speed);
-    robot.src = "./assets/robot-walk.gif";
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(robot, 0, -speed);
-    robot.src = "./assets/robot-walk.gif";
     life -= 1;
-  } else {
-    robot.src = "./assets/robot.png";
   }
 }
 
