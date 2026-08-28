@@ -8,12 +8,15 @@ Erarbeite dir eine Idee für dein Spiel. (TBD)
 Für das Game empfiehlt sich die folgende Projektstruktur.
 
 ```
-|-- index.html          <-- Hier ist das Game Menu
-|-- index.css           <-- Hier ist das Game Menu Design
+|-- index.html          <-- Hier ist der Startbildschirm
+|-- index.css           <-- Hier ist das Design des Startbildschirms
 |-- game/
 |   |-- game.js         <-- Hier kommt der Code für das Spiel
 |   |-- game.html       <-- Hier kommen die HTML Elemente für das Spiel
 |   |-- game.css        <-- Hier ist das nötige Design für das Spiel
+|-- gameover/
+|   |-- index.html      <-- Hier ist der Gameover-Bildschirm
+|   |-- style.css       <-- Hier ist das Design des Gameover-Bildschirms
 |-- assets/           
     |-- images/         <-- Hier kommen die Grafiken/Bilder für das Spiel
     |-- sounds/         <-- Hier kommen die Sounds für das Spiel
@@ -21,6 +24,8 @@ Für das Game empfiehlt sich die folgende Projektstruktur.
 
 ### 1. Grundgerüst erstellen
 Erstelle in einem ersten Schritt die Projektstruktur mit den nötigen Dateien und Ordnern, wie oben angezeigt.
+
+Die `index.html` im Hauptordner ist der Einstieg ins Spiel. Den Gameover-Bildschirm und die Seitenwechsel ergänzen wir unter [Game UI](./2 - anleitungen#game-ui).
 
 ### 2. HTML aufsetzen und Dateien mitenander 'verbinden'
 Wir wollen nun in kleinen Schritten vorwärts gehen und sicher sein, dass unser Javascript funktioniert und verbunden ist, dass unser CSS funktioniert und verbunden ist usw. So können wir mit Confidence in's game development starten.

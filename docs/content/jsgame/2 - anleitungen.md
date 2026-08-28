@@ -662,9 +662,72 @@ Das Gameover kannn an verschiedenen Orten vorkommen. z.B bei einer Kollision, we
 ```js
 if(isColliding(player, enemy)) {
     alert("Game Over!");    // Gameover anzeigen
-    window.location.href = "/"; // Zurück zum Hauptmenü oder Seite neu laden
+    window.location.href = "../gameover/index.html"; // Gameover-Seite öffnen (siehe Game UI)
 }
 ```
+
+### Game UI
+
+Wir verwenden die Struktur aus [Erste Schritte](./1 - erste schritte#projektstruktur): Die `index.html` im Hauptordner ist der Startbildschirm, `game/` enthält das Spiel und `gameover/` den Gameover-Bildschirm. Falls `gameover/` noch fehlt, erstelle den Ordner mit den beiden Dateien:
+
+```text
+index.html
+index.css
+game/
+  game.html
+  game.css
+  game.js
+gameover/
+  index.html
+  style.css
+```
+
+**1. Startbildschirm:** Verwende die bestehende `index.html` im Hauptordner. Im `<head>` ist die CSS-Datei verknüpft:
+
+```html
+<link rel="stylesheet" href="index.css">
+```
+
+Im `<body>` stehen der Titel und der Link zum Spiel:
+
+```html
+<h1>Mein Game</h1>
+<a href="game/game.html">Spiel starten</a>
+```
+
+**2. Gameover-Bildschirm:** Erstelle in `gameover/index.html` ein HTML-Grundgerüst. Verknüpfe im `<head>` die eigene CSS-Datei:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+Im `<body>` steht:
+
+```html
+<h1>Game Over!</h1>
+<a href="../game/game.html">Nochmals spielen</a>
+<a href="../index.html">Zum Startbildschirm</a>
+```
+
+Gestalte den Startbildschirm in `index.css` und den Gameover-Bildschirm in `gameover/style.css`, zum Beispiel so:
+
+```css
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: lightblue;
+}
+```
+
+**3. Bei Gameover wechseln:** Füge in `game/game.js` dort, wo dein Spiel den Gameover-Zustand erkennt, folgenden Befehl ein (wie im Beispiel unter «Gameover»):
+
+```js
+window.location.href = "../gameover/index.html";
+```
+
+`window.location.href` öffnet die angegebene Seite. Der Pfad gilt relativ zur aktuellen HTML-Seite: `../` geht aus dem Ordner `game` eine Ebene nach oben, danach in `gameover`.
+
+Öffne zum Testen die `index.html` im Hauptordner: Start → Spiel → Gameover → nochmals spielen oder zurück zum Startbildschirm.
 
 ### Sound
 In einem Spiel dürfen Soundeffekte nicht fehlen. Zum Beispiel ein Schussgeräusch, wenn der Spieler schiesst, oder ein Explosionston, wenn ein Gegner zerstört wird.
@@ -696,9 +759,7 @@ function gameOver(){
     // Wenn der sound fertig ist, können wir z.B ein Gameover alert anzeigen.
     gameoversound.onended = function() {
         alert("Game Over!");
-        window.location.href = "/"; // Zurück zum Hauptmenü oder Seite neu laden
+        window.location.href = "../gameover/index.html"; // Gameover-Seite öffnen
     };
 }
 ``` 
-
-
