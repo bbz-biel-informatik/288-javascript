@@ -1,13 +1,6 @@
 # 3 - Game Loop
 
-::: tip 📦 Projektstand zu Beginn dieses Kapitels
-Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 2 - HTML-Elemente auswählen, bearbeiten, Events:
-
 👉 [Projektstand nach Kapitel 2 herunterladen](/assets/zips/space-robot-loesung-2.zip)
-
-Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
-bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
-:::
 
 In einer normalen Interaktion wartet JavaScript auf ein einzelnes Ereignis, zum Beispiel einen Klick. Ein Spiel muss dagegen fortlaufend prüfen, was gerade passiert. Dafür verwenden wir einen **Game Loop**.
 

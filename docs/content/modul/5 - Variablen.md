@@ -1,13 +1,6 @@
 # 5 - Variablen
 
-::: tip 📦 Projektstand zu Beginn dieses Kapitels
-Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 4 - If-Else:
-
 👉 [Projektstand nach Kapitel 4 herunterladen](/assets/zips/space-robot-loesung-4.zip)
-
-Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
-bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
-:::
 
 Unser Roboter kann sich bewegen und Energie einsammeln. Ein Spiel braucht aber auch Werte, die sich während des Spielens verändern. Der Roboter soll deshalb eine bestimmte Anzahl Leben besitzen:
 

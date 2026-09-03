@@ -1,13 +1,6 @@
 # 4 - If-Else
 
-::: tip 📦 Projektstand zu Beginn dieses Kapitels
-Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 3 - Game Loop:
-
 👉 [Projektstand nach Kapitel 3 herunterladen](/assets/zips/space-robot-loesung-3.zip)
-
-Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
-bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
-:::
 
 Wir wissen nun, wie wir Objekte bewegen können. Ein Spiel ist aber kein Film, sondern reagiert auf Eingaben. Die nächste Frage ist also: Wie können wir den Roboter mit den Tasten steuern? Dazu brauchen wir `if` und `else`. Übersetzt bedeuten diese Wörter **wenn** und **sonst**.
 

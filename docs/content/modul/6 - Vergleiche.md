@@ -1,13 +1,6 @@
 # 6 - Vergleiche
 
-::: tip 📦 Projektstand zu Beginn dieses Kapitels
-Hier ist das Weltraum-Roboter-Projekt mit allen gelösten Aufgaben aus Kapitel 5 - Variablen:
-
 👉 [Projektstand nach Kapitel 5 herunterladen](/assets/zips/space-robot-loesung-5.zip)
-
-Lade den Ordner herunter, wenn du eine Aufgabe nicht fertig gelöst hast oder etwas
-bei dir nicht funktioniert. So startest du dieses Kapitel auf dem gleichen Stand wie alle anderen.
-:::
 
 Im letzten Kapitel hast du die Variable `life` kennengelernt. Sie kann speichern, wie viele Leben der Roboter gerade besitzt:
 
