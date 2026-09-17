@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Shop</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Mini-Shop</h1>
+      <p id="warenkorb" aria-live="polite">
+        <span aria-hidden="true">🛒</span>
+        Warenkorb: <span id="anzahl">0</span>
+      </p>
+    </header>
+
+    <main>
+      <div class="produkte">
+        <article id="produkt1" class="produkt">
+          <div class="produktbild" role="img" aria-label="T-Shirt">👕</div>
+          <h2>T-Shirt</h2>
+          <p>CHF 25</p>
+          <button id="kaufen1" type="button">Kaufen</button>
+        </article>
+
+        <article id="produkt2" class="produkt">
+          <div class="produktbild" role="img" aria-label="Sneaker">👟</div>
+          <h2>Sneaker</h2>
+          <p>CHF 80</p>
+          <button id="kaufen2" type="button">Kaufen</button>
+        </article>
+
+        <article id="produkt3" class="produkt">
+          <div class="produktbild" role="img" aria-label="Rucksack">🎒</div>
+          <h2>Rucksack</h2>
+          <p>CHF 45</p>
+          <button id="kaufen3" type="button">Kaufen</button>
+        </article>
+      </div>
+
+      <p id="status" role="status">Willkommen in unserem Mini-Shop!</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
