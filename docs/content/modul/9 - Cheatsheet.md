@@ -127,26 +127,26 @@ if (score > 100) {
 
 // Vergleiche
 if (city == "Warschau")
-  // Gleichheit
-  if (city != "Warschau")
-    // Ungleichheit
-    if (score > 10)
-      // Grösser
-      if (score < 10)
-        // Kleiner
-        if (score >= 10)
-          // Grösser oder gleich
-          if (score <= 10)
-            // Kleiner oder gleich
+// Gleichheit
+if (city != "Warschau")
+// Ungleichheit
+if (score > 10)
+// Grösser
+if (score < 10)
+// Kleiner
+if (score >= 10)
+// Grösser oder gleich
+if (score <= 10)
+ // Kleiner oder gleich
 
-            // If Else aneinander reihen
-            if (score > 100) {
-              console.log("Guter score!");
-            } else if (score > 50) {
-              console.log("Nicht schlecht!");
-            } else {
-              console.log("Du kannst es besser!");
-            }
+// If Else aneinander reihen
+if (score > 100) {
+  console.log("Guter score!");
+} else if (score > 50) {
+  console.log("Nicht schlecht!");
+} else {
+  console.log("Du kannst es besser!");
+}            }
 ```
 
 ## Listen und Loops
