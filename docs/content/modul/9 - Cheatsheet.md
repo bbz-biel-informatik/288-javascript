@@ -61,16 +61,6 @@ newElement.textContent = "New Element"; // Element bearbeiten
 document.body.appendChild(newElement); // Ins Dokument einfügen
 ```
 
-## Eingabefeld auslesen
-
-```js
-// Wähle ein Eingabefeld aus.
-let commandInput = document.querySelector("#commandInput");
-
-// Lies den eingegebenen Text mit value aus.
-let command = commandInput.value;
-```
-
 ## Events
 
 ```js
@@ -96,6 +86,7 @@ document.addEventListener("keydown", function (event) {
 ```
 
 ## Variablen
+
 Variablen sind Platzhalter für Werte. Es gibt verschiedene Arten von Variablen, zum Beispiel:
 
 - Zahlen
@@ -111,10 +102,10 @@ zahl = 2; // Variable verändern
 let neueZahl = zahl + 10; // Variable berechnen
 
 // Berechnungen
-zahl + 10; // Addition
-zahl - 10; // Subtraktion
-zahl * 10; // Multiplikation
-zahl / 10; // Division
+zahl = zahl + 10; // Addition
+zahl = zahl - 10; // Subtraktion
+zahl = zahl * 10; // Multiplikation
+zahl = zahl / 10; // Division
 
 // Kurzschreibweisen zum Verändern
 zahl += 1; // gleich wie: zahl = zahl + 1
@@ -135,24 +126,28 @@ if (score > 100) {
 }
 
 // Vergleiche
-if (city == "Warschau") // Gleichheit
-if (city != "Warschau") // Ungleichheit
-if (score > 10) // Grösser
-if (score < 10) // Kleiner
-if (score >= 10) // Grösser oder gleich
-if (score <= 10) // Kleiner oder gleich
+if (city == "Warschau")
+  // Gleichheit
+  if (city != "Warschau")
+    // Ungleichheit
+    if (score > 10)
+      // Grösser
+      if (score < 10)
+        // Kleiner
+        if (score >= 10)
+          // Grösser oder gleich
+          if (score <= 10)
+            // Kleiner oder gleich
 
-// If Else aneinander reihen
-if (score > 100) {
-  console.log("Guter score!");
-} else if (score > 50) {
-  console.log("Nicht schlecht!");
-} else {
-  console.log("Du kannst es besser!");
-}
-
+            // If Else aneinander reihen
+            if (score > 100) {
+              console.log("Guter score!");
+            } else if (score > 50) {
+              console.log("Nicht schlecht!");
+            } else {
+              console.log("Du kannst es besser!");
+            }
 ```
-
 
 ## Listen und Loops
 
@@ -165,13 +160,13 @@ items.forEach(function (item) {
   item.style.color = "red";
 });
 
-//for loop: Zähle von 0 bis 10
+// for loop: Zähle von 0 bis 10
 for (let i = 0; i <= 10; i++) {
   console.log(i); // i ist die Variable, welche von 0 bis 10 zählt
 }
 
 // Interval loop
-setInterval(function() {
+setInterval(function () {
   console.log("Dieser Code wird jede Sekunde ausgeführt");
 }, 1000); // 1000 ms = 1 Sekunde
 
@@ -182,7 +177,6 @@ function gameLoop() {
 }
 
 gameLoop();
-
 ```
 
 ## Funktionen
@@ -214,7 +208,6 @@ function styleElement(element, color, size) {
 // Funktion mit Argumenten aufrufen
 let myElement = document.querySelector("#myElement");
 styleElement(myElement, "red", 100); // Das Element wird rot und 100px gross
-
 ```
 
 ## Debugging
