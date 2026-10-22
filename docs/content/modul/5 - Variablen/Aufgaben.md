@@ -41,7 +41,7 @@ function gameLoop() {
 gameLoop();
 ```
 
-Ändere nur den Wert von `speed` und teste, wie sich die Bewegung verändert. Die verwendeten Befehle findest du unter [Variablen](../9-cheatsheet#variablen), [If / Else](../9-cheatsheet#if-else) und in der Dokumentation zu [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Ändere nur den Wert von `speed` und teste, wie sich die Bewegung verändert. Die verwendeten Befehle findest du unter [Variablen](../10-cheatsheet#variablen), [If / Else](../10-cheatsheet#if-else) und in der Dokumentation zu [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 </details>
 
@@ -68,7 +68,7 @@ Die Leben sollen nur sinken, wenn sich der Roboter tatsächlich bewegt. Suche de
 
 Setze die Rechnung zum Verringern von `life` jeweils **in denselben `if`-Block** wie den Bewegungsbefehl. Ausserhalb der Bedingung würden die Leben auch sinken, wenn keine Taste gedrückt ist. Im `else`-Block würden sie genau dann sinken, wenn die Taste nicht gedrückt ist.
 
-Die Schreibweise einer Bedingung findest du unter [If / Else](../9-cheatsheet#if-else), das Rechnen mit dem aktuellen Wert unter [Werte ändern](./inhalt#werte-andern).
+Die Schreibweise einer Bedingung findest du unter [If / Else](../10-cheatsheet#if-else), das Rechnen mit dem aktuellen Wert unter [Werte ändern](./inhalt#werte-andern).
 
 </details>
 

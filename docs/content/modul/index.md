@@ -13,5 +13,6 @@ Die Kapitel mit Aufgaben sind in zwei Unterkapitel aufgeteilt: Im **Inhalt** ste
 - 6 - Vergleiche: [Inhalt](/modul/6-vergleiche/inhalt) · [Aufgaben](/modul/6-vergleiche/aufgaben)
 - 7 - Funktionen: [Inhalt](/modul/7-funktionen/inhalt) · [Aufgaben](/modul/7-funktionen/aufgaben)
 - 8 - Listen und Loops: [Inhalt](/modul/8-listen-und-loops/inhalt) · [Aufgaben](/modul/8-listen-und-loops/aufgaben)
-- [9 - Cheatsheet](/modul/9-cheatsheet)
-- [10 - Debugging](/modul/10-debugging)
+- [9 - Übungen](/modul/9-uebungen)
+- [10 - Cheatsheet](/modul/10-cheatsheet)
+- [11 - Debugging](/modul/11-debugging)

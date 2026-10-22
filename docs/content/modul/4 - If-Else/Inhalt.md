@@ -35,7 +35,7 @@ JavaScript geht dabei Schritt für Schritt vor:
 4. [`moveElement(robot, 2, 0)`](/jsgame/3-framework-docs#moveelement) bewegt den Roboter nach rechts.
 5. Ist die Taste nicht gedrückt, überspringt JavaScript den Bewegungsbefehl.
 
-Die Schreibweise von [`if`](../9-cheatsheet#if-else) findest du auch im Cheatsheet. Die beiden Spielfunktionen sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) dokumentiert.
+Die Schreibweise von [`if`](../10-cheatsheet#if-else) findest du auch im Cheatsheet. Die beiden Spielfunktionen sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) dokumentiert.
 
 <details>
 <summary>Analogie: Der Roboter steht an einer Kreuzung</summary>
@@ -68,7 +68,7 @@ JavaScript wählt genau einen Weg:
 
 Ein `else` ist nicht immer nötig. Soll bei der Antwort «nein» einfach nichts passieren, lassen wir es weg. Genau das machen wir bei den folgenden Bewegungs- und Kollisionsabfragen.
 
-Die Entscheidung ist unter [If / Else](../9-cheatsheet#if-else), das Verändern des Textes unter [HTML-Elemente bearbeiten](../9-cheatsheet#html-elemente-bearbeiten) beschrieben. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Die Entscheidung ist unter [If / Else](../10-cheatsheet#if-else), das Verändern des Textes unter [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten) beschrieben. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 ### Warum steht die Abfrage im Game Loop?
 
@@ -88,7 +88,7 @@ gameLoop();
 
 Bei jedem neuen Bild fragt der Game Loop erneut nach der Taste. Dadurch beginnt die Bewegung beim Drücken und endet beim Loslassen.
 
-Den Aufbau des [`gameLoop`](../9-cheatsheet#listen-und-loops) findest du im Cheatsheet. Die Entscheidung steht unter [If / Else](../9-cheatsheet#if-else), die Spielfunktionen stehen in der Dokumentation bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Den Aufbau des [`gameLoop`](../10-cheatsheet#listen-und-loops) findest du im Cheatsheet. Die Entscheidung steht unter [If / Else](../10-cheatsheet#if-else), die Spielfunktionen stehen in der Dokumentation bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 ### Mehrere Tasten prüfen
 
@@ -106,7 +106,7 @@ if (isKeyPressed("ArrowLeft")) {
 
 Die beiden `if`-Anweisungen werden unabhängig voneinander geprüft. JavaScript kann deshalb auch mehrere gleichzeitig gedrückte Tasten erkennen.
 
-Die Schreibweise findest du unter [If / Else](../9-cheatsheet#if-else). Die Tastennamen und Bewegungsrichtungen stehen bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Die Schreibweise findest du unter [If / Else](../10-cheatsheet#if-else). Die Tastennamen und Bewegungsrichtungen stehen bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 ### Kollisionen sind ebenfalls Fragen
 
@@ -122,7 +122,7 @@ if (isColliding(robot, energy)) {
 
 > Berühren sich der Roboter und die Energiekiste?
 
-Wenn die Antwort stimmt, färbt [`robot.style.backgroundColor`](../9-cheatsheet#html-elemente-bearbeiten) den Hintergrund des Roboters rot. Wenn sie nicht stimmt, wird der Befehl übersprungen.
+Wenn die Antwort stimmt, färbt [`robot.style.backgroundColor`](../10-cheatsheet#html-elemente-bearbeiten) den Hintergrund des Roboters rot. Wenn sie nicht stimmt, wird der Befehl übersprungen.
 
 Auch diese Frage gehört in den Game Loop. Der Roboter bewegt sich fortlaufend, deshalb kann die Kollision bei jedem neuen Bild an einer anderen Stelle passieren.
 

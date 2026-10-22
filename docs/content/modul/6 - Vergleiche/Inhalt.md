@@ -45,7 +45,7 @@ Merke:
 
 > Wir vergleichen Werte in einer `if`-Anweisung, um Entscheidungen zu treffen. Ein Vergleich ist immer wahr oder falsch.
 
-Die Schreibweise von [`if`](../9-cheatsheet#if-else) steht im Cheatsheet. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Die Schreibweise von [`if`](../10-cheatsheet#if-else) steht im Cheatsheet. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 ## Werte vergleichen
 
@@ -69,7 +69,7 @@ life <= 100; // kleiner oder gleich
 | `life >= 1000` | Hat der Roboter 1000 oder mehr Leben?   |
 | `life <= 100`  | Hat der Roboter höchstens 100 Leben?    |
 
-Die Vergleichszeichen findest du unter [If / Else](../9-cheatsheet#if-else) im Cheatsheet.
+Die Vergleichszeichen findest du unter [If / Else](../10-cheatsheet#if-else) im Cheatsheet.
 
 ## Ein Vergleich beantwortet eine Frage
 
@@ -116,7 +116,7 @@ Wir lesen diesen Code so:
 
 `gameStatus` ist eine zusätzliche Anzeige für den Spielzustand. Sie ist im Starterprojekt bereits vorbereitet, damit `statusText` weiterhin die aktuelle Anzahl Leben anzeigen kann.
 
-Die Entscheidung steht unter [If / Else](../9-cheatsheet#if-else). Das Verändern des Textes findest du bei [`textContent`](../9-cheatsheet#html-elemente-bearbeiten).
+Die Entscheidung steht unter [If / Else](../10-cheatsheet#if-else). Das Verändern des Textes findest du bei [`textContent`](../10-cheatsheet#html-elemente-bearbeiten).
 
 ## Zusammenfassung
 

@@ -25,7 +25,7 @@ life >= 600;
 life <= 100;
 ```
 
-Die Bedeutung aller Vergleichszeichen findest du unter [If / Else](../9-cheatsheet#if-else) im Cheatsheet.
+Die Bedeutung aller Vergleichszeichen findest du unter [If / Else](../10-cheatsheet#if-else) im Cheatsheet.
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
@@ -45,7 +45,7 @@ Die Bedeutung aller Vergleichszeichen findest du unter [If / Else](../9-cheatshe
 
 `statusText` zeigt bereits die aktuelle Anzahl Leben an. Für Meldungen wie `Volle Energie` oder `Game Over` ist im Starterprojekt deshalb die zusätzliche Anzeige `gameStatus` vorbereitet.
 
-Wähle das Element in `script.js` mit [`document.querySelector(...)`](../9-cheatsheet#html-elemente-auswahlen) aus:
+Wähle das Element in `script.js` mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) aus:
 
 ```js
 let gameStatus = document.querySelector("#gameStatus");
@@ -70,7 +70,7 @@ if (life >= 800) {
 }
 ```
 
-Ergänze danach eine weitere Bedingung und den Fall für alle übrigen Werte. Die Schreibweise findest du unter [If / Else](../9-cheatsheet#if-else).
+Ergänze danach eine weitere Bedingung und den Fall für alle übrigen Werte. Die Schreibweise findest du unter [If / Else](../10-cheatsheet#if-else).
 
 </details>
 
@@ -97,6 +97,6 @@ if (life >= 800) {
 | `600`           | `Roboter beschädigt` |
 | `0`             | `Game Over`          |
 
-Die verwendeten Befehle findest du unter [Variablen](../9-cheatsheet#variablen), [If / Else](../9-cheatsheet#if-else) und [HTML-Elemente bearbeiten](../9-cheatsheet#html-elemente-bearbeiten).
+Die verwendeten Befehle findest du unter [Variablen](../10-cheatsheet#variablen), [If / Else](../10-cheatsheet#if-else) und [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten).
 
 </details>

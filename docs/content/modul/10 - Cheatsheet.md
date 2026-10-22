@@ -1,4 +1,4 @@
-# 9 - JavaScript Cheatsheet
+# 10 - JavaScript Cheatsheet
 
 ## Javascript in HTML einbinden
 
@@ -44,6 +44,9 @@ myElement.style.width = "100px"; // Grösser - kleiner machen
 // Inhalt verändern
 myElement.textContent = "Hello";
 myElement.innerHTML = "<b>Hello</b>";
+
+// Text aus einem Eingabefeld (<input>) lesen
+let text = myInput.value;
 
 // Bilddatei verändern
 myElement.src = "./assets/anderes-bild.png";

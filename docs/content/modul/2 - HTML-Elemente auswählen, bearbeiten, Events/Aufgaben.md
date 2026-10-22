@@ -21,7 +21,7 @@ blueButton.addEventListener("click", function () {
 });
 ```
 
-Die Befehle sind im Cheatsheet unter [Events](../9-cheatsheet#events) und [HTML-Elemente bearbeiten](../9-cheatsheet#html-elemente-bearbeiten) erklärt.
+Die Befehle sind im Cheatsheet unter [Events](../10-cheatsheet#events) und [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten) erklärt.
 
 </details>
 
@@ -47,7 +47,7 @@ Um den Alarmbutton auszuwählen, schreibe:
 let alarmButton = document.querySelector("#alarmButton");
 ```
 
-Verwende danach [`addEventListener(...)`](../9-cheatsheet#events) und [`style.backgroundColor`](../9-cheatsheet#html-elemente-bearbeiten).
+Verwende danach [`addEventListener(...)`](../10-cheatsheet#events) und [`style.backgroundColor`](../10-cheatsheet#html-elemente-bearbeiten).
 
 </details>
 
@@ -71,7 +71,7 @@ alarmButton.addEventListener("click", function () {
 
 Wenn der Button `statusButton` angeklickt wird, soll im Element `statusText` der Text `Roboter ist bereit!` erscheinen.
 
-Verwende dafür [`textContent`](../9-cheatsheet#html-elemente-bearbeiten).
+Verwende dafür [`textContent`](../10-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp: Codegerüst</summary>
@@ -94,7 +94,7 @@ statusButton.addEventListener("click", function () {
 
 Wenn der Button `sizeButton` angeklickt wird, soll der Roboter mit der ID `robot` breiter werden. Denke wiederum an die drei Teile, welche wir brauchen.
 
-Lies bei Bedarf nochmals die Theorie zum [Verändern von HTML-Elementen](./inhalt#html-elemente-verandern). Was du verändern musst, ist [`style.width`](../9-cheatsheet#html-elemente-bearbeiten).
+Lies bei Bedarf nochmals die Theorie zum [Verändern von HTML-Elementen](./inhalt#html-elemente-verandern). Was du verändern musst, ist [`style.width`](../10-cheatsheet#html-elemente-bearbeiten).
 
 ## 🎯 2.5 – Mehrere Dinge gleichzeitig verändern
 
@@ -118,7 +118,7 @@ alarmButton.addEventListener("click", function () {
 
 Wenn der Button `removeButton` angeklickt wird, soll das Element `energy` verschwinden.
 
-Lies bei Bedarf nochmals, wie man [ein HTML-Element entfernt](./inhalt#ein-html-element-entfernen). Verwende dafür [`remove()`](../9-cheatsheet#html-elemente-bearbeiten).
+Lies bei Bedarf nochmals, wie man [ein HTML-Element entfernt](./inhalt#ein-html-element-entfernen). Verwende dafür [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
 
 Beachte: Nach einem Neuladen der Seite ist die Energie wieder da. Das HTML definiert den Startzustand der Seite neu.
 
@@ -131,10 +131,10 @@ Die benötigte Theorie findest du unter [Ein HTML-Element entfernen](./inhalt#ei
 Gehe dabei wie folgt vor:
 
 - Erstelle im HTML einen neuen Button mit der ID `destroyPlanetButton`.
-- Wähle den neuen Button mit [`document.querySelector(...)`](../9-cheatsheet#html-elemente-auswahlen) aus.
+- Wähle den neuen Button mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) aus.
 - Wähle den Hintergrundplaneten aus.
 - Füge dem Button einen Click Event Listener hinzu.
-- Entferne darin den Hintergrundplaneten mit [`remove()`](../9-cheatsheet#html-elemente-bearbeiten).
+- Entferne darin den Hintergrundplaneten mit [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp für das HTML</summary>

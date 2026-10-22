@@ -2,7 +2,7 @@
 
 Listen fassen mehrere Werte zusammen. Loops führen Code wiederholt aus. Zusammen helfen sie uns, viele Spielelemente mit wenig Code zu bearbeiten.
 
-Die wichtigsten Schreibweisen findest du im Abschnitt [Listen und Loops](../9-cheatsheet#listen-und-loops) des Cheatsheets.
+Die wichtigsten Schreibweisen findest du im Abschnitt [Listen und Loops](../10-cheatsheet#listen-und-loops) des Cheatsheets.
 
 ## Lernziele
 
@@ -24,13 +24,13 @@ Die eckigen Klammern zeigen, dass `colors` eine Liste ist. Die einzelnen Werte s
 let enemies = document.querySelectorAll(".enemy");
 ```
 
-[`document.querySelectorAll(...)`](../9-cheatsheet#html-elemente-auswahlen) sucht nicht nur das erste passende Element. Es liefert alle Elemente mit der Klasse `enemy` als Sammlung zurück.
+[`document.querySelectorAll(...)`](../10-cheatsheet#html-elemente-auswahlen) sucht nicht nur das erste passende Element. Es liefert alle Elemente mit der Klasse `enemy` als Sammlung zurück.
 
 ## Warum brauchen wir einen Loop?
 
 Die Variable `enemies` enthält nun mehrere Elemente. [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) kann aber immer nur ein einzelnes Element bewegen. Mit forEach können wir bei jedem Element vorbeischauen und etwas machen. Das sieht dann ca. folgendermassen aus:
 
-Mit [`forEach(...)`](../9-cheatsheet#listen-und-loops) gehen wir durch die Sammlung:
+Mit [`forEach(...)`](../10-cheatsheet#listen-und-loops) gehen wir durch die Sammlung:
 
 ```js
 enemies.forEach(function (enemy) {
@@ -48,7 +48,7 @@ Der Loop weist unseren kleinen Javascript-roboter an, bei allen Gegnern vorbei z
 
 ## Wiederholung nach Zeit
 
-[`setInterval(...)`](../9-cheatsheet#listen-und-loops) führt einen Codeblock in einem festen Zeitabstand erneut aus:
+[`setInterval(...)`](../10-cheatsheet#listen-und-loops) führt einen Codeblock in einem festen Zeitabstand erneut aus:
 
 ```js
 setInterval(function () {

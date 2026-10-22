@@ -50,7 +50,7 @@ gameLoop();
 
 Wenn zwei passende Tasten gedrückt sind, stimmen zwei Bedingungen. Beide Bewegungsbefehle werden ausgeführt und der Roboter fährt diagonal.
 
-Die verwendeten Befehle findest du im Cheatsheet unter [If / Else](../9-cheatsheet#if-else) und [Listen und Loops](../9-cheatsheet#listen-und-loops) sowie in der Framework-Dokumentation bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Die verwendeten Befehle findest du im Cheatsheet unter [If / Else](../10-cheatsheet#if-else) und [Listen und Loops](../10-cheatsheet#listen-und-loops) sowie in der Framework-Dokumentation bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 </details>
 
@@ -58,7 +58,7 @@ Die verwendeten Befehle findest du im Cheatsheet unter [If / Else](../9-cheatshe
 
 Lass die Energiekiste verschwinden, wenn der Roboter sie berührt.
 
-Die nötige Theorie findest du unter [Kollisionen sind ebenfalls Fragen](./inhalt#kollisionen-sind-ebenfalls-fragen). Wenn du nicht mehr weisst, wie man zum Beispiel ein Element auswählt, verändert oder löscht, schaue im [Cheatsheet](../9-cheatsheet) nach.
+Die nötige Theorie findest du unter [Kollisionen sind ebenfalls Fragen](./inhalt#kollisionen-sind-ebenfalls-fragen). Wenn du nicht mehr weisst, wie man zum Beispiel ein Element auswählt, verändert oder löscht, schaue im [Cheatsheet](../10-cheatsheet) nach.
 
 <details>
 <summary>💡 Tipp anzeigen</summary>
@@ -110,4 +110,4 @@ gameLoop();
 
 </details>
 
-[`document.querySelector(...)`](../9-cheatsheet#html-elemente-auswahlen) wählt die Energiekiste aus, [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding) prüft die Berührung und [`remove()`](../9-cheatsheet#html-elemente-bearbeiten) löscht sie.
+[`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) wählt die Energiekiste aus, [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding) prüft die Berührung und [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) löscht sie.

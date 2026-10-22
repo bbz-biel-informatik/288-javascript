@@ -32,7 +32,7 @@ collectEnergy();
 
 > Definieren: `function collectEnergy() { ... }`; aufrufen: `collectEnergy();`
 
-Die Schreibweise findest du im Cheatsheet unter [Funktionen](../9-cheatsheet#funktionen).
+Die Schreibweise findest du im Cheatsheet unter [Funktionen](../10-cheatsheet#funktionen).
 
 Wir kennen Funktionen bereits aus dem Game Framework. Zum Beispiel ruft dieser Befehl die Funktion `moveElement` auf:
 

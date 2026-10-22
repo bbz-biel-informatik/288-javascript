@@ -18,10 +18,10 @@ Füge diese drei Gegner in der `index.html` innerhalb von `spaceScene` ein:
 
 Erweitere danach deine `script.js`:
 
-1. Wähle mit [`document.querySelectorAll(...)`](../9-cheatsheet#html-elemente-auswahlen) alle Elemente mit der Klasse `enemy` aus und speichere sie in der Variable `enemies`.
-2. Definiere eine neue [Funktion](../9-cheatsheet#funktionen) mit dem Namen `moveEnemies`.
-3. Gehe darin mit [`forEach(...)`](../9-cheatsheet#listen-und-loops) durch alle Gegner.
+1. Wähle mit [`document.querySelectorAll(...)`](../10-cheatsheet#html-elemente-auswahlen) alle Elemente mit der Klasse `enemy` aus und speichere sie in der Variable `enemies`.
+2. Definiere eine neue [Funktion](../10-cheatsheet#funktionen) mit dem Namen `moveEnemies`.
+3. Gehe darin mit [`forEach(...)`](../10-cheatsheet#listen-und-loops) durch alle Gegner.
 4. Bewege jeden Gegner mit [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) um `2` Pixel nach links.
-5. Rufe `moveEnemies()` in deinem bestehenden [`gameLoop()`](../9-cheatsheet#listen-und-loops) direkt nach `moveRobot()` auf.
+5. Rufe `moveEnemies()` in deinem bestehenden [`gameLoop()`](../10-cheatsheet#listen-und-loops) direkt nach `moveRobot()` auf.
 
 Teste dein Spiel. Der Roboter soll sich weiterhin mit den Pfeiltasten steuern lassen, während alle drei Gegner automatisch nach links fliegen.

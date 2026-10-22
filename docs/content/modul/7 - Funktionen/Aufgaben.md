@@ -12,7 +12,7 @@ Suche im Game Loop die vier `if`-Blöcke für `ArrowRight`, `ArrowLeft`, `ArrowU
 2. Rufe `moveRobot()` im Game Loop auf.
 3. Teste, ob sich der Roboter noch gleich bewegt.
 
-Die Schreibweisen findest du unter [Funktionen](../9-cheatsheet#funktionen) und [If / Else](../9-cheatsheet#if-else). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
+Die Schreibweisen findest du unter [Funktionen](../10-cheatsheet#funktionen) und [If / Else](../10-cheatsheet#if-else). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
@@ -50,6 +50,6 @@ function gameLoop() {
 gameLoop();
 ```
 
-Die verwendeten Schreibweisen stehen unter [Funktionen](../9-cheatsheet#funktionen), [If / Else](../9-cheatsheet#if-else), [Variablen](../9-cheatsheet#variablen) und [Listen und Loops](../9-cheatsheet#listen-und-loops). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
+Die verwendeten Schreibweisen stehen unter [Funktionen](../10-cheatsheet#funktionen), [If / Else](../10-cheatsheet#if-else), [Variablen](../10-cheatsheet#variablen) und [Listen und Loops](../10-cheatsheet#listen-und-loops). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
 
 </details>

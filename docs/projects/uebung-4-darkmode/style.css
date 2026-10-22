@@ -1,0 +1,32 @@
+/* Die Farben stehen nur beim body. So wechselt beim Dark Mode die ganze Seite. */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid #888;
+}
+
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 24px;
+  line-height: 1.6;
+}
+
+button {
+  padding: 8px 14px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  background-color: transparent;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}

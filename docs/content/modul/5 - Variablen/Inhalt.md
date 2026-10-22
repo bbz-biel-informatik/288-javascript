@@ -9,7 +9,7 @@ Unser Roboter kann sich bewegen und Energie einsammeln. Ein Spiel braucht aber a
 
 Damit das funktioniert, muss sich JavaScript die aktuelle Anzahl Leben merken und verändern können. Dafür verwenden wir eine **Variable**.
 
-Die Schreibweisen findest du auch unter [Variablen](../9-cheatsheet#variablen) im Cheatsheet.
+Die Schreibweisen findest du auch unter [Variablen](../10-cheatsheet#variablen) im Cheatsheet.
 
 ## Lernziele
 
@@ -49,7 +49,7 @@ Merke:
 
 > `let` brauchen wir nur, wenn wir eine Variable neu erstellen.
 
-Die Schreibweise zum [Definieren einer Variable](../9-cheatsheet#variablen) findest du im Cheatsheet.
+Die Schreibweise zum [Definieren einer Variable](../10-cheatsheet#variablen) findest du im Cheatsheet.
 
 ## Den Wert verändern
 
@@ -66,7 +66,7 @@ vorher: life → 1000
 danach: life → 999
 ```
 
-Mit `=` setzen wir also einen neuen Wert. Die Schreibweise findest du unter [Variablen](../9-cheatsheet#variablen) im Cheatsheet.
+Mit `=` setzen wir also einen neuen Wert. Die Schreibweise findest du unter [Variablen](../10-cheatsheet#variablen) im Cheatsheet.
 
 ## Werte ändern
 
@@ -119,7 +119,7 @@ Beide Zeilen bedeuten genau dasselbe. Bei der Kurzschreibweise steht der Recheno
 
 Du kannst beide Schreibweisen verwenden. Die Kurzform ist praktisch, weil wir den Variablennamen nicht zweimal schreiben müssen.
 
-Die Rechnungen und Kurzschreibweisen mit [`+=`, `-=`, `*=` und `/=`](../9-cheatsheet#variablen) findest du auch im Cheatsheet.
+Die Rechnungen und Kurzschreibweisen mit [`+=`, `-=`, `*=` und `/=`](../10-cheatsheet#variablen) findest du auch im Cheatsheet.
 
 ## Zahl oder Text? - Datentypen
 
@@ -172,7 +172,7 @@ Der Wert existiert zunächst nur im Speicher von JavaScript. Damit die Spielerin
 statusText.textContent = "Leben: " + life;
 ```
 
-[`textContent`](../9-cheatsheet#html-elemente-bearbeiten) verändert den sichtbaren Text. Das `+` verbindet den Text `"Leben: "` mit dem aktuellen Wert aus `life`.
+[`textContent`](../10-cheatsheet#html-elemente-bearbeiten) verändert den sichtbaren Text. Das `+` verbindet den Text `"Leben: "` mit dem aktuellen Wert aus `life`.
 
 ## Variablennamen
 
@@ -201,7 +201,7 @@ let playerName = "Nora";
 let remainingLife = 1000;
 ```
 
-Das Erstellen von Variablen mit [`let`](../9-cheatsheet#variablen) findest du auch im Cheatsheet.
+Das Erstellen von Variablen mit [`let`](../10-cheatsheet#variablen) findest du auch im Cheatsheet.
 
 ## Zusammenfassung
 
