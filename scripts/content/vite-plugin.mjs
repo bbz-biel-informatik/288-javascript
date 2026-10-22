@@ -108,18 +108,11 @@ function rewriteMarkdownLinks(source, context) {
 
 export function createContentStructurePlugin({ docsRoot, linkAliases, base }) {
   const contentRoot = path.join(docsRoot, "content");
-  const contentScriptsRoot = path.resolve(docsRoot, "..", "scripts", "content");
   const vitepressRoot = path.join(docsRoot, ".vitepress");
+  const configPath = path.join(vitepressRoot, "config.mts");
   const zipVersionCache = new Map();
   let restartTimer;
-  let restartInFlight = false;
   const transformContext = { docsRoot, linkAliases, base, zipVersionCache };
-  const restartWatchRoots = [contentRoot, contentScriptsRoot].map((watchedRoot) => path.normalize(watchedRoot));
-
-  const normalizeWatchedPath = (filePath) => {
-    const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
-    return path.normalize(absolutePath);
-  };
 
   return {
     name: "content-structure-restart",
@@ -133,54 +126,25 @@ export function createContentStructurePlugin({ docsRoot, linkAliases, base }) {
       return rewriteMarkdownLinks(code, transformContext);
     },
     configureServer(server) {
-      server.watcher.add([contentRoot, contentScriptsRoot]);
+      server.watcher.add(contentRoot);
 
-      const scheduleRestart = (filePath) => {
-        const normalizedPath = normalizeWatchedPath(filePath);
-
-        if (!restartWatchRoots.some((watchedRoot) => normalizedPath.startsWith(watchedRoot))) {
+      // Sidebar und Rewrites entstehen beim Laden der Config. Vite's server.restart() behält die alte
+      // VitePress-Config, deshalb melden wir eine Config-Änderung: VitePress liest dann alles neu ein.
+      const structureEvents = ["add", "unlink", "addDir", "unlinkDir"];
+      const scheduleRestart = (event, filePath) => {
+        if (!structureEvents.includes(event) || !path.resolve(filePath).startsWith(contentRoot)) {
           return;
         }
 
         clearTimeout(restartTimer);
-        restartTimer = setTimeout(async () => {
-          if (restartInFlight) {
-            return;
-          }
-
-          restartInFlight = true;
-          server.config.logger.info(
-            "Content tree changed: restarting dev server to rebuild generated navigation."
-          );
-
-          try {
-            await server.restart();
-          } finally {
-            restartInFlight = false;
-          }
+        restartTimer = setTimeout(() => {
+          server.config.logger.info("Content tree changed: reloading config to rebuild generated navigation.");
+          server.watcher.emit("change", configPath);
         }, 120);
       };
 
-      const onAdd = (filePath) => scheduleRestart(filePath);
-      const onChange = (filePath) => scheduleRestart(filePath);
-      const onUnlink = (filePath) => scheduleRestart(filePath);
-      const onAddDir = (filePath) => scheduleRestart(filePath);
-      const onUnlinkDir = (filePath) => scheduleRestart(filePath);
-
-      server.watcher.on("add", onAdd);
-      server.watcher.on("change", onChange);
-      server.watcher.on("unlink", onUnlink);
-      server.watcher.on("addDir", onAddDir);
-      server.watcher.on("unlinkDir", onUnlinkDir);
-
-      return () => {
-        clearTimeout(restartTimer);
-        server.watcher.off("add", onAdd);
-        server.watcher.off("change", onChange);
-        server.watcher.off("unlink", onUnlink);
-        server.watcher.off("addDir", onAddDir);
-        server.watcher.off("unlinkDir", onUnlinkDir);
-      };
+      // Keine Funktion zurückgeben: Vite ruft sie direkt nach dem Start auf und die Listener wären wieder weg.
+      server.watcher.on("all", scheduleRestart);
     }
   };
 }

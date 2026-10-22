@@ -13,6 +13,8 @@ The course should focus on the learning objectives (see below)
 
 If we are authoring the course, we just touch the .md fils. Technical detail for the framework are written in README.md
 
+Chapters with tasks are folders with two subchapters: `Inhalt.md` (theory) and `Aufgaben.md` (tasks). Links to another chapter's theory point to `../<chapter>/inhalt`, links from the tasks to the theory of the same chapter point to `./inhalt#anchor`.
+
 ## Analogies
 
 It is good to explain to students with analogies:

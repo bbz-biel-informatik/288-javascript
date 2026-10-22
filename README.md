@@ -121,7 +121,7 @@ Für ein neues Kapitel im Modul:
 
 Die Modulstruktur ist bewusst flach und lesbar gehalten, damit neue Kapitel ohne Speziallogik ergänzt werden können.
 
-Änderungen unter `docs/content/` lösen im Dev-Server automatisch einen Neustart aus, damit Navigation, Sidebars und Rewrites neu aufgebaut werden.
+Wenn unter `docs/content/` Dateien oder Ordner hinzukommen, gelöscht oder umbenannt werden, lädt der Dev-Server die Config automatisch neu, damit Navigation, Sidebars und Rewrites neu aufgebaut werden. Unterkapitel `Inhalt.md` und `Aufgaben.md` werden immer in dieser Reihenfolge angezeigt.
 
 ## Weitere Top-Level-Bereiche ergänzen
 

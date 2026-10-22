@@ -13,6 +13,9 @@ const TITLE_OVERRIDES = {
 
 const SECTION_ENTRY_ORDER = {};
 
+// Unterkapitel ohne Nummer: Inhalt kommt immer vor Aufgaben.
+const SUBCHAPTER_ORDER = ["Inhalt.md", "Aufgaben.md"];
+
 function stripNumericPrefix(segment) {
   return segment.replace(/^\d+(?:-\d+)*-(.+)$/i, "$1");
 }
@@ -58,7 +61,8 @@ function humanizeName(name) {
 
 function getEntryOrder(sectionSlug, relativeDir, entryName) {
   if (relativeDir !== "") {
-    return Number.POSITIVE_INFINITY;
+    const index = SUBCHAPTER_ORDER.indexOf(entryName);
+    return index === -1 ? Number.POSITIVE_INFINITY : index;
   }
 
   const order = SECTION_ENTRY_ORDER[sectionSlug];
@@ -210,7 +214,7 @@ function buildDirectoryItems(sectionSlug, absoluteDir, relativeDir = "") {
 
     items.push({
       text: childTitle,
-      collapsed: false,
+      collapsed: true,
       items: childItems
     });
   }

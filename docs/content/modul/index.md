@@ -2,14 +2,16 @@
 
 ## Überblick
 
+Die Kapitel mit Aufgaben sind in zwei Unterkapitel aufgeteilt: Im **Inhalt** steht die Theorie, unter **Aufgaben** setzt du sie im Projekt um.
+
 - [0 - JavaScript Setup](/modul/0-javascript-setup)
-- [1 - JavaScript Intro](/modul/1-javascript-intro)
-- [2 - HTML-Elemente auswählen, bearbeiten, Events](/modul/2-html-elemente-auswaehlen-bearbeiten-events)
-- [3 - Game Loop](/modul/3-game-loop)
-- [4 - If-Else](/modul/4-if-else)
-- [5 - Variablen](/modul/5-variablen)
-- [6 - Vergleiche](/modul/6-vergleiche)
-- [7 - Funktionen](/modul/7-funktionen)
-- [8 - Listen und Loops](/modul/8-listen-und-loops)
+- 1 - JavaScript Intro: [Inhalt](/modul/1-javascript-intro/inhalt) · [Aufgaben](/modul/1-javascript-intro/aufgaben)
+- 2 - HTML-Elemente auswählen, bearbeiten, Events: [Inhalt](/modul/2-html-elemente-auswaehlen-bearbeiten-events/inhalt) · [Aufgaben](/modul/2-html-elemente-auswaehlen-bearbeiten-events/aufgaben)
+- 3 - Game Loop: [Inhalt](/modul/3-game-loop/inhalt) · [Aufgaben](/modul/3-game-loop/aufgaben)
+- 4 - If-Else: [Inhalt](/modul/4-if-else/inhalt) · [Aufgaben](/modul/4-if-else/aufgaben)
+- 5 - Variablen: [Inhalt](/modul/5-variablen/inhalt) · [Aufgaben](/modul/5-variablen/aufgaben)
+- 6 - Vergleiche: [Inhalt](/modul/6-vergleiche/inhalt) · [Aufgaben](/modul/6-vergleiche/aufgaben)
+- 7 - Funktionen: [Inhalt](/modul/7-funktionen/inhalt) · [Aufgaben](/modul/7-funktionen/aufgaben)
+- 8 - Listen und Loops: [Inhalt](/modul/8-listen-und-loops/inhalt) · [Aufgaben](/modul/8-listen-und-loops/aufgaben)
 - [9 - Cheatsheet](/modul/9-cheatsheet)
 - [10 - Debugging](/modul/10-debugging)

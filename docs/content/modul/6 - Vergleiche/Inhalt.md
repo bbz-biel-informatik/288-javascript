@@ -1,7 +1,5 @@
 # 6 - Vergleiche
 
-👉 [Projektstand nach Kapitel 5 herunterladen](/assets/zips/space-robot-loesung-5.zip)
-
 Im letzten Kapitel hast du die Variable `life` kennengelernt. Sie kann speichern, wie viele Leben der Roboter gerade besitzt:
 
 ```js
@@ -47,7 +45,7 @@ Merke:
 
 > Wir vergleichen Werte in einer `if`-Anweisung, um Entscheidungen zu treffen. Ein Vergleich ist immer wahr oder falsch.
 
-Die Schreibweise von [`if`](./9-cheatsheet#if-else) steht im Cheatsheet. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Die Schreibweise von [`if`](../9-cheatsheet#if-else) steht im Cheatsheet. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 ## Werte vergleichen
 
@@ -71,7 +69,7 @@ life <= 100; // kleiner oder gleich
 | `life >= 1000` | Hat der Roboter 1000 oder mehr Leben?   |
 | `life <= 100`  | Hat der Roboter höchstens 100 Leben?    |
 
-Die Vergleichszeichen findest du unter [If / Else](./9-cheatsheet#if-else) im Cheatsheet.
+Die Vergleichszeichen findest du unter [If / Else](../9-cheatsheet#if-else) im Cheatsheet.
 
 ## Ein Vergleich beantwortet eine Frage
 
@@ -118,106 +116,7 @@ Wir lesen diesen Code so:
 
 `gameStatus` ist eine zusätzliche Anzeige für den Spielzustand. Sie ist im Starterprojekt bereits vorbereitet, damit `statusText` weiterhin die aktuelle Anzahl Leben anzeigen kann.
 
-Die Entscheidung steht unter [If / Else](./9-cheatsheet#if-else). Das Verändern des Textes findest du bei [`textContent`](./9-cheatsheet#html-elemente-bearbeiten).
-
-## Aufgaben
-
-### 🎯 6.1 – Leben vergleichen
-
-Lies dir den Abschnitt [Werte vergleichen](#werte-vergleichen) nochmals durch und beantworte die folgenden Fragen.
-
-Der Roboter hat `600` Leben:
-
-```js
-let life = 600;
-```
-
-Entscheide bei jedem Vergleich, ob er **stimmt** oder **nicht stimmt**:
-
-```js
-life == 600;
-life != 0;
-life > 1000;
-life < 1000;
-life >= 600;
-life <= 100;
-```
-
-Die Bedeutung aller Vergleichszeichen findest du unter [If / Else](./9-cheatsheet#if-else) im Cheatsheet.
-
-<details>
-<summary>✅ Lösung anzeigen</summary>
-
-| Vergleich     | Ergebnis     | Begründung                                 |
-| ------------- | ------------ | ------------------------------------------ |
-| `life == 600` | stimmt       | `life` enthält den Wert `600`.             |
-| `life != 0`   | stimmt       | `600` ist nicht gleich `0`.                |
-| `life > 1000` | stimmt nicht | `600` ist nicht grösser als `1000`.        |
-| `life < 1000` | stimmt       | `600` ist kleiner als `1000`.              |
-| `life >= 600` | stimmt       | `600` ist grösser oder gleich `600`.       |
-| `life <= 100` | stimmt nicht | `600` ist weder kleiner noch gleich `100`. |
-
-</details>
-
-### 🎯 6.2 – Game Over testen
-
-`statusText` zeigt bereits die aktuelle Anzahl Leben an. Für Meldungen wie `Volle Energie` oder `Game Over` ist im Starterprojekt deshalb die zusätzliche Anzeige `gameStatus` vorbereitet.
-
-Wähle das Element in `script.js` mit [`document.querySelector(...)`](./9-cheatsheet#html-elemente-auswahlen) aus:
-
-```js
-let gameStatus = document.querySelector("#gameStatus");
-```
-
-Programmiere eine Entscheidung mit drei möglichen Texten:
-
-- Bei 800 oder mehr Leben erscheint `Volle Energie`.
-- Bei 1 bis 799 Leben erscheint `Roboter beschädigt`.
-- Bei 0 Leben erscheint `Game Over`.
-
-Setze die Entscheidung in deinen bestehenden Game Loop, damit sie den Wert von `life` fortlaufend prüft. Verwende dafür `if`, `else if` und `else`. Teste deinen Code beim Spielen.
-
-<details>
-<summary>💡 Tipp anzeigen</summary>
-
-Beginne mit der höchsten Anzahl Leben:
-
-```js
-if (life >= 800) {
-  gameStatus.textContent = "Volle Energie";
-}
-```
-
-Ergänze danach eine weitere Bedingung und den Fall für alle übrigen Werte. Die Schreibweise findest du unter [If / Else](./9-cheatsheet#if-else).
-
-</details>
-
-<details>
-<summary>✅ Lösung anzeigen</summary>
-
-```js
-// Vor dem Game Loop
-let gameStatus = document.querySelector("#gameStatus");
-
-// Im Game Loop
-if (life >= 800) {
-  gameStatus.textContent = "Volle Energie";
-} else if (life > 0) {
-  gameStatus.textContent = "Roboter beschädigt";
-} else {
-  gameStatus.textContent = "Game Over";
-}
-```
-
-| Wert von `life` | Angezeigter Text     |
-| --------------- | -------------------- |
-| `1000`          | `Volle Energie`      |
-| `600`           | `Roboter beschädigt` |
-| `0`             | `Game Over`          |
-
-Die verwendeten Befehle findest du unter [Variablen](./9-cheatsheet#variablen), [If / Else](./9-cheatsheet#if-else) und [HTML-Elemente bearbeiten](./9-cheatsheet#html-elemente-bearbeiten).
-
-</details>
+Die Entscheidung steht unter [If / Else](../9-cheatsheet#if-else). Das Verändern des Textes findest du bei [`textContent`](../9-cheatsheet#html-elemente-bearbeiten).
 
 ## Zusammenfassung
 
@@ -226,3 +125,5 @@ Die verwendeten Befehle findest du unter [Variablen](./9-cheatsheet#variablen), 
 - Ein Vergleich kann als Bedingung in `if` stehen.
 - Mit `else if` und `else` kann JavaScript genau einen von mehreren Wegen wählen.
 - `if (life <= 0)` kann das Game Over auslösen.
+
+👉 Weiter zu den [Aufgaben](./aufgaben)
