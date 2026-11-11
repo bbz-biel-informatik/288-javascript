@@ -50,17 +50,7 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 <<< @/projects/uebung-3-quiz-spanien/script.js
 
-Die Funktion `showAnswer()` ist schon vorbereitet. Sie liest mit [`.value`](./10-cheatsheet#html-elemente-bearbeiten) den Text, der im Textfeld steht, und gibt ihn mit [`console.log(...)`](./10-cheatsheet#debugging) in der Konsole aus. Tippe eine Antwort ein, klicke auf "Prüfen" und schaue in der Konsole nach.
-
-Damit wir mit der Antwort weiterarbeiten können, speichern wir sie in einer [Variable](./10-cheatsheet#variablen):
-
-```js
-let answer = answerInput.value;
-```
-
-Jetzt steht in `answer` der Text aus dem Textfeld, zum Beispiel `"Madrid"`. Diese Variable kannst du in einem [`if`](./10-cheatsheet#if-else) mit `==` vergleichen und danach mit [`textContent`](./10-cheatsheet#html-elemente-bearbeiten) die Auswertung anzeigen.
-
-Wichtig: Die Zeile muss **in** der Funktion stehen. Sonst liest JavaScript das Textfeld nur einmal beim Laden der Seite, wenn es noch leer ist.
+Die Funktion `checkAnswer()` ist schon vorbereitet. Sie liest mit [`.value`](./10-cheatsheet#html-elemente-bearbeiten) den Text, der im Textfeld steht.
 
 ## 4.1 - Dark mode knopf \*\*
 
