@@ -66,6 +66,11 @@
     return getY(element) <= groundLevel;
   }
 
+  function randomColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 70%, 45%)`;
+  }
+
   global.initBBZGame = initGame;
   global.setPosition = setPosition;
   global.isColliding = isColliding;
@@ -74,6 +79,7 @@
   global.getY = getY;
   global.getX = getX;
   global.isOnGround = isOnGround;
+  global.randomColor = randomColor;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initGame, { once: true });
