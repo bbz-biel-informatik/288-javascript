@@ -73,6 +73,21 @@ myImage.addEventListener("click", function (event) {
   myImage.style.borderColor = "black";
 });
 
+// Wenn das Mausrad über dem Bild gedreht wird
+myImage.addEventListener("wheel", function (event) {
+  myImage.style.width = "400px";
+});
+
+// Wenn die Maus auf das Bild fährt
+myImage.addEventListener("mouseover", function (event) {
+  myImage.style.borderColor = "red";
+});
+
+// Wenn die Maus das Bild wieder verlässt
+myImage.addEventListener("mouseout", function (event) {
+  myImage.style.borderColor = "black";
+});
+
 // Wenn eine Taste gedrückt wird
 document.addEventListener("keydown", function (event) {
   // Wenn auf "s" gedrückt wird

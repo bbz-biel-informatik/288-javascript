@@ -1,6 +1,6 @@
 # 3 - Events
 
-Im letzten Kapitel haben deine Veränderungen immer sofort beim Laden der Seite stattgefunden. Jetzt sorgen wir dafür, dass sie erst dann passieren, **wenn** die Benutzerin etwas tut: einen Knopf anklickt oder eine Taste drückt.
+Bis anhin haben wir "nur" Elemente mit JavaScript verändert, und zwar immer sofort beim Laden der Seite. Nun machen wir den nächsten Schritt und machen unsere Website **interaktiv**. Wir wollen Dinge verändern, wenn etwas auf der Seite passiert: ein Klick, ein Dreh am Mausrad, die Maus fährt über ein Element.
 
 Dafür brauchen wir **Events**.
 
@@ -10,8 +10,8 @@ Nach diesem Kapitel kannst du:
 
 - erklären, was ein JavaScript-Event ist und wofür man es einsetzt,
 - auf einen Mausklick reagieren,
-- auf einen Tastendruck reagieren,
-- den Unterschied zwischen Klick- und Tastatur-Events erklären und
+- auf das Mausrad reagieren,
+- auf die Maus über einem Element reagieren,
 - selber eine Interaktion programmieren: «Wenn auf X geklickt wird, soll Y passieren.»
 
 Die verwendeten Befehle findest du im Cheatsheet:
@@ -27,8 +27,9 @@ Die verwendeten Befehle findest du im Cheatsheet:
 Ein **Event** ist ein Ereignis im Browser. Beispiele:
 
 - Jemand klickt auf einen Knopf.
-- Jemand drückt eine Taste.
-- Jemand bewegt die Maus.
+- Jemand dreht mit dem Mausrad über einem Bild.
+- Jemand fährt mit der Maus über ein Element.
+- ... mehr events hier: [W3schools](https://www.w3schools.com/tags/ref_eventattributes.asp)
 
 Der Browser merkt diese Ereignisse selber. Wir müssen ihm nur sagen, bei welchem Ereignis er welchen Code ausführen soll.
 
@@ -47,15 +48,6 @@ Wir lesen diesen Code so:
 > Wenn `blueButton` angeklickt wird, färbe `spaceScene` blau.
 
 Wichtig ist der Zeitpunkt. Beim Laden der Seite wird die Farbe **noch nicht** verändert. JavaScript merkt sich zuerst nur den Auftrag. Erst beim Klick wird der Code zwischen `{` und `}` ausgeführt.
-
-<details>
-<summary>Analogie: Der Bewegungsmelder</summary>
-
-Unser kleiner JavaScript-Roboter steht nicht die ganze Zeit vor dem Knopf und fragt: «Wurde schon geklickt? Wurde schon geklickt?»
-
-Der Event Listener ist eher wie ein Bewegungsmelder: Er wird einmal montiert und wartet. Sobald der Klick passiert, gibt er dem Roboter den vorbereiteten Auftrag.
-
-</details>
 
 ### Die vier Teile von `addEventListener(...)`
 
@@ -98,6 +90,47 @@ Das ist eine Funktion. Sie ist die Verpackung für den Code, der beim Event ausg
 
 Den genauen Aufbau von Funktionen schauen wir im Kapitel [Funktionen](../8-funktionen/inhalt) an. Für jetzt genügt: Was passieren soll, schreiben wir zwischen die geschweiften Klammern.
 
+### Drei Events, ein Muster
+
+Ein Klick ist nicht das einzige Ereignis, auf das wir warten können. Wir schauen in diesem Kapitel drei Events an:
+
+| Event         | Wann passiert es?                    | Typische Verwendung                            |
+| ------------- | ------------------------------------ | ---------------------------------------------- |
+| `"click"`     | Das Element wird angeklickt.         | Knöpfe im Steuerpult                           |
+| `"wheel"` | Das Mausrad wird über dem Element gedreht. | Zoomen, etwas durchblättern |
+| `"mouseover"` | Die Maus fährt über das Element.     | Etwas hervorheben, einen Hinweis zeigen        |
+
+Und nun das Wichtigste an diesem Kapitel:
+
+> **Das Muster bleibt immer gleich. Es ändert sich nur das Wort in den Anführungszeichen.**
+
+```js
+// Bei einem Klick
+alarmButton.addEventListener("click", function () {
+  statusText.textContent = "Alarm!";
+});
+
+// Beim Drehen am Mausrad
+spaceScene.addEventListener("wheel", function () {
+  spaceScene.style.backgroundColor = randomColor();
+});
+
+// Wenn die Maus darüber fährt
+robot.addEventListener("mouseover", function () {
+  statusText.textContent = "Du berührst den Roboter";
+});
+```
+
+Dreimal derselbe Aufbau: Element, `addEventListener`, Event-Name, Funktion mit der Aktion. Wenn du `"click"` verstanden hast, kannst du alle Events.
+
+::: tip Die Event-Namen sind fest vorgegeben
+`"click"`, `"wheel"` und `"mouseover"` sind englische Namen, die du nicht selber erfinden kannst. `"klick"` oder `"mausrad"` funktionieren nicht. Und: JavaScript meldet dabei **keinen Fehler**, es passiert einfach nichts. Darum lohnt sich ein Blick ins [Cheatsheet](../11-cheatsheet#events), wenn eine Interaktion nicht reagiert.
+:::
+
+Beim Mausrad merkt sich JavaScript nur: «Es wurde gedreht.» Ob nach oben oder nach unten gedreht wurde, können wir noch nicht unterscheiden. Dafür brauchst du eine Entscheidung mit `if`, die lernst du im Kapitel [If-Else](../5-if-else/inhalt).
+
+[`randomColor()`](/jsgame/3-framework-docs#randomcolor) im Beispiel oben ist eine fertige Funktion aus dem Game Framework. Sie gibt dir bei jedem Aufruf eine zufällige Farbe zurück. Du musst sie nicht selber schreiben, nur aufrufen und das Ergebnis einsetzen.
+
 ### Mehrere Dinge gleichzeitig verändern
 
 In der Funktion dürfen beliebig viele Befehle stehen. JavaScript führt sie von oben nach unten aus:
@@ -128,42 +161,13 @@ statusButton.addEventListener("click", function () {
 
 Welcher Code ausgeführt wird, hängt davon ab, welcher Knopf angeklickt wurde.
 
-### Tastatur-Events
-
-Bisher haben wir auf Klicks gewartet. Genauso können wir auf einen **Tastendruck** warten. Dafür verwenden wir das Event `"keydown"`:
-
-```js
-document.addEventListener("keydown", function (event) {
-  statusText.textContent = "Es wurde eine Taste gedrückt";
-});
-```
-
-Der Unterschied zum Klick-Event ist der Auslöser:
-
-| Event       | Auslöser    | Typische Verwendung        |
-| ----------- | ----------- | -------------------------- |
-| `"click"`   | ein Element | Knöpfe im Steuerpult       |
-| `"keydown"` | `document`  | Steuerung mit der Tastatur |
-
-Warum `document`? Eine Taste wird nicht «auf einem Knopf» gedrückt, sondern irgendwo auf der Seite. Darum hängen wir das Tastatur-Event an die ganze Seite, also an `document`.
-
-In den runden Klammern steht bei Tastatur-Events `function (event)`. Damit bekommt der Code Informationen über das Ereignis, zum Beispiel **welche** Taste gedrückt wurde:
-
-```js
-document.addEventListener("keydown", function (event) {
-  statusText.textContent = event.key;
-});
-```
-
-`event.key` ist der Name der gedrückten Taste, zum Beispiel `"a"` oder `"ArrowRight"`. Um nur auf **eine bestimmte** Taste zu reagieren, brauchen wir eine Entscheidung mit `if`. Das lernst du im Kapitel [If-Else](../5-if-else/inhalt). Eine fertige Vorlage dazu steht im Cheatsheet bei [Events](../11-cheatsheet#events).
-
 ### Die Teile einer Interaktion
 
 Bei jeder Interaktion stellen wir uns dieselben vier Fragen:
 
-- **Auslöser:** Worauf wird geklickt oder welche Taste wird gedrückt?
+- **Auslöser:** Auf welches Element passiert etwas?
 - **Ziel:** Was soll sich verändern?
-- **Event:** Worauf wartet JavaScript, `"click"` oder `"keydown"`?
+- **Event:** Worauf wartet JavaScript, `"click"`, `"wheel"` oder `"mouseover"`?
 - **Aktion:** Was genau soll passieren?
 
 Diese Teile müssen im Code nicht direkt nacheinander stehen. HTML-Elemente werden oft am Anfang der Datei ausgewählt und erst weiter unten verwendet. Ein ausgewähltes Element kann ausserdem in mehreren Interaktionen gebraucht werden.
@@ -172,17 +176,17 @@ Diese Teile müssen im Code nicht direkt nacheinander stehen. HTML-Elemente werd
 
 ## Zusammenfassung
 
-Du kannst nun:
+Du kannst nun mit [`addEventListener(...)`](../11-cheatsheet#events) auf drei Ereignisse reagieren:
 
-- mit [`addEventListener("click", ...)`](../11-cheatsheet#events) auf einen Klick reagieren,
-- mit [`document.addEventListener("keydown", ...)`](../11-cheatsheet#events) auf einen Tastendruck reagieren und
-- in einem Event Listener mehrere HTML-Elemente [verändern oder löschen](../11-cheatsheet#html-elemente-bearbeiten).
+- `"click"` – ein Klick auf ein Element,
+- `"wheel"` – ein Dreh am Mausrad über einem Element,
+- `"mouseover"` – die Maus fährt über ein Element.
+
+In einem Event Listener kannst du beliebig viele HTML-Elemente [verändern oder löschen](../11-cheatsheet#html-elemente-bearbeiten).
 
 Merke dir das Muster:
 
 > Element auswählen → auf ein Event warten → Aktion ausführen.
-
-In einem Spiel genügt das noch nicht. Dort müssen Bewegung und Kollisionen ständig geprüft werden, nicht nur bei einem Klick. Dafür verwenden wir im nächsten Kapitel den [Game Loop](../4-game-loop/inhalt).
 
 ## Beispiel aus dem Alltag: Ein Onlineshop
 

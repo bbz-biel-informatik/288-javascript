@@ -326,6 +326,52 @@ moveElement(enemy, -10, 0);
 
 ---
 
+# randomColor
+
+Mit `randomColor` bekommst du eine zufällige Farbe.
+
+```js
+randomColor();
+```
+
+Die Funktion braucht keine Parameter. Sie gibt dir bei jedem Aufruf eine neue Farbe zurück, zum Beispiel `hsl(218, 70%, 45%)`.
+
+## Einfaches Beispiel
+
+```js
+let spaceScene = document.querySelector("#spaceScene");
+
+spaceScene.style.backgroundColor = randomColor();
+```
+
+Die Szene bekommt eine zufällige Hintergrundfarbe.
+
+## Beispiel mit einem Event
+
+```js
+let spaceScene = document.querySelector("#spaceScene");
+
+spaceScene.addEventListener("click", function () {
+  spaceScene.style.backgroundColor = randomColor();
+});
+```
+
+Bei jedem Klick wird die Farbe neu gewürfelt.
+
+## Wichtig
+
+Die Farben sind immer kräftig und mittelhell, damit man den Inhalt noch lesen kann. Schwarz oder Weiss kommen nicht vor.
+
+`randomColor()` gibt dir eine Farbe **zurück**. Du musst sie also irgendwo einsetzen:
+
+```js
+randomColor(); // Das macht nichts Sichtbares.
+
+spaceScene.style.backgroundColor = randomColor(); // So wird die Farbe verwendet.
+```
+
+---
+
 # setPosition
 
 Mit `setPosition` setzt du ein HTML Element an eine bestimmte Stelle im Spielfeld.

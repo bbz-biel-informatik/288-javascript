@@ -9,7 +9,6 @@ let alarmButton = document.querySelector("#alarmButton");
 let statusButton = document.querySelector("#statusButton");
 let sizeButton = document.querySelector("#sizeButton");
 let removeButton = document.querySelector("#removeButton");
-let destroyPlanetButton = document.querySelector("#destroyPlanetButton");
 let modeButton = document.querySelector("#modeButton");
 
 // Ziele (die Elemente, die wir verändern wollen)
@@ -27,41 +26,66 @@ blueButton.addEventListener("click", function () {
   spaceScene.style.backgroundColor = "blue";
 });
 
-// --- Aufgabe 3.2 und 3.5: Alarm einschalten -----------------------------
-// Im gleichen Event Listener passieren zwei Dinge gleichzeitig.
+// --- Aufgabe 3.2 a und e: Alarm einschalten -----------------------------
+// Im gleichen Event Listener passieren mehrere Dinge gleichzeitig.
 
 alarmButton.addEventListener("click", function () {
   spaceScene.style.backgroundColor = "red";
   statusText.textContent = "Planetenalarm";
 });
 
-// --- Aufgabe 3.3: Status verändern --------------------------------------
+// --- Aufgabe 3.2 b: Status verändern ------------------------------------
 
 statusButton.addEventListener("click", function () {
   statusText.textContent = "Roboter ist bereit!";
 });
 
-// --- Aufgabe 3.4: Roboter vergrössern -----------------------------------
+// --- Aufgabe 3.2 c: Roboter vergrössern ---------------------------------
 
 sizeButton.addEventListener("click", function () {
   robot.style.width = "260px";
 });
 
-// --- Aufgabe 3.6: Energie entfernen -------------------------------------
+// --- Aufgabe 3.2 d: Energie entfernen -----------------------------------
 
 removeButton.addEventListener("click", function () {
   energy.remove();
+  statusText.textContent = "Energie entladen";
 });
 
-// --- Aufgabe 3.7: Hintergrundplaneten zerstören -------------------------
-// Der Knopf mit der ID destroyPlanetButton wurde im index.html ergänzt.
+// --- Aufgabe 3.3: Sternensprung (Mausrad) -------------------------------
+// Auslöser ist hier kein Knopf, sondern die Weltraum-Szene selber.
+// Die Drehrichtung können wir noch nicht unterscheiden, dafür braucht es if.
+// randomColor() ist eine fertige Funktion aus dem Game Framework.
 
-destroyPlanetButton.addEventListener("click", function () {
-  backgroundPlanet.remove();
-  statusText.textContent = "Planet zerstört";
+spaceScene.addEventListener("wheel", function () {
+  spaceScene.style.backgroundColor = randomColor();
+  statusText.textContent = "Sternensprung!";
 });
 
-// --- Aufgabe 3.11: Eigener Modus (Beispiel: Nachtmodus) ------------------
+// --- Aufgabe 3.4: Den Roboter berühren (Hover) --------------------------
+// Auslöser ist hier kein Knopf, sondern der Roboter selber.
+
+robot.addEventListener("mouseover", function () {
+  statusText.textContent = "Du berührst den Roboter";
+});
+
+robot.addEventListener("mouseout", function () {
+  statusText.textContent = "Roboter wartet auf einen Befehl.";
+});
+
+// --- Aufgabe 3.6: Den Roboter bewegen -----------------------------------
+// Auslöser und Ziel sind hier dasselbe Element: der Roboter.
+// setPosition gibt ihm einmal beim Laden einen klaren Startpunkt.
+
+setPosition(robot, 300, 85);
+
+robot.addEventListener("click", function () {
+  moveElement(robot, 20, 0);
+  statusText.textContent = "Roboter marschiert";
+});
+
+// --- Aufgabe 3.7: Eigener Modus (Beispiel: Nachtmodus) ------------------
 // Ein Klick verändert mehrere HTML-Elemente und den Statustext.
 
 modeButton.addEventListener("click", function () {

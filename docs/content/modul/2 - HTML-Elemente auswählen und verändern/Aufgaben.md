@@ -4,36 +4,28 @@
 
 Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
-In diesem Kapitel üben wir nur zwei Schritte, dafür viele Male:
+**Wo schreibe ich den Code hin?** Schreibe deinen neuen Code in `script.js` **oberhalb** des Click-Codes aus Kapitel 1.
 
-> **Zuerst auswählen, dann verändern.**
+## 🎯 2.1 – Die Weltraum-Szene umbauen
 
-Klicks brauchen wir hier noch nicht. Dein Code wird direkt beim Laden der Seite ausgeführt. **Speichern, Seite neu laden, schauen.**
+Fünf Aufträge, alle nach demselben Muster: **auswählen, verändern.** Schau bei Bedarf nochmals bei den [zwei Schritten](./inhalt#jede-veranderung-hat-zwei-schritte) in der Theorie nach.
 
-**Wo schreibe ich den Code hin?** Schreibe deinen neuen Code in `script.js` **oberhalb** des Click-Codes aus Kapitel 1. Diesen Code lassen wir stehen, wir brauchen ihn im nächsten Kapitel wieder
+Die Befehle dazu findest du alle im Cheatsheet bei [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten).
 
-## 🎯 2.1 – Das Weltall einfärben
+### a) Das Weltall einfärben
 
 Färbe die Weltraum-Szene beim Laden der Seite gelb. Sie hat die ID `spaceScene`.
-
-Gehe in zwei Schritten vor, wie bei den [zwei Schritten](./inhalt#jede-veranderung-hat-zwei-schritte) in der Theorie:
 
 <details>
-<summary>Lösung anzeigen</summary>
+<summary>Tipp: Codegerüst</summary>
 
 ```js
-let spaceScene = document.querySelector("#spaceScene");
+let spaceScene = document.querySelector("________");
 
-spaceScene.style.backgroundColor = "yellow";
+spaceScene.style.backgroundColor = "________";
 ```
 
-Die Szene ist nun beim Laden gelb. Klickst du auf den Licht-Knopf, wird sie trotzdem noch blau: Das ist der Code aus Kapitel 1.
-
-## 🎯 2.2 – Das Weltall soll nun rot sein.
-
-Färbe die Weltraum-Szene beim Laden der Seite gelb. Sie hat die ID `spaceScene`.
-
-Gehe in zwei Schritten vor, wie bei den [zwei Schritten](./inhalt#jede-veranderung-hat-zwei-schritte) in der Theorie:
+</details>
 
 <details>
 <summary>Lösung anzeigen</summary>
@@ -48,7 +40,13 @@ Die Szene ist nun beim Laden gelb. Klickst du auf den Licht-Knopf, wird sie trot
 
 </details>
 
-## 🎯 2.2 – Den Statustext ändern
+### b) Den Statustext ändern
+
+::: tip Du musst nichts löschen
+Du darfst deinen bisherigen Code einfach stehen lassen – auch den aus Kapitel 1. Jede neue Aufgabe schreibst du **unterhalb** der vorherigen dazu, aber immer noch oberhalb des Click-Codes. Am Ende steht alles untereinander in derselben Datei, und das ist genau richtig so.
+
+Auch Elemente, die du schon einmal mit `querySelector(...)` ausgewählt hast, musst du nicht nochmals auswählen. Einmal auswählen genügt.
+:::
 
 Im Steuerpult gibt es ein Text-Element mit der ID `statusText`. Schreibe mit JavaScript den Text `Systeme werden geladen...` hinein.
 
@@ -76,7 +74,7 @@ statusText.textContent = "Systeme werden geladen...";
 
 </details>
 
-## 🎯 2.3 – Den Roboter vergrössern
+### c) Den Roboter vergrössern
 
 Der Roboter hat die ID `robot`. Mache ihn `250px` breit.
 
@@ -93,56 +91,22 @@ robot.style.width = "250px";
 
 </details>
 
-## 🎯 2.4 – Trainingsrunde
+### d) Den Hintergrundplaneten einfärben
 
-Jetzt das gleiche Muster noch einige Male. Alle Aufgaben funktionieren genau wie 2.1 bis 2.3: **auswählen, verändern.**
-
-Erledige alle sechs Aufträge in deinem `script.js`:
-
-| Nr. | Element (ID)       | Was verändern?                       |
-| --- | ------------------ | ------------------------------------ |
-| a   | `gameStatus`       | Text auf `Bereit zum Start` setzen   |
-| b   | `backgroundPlanet` | Hintergrundfarbe auf `green` setzen  |
-| c   | `spaceScene`       | Rahmenfarbe auf `white` setzen       |
-| d   | `energy`           | Hintergrundfarbe auf `purple` setzen |
-| e   | `robot`            | Breite auf `120px` setzen            |
-| f   | `statusText`       | Text auf deinen eigenen Namen setzen |
-
-Die Befehle dazu sind alle im Cheatsheet bei [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten) aufgelistet.
-
-<details>
-<summary>Tipp: Welche Eigenschaft brauche ich?</summary>
-
-- Text verändern: `textContent`
-- Hintergrundfarbe verändern: `style.backgroundColor`
-- Rahmenfarbe verändern: `style.borderColor`
-- Breite verändern: `style.width`
-
-</details>
+Der Planet im Hintergrund hat die ID `backgroundPlanet`. Setze seine Hintergrundfarbe auf `green`.
 
 <details>
 <summary>Lösung anzeigen</summary>
 
 ```js
-// Elemente auswählen (spaceScene, statusText und robot hast du schon)
-let gameStatus = document.querySelector("#gameStatus");
 let backgroundPlanet = document.querySelector("#backgroundPlanet");
-let energy = document.querySelector("#energy");
 
-// Elemente verändern
-gameStatus.textContent = "Bereit zum Start";
 backgroundPlanet.style.backgroundColor = "green";
-spaceScene.style.borderColor = "white";
-energy.style.backgroundColor = "purple";
-robot.style.width = "120px";
-statusText.textContent = "Nicolas";
 ```
-
-Achtung: `spaceScene`, `statusText` und `robot` hast du bereits in den Aufgaben 2.1 bis 2.3 ausgewählt. Du brauchst sie nicht ein zweites Mal auszuwählen.
 
 </details>
 
-## 🎯 2.5 – Ein Element mehrfach verändern
+### e) Ein Element mehrfach verändern
 
 Verändere an der Energie-Kiste `energy` **drei** Eigenschaften auf einmal:
 
@@ -165,18 +129,19 @@ energy.style.backgroundColor = "black";
 
 </details>
 
-## 🎯 2.6 – Die Energie löschen
+## 🎯 2.2 – Die Energie löschen
 
 Lösche die Energie-Kiste mit der ID `energy` aus der Webseite.
 
 Lies bei Bedarf nochmals, wie man [ein HTML-Element löscht](./inhalt#ein-html-element-loschen). Verwende [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
 
+Achtung auf die Reihenfolge: Der Löschbefehl gehört **unter** deinen Code aus Aufgabe 2.1 e. JavaScript arbeitet die Zeilen von oben nach unten ab. Zuerst wird die Kiste also umgefärbt, dann verschwindet sie.
+
 <details>
 <summary>Lösung anzeigen</summary>
 
 ```js
-let energy = document.querySelector("#energy");
-
+// energy hast du in Aufgabe 2.1 e schon ausgewählt
 energy.remove();
 ```
 
@@ -189,73 +154,11 @@ Beantworte danach diese Frage für dich:
 <details>
 <summary>Antwort anzeigen</summary>
 
-Sie ist wieder da. Der Browser baut die Seite beim Neuladen neu aus `index.html` auf. `remove()` verändert nur die Seite im Browser, nicht die HTML-Datei. Danach läuft dein JavaScript erneut und löscht die Kiste wieder.
+Sie ist wieder weg. Der Browser baut die Seite beim Neuladen zwar neu aus `index.html` auf, die Kiste ist also zuerst wieder da. `remove()` verändert nur die Seite im Browser, nicht die HTML-Datei. Danach läuft aber dein JavaScript erneut und löscht die Kiste sofort wieder.
 
 </details>
 
-## 🎯 2.7 – Den Hintergrundplaneten zerstören
-
-Lösche nun auch den Planeten im Hintergrund. Er hat die ID `backgroundPlanet`.
-
-## 🎯 2.8 – Mehrere Sterne löschen
-
-Die Sterne in der Szene haben keine ID, sondern die Klassen `star-1` bis `star-5`. In `querySelector(...)` verwenden wir die gleichen Selektoren wie in CSS: Eine Klasse schreibt man mit einem Punkt davor.
-
-Lösche die Sterne `star-1` und `star-2`.
-
-<details>
-<summary>Tipp</summary>
-
-```js
-let star1 = document.querySelector(".star-1");
-```
-
-</details>
-
-<details>
-<summary>Lösung anzeigen</summary>
-
-```js
-let star1 = document.querySelector(".star-1");
-let star2 = document.querySelector(".star-2");
-
-star1.remove();
-star2.remove();
-```
-
-</details>
-
-## 🎯 2.9 – Dein eigener Nachtmodus
-
-Baue einen Nachtmodus für die Weltraum-Szene. Er soll direkt beim Laden der Seite aktiv sein.
-
-Dein Nachtmodus soll:
-
-- mindestens **vier** HTML-Elemente verändern und
-- einen passenden Text in `statusText` schreiben.
-
-Mögliche Ideen: dunkle Szene, kleiner Roboter, dunkler Planet, gelöschte Energie-Kiste.
-
-<details>
-<summary>Lösung anzeigen (ein Beispiel)</summary>
-
-```js
-let spaceScene = document.querySelector("#spaceScene");
-let statusText = document.querySelector("#statusText");
-let robot = document.querySelector("#robot");
-let backgroundPlanet = document.querySelector("#backgroundPlanet");
-let energy = document.querySelector("#energy");
-
-spaceScene.style.backgroundColor = "#05070f";
-robot.style.width = "100px";
-backgroundPlanet.style.backgroundColor = "#2b2b2b";
-energy.style.backgroundColor = "#3b3b3b";
-statusText.textContent = "Nachtmodus aktiv";
-```
-
-</details>
-
-## 🎯 2.10 – Fehlersuche
+## 🎯 2.3 – Fehlersuche
 
 In diesem Code sind drei Fehler. Finde sie, ohne den Code auszuprobieren.
 

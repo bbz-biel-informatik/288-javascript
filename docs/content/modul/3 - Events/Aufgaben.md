@@ -6,7 +6,7 @@ Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
 Denke bei jeder Aufgabe an die [vier Teile einer Interaktion](./inhalt#die-teile-einer-interaktion): Auslöser, Ziel, Event und Aktion.
 
-## 🎯 3.1 – Aus «sofort» wird «auf Knopfdruck»
+## 🎯 3.1 – Code aufräumen
 
 Im letzten Kapitel haben sich alle Veränderungen sofort beim Laden der Seite ausgeführt. Das räumen wir nun auf.
 
@@ -15,6 +15,10 @@ Im letzten Kapitel haben sich alle Veränderungen sofort beim Laden der Seite au
 3. Behalte den Click-Code aus Kapitel 1.
 
 Lade die Seite neu. Sie sollte wieder normal aussehen, und der Licht-Knopf sollte die Szene blau färben.
+
+::: tip Ab hier gilt wieder: nichts löschen
+Nur in dieser ersten Aufgabe räumen wir auf. Danach kommt jede neue Interaktion **unterhalb** der vorherigen dazu. Und Elemente, die du schon einmal mit `querySelector(...)` ausgewählt hast, brauchst du nicht nochmals auszuwählen.
+:::
 
 <details>
 <summary>Lösung anzeigen</summary>
@@ -28,6 +32,7 @@ let spaceScene = document.querySelector("#spaceScene");
 let statusText = document.querySelector("#statusText");
 let robot = document.querySelector("#robot");
 let energy = document.querySelector("#energy");
+let backgroundPlanet = document.querySelector("#backgroundPlanet");
 
 // Interaktion aus Kapitel 1
 blueButton.addEventListener("click", function () {
@@ -37,7 +42,9 @@ blueButton.addEventListener("click", function () {
 
 </details>
 
-## 🎯 3.2 – Alarm einschalten
+## 🎯 3.2 – Klick-Events
+
+### a) Alarm einschalten
 
 Wenn der Knopf mit der ID `alarmButton` angeklickt wird, soll die Weltraum-Szene rot werden.
 
@@ -74,7 +81,7 @@ alarmButton.addEventListener("click", function () {
 
 </details>
 
-## 🎯 3.3 – Status verändern
+### b) Status verändern
 
 Wenn der Knopf `statusButton` angeklickt wird, soll im Element `statusText` der Text `Roboter ist bereit!` erscheinen.
 
@@ -106,15 +113,50 @@ statusButton.addEventListener("click", function () {
 
 </details>
 
-## 🎯 3.4 – Roboter vergrössern
+### c) Roboter vergrössern
 
 Wenn der Knopf `sizeButton` angeklickt wird, soll der Roboter mit der ID `robot` breiter werden. Denke wieder an die vier Teile einer Interaktion.
 
 Was du verändern musst, ist [`style.width`](../11-cheatsheet#html-elemente-bearbeiten).
 
-## 🎯 3.5 – Mehrere Dinge gleichzeitig verändern
+<details>
+<summary>Lösung anzeigen</summary>
 
-Erweitere den Alarm-Knopf aus Aufgabe 3.2. Bei einem Klick sollen nun drei Dinge passieren:
+```js
+let sizeButton = document.querySelector("#sizeButton");
+
+sizeButton.addEventListener("click", function () {
+  robot.style.width = "260px";
+});
+```
+
+</details>
+
+### d) Energie entfernen
+
+Wenn der Knopf `removeButton` angeklickt wird, soll das Element `energy` aus der Seite verschwinden.
+
+Verwende dafür [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
+
+Beachte: Nach einem Neuladen der Seite ist die Energie wieder da. Das HTML bestimmt den Startzustand der Seite.
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```js
+let removeButton = document.querySelector("#removeButton");
+
+removeButton.addEventListener("click", function () {
+  energy.remove();
+  statusText.textContent = "Energie entladen";
+});
+```
+
+</details>
+
+### e) Mehrere Dinge gleichzeitig verändern
+
+Erweitere den Alarm-Knopf aus Aufgabe a. Bei einem Klick sollen nun drei Dinge passieren:
 
 - Die Weltraum-Szene wird rot.
 - Im `statusText` steht `Planetenalarm`.
@@ -135,73 +177,30 @@ alarmButton.addEventListener("click", function () {
 
 </details>
 
-## 🎯 3.6 – Energie entfernen
+## 🎯 3.3 – Mausrad: Der Sternensprung
 
-Wenn der Knopf `removeButton` angeklickt wird, soll das Element `energy` verschwinden.
+Nun das zweite Event: `"wheel"`. Es passiert, wenn man das Mausrad über einem Element dreht. Auf einem Laptop ohne Maus funktioniert es mit zwei Fingern auf dem Trackpad.
 
-Verwende dafür [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
+Wenn man das Mausrad über der Weltraum-Szene `spaceScene` dreht, soll der Roboter in den Sternensprung gehen:
 
-Beachte: Nach einem Neuladen der Seite ist die Energie wieder da. Das HTML bestimmt den Startzustand der Seite.
+- Die Szene bekommt eine **zufällige** Farbe.
+- Im `statusText` steht `Sternensprung!`.
 
-## 🎯 3.7 – Hintergrundplaneten zerstören
-
-Im Hintergrund befindet sich ein Planet mit der ID `backgroundPlanet`. Füge dem Steuerpult einen **neuen Knopf** hinzu. Wenn dieser Knopf angeklickt wird, soll der Planet verschwinden.
-
-Gehe dabei wie folgt vor:
-
-- Erstelle im HTML einen neuen Knopf mit der ID `destroyPlanetButton`.
-- Wähle den neuen Knopf mit [`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) aus.
-- Wähle den Hintergrundplaneten aus.
-- Füge dem Knopf einen Click Event Listener hinzu.
-- Entferne darin den Hintergrundplaneten mit [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
-
-<details>
-<summary>Tipp für das HTML</summary>
-
-Du kannst im Element mit der Klasse `button-row` eine weitere Steuerung ergänzen:
-
-```html
-<div class="control">
-  <button
-    id="destroyPlanetButton"
-    class="control-button red"
-    type="button"
-  ></button>
-  <span class="control-label">Planet</span>
-</div>
-```
-
-</details>
-
-<details>
-<summary>Lösung anzeigen</summary>
+Für die Zufallsfarbe gibt es eine fertige Funktion im Game Framework: [`randomColor()`](/jsgame/3-framework-docs#randomcolor). Du musst sie nur aufrufen und das Ergebnis einsetzen:
 
 ```js
-let destroyPlanetButton = document.querySelector("#destroyPlanetButton");
-let backgroundPlanet = document.querySelector("#backgroundPlanet");
-
-destroyPlanetButton.addEventListener("click", function () {
-  backgroundPlanet.remove();
-  statusText.textContent = "Planet zerstört";
-});
+spaceScene.style.backgroundColor = randomColor();
 ```
 
-</details>
-
-## 🎯 3.8 – Auf die Tastatur reagieren
-
-Nun ein anderes Event. Wenn irgendeine Taste gedrückt wird, soll im `statusText` der Name dieser Taste erscheinen.
-
-Lies bei Bedarf nochmals die Theorie zu den [Tastatur-Events](./inhalt#tastatur-events).
+Achtung beim Auslöser: Hier ist der Auslöser **kein Knopf**, sondern die Weltraum-Szene selber. Lies bei Bedarf nochmals nach, dass sich nur [der Event-Name ändert](./inhalt#drei-events-ein-muster).
 
 <details>
-<summary>Tipp</summary>
-
-Tastatur-Events hängen wir an `document`, nicht an einen Knopf:
+<summary>Tipp: Codegerüst</summary>
 
 ```js
-document.addEventListener("keydown", function (event) {
-  // event.key ist der Name der gedrückten Taste
+spaceScene.addEventListener("________", function () {
+  spaceScene.style.backgroundColor = ________;
+  statusText.textContent = "________";
 });
 ```
 
@@ -211,66 +210,120 @@ document.addEventListener("keydown", function (event) {
 <summary>Lösung anzeigen</summary>
 
 ```js
-document.addEventListener("keydown", function (event) {
-  statusText.textContent = event.key;
+spaceScene.addEventListener("wheel", function () {
+  spaceScene.style.backgroundColor = randomColor();
+  statusText.textContent = "Sternensprung!";
 });
 ```
 
-Drücke nun verschiedene Tasten und beobachte den Statustext. Was steht dort, wenn du die Leertaste oder die Pfeiltasten drückst?
+</details>
+
+Dreh nun mehrmals am Mausrad und beantworte diese Fragen für dich:
+
+> Warum ist die Farbe jedes Mal eine andere? Und was passiert, wenn du statt `"wheel"` das Wort `"mausrad"` schreibst?
+
+<details>
+<summary>Antwort anzeigen</summary>
+
+`randomColor()` wird bei **jedem** Dreh neu aufgerufen und würfelt jedes Mal eine neue Farbe. Die Zeile steht ja in der Funktion des Event Listeners, und die wird bei jedem Ereignis erneut ausgeführt.
+
+Bei `"mausrad"` passiert gar nichts – und zwar **nie**. Die Event-Namen sind englisch und fest vorgegeben. JavaScript meldet dabei keinen Fehler, es wartet einfach auf ein Ereignis, das es nicht gibt. Das ist ein häufiger Fehler, den man schlecht sieht.
+
+Übrigens: Ob du nach oben oder nach unten drehst, macht keinen Unterschied. Um die Richtung zu unterscheiden, bräuchtest du eine Entscheidung mit `if` aus dem Kapitel [If-Else](../5-if-else/inhalt).
 
 </details>
 
-## 🎯 3.9 – Tastendruck mit Wirkung
+## 🎯 3.4 – Hover: Den Roboter berühren
 
-Wenn eine Taste gedrückt wird, soll der Roboter `300px` breit werden.
+Das dritte Event: `"mouseover"`. Es passiert, wenn die Maus über ein Element fährt – ganz ohne Klick.
 
-Verwende wieder ein `"keydown"`-Event. Auf eine **bestimmte** Taste zu reagieren lernst du später im Kapitel [If-Else](../5-if-else/inhalt). Hier genügt irgendeine Taste.
+Wenn die Maus über den Roboter `robot` fährt, soll im `statusText` der Text `Du berührst den Roboter` erscheinen.
 
-## 🎯 3.10 – Fehlersuche
-
-In diesem Code sind drei Fehler. Finde sie, ohne den Code auszuprobieren.
-
-```js
-let alarmButton = document.querySelector("#alarmButton");
-
-alarmButton.addEventListener("klick", function () {
-  spaceScene.style.backgroundColor = red;
-}
-```
+Achtung beim Auslöser: Hier ist der Auslöser **kein Knopf**, sondern der Roboter selber.
 
 <details>
 <summary>Lösung anzeigen</summary>
 
-1. Das Event heisst `"click"`, nicht `"klick"`. Englische Event-Namen sind fest vorgegeben.
-2. Der Farbwert ist ein Text und braucht Anführungszeichen: `"red"`.
-3. Am Ende fehlt das Schliessen: `});`
-
 ```js
-let alarmButton = document.querySelector("#alarmButton");
-
-alarmButton.addEventListener("click", function () {
-  spaceScene.style.backgroundColor = "red";
+robot.addEventListener("mouseover", function () {
+  statusText.textContent = "Du berührst den Roboter";
 });
 ```
 
 </details>
 
-## 🎯 3.11 – Abschlussaufgabe: Dein eigener Modus
+<details>
+<summary>Zusatz für Schnelle: Den Text wieder zurücksetzen</summary>
 
-Programmiere auf dem Knopf `modeButton` deinen eigenen Modus für die Weltraum-Szene.
+Es gibt ein Gegenstück zu `"mouseover"`: Das Event `"mouseout"` passiert, wenn die Maus das Element wieder verlässt. Damit kannst du den Statustext wieder zurücksetzen:
 
-Dein Modus soll:
+```js
+robot.addEventListener("mouseout", function () {
+  statusText.textContent = "Roboter wartet auf einen Befehl.";
+});
+```
 
-- durch einen Klick auf `modeButton` gestartet werden,
-- mindestens drei HTML-Elemente verändern und
-- einen passenden Statustext anzeigen.
+Fahre nun mit der Maus hin und her. Der Text wechselt jedes Mal.
 
-Mögliche Ideen:
+</details>
 
-- Nachtmodus
-- Party-Modus – später kannst du mit [`setInterval(...)`](../9-listen-und-loops/inhalt#wiederholung-nach-zeit) die Farben automatisch wiederholt wechseln
-- Sicherheitsmodus
-- Roboter-Wartung
-- Weltraum-Notfall
+## 🎯 3.5 – Den Roboter bewegen
 
-> Denke bei jeder Interaktion an Auslöser, Ziel, Event und Aktion.
+Bisher haben wir Farben, Texte und Grössen verändert. Jetzt bewegen wir den Roboter – und zwar mit einer fertigen Funktion aus dem Game Framework: [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+
+```js
+moveElement(robot, 20, 0);
+```
+
+Das heisst: Verschiebe den Roboter um `20px` nach rechts und um `0px` nach oben.
+
+Bei jedem Klick **auf den Roboter** soll er einen Schritt nach rechts gehen. Hier sind Auslöser und Ziel dasselbe Element: Wir klicken auf den Roboter und verändern den Roboter.
+
+Damit das Verschieben einen klaren Startpunkt hat, gibst du dem Roboter vorher einmal eine Position mit [`setPosition(...)`](/jsgame/3-framework-docs#setposition). Diese Zeile steht **ausserhalb** des Event Listeners, sie läuft also einmal beim Laden der Seite:
+
+```js
+setPosition(robot, 300, 85);
+```
+
+Mehr zu diesen beiden Funktionen lernst du im Kapitel [Game Loop](../4-game-loop/inhalt).
+
+<details>
+<summary>Tipp: Codegerüst</summary>
+
+```js
+setPosition(robot, 300, 85);
+
+robot.addEventListener("________", function () {
+  moveElement(robot, ________, 0);
+});
+```
+
+</details>
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```js
+setPosition(robot, 300, 85);
+
+robot.addEventListener("click", function () {
+  moveElement(robot, 20, 0);
+  statusText.textContent = "Roboter marschiert";
+});
+```
+
+Klicke nun mehrmals auf den Roboter. Er wandert Schritt für Schritt nach rechts.
+
+</details>
+
+Probiere danach aus:
+
+- Was passiert mit `moveElement(robot, -20, 0)`?
+- Was passiert mit `moveElement(robot, 0, 20)`?
+
+<details>
+<summary>Antwort anzeigen</summary>
+
+Die erste Zahl ist die Bewegung nach **rechts**, die zweite die Bewegung nach **oben**. Mit einem Minus geht es in die andere Richtung: `-20` bewegt den Roboter nach links, `0, 20` lässt ihn nach oben steigen.
+
+</details>

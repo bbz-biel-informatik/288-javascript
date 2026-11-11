@@ -29,7 +29,47 @@ Diese CSS-Regel macht die Weltraum-Szene blau.
 }
 ```
 
-AI: IN a collapsable, add a short recap on what means what in css.
+<details>
+<summary>Kurze Auffrischung: Wie ist eine CSS-Regel aufgebaut?</summary>
+
+Jede CSS-Regel besteht aus drei Teilen:
+
+```css
+#spaceScene {
+  background-color: blue;
+}
+```
+
+| Teil               | Name           | Bedeutung                                                 |
+| ------------------ | -------------- | --------------------------------------------------------- |
+| `#spaceScene`      | Selektor       | **Welches** Element ist gemeint?                          |
+| `background-color` | Eigenschaft    | **Was** soll verändert werden?                            |
+| `blue`             | Wert           | **Wie** soll es aussehen?                                 |
+
+Dazu kommen noch die Satzzeichen:
+
+- Die geschweiften Klammern `{ }` umschliessen alles, was für dieses Element gilt.
+- Der Doppelpunkt `:` trennt die Eigenschaft von ihrem Wert.
+- Das Semikolon `;` beendet eine Zeile.
+
+Beim Selektor gilt dieselbe Regel wie später in JavaScript:
+
+- `#spaceScene` meint das Element mit der **ID** `spaceScene`.
+- `.space-scene` meint alle Elemente mit der **Klasse** `space-scene`.
+
+Diese drei Eigenschaften kommen in diesem Kapitel immer wieder vor:
+
+```css
+#spaceScene {
+  background-color: blue; /* Hintergrundfarbe */
+  color: white; /* Textfarbe */
+  width: 200px; /* Breite */
+}
+```
+
+Wichtig für den Vergleich mit JavaScript: In CSS heisst die Eigenschaft `background-color` mit Bindestrich, in JavaScript schreibt man sie als `backgroundColor` mit grossem C. Mehr dazu weiter unten.
+
+</details>
 
 Diese JavaScript-Zeile macht dasselbe, aber mit Javascript:
 

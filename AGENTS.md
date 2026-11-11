@@ -43,12 +43,19 @@ element.remove();
 ## Events
 
 - Ich weiss, was Javascript Events sind und wie ich sie einsetzen kann.
-- Ich Weiss den Unterschied zwischen Tastatur events und Click events.
+- Ich kenne den Unterschied zwischen Klick-, Mausrad- und Hover-Events.
 - Ich kann ein Event selber programmieren. “Wenn auf X geklickt wird, soll Y passieren”.
 
 Key commands:
-document.addEventListener(‘keydown’, function(event){…})
-element.addEventListener(‘click’, function(event){…})
+element.addEventListener(‘click’, function(){…})
+element.addEventListener(‘wheel’, function(){…})
+element.addEventListener(‘mouseover’, function(){…})
+
+note: Tastatur-Events (keydown) schauen wir im Kurs nicht an. Sie haben einen
+anderen Auslöser (document statt ein Element) und brauchen den event-Parameter,
+das verwirrt die Anfänger. Die Tastatursteuerung läuft im Spiel über
+isKeyPressed(‘ArrowRight’) im Game Loop. Die keydown-Vorlage bleibt im
+Cheatsheet stehen.
 
 ## Funktionen
 
