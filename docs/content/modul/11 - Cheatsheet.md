@@ -1,4 +1,4 @@
-# 10 - JavaScript Cheatsheet
+# 11 - JavaScript Cheatsheet
 
 ## Javascript in HTML einbinden
 

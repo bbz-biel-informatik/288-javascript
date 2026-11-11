@@ -1,14 +1,18 @@
 # 1 - JavaScript Intro
 
+**Ziele**
+
+- Grundprinzip von Javascript verstehen
+- Ein HMTL / CSS / Javascript Projekt zum Laufen bringen.
+- Erster Kontakt mit Javascript: Wozu brauchen wir das?
+
+**Intro**
+
 HTML baut eine Webseite auf. CSS gestaltet sie. JavaScript sorgt dafür, dass auf der Webseite etwas passiert.
 
-Wir machen zu Beginn zusammen ein Beispiel. Wichtig dabei ist, das Grundkonzept von Javascript zu verstehen. Die genauen Befehle werden später erklärt.
+Wir machen zu Beginn zusammen ein Beispiel. Folge den Anweisungen Schritt für Schritt und versuche, dein erstes Projekt zum Laufen zu bringen.
 
-**Debugging**
-
-Wenn etwas nicht funtioniert (was zu beginn sehr oft vorkommt), schaue dir das letzte Kapitel "Debugging" an. Debugging bedeutet, fehler zu suchen und ist ein wichtiger Skill beim programmieren.
-
-## Kickoff
+## Kickoff - Projekt öffnen
 
 Lade das vorbereitete [Weltraum-Roboter-Projekt](/assets/zips/space-robot-starter.zip) herunter und entpacke den Ordner auf deinem Computer. Darin enthalten ist das Projekt, mit welchem wir nun arbeiten werden.
 
@@ -48,7 +52,7 @@ Das `script`-Element verbindet die Datei `script.js` mit der Webseite. Dadurch l
 
 ## Unser erster JavaScript-Code
 
-Mit diesem Code soll die Weltraum-Szene blau werden, wenn wir auf den blauen Button klicken:
+Mit diesem Code soll die Weltraum-Szene blau werden, wenn wir auf den blauen Button klicken. Kopiere den Code in dein script.js und sehe, selber, ob das funktioniert!
 
 ```js
 let blueButton = document.querySelector("#blueButton");
@@ -62,16 +66,16 @@ blueButton.addEventListener("click", function () {
 <details>
 <summary>Die neuen Befehle im Überblick – wir erklären sie später noch genau</summary>
 
-- Mit [`let`](../10-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
-- Mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
-- Mit [`addEventListener(...)`](../10-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
-- Mit [`style.backgroundColor`](../10-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
+- Mit [`let`](../11-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
+- Mit [`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
+- Mit [`addEventListener(...)`](../11-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
+- Mit [`style.backgroundColor`](../11-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
 
 </details>
 
 ## Was macht dieser Code?
 
-Wir schauen uns den Code nun Schritt für Schritt an.
+Wir schauen uns den Code nun Schritt für Schritt an. Die einzelnen Konzepte werden im nächsten Kapitel noch etwas genauer erläutert.
 
 ### Den Auslöser auswählen
 
@@ -79,7 +83,7 @@ Wir schauen uns den Code nun Schritt für Schritt an.
 let blueButton = document.querySelector("#blueButton");
 ```
 
-[`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) sucht ein Element im HTML. `#blueButton` bedeutet: Suche das Element mit der ID `blueButton`.
+[`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) sucht ein Element im HTML. `#blueButton` bedeutet: Suche das Element mit der ID `blueButton`.
 
 JavaScript merkt sich dieses Element unter dem Namen `blueButton`.
 
@@ -91,7 +95,7 @@ let spaceScene = document.querySelector("#spaceScene");
 
 Auch die Weltraum-Szene wird zuerst ausgewählt. Sie ist das Element, das wir später verändern wollen.
 
-In `querySelector(...)` verwenden wir die gleichen Selektoren wie in CSS. Mit `#spaceScene` wählen wir zum Beispiel das Element mit der ID `spaceScene` aus. Im nächsten Kapitel erfährst du genauer, [warum wir `querySelector(...)` brauchen](../2-html-elemente-auswaehlen-bearbeiten-events/inhalt#warum-brauchen-wir-queryselector).
+In `querySelector(...)` verwenden wir die gleichen Selektoren wie in CSS. Mit `#spaceScene` wählen wir zum Beispiel das Element mit der ID `spaceScene` aus. Im nächsten Kapitel erfährst du genauer, [warum wir `querySelector(...)` brauchen](../2-html-elemente-auswaehlen-und-veraendern/inhalt#warum-brauchen-wir-queryselector).
 
 Merke:
 
@@ -105,9 +109,9 @@ blueButton.addEventListener("click", function () {
 });
 ```
 
-Der [`addEventListener(...)`](../10-cheatsheet#events) wartet auf ein Ereignis. `"click"` bedeutet, dass der Code zwischen den geschweiften Klammern bei einem Mausklick ausgeführt wird.
+Der [`addEventListener(...)`](../11-cheatsheet#events) wartet auf ein Ereignis. `"click"` bedeutet, dass der Code zwischen den geschweiften Klammern bei einem Mausklick ausgeführt wird.
 
-Ein Ereignis nennt man in JavaScript **Event**. Wie Events funktionieren und was der Event Listener genau macht, lernst du im nächsten Kapitel in der [Event-Theorie](../2-html-elemente-auswaehlen-bearbeiten-events/inhalt#was-macht-ein-event-listener).
+Ein Ereignis nennt man in JavaScript **Event**. Wie Events funktionieren und was der Event Listener genau macht, lernst du im Kapitel [Events](../3-events/inhalt#was-macht-ein-event-listener).
 
 ### Die Hintergrundfarbe verändern
 
@@ -115,8 +119,20 @@ Ein Ereignis nennt man in JavaScript **Event**. Wie Events funktionieren und was
 spaceScene.style.backgroundColor = "blue";
 ```
 
-Sobald der blaue Knopf angeklickt wird, führt JavaScript diese Zeile aus. Mit [`style.backgroundColor`](../10-cheatsheet#html-elemente-bearbeiten) verändert JavaScript die CSS-Hintergrundfarbe der ausgewählten Weltraum-Szene. Der neue Wert ist `"blue"`, also blau.
+Sobald der blaue Knopf angeklickt wird, führt JavaScript diese Zeile aus. Mit [`style.backgroundColor`](../11-cheatsheet#html-elemente-bearbeiten) verändert JavaScript die CSS-Hintergrundfarbe der ausgewählten Weltraum-Szene. Der neue Wert ist `"blue"`, also blau.
 
-Im nächsten Kapitel zerlegen wir diese erste Interaktion noch genauer in ihre Teile. Danach programmierst du eigene Interaktionen für den Weltraum-Roboter.
+Im nächsten Kapitel schauen wir das Auswählen und Verändern von HTML-Elementen genau an. Im Kapitel danach kommen die Events dazu, und du programmierst eigene Interaktionen für den Weltraum-Roboter.
 
-👉 Weiter zu den [Aufgaben](./aufgaben)
+## Zusammenfassung
+
+In diesem Kapitel haben wir den ersten Kontakt mit Javascript gemacht. Bevor du weitergehst, solltest du sicherstellen, dass du:
+
+- Das VS Code mit den nötigen Plugins und Formatters aufgesetzt hast.
+- Das Projekt im VS Code zum Laufen bringst.
+
+**Grundfragen zur Kontrolle in diesem Kaptiel**
+
+- Wie kann ich ein Projekt in VS Code laufen lassen?
+- Wie kann ich Javascript in ein Projekt einfügen?
+
+Was ich noch vergessen habe: Die KI sagte mir, um bei eurer Generation anzukommen muss ich noch folgendes schreiben: 6-7.

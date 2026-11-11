@@ -1,10 +1,10 @@
-# 5 - Aufgaben: Variablen
+# 6 - Aufgaben: Variablen
 
-👉 [Projektstand nach Kapitel 4 herunterladen](/assets/zips/space-robot-loesung-4.zip)
+👉 [Projektstand nach Kapitel 5 herunterladen](/assets/zips/space-robot-loesung-5.zip)
 
 Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
-## 🎯 5.1 – Geschwindigkeit zentral festlegen
+## 🎯 6.1 – Geschwindigkeit zentral festlegen
 
 In deinem bisherigen Game Loop steht die Geschwindigkeit direkt in jedem Bewegungsbefehl. Erstelle stattdessen eine Variable mit dem Namen `speed` und dem Wert `2`.
 
@@ -41,11 +41,11 @@ function gameLoop() {
 gameLoop();
 ```
 
-Ändere nur den Wert von `speed` und teste, wie sich die Bewegung verändert. Die verwendeten Befehle findest du unter [Variablen](../10-cheatsheet#variablen), [If / Else](../10-cheatsheet#if-else) und in der Dokumentation zu [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Ändere nur den Wert von `speed` und teste, wie sich die Bewegung verändert. Die verwendeten Befehle findest du unter [Variablen](../11-cheatsheet#variablen), [If / Else](../11-cheatsheet#if-else) und in der Dokumentation zu [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
 </details>
 
-## 🎯 5.2 – Der Roboter hat nun ein Leben
+## 🎯 6.2 – Der Roboter hat nun ein Leben
 
 Unser kleiner Roboter soll nun etwas leiden, um das Spiel interessanter zu machen. Wir wollen Folgendes implementieren:
 
@@ -68,7 +68,7 @@ Die Leben sollen nur sinken, wenn sich der Roboter tatsächlich bewegt. Suche de
 
 Setze die Rechnung zum Verringern von `life` jeweils **in denselben `if`-Block** wie den Bewegungsbefehl. Ausserhalb der Bedingung würden die Leben auch sinken, wenn keine Taste gedrückt ist. Im `else`-Block würden sie genau dann sinken, wenn die Taste nicht gedrückt ist.
 
-Die Schreibweise einer Bedingung findest du unter [If / Else](../10-cheatsheet#if-else), das Rechnen mit dem aktuellen Wert unter [Werte ändern](./inhalt#werte-andern).
+Die Schreibweise einer Bedingung findest du unter [If / Else](../11-cheatsheet#if-else), das Rechnen mit dem aktuellen Wert unter [Werte ändern](./inhalt#werte-andern).
 
 </details>
 
@@ -123,4 +123,4 @@ gameLoop();
 
 </details>
 
-Im nächsten Kapitel [Vergleiche](../6-vergleiche/inhalt) lernst du, wie JavaScript den gespeicherten Wert prüft und daraus ein Game Over ableitet.
+Im nächsten Kapitel [Vergleiche](../7-vergleiche/inhalt) lernst du, wie JavaScript den gespeicherten Wert prüft und daraus ein Game Over ableitet.

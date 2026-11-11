@@ -1,4 +1,4 @@
-# 3 - Game Loop
+# 4 - Game Loop
 
 In einer normalen Interaktion wartet JavaScript auf ein einzelnes Ereignis, zum Beispiel einen Klick. Ein Spiel muss dagegen fortlaufend prüfen, was gerade passiert. Dafür verwenden wir einen **Game Loop**.
 
@@ -48,11 +48,11 @@ gameLoop();
 Wir schauen uns das Muster Zeile für Zeile an:
 
 - `function gameLoop() {` definiert eine Funktion mit dem Namen `gameLoop`. Alles zwischen den geschweiften Klammern gehört zum Game Loop.
-- [`window.requestAnimationFrame(gameLoop);`](../10-cheatsheet#listen-und-loops) sagt dem Browser: Führe `gameLoop` beim nächsten Bild noch einmal aus. So plant jeder Durchlauf den nächsten Durchlauf.
+- [`window.requestAnimationFrame(gameLoop);`](../11-cheatsheet#listen-und-loops) sagt dem Browser: Führe `gameLoop` beim nächsten Bild noch einmal aus. So plant jeder Durchlauf den nächsten Durchlauf.
 - `}` beendet die Funktion.
-- [`gameLoop();`](../10-cheatsheet#funktionen) ruft die Funktion zum ersten Mal auf und startet damit den Game Loop.
+- [`gameLoop();`](../11-cheatsheet#funktionen) ruft die Funktion zum ersten Mal auf und startet damit den Game Loop.
 
-Der erste Aufruf ist wie das Anstossen eines Dominosteins: `gameLoop();` startet den ersten Durchlauf. Danach sorgt [`window.requestAnimationFrame(...)`](../10-cheatsheet#listen-und-loops) dafür, dass immer wieder ein neuer Durchlauf folgt.
+Der erste Aufruf ist wie das Anstossen eines Dominosteins: `gameLoop();` startet den ersten Durchlauf. Danach sorgt [`window.requestAnimationFrame(...)`](../11-cheatsheet#listen-und-loops) dafür, dass immer wieder ein neuer Durchlauf folgt.
 
 ## Wie können wir ein Element bewegen?
 

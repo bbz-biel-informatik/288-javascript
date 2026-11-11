@@ -1,5 +1,5 @@
-// Lösung Kapitel 5 - Variablen
-// Geschwindigkeit und Leben werden neu in Variablen gespeichert.
+// Lösung Kapitel 5 - If-Else
+// Der Roboter wird jetzt mit den Pfeiltasten gesteuert.
 
 // --- Alle HTML-Elemente auswählen ---------------------------------------
 
@@ -19,13 +19,13 @@ let robot = document.querySelector("#robot");
 let energy = document.querySelector("#energy");
 let backgroundPlanet = document.querySelector("#backgroundPlanet");
 
-// --- Aufgabe 2.1: Eine andere Farbe -------------------------------------
+// --- Aufgabe 3.1: Interaktion aus Kapitel 1 ---------------------------
 
 blueButton.addEventListener("click", function () {
-  spaceScene.style.backgroundColor = "yellow";
+  spaceScene.style.backgroundColor = "blue";
 });
 
-// --- Aufgabe 2.2 und 2.5: Alarm einschalten -----------------------------
+// --- Aufgabe 3.2 und 3.5: Alarm einschalten -----------------------------
 // Im gleichen Event Listener passieren zwei Dinge gleichzeitig.
 
 alarmButton.addEventListener("click", function () {
@@ -33,25 +33,25 @@ alarmButton.addEventListener("click", function () {
   statusText.textContent = "Planetenalarm";
 });
 
-// --- Aufgabe 2.3: Status verändern --------------------------------------
+// --- Aufgabe 3.3: Status verändern --------------------------------------
 
 statusButton.addEventListener("click", function () {
   statusText.textContent = "Roboter ist bereit!";
 });
 
-// --- Aufgabe 2.4: Roboter vergrössern -----------------------------------
+// --- Aufgabe 3.4: Roboter vergrössern -----------------------------------
 
 sizeButton.addEventListener("click", function () {
   robot.style.width = "260px";
 });
 
-// --- Aufgabe 2.6: Energie entfernen -------------------------------------
+// --- Aufgabe 3.6: Energie entfernen -------------------------------------
 
 removeButton.addEventListener("click", function () {
   energy.remove();
 });
 
-// --- Aufgabe 2.7: Hintergrundplaneten zerstören -------------------------
+// --- Aufgabe 3.7: Hintergrundplaneten zerstören -------------------------
 // Der Knopf mit der ID destroyPlanetButton wurde im index.html ergänzt.
 
 destroyPlanetButton.addEventListener("click", function () {
@@ -59,7 +59,7 @@ destroyPlanetButton.addEventListener("click", function () {
   statusText.textContent = "Planet zerstört";
 });
 
-// --- Aufgabe 2.9: Eigener Modus (Beispiel: Nachtmodus) ------------------
+// --- Aufgabe 3.11: Eigener Modus (Beispiel: Nachtmodus) ------------------
 // Ein Klick verändert mehrere HTML-Elemente und den Statustext.
 
 modeButton.addEventListener("click", function () {
@@ -73,48 +73,29 @@ modeButton.addEventListener("click", function () {
 
 setPosition(robot, 50, 85);
 
-// NEU (Aufgabe 5.1): Die Geschwindigkeit steht nur noch an einer Stelle.
-let speed = 2;
-
-// NEU (Aufgabe 5.2): Der Roboter startet mit 1000 Leben.
-let life = 1000;
-
 function gameLoop() {
-  // --- Aufgabe 4.1: Den Roboter steuern ---------------------------------
+  // --- Aufgabe 5.1: Den Roboter steuern ---------------------------------
   if (isKeyPressed("ArrowRight")) {
-    moveElement(robot, speed, 0);
-    // NEU: Beim Fahren ein Leben abziehen
-    life -= 1;
+    moveElement(robot, 2, 0);
   }
 
   if (isKeyPressed("ArrowLeft")) {
-    moveElement(robot, -speed, 0);
-    // NEU: Beim Fahren ein Leben abziehen
-    life -= 1;
+    moveElement(robot, -2, 0);
   }
 
   if (isKeyPressed("ArrowUp")) {
-    moveElement(robot, 0, speed);
-    // NEU: Beim Fahren ein Leben abziehen
-    life -= 1;
+    moveElement(robot, 0, 2);
   }
 
   if (isKeyPressed("ArrowDown")) {
-    moveElement(robot, 0, -speed);
-    // NEU: Beim Fahren ein Leben abziehen
-    life -= 1;
+    moveElement(robot, 0, -2);
   }
 
-  // --- Aufgabe 4.2: Energie einsammeln ----------------------------------
+  // --- Aufgabe 5.2: Energie einsammeln ----------------------------------
 
   if (isColliding(robot, energy)) {
-    // NEU: Leben mit der Energiekiste wieder auffüllen
-    life = 1000;
     energy.remove();
   }
-
-  // NEU: Aktuelle Leben anzeigen
-  statusText.textContent = "Leben: " + life;
 
   window.requestAnimationFrame(gameLoop);
 }

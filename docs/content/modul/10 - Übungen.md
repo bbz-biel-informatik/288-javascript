@@ -1,6 +1,6 @@
-# 9 - Übungen
+# 10 - Übungen
 
-In diesem Kapitel gibt es Übungen, um die verschiedenen Konzepte zu vertiefen. Zur guten Vorbereitung, versuche, die KI wenig einzusetzen und wenn, dann nur zum Verständnis. Überlege dir jeweils, was du brauchst und schaue die Befehle im [Cheatsheet](./10-cheatsheet) nach.
+In diesem Kapitel gibt es Übungen, um die verschiedenen Konzepte zu vertiefen. Zur guten Vorbereitung, versuche, die KI wenig einzusetzen und wenn, dann nur zum Verständnis. Überlege dir jeweils, was du brauchst und schaue die Befehle im [Cheatsheet](./11-cheatsheet) nach.
 
 Übungen mit \*, \*\* oder \*\*\* gekennzeichnet:
 
@@ -50,9 +50,9 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 <<< @/projects/uebung-3-quiz-spanien/script.js
 
-Die Funktion `checkAnswer()` ist schon vorbereitet. Sie liest mit [`.value`](./10-cheatsheet#html-elemente-bearbeiten) den Text, der im Textfeld steht.
+Die Funktion `checkAnswer()` ist schon vorbereitet. Sie liest mit [`.value`](./11-cheatsheet#html-elemente-bearbeiten) den Text, der im Textfeld steht.
 
-## 4.1 - Dark mode knopf \*\*
+## 5.1 - Dark mode knopf \*\*
 
 👉 [Projekt herunterladen](/assets/zips/uebung-4-darkmode.zip)
 
@@ -66,6 +66,6 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 <<< @/projects/uebung-4-darkmode/script.js
 
-## 4.2 - Dark mode knopf \*\*\*
+## 5.2 - Dark mode knopf \*\*\*
 
 Erweitere die Aufgabe aus 4.1 so, dass der Knopf wie ein Switch funktioniert: 1x drücken -> Dark mode geht and. Beim nächsten mal drücken -> Dark mode geht off. Hinweis: Du kannst eine Variable verwenden, welche zwischen 0 und 1 wechselt.

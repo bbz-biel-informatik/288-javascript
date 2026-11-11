@@ -1,10 +1,10 @@
-# 7 - Aufgaben: Funktionen
+# 8 - Aufgaben: Funktionen
 
-👉 [Projektstand nach Kapitel 6 herunterladen](/assets/zips/space-robot-loesung-6.zip)
+👉 [Projektstand nach Kapitel 7 herunterladen](/assets/zips/space-robot-loesung-7.zip)
 
 Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
-## 🎯 7.1 – Spielerbewegung auslagern
+## 🎯 8.1 – Spielerbewegung auslagern
 
 Suche im Game Loop die vier `if`-Blöcke für `ArrowRight`, `ArrowLeft`, `ArrowUp` und `ArrowDown`.
 
@@ -12,7 +12,7 @@ Suche im Game Loop die vier `if`-Blöcke für `ArrowRight`, `ArrowLeft`, `ArrowU
 2. Rufe `moveRobot()` im Game Loop auf.
 3. Teste, ob sich der Roboter noch gleich bewegt.
 
-Die Schreibweisen findest du unter [Funktionen](../10-cheatsheet#funktionen) und [If / Else](../10-cheatsheet#if-else). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
+Die Schreibweisen findest du unter [Funktionen](../11-cheatsheet#funktionen) und [If / Else](../11-cheatsheet#if-else). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
@@ -50,6 +50,6 @@ function gameLoop() {
 gameLoop();
 ```
 
-Die verwendeten Schreibweisen stehen unter [Funktionen](../10-cheatsheet#funktionen), [If / Else](../10-cheatsheet#if-else), [Variablen](../10-cheatsheet#variablen) und [Listen und Loops](../10-cheatsheet#listen-und-loops). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
+Die verwendeten Schreibweisen stehen unter [Funktionen](../11-cheatsheet#funktionen), [If / Else](../11-cheatsheet#if-else), [Variablen](../11-cheatsheet#variablen) und [Listen und Loops](../11-cheatsheet#listen-und-loops). Die Framework-Befehle sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) erklärt.
 
 </details>

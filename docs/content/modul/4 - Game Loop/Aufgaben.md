@@ -1,10 +1,10 @@
-# 3 - Aufgaben: Game Loop
+# 4 - Aufgaben: Game Loop
 
-👉 [Projektstand nach Kapitel 2 herunterladen](/assets/zips/space-robot-loesung-2.zip)
+👉 [Projektstand nach Kapitel 3 herunterladen](/assets/zips/space-robot-loesung-3.zip)
 
 Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
-## 🎯 3.1 – Spielerbewegung
+## 🎯 4.1 – Spielerbewegung
 
 Lass den Roboter automatisch von links nach rechts fahren. Nutze dabei die Codeteile aus der Theorie und gehe wie folgt vor:
 
@@ -35,7 +35,7 @@ gameLoop();
 
 </details>
 
-## 🎯 3.2 – Bewegung ändern
+## 🎯 4.2 – Bewegung ändern
 
 Der Roboter bewegt sich nun nach rechts. Verändere den Code nacheinander so, dass Folgendes geschieht:
 
