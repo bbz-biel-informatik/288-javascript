@@ -49,6 +49,10 @@ Wenn du eine Datei speicherst, wird dein Code nun automatisch sauber formatiert.
 
 Ein JavaScript-Projekt besteht meistens aus mehreren Dateien. Deshalb öffnen wir in VS Code immer den **ganzen Projektordner** und nicht nur eine einzelne Datei.
 
+Zum Üben brauchst du das vorbereitete Weltraum-Roboter-Projekt. Es ist dasselbe Projekt, mit dem wir in Kapitel 1 weiterarbeiten.
+
+👉 [Projekt herunterladen](/assets/zips/space-robot-starter.zip)
+
 1. Entpacke den heruntergeladenen Projektordner.
 2. Öffne VS Code.
 3. Klicke auf **File → Open Folder**.
@@ -82,4 +86,4 @@ Du bist bereit, wenn:
 - Format On Save aktiviert ist und
 - Prettier als Standard-Formatter ausgewählt ist.
 
-Im nächsten Kapitel lädst du das erste vorbereitete Projekt herunter und machst eine Webseite mit JavaScript interaktiv.
+Im nächsten Kapitel arbeitest du mit diesem Projekt weiter und machst die Webseite mit JavaScript interaktiv.

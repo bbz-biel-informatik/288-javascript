@@ -94,11 +94,11 @@ Den genauen Aufbau von Funktionen schauen wir im Kapitel [Funktionen](../8-funkt
 
 Ein Klick ist nicht das einzige Ereignis, auf das wir warten können. Wir schauen in diesem Kapitel drei Events an:
 
-| Event         | Wann passiert es?                    | Typische Verwendung                            |
-| ------------- | ------------------------------------ | ---------------------------------------------- |
-| `"click"`     | Das Element wird angeklickt.         | Knöpfe im Steuerpult                           |
-| `"wheel"` | Das Mausrad wird über dem Element gedreht. | Zoomen, etwas durchblättern |
-| `"mouseover"` | Die Maus fährt über das Element.     | Etwas hervorheben, einen Hinweis zeigen        |
+| Event         | Wann passiert es?                          | Typische Verwendung                     |
+| ------------- | ------------------------------------------ | --------------------------------------- |
+| `"click"`     | Das Element wird angeklickt.               | Knöpfe im Steuerpult                    |
+| `"wheel"`     | Das Mausrad wird über dem Element gedreht. | Zoomen, etwas durchblättern             |
+| `"mouseover"` | Die Maus fährt über das Element.           | Etwas hervorheben, einen Hinweis zeigen |
 
 Und nun das Wichtigste an diesem Kapitel:
 

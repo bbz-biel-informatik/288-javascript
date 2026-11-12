@@ -6,43 +6,7 @@ Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
 Denke bei jeder Aufgabe an die [vier Teile einer Interaktion](./inhalt#die-teile-einer-interaktion): Auslöser, Ziel, Event und Aktion.
 
-## 🎯 3.1 – Code aufräumen
-
-Im letzten Kapitel haben sich alle Veränderungen sofort beim Laden der Seite ausgeführt. Das räumen wir nun auf.
-
-1. Lösche in `script.js` alle direkten Veränderungen aus Kapitel 2, also Zeilen wie `spaceScene.style.backgroundColor = "yellow";` und `energy.remove();`.
-2. Behalte alle Zeilen mit `document.querySelector(...)`. Die Elemente brauchen wir weiterhin.
-3. Behalte den Click-Code aus Kapitel 1.
-
-Lade die Seite neu. Sie sollte wieder normal aussehen, und der Licht-Knopf sollte die Szene blau färben.
-
-::: tip Ab hier gilt wieder: nichts löschen
-Nur in dieser ersten Aufgabe räumen wir auf. Danach kommt jede neue Interaktion **unterhalb** der vorherigen dazu. Und Elemente, die du schon einmal mit `querySelector(...)` ausgewählt hast, brauchst du nicht nochmals auszuwählen.
-:::
-
-<details>
-<summary>Lösung anzeigen</summary>
-
-```js
-// Auslöser (die Knöpfe)
-let blueButton = document.querySelector("#blueButton");
-
-// Ziele (die Elemente, die wir verändern wollen)
-let spaceScene = document.querySelector("#spaceScene");
-let statusText = document.querySelector("#statusText");
-let robot = document.querySelector("#robot");
-let energy = document.querySelector("#energy");
-let backgroundPlanet = document.querySelector("#backgroundPlanet");
-
-// Interaktion aus Kapitel 1
-blueButton.addEventListener("click", function () {
-  spaceScene.style.backgroundColor = "blue";
-});
-```
-
-</details>
-
-## 🎯 3.2 – Klick-Events
+## 🎯 3.1 – Klick-Events
 
 ### a) Alarm einschalten
 
@@ -177,7 +141,7 @@ alarmButton.addEventListener("click", function () {
 
 </details>
 
-## 🎯 3.3 – Mausrad: Der Sternensprung
+## 🎯 3.2 – Mausrad: Der Sternensprung
 
 Nun das zweite Event: `"wheel"`. Es passiert, wenn man das Mausrad über einem Element dreht. Auf einem Laptop ohne Maus funktioniert es mit zwei Fingern auf dem Trackpad.
 
@@ -233,7 +197,7 @@ Bei `"mausrad"` passiert gar nichts – und zwar **nie**. Die Event-Namen sind e
 
 </details>
 
-## 🎯 3.4 – Hover: Den Roboter berühren
+## 🎯 3.3 – Hover: Den Roboter berühren
 
 Das dritte Event: `"mouseover"`. Es passiert, wenn die Maus über ein Element fährt – ganz ohne Klick.
 
@@ -267,7 +231,7 @@ Fahre nun mit der Maus hin und her. Der Text wechselt jedes Mal.
 
 </details>
 
-## 🎯 3.5 – Den Roboter bewegen
+## 🎯 3.4 – Den Roboter bewegen
 
 Bisher haben wir Farben, Texte und Grössen verändert. Jetzt bewegen wir den Roboter – und zwar mit einer fertigen Funktion aus dem Game Framework: [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
 
