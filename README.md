@@ -25,7 +25,8 @@ Weitere Befehle:
 - `npm run zips:build` erstellt für jeden Unterordner in `docs/projects/` eine gleichnamige `.zip`-Datei in `docs/assets/zips/`.
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
-- `npm run deploy` baut lokal und veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages`.
+- `npm run deploy` baut lokal, veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages` und pusht anschliessend die Quellen auf `main`.
+- `npm run push:main` committet offene Änderungen und pusht `main` (wird von `npm run deploy` automatisch aufgerufen).
 
 ## Shared Layout
 
@@ -140,7 +141,14 @@ Der Ablauf ist:
 
 1. `npm run build` erzeugt statische Dateien in `docs/.vitepress/dist`.
 2. `npm run deploy` veröffentlicht genau diesen Build mit dem Paket `gh-pages`.
-3. GitHub Pages liefert danach nur die bereits gebauten statischen Dateien aus.
+3. Danach committet und pusht `npm run deploy` die Quellen automatisch auf `main` (Script [scripts/git/push-main.mjs](scripts/git/push-main.mjs)).
+4. GitHub Pages liefert danach nur die bereits gebauten statischen Dateien aus.
+
+Hinweise zum automatischen Push:
+
+- Er läuft nur, wenn du auf dem Branch `main` bist. Auf einem anderen Branch bricht das Script mit einer Meldung ab, der `gh-pages`-Deploy ist zu diesem Zeitpunkt aber schon erledigt.
+- Offene Änderungen werden mit `git add -A` committet. Die Commit-Message ist standardmässig `deploy: <Datum Uhrzeit>`; mit `npm run push:main -- "eigene Message"` kannst du eine eigene setzen.
+- Gibt es keine Änderungen, wird nur gepusht.
 
 ## Game Framework auf GitHub Pages
 

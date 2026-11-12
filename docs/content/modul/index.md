@@ -4,8 +4,7 @@
 
 Die Kapitel mit Aufgaben sind in zwei Unterkapitel aufgeteilt: Im **Inhalt** steht die Theorie, unter **Aufgaben** setzt du sie im Projekt um.
 
-- [0 - JavaScript Setup](/modul/0-javascript-setup)
-- 1 - JavaScript Intro: [Inhalt](/modul/1-javascript-intro/inhalt)
+- [1 - JavaScript Setup](/modul/1-javascript-setup)
 - 2 - HTML-Elemente auswählen und verändern: [Inhalt](/modul/2-html-elemente-auswaehlen-und-veraendern/inhalt) · [Aufgaben](/modul/2-html-elemente-auswaehlen-und-veraendern/aufgaben)
 - 3 - Events: [Inhalt](/modul/3-events/inhalt) · [Aufgaben](/modul/3-events/aufgaben)
 - 4 - Game Loop: [Inhalt](/modul/4-game-loop/inhalt) · [Aufgaben](/modul/4-game-loop/aufgaben)
