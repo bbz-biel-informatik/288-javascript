@@ -8,7 +8,27 @@ In diesem Kapitel gibt es Übungen, um die verschiedenen Konzepte zu vertiefen. 
 \*\* = schwieriger
 \*\*\* = schwierig
 
-## 1 - Der Einkaufswagen \*\*\*
+## 1 - Der Like-Button \*
+
+👉 [Projekt herunterladen](/assets/zips/uebung-6-like-button.zip)
+
+Wir haben einen Beitrag mit einem grauen Herz-Knopf. Schau dir das HTML an, öffne es im Liveserver und schreibe das JavaScript dazu.
+
+`index.html`
+
+<<< @/projects/uebung-6-like-button/index.html
+
+`script.js`
+
+<<< @/projects/uebung-6-like-button/script.js
+
+**a)** Wenn man auf das Herz klickt, soll es **rot** werden.
+
+**b)** Ändere beim Klick auch den Text unten im Beitrag (`statusText`) auf "Gefällt dir". Verwende dazu [`.textContent`](./11-cheatsheet#html-elemente-bearbeiten).
+
+**c) Erklären:** Beschreibe in eigenen Worten, was deine Befehle machen. Was ist der Unterschied zwischen dem Auswählen eines Elements und dem Verändern eines Elements?
+
+## 2 - Der Einkaufswagen \*\*\*
 
 👉 [Projekt herunterladen](/assets/zips/uebung-1-einkaufswagen.zip)
 
@@ -22,7 +42,7 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 <<< @/projects/uebung-1-einkaufswagen/script.js
 
-## 2 - Instagram \*\*\*
+## 3 - Instagram \*\*\*
 
 👉 [Projekt herunterladen](/assets/zips/uebung-2-instagram.zip)
 
@@ -36,7 +56,7 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 <<< @/projects/uebung-2-instagram/script.js
 
-## 3 - Quizz \*\*\*
+## 4 - Quizz \*\*\*
 
 👉 [Projekt herunterladen](/assets/zips/uebung-3-quiz-spanien.zip)
 
@@ -68,4 +88,4 @@ Wir haben folgendes HTML. Schau dir das HTML an, öffne es im Liveserver und ver
 
 ## 5.2 - Dark mode knopf \*\*\*
 
-Erweitere die Aufgabe aus 4.1 so, dass der Knopf wie ein Switch funktioniert: 1x drücken -> Dark mode geht and. Beim nächsten mal drücken -> Dark mode geht off. Hinweis: Du kannst eine Variable verwenden, welche zwischen 0 und 1 wechselt.
+Erweitere die Aufgabe aus 5.1 so, dass der Knopf wie ein Switch funktioniert: 1x drücken -> Dark mode geht and. Beim nächsten mal drücken -> Dark mode geht off. Hinweis: Du kannst eine Variable verwenden, welche zwischen 0 und 1 wechselt.
