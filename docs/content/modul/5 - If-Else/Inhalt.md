@@ -1,139 +1,189 @@
 # 5 - If-Else
 
-Wir wissen nun, wie wir Objekte bewegen können. Ein Spiel ist aber kein Film, sondern reagiert auf Eingaben. Die nächste Frage ist also: Wie können wir den Roboter mit den Tasten steuern? Dazu brauchen wir `if` und `else`. Übersetzt bedeuten diese Wörter **wenn** und **sonst**.
+Bis jetzt läuft unser Code immer gleich ab: Der Goblin arbeitet Zeile für Zeile ab, was wir ihm aufgetragen haben. Ein Programm muss aber **Entscheidungen** treffen können:
+
+- Ist die eingetippte Antwort richtig oder falsch?
+- Ist es heute warm genug für ein T-Shirt?
+- Welches Team hat mehr Tore?
+
+Dafür brauchen wir `if` und `else`. Übersetzt bedeuten diese Wörter **wenn** und **sonst**. Und wir brauchen **Vergleiche**, um zwei Werte miteinander zu vergleichen.
 
 ## Lernziele
 
 Nach diesem Kapitel kannst du:
 
 - die Grundlagen von `if` und `else` erklären,
-- im Game Loop eine Steuerung einbauen,
-- mit `if` auf eine Kollision reagieren und
-- mit `else` bestimmen, was sonst passieren soll.
+- Werte mit `==`, `!=`, `>`, `<`, `>=` und `<=` vergleichen,
+- einen Vergleich als Bedingung in einer `if`-Anweisung verwenden und
+- mit `else if` mehrere Möglichkeiten unterscheiden.
 
-## Theorie: If und Else
-
-### Wie schreiben wir eine `if` Anweisung?
+## Wie schreiben wir eine `if` Anweisung?
 
 Eine `if`-Anweisung besteht aus einer **Bedingung** und einer **Aktion**:
 
 ```js
-if (isKeyPressed("ArrowRight")) {
-  moveElement(robot, 2, 0);
+if (temperatur >= 25) {
+  outfitText.textContent = "T-Shirt";
 }
 ```
 
 Wir lesen diesen Code so:
 
-> Wenn die rechte Pfeiltaste gedrückt ist, bewege den Roboter zwei Pixel nach rechts.
+> Wenn `temperatur` grösser oder gleich `25` ist, zeige «T-Shirt» an.
 
 JavaScript geht dabei Schritt für Schritt vor:
 
 1. `if` kündigt eine Entscheidung an.
-2. [`isKeyPressed("ArrowRight")`](/jsgame/3-framework-docs#iskeypressed) prüft die Bedingung: Ist die rechte Pfeiltaste gerade gedrückt?
+2. In den runden Klammern steht die Bedingung: Ist `temperatur` grösser oder gleich `25`?
 3. Ist die Antwort «ja», wird der Code zwischen `{` und `}` ausgeführt.
-4. [`moveElement(robot, 2, 0)`](/jsgame/3-framework-docs#moveelement) bewegt den Roboter nach rechts.
-5. Ist die Taste nicht gedrückt, überspringt JavaScript den Bewegungsbefehl.
+4. Ist die Antwort «nein», überspringt JavaScript den ganzen Block.
 
-Die Schreibweise von [`if`](../11-cheatsheet#if-else) findest du auch im Cheatsheet. Die beiden Spielfunktionen sind bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) dokumentiert.
+Die Schreibweise von [`if`](../10-cheatsheet#if-else) findest du auch im Cheatsheet.
 
 <details>
-<summary>Analogie: Der Roboter steht an einer Kreuzung</summary>
+<summary>Analogie: Der Goblin steht an einer Kreuzung</summary>
 
-Stell dir vor, unser kleiner JavaScript-Roboter kommt an eine Kreuzung. Dort liest er ein Schild:
+Unser kleiner JavaScript-Goblin kommt an eine Kreuzung. Dort liest er ein Schild:
 
-> Ist die rechte Pfeiltaste gedrückt?
+> Ist `temperatur` grösser oder gleich `25`?
 
-Ist die Antwort «ja», fährt er nach rechts. Ist die Antwort «nein», fährt er nicht. Beim nächsten Durchlauf des Game Loops kommt er wieder an der Kreuzung vorbei und prüft dieselbe Frage erneut.
+Ist die Antwort «ja», geht er den Weg mit den Aufträgen in den geschweiften Klammern. Ist die Antwort «nein», läuft er daran vorbei und macht beim nächsten Auftrag weiter.
 
 </details>
 
-### Was macht `else`?
+## Was macht `else`?
 
 Manchmal soll JavaScript auch handeln, wenn die Antwort «nein» lautet. Dafür verwenden wir `else`. `else` bedeutet **sonst**:
 
 ```js
-if (isKeyPressed("ArrowRight")) {
-  moveElement(robot, 2, 0);
-  statusText.textContent = "Roboter fährt";
+if (cityField.value == "Madrid") {
+  cityResult.textContent = "Richtig!";
 } else {
-  statusText.textContent = "Roboter wartet";
+  cityResult.textContent = "Falsch!";
 }
 ```
 
 JavaScript wählt genau einen Weg:
 
-- Ist die Taste gedrückt, bewegt sich der Roboter und der Text zeigt `Roboter fährt`.
-- Sonst bewegt er sich nicht und der Text zeigt `Roboter wartet`.
+- Steht `Madrid` im Feld, erscheint `Richtig!`.
+- Sonst erscheint `Falsch!`.
 
-Ein `else` ist nicht immer nötig. Soll bei der Antwort «nein» einfach nichts passieren, lassen wir es weg. Genau das machen wir bei den folgenden Bewegungs- und Kollisionsabfragen.
+Ein `else` ist nicht immer nötig. Soll bei der Antwort «nein» einfach nichts passieren, lassen wir es weg.
 
-Die Entscheidung ist unter [If / Else](../11-cheatsheet#if-else), das Verändern des Textes unter [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten) beschrieben. Die Spielfunktionen findest du bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+## Eine Entscheidung in einem Event
 
-### Warum steht die Abfrage im Game Loop?
-
-Eine Taste kann jederzeit gedrückt oder losgelassen werden. Deshalb muss JavaScript die Bedingung immer wieder prüfen:
+Eine Entscheidung steht fast immer in einem [Event](../3-events/inhalt). Erst wenn geklickt wird, gibt es etwas zu entscheiden:
 
 ```js
-function gameLoop() {
-  if (isKeyPressed("ArrowRight")) {
-    moveElement(robot, 2, 0);
+let cityField = document.querySelector("#cityField");
+let cityResult = document.querySelector("#cityResult");
+
+cityButton.addEventListener("click", function () {
+  if (cityField.value == "Madrid") {
+    cityResult.textContent = "Richtig!";
+  } else {
+    cityResult.textContent = "Falsch!";
   }
-
-  window.requestAnimationFrame(gameLoop);
-}
-
-gameLoop();
+});
 ```
 
-Bei jedem neuen Bild fragt der Game Loop erneut nach der Taste. Dadurch beginnt die Bewegung beim Drücken und endet beim Loslassen.
+Bei jedem Klick prüft JavaScript die Bedingung neu. Deshalb kann dieselbe Entscheidung einmal «ja» und ein anderes Mal «nein» ergeben.
 
-Den Aufbau des [`gameLoop`](../11-cheatsheet#listen-und-loops) findest du im Cheatsheet. Die Entscheidung steht unter [If / Else](../11-cheatsheet#if-else), die Spielfunktionen stehen in der Dokumentation bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
+Das Event findest du unter [Events](../10-cheatsheet#events), das Auslesen eines Textfeldes mit [`value`](../10-cheatsheet#html-elemente-bearbeiten) im Cheatsheet.
 
-### Mehrere Tasten prüfen
+## Werte vergleichen
 
-Für jede Richtung können wir eine eigene Frage stellen:
+In den runden Klammern von `if (...)` steht eine Bedingung. Ihr Ergebnis kann nur **wahr** oder **falsch** sein. Am häufigsten steht dort ein **Vergleich**.
+
+Nehmen wir an, Team A hat `3` Tore geschossen:
 
 ```js
-if (isKeyPressed("ArrowRight")) {
-  moveElement(robot, 2, 0);
-}
-
-if (isKeyPressed("ArrowLeft")) {
-  moveElement(robot, -2, 0);
-}
+let toreA = 3;
 ```
 
-Die beiden `if`-Anweisungen werden unabhängig voneinander geprüft. JavaScript kann deshalb auch mehrere gleichzeitig gedrückte Tasten erkennen.
-
-Die Schreibweise findest du unter [If / Else](../11-cheatsheet#if-else). Die Tastennamen und Bewegungsrichtungen stehen bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed) und [`moveElement(...)`](/jsgame/3-framework-docs#moveelement).
-
-### Kollisionen sind ebenfalls Fragen
-
-Eine Bedingung kann auch prüfen, ob sich zwei Spielelemente berühren:
+Mit diesen Zeichen vergleichen wir den Wert mit einer anderen Zahl:
 
 ```js
-if (isColliding(robot, energy)) {
-  robot.style.backgroundColor = "red";
+toreA == 3; // gleich
+toreA != 0; // nicht gleich
+toreA > 1; // grösser als
+toreA < 5; // kleiner als
+toreA >= 3; // grösser oder gleich
+toreA <= 2; // kleiner oder gleich
+```
+
+| Vergleich    | Frage                                | Ergebnis     |
+| ------------ | ------------------------------------ | ------------ |
+| `toreA == 3` | Hat Team A genau 3 Tore?             | stimmt       |
+| `toreA != 0` | Hat Team A nicht 0 Tore?             | stimmt       |
+| `toreA > 1`  | Hat Team A mehr als ein Tor?         | stimmt       |
+| `toreA < 5`  | Hat Team A weniger als 5 Tore?       | stimmt       |
+| `toreA >= 3` | Hat Team A 3 oder mehr Tore?         | stimmt       |
+| `toreA <= 2` | Hat Team A höchstens 2 Tore?         | stimmt nicht |
+
+Wir können auch zwei Variablen miteinander vergleichen:
+
+```js
+if (toreA > toreB) {
+  winnerText.textContent = "Team A gewinnt";
 }
 ```
 
-[`isColliding(robot, energy)`](/jsgame/3-framework-docs#iscolliding) fragt:
+Und wir können Texte vergleichen:
 
-> Berühren sich der Roboter und die Energiekiste?
+```js
+cityField.value == "Madrid"; // Steht genau «Madrid» im Textfeld?
+```
 
-Wenn die Antwort stimmt, färbt [`robot.style.backgroundColor`](../11-cheatsheet#html-elemente-bearbeiten) den Hintergrund des Roboters rot. Wenn sie nicht stimmt, wird der Befehl übersprungen.
+Die Vergleichszeichen findest du unter [If / Else](../10-cheatsheet#if-else) im Cheatsheet.
 
-Auch diese Frage gehört in den Game Loop. Der Roboter bewegt sich fortlaufend, deshalb kann die Kollision bei jedem neuen Bild an einer anderen Stelle passieren.
+## Setzen oder vergleichen?
+
+Wir müssen aufpassen, dass wir `=` und `==` nicht verwechseln. Die beiden Zeichen sehen ähnlich aus, haben aber verschiedene Aufgaben:
+
+```js
+toreA = 3; // setzt den Wert auf 3
+toreA == 3; // fragt, ob der Wert gleich 3 ist
+```
+
+- Mit einem einzelnen `=` geben wir einer Variable einen Wert.
+- Mit `==` vergleichen wir zwei Werte.
+
+## Mehrere Möglichkeiten mit `else if`
+
+Oft gibt es mehr als zwei Fälle. Dann hängen wir mit `else if` weitere Fragen an:
+
+```js
+if (temperatur >= 25) {
+  outfitText.textContent = "T-Shirt";
+} else if (temperatur >= 15) {
+  outfitText.textContent = "Pullover";
+} else if (temperatur >= 5) {
+  outfitText.textContent = "Jacke";
+} else {
+  outfitText.textContent = "Wintermantel";
+}
+```
+
+Wichtig ist die Reihenfolge: JavaScript prüft die Bedingungen von oben nach unten und nimmt den **ersten** Weg, der stimmt. Alle anderen werden übersprungen.
+
+| Temperatur | Angezeigtes Outfit |
+| ---------- | ------------------ |
+| `30`       | `T-Shirt`          |
+| `18`       | `Pullover`         |
+| `8`        | `Jacke`            |
+| `-2`       | `Wintermantel`     |
+
+Beginne deshalb immer beim «extremsten» Fall. Würden wir mit `temperatur >= 5` starten, käme `T-Shirt` nie zum Zug: Bei `30` Grad stimmt bereits die erste Bedingung.
 
 ## Zusammenfassung
 
 - `if` stellt eine Frage und führt Code nur aus, wenn die Antwort «ja» lautet.
 - `else` bestimmt, was bei der Antwort «nein» passieren soll.
-- Im Game Loop werden Bedingungen bei jedem neuen Bild erneut geprüft.
-- Mehrere einzelne `if`-Anweisungen können im gleichen Durchlauf ausgeführt werden.
-- Tastatureingaben und Kollisionen können als Bedingungen verwendet werden.
+- Mit `==`, `!=`, `>`, `<`, `>=` und `<=` vergleichen wir zwei Werte.
+- `=` setzt einen Wert, `==` vergleicht zwei Werte.
+- Mit `else if` unterscheidet JavaScript mehrere Möglichkeiten und nimmt den ersten passenden Weg.
 
-Im nächsten Kapitel lernst du [Variablen](../6-variablen/inhalt) kennen. Damit kann sich JavaScript Zahlen und Texte merken und diese Werte während des Spiels verändern.
+Im nächsten Kapitel lernst du den [Game Loop](../6-game-loop/inhalt) kennen. Damit prüft JavaScript solche Fragen nicht nur bei einem Klick, sondern viele Male pro Sekunde.
 
 👉 Weiter zu den [Aufgaben](./aufgaben)

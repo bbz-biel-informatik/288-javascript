@@ -28,7 +28,7 @@ Um den Alarm-Knopf auszuwählen:
 let alarmButton = document.querySelector("#alarmButton");
 ```
 
-Verwende danach [`addEventListener(...)`](../11-cheatsheet#events) und [`style.backgroundColor`](../11-cheatsheet#html-elemente-bearbeiten).
+Verwende danach [`addEventListener(...)`](../10-cheatsheet#events) und [`style.backgroundColor`](../10-cheatsheet#html-elemente-bearbeiten).
 
 </details>
 
@@ -49,7 +49,7 @@ alarmButton.addEventListener("click", function () {
 
 Wenn der Knopf `statusButton` angeklickt wird, soll im Element `statusText` der Text `Roboter ist bereit!` erscheinen.
 
-Verwende dafür [`textContent`](../11-cheatsheet#html-elemente-bearbeiten).
+Verwende dafür [`textContent`](../10-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp: Codegerüst</summary>
@@ -81,7 +81,7 @@ statusButton.addEventListener("click", function () {
 
 Wenn der Knopf `sizeButton` angeklickt wird, soll der Roboter mit der ID `robot` breiter werden. Denke wieder an die vier Teile einer Interaktion.
 
-Was du verändern musst, ist [`style.width`](../11-cheatsheet#html-elemente-bearbeiten).
+Was du verändern musst, ist [`style.width`](../10-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Lösung anzeigen</summary>
@@ -100,7 +100,7 @@ sizeButton.addEventListener("click", function () {
 
 Wenn der Knopf `removeButton` angeklickt wird, soll das Element `energy` aus der Seite verschwinden.
 
-Verwende dafür [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
+Verwende dafür [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
 
 Beachte: Nach einem Neuladen der Seite ist die Energie wieder da. Das HTML bestimmt den Startzustand der Seite.
 
@@ -249,7 +249,7 @@ Damit das Verschieben einen klaren Startpunkt hat, gibst du dem Roboter vorher e
 setPosition(robot, 300, 85);
 ```
 
-Mehr zu diesen beiden Funktionen lernst du im Kapitel [Game Loop](../4-game-loop/inhalt).
+Mehr zu diesen beiden Funktionen lernst du im Kapitel [Game Loop](../6-game-loop/inhalt).
 
 <details>
 <summary>Tipp: Codegerüst</summary>

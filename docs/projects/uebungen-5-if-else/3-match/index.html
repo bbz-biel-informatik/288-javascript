@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Match-Counter</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="../index.html">← Übungsauswahl</a>
+      <span class="kapitel">Kapitel 5: If-Else</span>
+    </header>
+
+    <main class="inhalt">
+      <div class="card">
+        <h1>Match-Counter</h1>
+        <p class="hint">Zähle die Tore und bestimme den Sieger.</p>
+
+        <div class="spielstand">
+          <div class="team">
+            <p class="name">Team A</p>
+            <p id="scoreA" class="zahl">0</p>
+            <button id="goalButtonA">Tor</button>
+          </div>
+
+          <div class="team">
+            <p class="name">Team B</p>
+            <p id="scoreB" class="zahl">0</p>
+            <button id="goalButtonB">Tor</button>
+          </div>
+        </div>
+
+        <button id="winnerButton">Wer gewinnt?</button>
+        <p id="winnerText" class="resultat">Das Spiel läuft.</p>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

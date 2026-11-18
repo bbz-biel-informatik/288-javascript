@@ -12,8 +12,8 @@ Nach diesem Kapitel kannst du:
 
 Die verwendeten Befehle findest du im Cheatsheet:
 
-- [HTML-Elemente auswählen](../11-cheatsheet#html-elemente-auswahlen)
-- [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten)
+- [HTML-Elemente auswählen](../10-cheatsheet#html-elemente-auswahlen)
+- [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten)
 
 ## Theorie: HTML-Elemente verändern
 
@@ -157,7 +157,7 @@ Eine übersichtliche Reihenfolge ist: zuerst alle Elemente auswählen, danach al
 
 ### Ein HTML-Element löschen
 
-Mit [`remove()`](../11-cheatsheet#html-elemente-bearbeiten) entfernen wir ein ausgewähltes Element aus der Webseite:
+Mit [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) entfernen wir ein ausgewähltes Element aus der Webseite:
 
 ```js
 let energy = document.querySelector("#energy");
@@ -183,9 +183,9 @@ HTML und CSS bestimmen, wie die Weltraum-Szene am Anfang aussieht. JavaScript ka
 
 Du kannst nun:
 
-- Elemente mit [`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) auswählen,
-- Eigenschaften wie [`style.backgroundColor`, `textContent` oder `style.width`](../11-cheatsheet#html-elemente-bearbeiten) verändern und
-- Elemente mit [`remove()`](../11-cheatsheet#html-elemente-bearbeiten) löschen.
+- Elemente mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) auswählen,
+- Eigenschaften wie [`style.backgroundColor`, `textContent` oder `style.width`](../10-cheatsheet#html-elemente-bearbeiten) verändern und
+- Elemente mit [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) löschen.
 
 Merke dir vor allem das Muster:
 
@@ -195,9 +195,9 @@ Merke dir vor allem das Muster:
 
 Die gleichen zwei Schritte werden auch in echten Webseiten verwendet. In einem Onlineshop steht neben jedem Produkt im Warenkorb eine Anzahl:
 
-1. JavaScript wählt mit [`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) das Element mit der Anzahl aus.
-2. Mit [`textContent`](../11-cheatsheet#html-elemente-bearbeiten) schreibt es die neue Anzahl hinein.
-3. Soll ein Produkt aus der Liste verschwinden, entfernt [`remove()`](../11-cheatsheet#html-elemente-bearbeiten) das Produkt-Element.
+1. JavaScript wählt mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) das Element mit der Anzahl aus.
+2. Mit [`textContent`](../10-cheatsheet#html-elemente-bearbeiten) schreibt es die neue Anzahl hinein.
+3. Soll ein Produkt aus der Liste verschwinden, entfernt [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) das Produkt-Element.
 
 Das Thema ist anders als beim Weltraum-Roboter, aber das Muster bleibt gleich: **Element auswählen und verändern.**
 

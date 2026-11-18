@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Umrechner mit Funktionen</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="../index.html">← Übungsauswahl</a>
+      <span class="kapitel">Kapitel 7: Funktionen</span>
+    </header>
+
+    <main class="inhalt">
+      <div class="card">
+        <h1>Umrechner mit Funktionen</h1>
+        <p class="hint">Gleiche Aufgabe wie in Kapitel 4, nun mit Funktionen.</p>
+
+        <div class="eingabe">
+          <span class="label">Wert</span>
+          <input id="inputField" type="text" value="100" />
+        </div>
+
+        <div class="knoepfe">
+          <button id="meterButton">Meter → Meilen</button>
+          <button id="celsiusButton">Celsius → Fahrenheit</button>
+          <button id="pfundButton">Pfund → Gramm</button>
+        </div>
+
+        <p id="resultText" class="resultat">Noch nichts umgerechnet.</p>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

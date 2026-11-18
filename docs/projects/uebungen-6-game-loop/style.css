@@ -1,0 +1,73 @@
+/* Grundstil - den musst du nicht anpassen. */
+body {
+  margin: 0;
+  padding: 40px 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  color: #1f2933;
+  line-height: 1.5;
+}
+
+.card {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid #e1e6ea;
+  border-radius: 12px;
+  background-color: white;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.hint {
+  margin: 0 0 20px;
+  color: #6b7785;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 14px;
+  border: 1px solid #165f68;
+  border-radius: 8px;
+  background-color: #165f68;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #11484f;
+}
+
+input {
+  padding: 8px 10px;
+  border: 1px solid #c7cfd6;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.uebung {
+  display: block;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border: 1px solid #e1e6ea;
+  border-radius: 10px;
+  color: #165f68;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.uebung:hover {
+  border-color: #165f68;
+  background-color: #f0f7f8;
+}
+
+.uebung span {
+  display: block;
+  color: #6b7785;
+  font-weight: normal;
+  font-size: 14px;
+}

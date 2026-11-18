@@ -117,10 +117,10 @@ blueButton.addEventListener("click", function () {
 <details>
 <summary>Die neuen Befehle im Überblick – wir erklären sie in den nächsten Kapiteln genau</summary>
 
-- Mit [`let`](./11-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
-- Mit [`document.querySelector(...)`](./11-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
-- Mit [`addEventListener(...)`](./11-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
-- Mit [`style.backgroundColor`](./11-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
+- Mit [`let`](./10-cheatsheet#variablen) merken wir uns etwas unter einem eigenen Namen.
+- Mit [`document.querySelector(...)`](./10-cheatsheet#html-elemente-auswahlen) wählen wir ein HTML-Element aus.
+- Mit [`addEventListener(...)`](./10-cheatsheet#events) reagieren wir auf ein Ereignis wie einen Klick.
+- Mit [`style.backgroundColor`](./10-cheatsheet#html-elemente-bearbeiten) verändern wir die Hintergrundfarbe eines HTML-Elements.
 
 </details>
 

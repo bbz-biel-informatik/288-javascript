@@ -10,7 +10,7 @@ Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
 Fünf Aufträge, alle nach demselben Muster: **auswählen, verändern.** Schau bei Bedarf nochmals bei den [zwei Schritten](./inhalt#jede-veranderung-hat-zwei-schritte) in der Theorie nach.
 
-Die Befehle dazu findest du alle im Cheatsheet bei [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten).
+Die Befehle dazu findest du alle im Cheatsheet bei [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten).
 
 ### a) Das Weltall einfärben
 
@@ -50,7 +50,7 @@ Auch Elemente, die du schon einmal mit `querySelector(...)` ausgewählt hast, mu
 
 Im Steuerpult gibt es ein Text-Element mit der ID `statusText`. Schreibe mit JavaScript den Text `Systeme werden geladen...` hinein.
 
-Verwende dafür [`textContent`](../11-cheatsheet#html-elemente-bearbeiten).
+Verwende dafür [`textContent`](../10-cheatsheet#html-elemente-bearbeiten).
 
 <details>
 <summary>Tipp: Codegerüst</summary>
@@ -78,7 +78,7 @@ statusText.textContent = "Systeme werden geladen...";
 
 Der Roboter hat die ID `robot`. Mache ihn `250px` breit.
 
-Verwende dafür [`style.width`](../11-cheatsheet#html-elemente-bearbeiten). Vergiss die Einheit `px` nicht, sie gehört in die Anführungszeichen.
+Verwende dafür [`style.width`](../10-cheatsheet#html-elemente-bearbeiten). Vergiss die Einheit `px` nicht, sie gehört in die Anführungszeichen.
 
 <details>
 <summary>Lösung anzeigen</summary>
@@ -133,7 +133,7 @@ energy.style.backgroundColor = "black";
 
 Lösche die Energie-Kiste mit der ID `energy` aus der Webseite.
 
-Lies bei Bedarf nochmals, wie man [ein HTML-Element löscht](./inhalt#ein-html-element-loschen). Verwende [`remove()`](../11-cheatsheet#html-elemente-bearbeiten).
+Lies bei Bedarf nochmals, wie man [ein HTML-Element löscht](./inhalt#ein-html-element-loschen). Verwende [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
 
 Achtung auf die Reihenfolge: Der Löschbefehl gehört **unter** deinen Code aus Aufgabe 2.1 e. JavaScript arbeitet die Zeilen von oben nach unten ab. Zuerst wird die Kiste also umgefärbt, dann verschwindet sie.
 

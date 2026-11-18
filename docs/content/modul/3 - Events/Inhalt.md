@@ -16,9 +16,9 @@ Nach diesem Kapitel kannst du:
 
 Die verwendeten Befehle findest du im Cheatsheet:
 
-- [Events](../11-cheatsheet#events)
-- [HTML-Elemente auswählen](../11-cheatsheet#html-elemente-auswahlen)
-- [HTML-Elemente bearbeiten](../11-cheatsheet#html-elemente-bearbeiten)
+- [Events](../10-cheatsheet#events)
+- [HTML-Elemente auswählen](../10-cheatsheet#html-elemente-auswahlen)
+- [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten)
 
 ## Theorie: Auf Ereignisse reagieren
 
@@ -82,13 +82,13 @@ blueButton.addEventListener("click", function () {
 - `blueButton` ist der **Auslöser**. Auf dieses Element wird geklickt.
 - `spaceScene` ist das **Ziel**. Dieses Element wird verändert.
 
-Beide müssen mit [`document.querySelector(...)`](../11-cheatsheet#html-elemente-auswahlen) ausgewählt werden, genau wie im Kapitel [HTML-Elemente auswählen und verändern](../2-html-elemente-auswaehlen-und-veraendern/inhalt). Auslöser und Ziel können dasselbe Element sein, müssen es aber nicht.
+Beide müssen mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) ausgewählt werden, genau wie im Kapitel [HTML-Elemente auswählen und verändern](../2-html-elemente-auswaehlen-und-veraendern/inhalt). Auslöser und Ziel können dasselbe Element sein, müssen es aber nicht.
 
 ### Was bedeutet `function()` im Event Listener?
 
 Das ist eine Funktion. Sie ist die Verpackung für den Code, der beim Event ausgeführt werden soll. Alles zwischen `{` und `}` gehört zu dieser Verpackung.
 
-Den genauen Aufbau von Funktionen schauen wir im Kapitel [Funktionen](../8-funktionen/inhalt) an. Für jetzt genügt: Was passieren soll, schreiben wir zwischen die geschweiften Klammern.
+Den genauen Aufbau von Funktionen schauen wir im Kapitel [Funktionen](../7-funktionen/inhalt) an. Für jetzt genügt: Was passieren soll, schreiben wir zwischen die geschweiften Klammern.
 
 ### Drei Events, ein Muster
 
@@ -124,7 +124,7 @@ robot.addEventListener("mouseover", function () {
 Dreimal derselbe Aufbau: Element, `addEventListener`, Event-Name, Funktion mit der Aktion. Wenn du `"click"` verstanden hast, kannst du alle Events.
 
 ::: tip Die Event-Namen sind fest vorgegeben
-`"click"`, `"wheel"` und `"mouseover"` sind englische Namen, die du nicht selber erfinden kannst. `"klick"` oder `"mausrad"` funktionieren nicht. Und: JavaScript meldet dabei **keinen Fehler**, es passiert einfach nichts. Darum lohnt sich ein Blick ins [Cheatsheet](../11-cheatsheet#events), wenn eine Interaktion nicht reagiert.
+`"click"`, `"wheel"` und `"mouseover"` sind englische Namen, die du nicht selber erfinden kannst. `"klick"` oder `"mausrad"` funktionieren nicht. Und: JavaScript meldet dabei **keinen Fehler**, es passiert einfach nichts. Darum lohnt sich ein Blick ins [Cheatsheet](../10-cheatsheet#events), wenn eine Interaktion nicht reagiert.
 :::
 
 Beim Mausrad merkt sich JavaScript nur: «Es wurde gedreht.» Ob nach oben oder nach unten gedreht wurde, können wir noch nicht unterscheiden. Dafür brauchst du eine Entscheidung mit `if`, die lernst du im Kapitel [If-Else](../5-if-else/inhalt).
@@ -176,13 +176,13 @@ Diese Teile müssen im Code nicht direkt nacheinander stehen. HTML-Elemente werd
 
 ## Zusammenfassung
 
-Du kannst nun mit [`addEventListener(...)`](../11-cheatsheet#events) auf drei Ereignisse reagieren:
+Du kannst nun mit [`addEventListener(...)`](../10-cheatsheet#events) auf drei Ereignisse reagieren:
 
 - `"click"` – ein Klick auf ein Element,
 - `"wheel"` – ein Dreh am Mausrad über einem Element,
 - `"mouseover"` – die Maus fährt über ein Element.
 
-In einem Event Listener kannst du beliebig viele HTML-Elemente [verändern oder löschen](../11-cheatsheet#html-elemente-bearbeiten).
+In einem Event Listener kannst du beliebig viele HTML-Elemente [verändern oder löschen](../10-cheatsheet#html-elemente-bearbeiten).
 
 Merke dir das Muster:
 
@@ -193,9 +193,9 @@ Merke dir das Muster:
 Die gleichen Schritte werden auch in echten Webseiten verwendet. In einem Onlineshop steht neben jedem Produkt im Warenkorb ein Knopf **Entfernen**:
 
 1. JavaScript wählt den Entfernen-Knopf und das zugehörige Produkt aus.
-2. Ein [`addEventListener(...)`](../11-cheatsheet#events) wartet auf den Klick.
-3. Nach dem Klick entfernt [`remove()`](../11-cheatsheet#html-elemente-bearbeiten) das Produkt aus der sichtbaren Liste.
-4. Mit [`textContent`](../11-cheatsheet#html-elemente-bearbeiten) aktualisiert JavaScript danach die angezeigte Anzahl.
+2. Ein [`addEventListener(...)`](../10-cheatsheet#events) wartet auf den Klick.
+3. Nach dem Klick entfernt [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) das Produkt aus der sichtbaren Liste.
+4. Mit [`textContent`](../10-cheatsheet#html-elemente-bearbeiten) aktualisiert JavaScript danach die angezeigte Anzahl.
 
 Das Thema ist anders als beim Weltraum-Roboter, das Muster bleibt gleich: **Elemente auswählen, auf ein Event warten und eine Aktion ausführen.**
 

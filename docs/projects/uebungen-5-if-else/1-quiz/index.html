@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="../index.html">← Übungsauswahl</a>
+      <span class="kapitel">Kapitel 5: If-Else</span>
+    </header>
+
+    <main class="inhalt">
+      <div class="card">
+        <h1>Quiz</h1>
+        <p class="hint">Zwei Fragen, zwei Auswertungen.</p>
+
+        <div class="frage">
+          <p><b>Frage 1:</b> Wie heisst die Hauptstadt von Spanien?</p>
+          <input id="cityField" type="text" placeholder="Deine Antwort" />
+          <button id="cityButton">Prüfen</button>
+          <p id="cityResult" class="resultat">Noch nicht geprüft.</p>
+        </div>
+
+        <div class="frage">
+          <p><b>Frage 2:</b> Wie viele Einwohner hat die Schweiz (in Millionen)?</p>
+          <input id="guessField" type="text" placeholder="Deine Schätzung" />
+          <button id="guessButton">Prüfen</button>
+          <p id="guessResult" class="resultat">Noch nicht geschätzt.</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
