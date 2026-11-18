@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz-Rad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+    />
+    <style>
+      /* Layout: eine Bühne pro Bildschirm — erst das Rad, dann die Frage. Grosse Typo für den Beamer. */
+      :root {
+        --bg: #f4f6fb;
+        --surface: #ffffff;
+        --fg: #15192b;
+        --muted: #5b6382;
+        --line: #d9deec;
+        --accent: #2f4fd8;
+        --accent-soft: #e5eaff;
+        --js: #d98324;
+        --js-soft: #fcefdc;
+        --wissen: #1f8a8c;
+        --wissen-soft: #d8f0f0;
+        --correct: #117a4a;
+        --correct-soft: #d9f3e5;
+        --wrong: #b3261e;
+        --wrong-soft: #fbe3e1;
+        --font-display: "Space Grotesk", "Trebuchet MS", sans-serif;
+        --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+        --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        color-scheme: light;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0d1021;
+          --surface: #161a30;
+          --fg: #eef1fb;
+          --muted: #9aa3c4;
+          --line: #2a3053;
+          --accent: #7f9bff;
+          --accent-soft: #212a52;
+          --js: #e8a33d;
+          --js-soft: #3a2a14;
+          --wissen: #45c2c4;
+          --wissen-soft: #11343a;
+          --correct: #4ade9b;
+          --correct-soft: #16352a;
+          --wrong: #ff8f85;
+          --wrong-soft: #3a1e1c;
+          color-scheme: dark;
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #0d1021;
+        --surface: #161a30;
+        --fg: #eef1fb;
+        --muted: #9aa3c4;
+        --line: #2a3053;
+        --accent: #7f9bff;
+        --accent-soft: #212a52;
+        --js: #e8a33d;
+        --js-soft: #3a2a14;
+        --wissen: #45c2c4;
+        --wissen-soft: #11343a;
+        --correct: #4ade9b;
+        --correct-soft: #16352a;
+        --wrong: #ff8f85;
+        --wrong-soft: #3a1e1c;
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-size: clamp(16px, 1.05vw + 12px, 21px);
+        line-height: 1.5;
+      }
+
+      .page {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-block: 20px 18px;
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+      }
+
+      header,
+      footer,
+      main > * {
+        max-width: 1100px;
+        width: 100%;
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 18px;
+      }
+
+      .brand {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.05em;
+        letter-spacing: 0.01em;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .counts {
+        display: flex;
+        gap: 8px;
+        margin-left: auto;
+        font-size: 0.72em;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .count {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 12px;
+        border-radius: 99px;
+        border: 1px solid var(--line);
+      }
+
+      .count i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .count.js i {
+        background: var(--js);
+      }
+      .count.wissen i {
+        background: var(--wissen);
+      }
+      .count.score {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .bar {
+        height: 5px;
+        border-radius: 99px;
+        background: var(--line);
+        overflow: hidden;
+      }
+
+      .bar div {
+        height: 100%;
+        background: var(--accent);
+        transition: width 0.4s ease;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ---------- Rad ---------- */
+
+      .stage-wheel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        text-align: center;
+      }
+
+      .wheel-wrap {
+        position: relative;
+        width: min(56vmin, 380px);
+        aspect-ratio: 1;
+        max-width: 100%;
+      }
+
+      .pointer {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 26px solid var(--fg);
+        z-index: 3;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+      }
+
+      .wheel {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 8px solid var(--surface);
+        box-shadow:
+          0 0 0 2px var(--line),
+          0 12px 30px rgba(10, 14, 35, 0.18);
+        transform: rotate(0deg);
+        transition: transform 3.6s cubic-bezier(0.17, 0.85, 0.24, 1);
+      }
+
+      .spokes {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: repeating-conic-gradient(
+          var(--surface) 0deg 0.7deg,
+          transparent 0.7deg var(--segdeg)
+        );
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.74em;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .hub {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 26%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 2px solid var(--line);
+        display: grid;
+        place-items: center;
+        align-content: center;
+        font-family: var(--font-display);
+        font-weight: 700;
+        line-height: 1.05;
+        z-index: 2;
+      }
+
+      .hub b {
+        font-size: clamp(1.1rem, 4vmin, 1.8rem);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .hub span {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: clamp(0.55rem, 1.6vmin, 0.72rem);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .wheel-title {
+        font-family: var(--font-display);
+        font-size: clamp(1.3em, 2vw + 0.8em, 1.9em);
+        margin: 0;
+        text-wrap: balance;
+      }
+
+      .wheel-sub {
+        color: var(--muted);
+        margin: 0;
+        max-width: 34ch;
+      }
+
+      .landed {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.4em, 2.4vw + 0.9em, 2.2em);
+        padding: 10px 26px;
+        border-radius: 99px;
+        animation: pop 0.4s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+      }
+
+      @keyframes pop {
+        from {
+          transform: scale(0.75);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .landed[data-cat="js"] {
+        background: var(--js-soft);
+        color: var(--js);
+      }
+
+      .landed[data-cat="wissen"] {
+        background: var(--wissen-soft);
+        color: var(--wissen);
+      }
+
+      /* ---------- Frage ---------- */
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: clamp(18px, 2.6vw, 36px);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-top: 5px solid var(--line);
+      }
+
+      .card[data-cat="js"] {
+        border-top-color: var(--js);
+      }
+
+      .card[data-cat="wissen"] {
+        border-top-color: var(--wissen);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.7em;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-weight: 600;
+      }
+
+      .chip {
+        padding: 4px 11px;
+        border-radius: 99px;
+        letter-spacing: 0.06em;
+      }
+
+      .chip[data-cat="js"] {
+        background: var(--js-soft);
+        color: var(--js);
+      }
+
+      .chip[data-cat="wissen"] {
+        background: var(--wissen-soft);
+        color: var(--wissen);
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.45em, 2.2vw + 0.8em, 2em);
+        line-height: 1.2;
+        text-wrap: balance;
+        margin: 0;
+      }
+
+      pre {
+        margin: 0;
+        padding: 15px 17px;
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 0.8em;
+        line-height: 1.6;
+      }
+
+      .answers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+      }
+
+      @media (max-width: 760px) {
+        .answers {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .answer {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        min-width: 0;
+        text-align: left;
+        font: inherit;
+        color: inherit;
+        background: var(--surface);
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        padding: 13px 15px;
+        cursor: pointer;
+        transition:
+          border-color 0.15s,
+          background 0.15s,
+          opacity 0.15s;
+      }
+
+      .answer:hover:not(:disabled) {
+        border-color: var(--accent);
+      }
+
+      .answer:disabled {
+        cursor: default;
+      }
+
+      .answer .key {
+        font-family: var(--font-mono);
+        font-weight: 700;
+        color: var(--muted);
+        flex: none;
+      }
+
+      .answer .label {
+        min-width: 0;
+      }
+
+      .answer code {
+        font-family: var(--font-mono);
+        font-size: 0.92em;
+      }
+
+      .answer[data-state="correct"] {
+        border-color: var(--correct);
+        background: var(--correct-soft);
+      }
+
+      .answer[data-state="correct"] .key {
+        color: var(--correct);
+      }
+
+      .answer[data-state="wrong"] {
+        border-color: var(--wrong);
+        background: var(--wrong-soft);
+      }
+
+      .answer[data-state="wrong"] .key {
+        color: var(--wrong);
+      }
+
+      .answer[data-state="dim"] {
+        opacity: 0.45;
+      }
+
+      .explain {
+        border-left: 4px solid var(--accent);
+        padding: 2px 0 2px 15px;
+        color: var(--muted);
+      }
+
+      .explain b {
+        color: var(--fg);
+      }
+
+      .explain code {
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+      }
+
+      /* ---------- Schluss ---------- */
+
+      .end {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .end h1 {
+        font-size: clamp(1.8em, 3vw + 1em, 2.6em);
+      }
+
+      .big-score {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(2.6em, 7vw, 4.4em);
+        line-height: 1;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ---------- Steuerung ---------- */
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 14px;
+        color: var(--muted);
+        font-size: 0.76em;
+      }
+
+      button.ctrl {
+        font: inherit;
+        font-size: 1em;
+        color: var(--fg);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        padding: 9px 20px;
+        cursor: pointer;
+      }
+
+      button.ctrl:hover:not(:disabled) {
+        border-color: var(--accent);
+      }
+
+      button.ctrl:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+
+      button.ctrl.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      button.big {
+        font-size: 1.1em;
+        padding: 13px 34px;
+      }
+
+      .hint {
+        margin-left: auto;
+        font-family: var(--font-mono);
+        font-size: 0.95em;
+      }
+
+      kbd {
+        font-family: var(--font-mono);
+        border: 1px solid var(--line);
+        border-bottom-width: 2px;
+        border-radius: 6px;
+        padding: 1px 6px;
+        font-size: 0.95em;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .wheel {
+          transition: none;
+        }
+        * {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <header>
+        <div class="brand">Quiz-Rad <span>· JavaScript &amp; Varia</span></div>
+        <div class="counts">
+          <span class="count score" id="scoreBox">0 richtig</span>
+        </div>
+      </header>
+
+      <div class="bar"><div id="bar" style="width: 0%"></div></div>
+
+      <main>
+        <section id="stage" aria-live="polite"></section>
+      </main>
+
+      <footer>
+        <button class="ctrl primary" id="mainBtn" type="button">Rad drehen</button>
+        <button class="ctrl" id="themeBtn" type="button">Hell / Dunkel</button>
+        <button class="ctrl" id="resetBtn" type="button">Neu starten</button>
+        <span class="hint"
+          ><kbd>Leertaste</kbd> weiter · <kbd>a</kbd>–<kbd>d</kbd> antworten ·
+          <kbd>f</kbd> Vollbild</span
+        >
+      </footer>
+    </div>
+
+    <script>
+      /* ---------------- Fragen ---------------- */
+
+      const jsFragen = [
+        {
+          frage: "Diese Zeile steht am Ende von <code>index.html</code>. Was macht sie?",
+          code: '<script src="./script.js"><\/script>',
+          antworten: [
+            "Sie erstellt die Datei <code>script.js</code>.",
+            "Sie verbindet <code>script.js</code> mit der Webseite.",
+            "Sie startet den Live Server.",
+            "Sie führt nur die erste Zeile von <code>script.js</code> aus.",
+          ],
+          richtig: 1,
+          erklaerung:
+            "Ohne diese Zeile lädt der Browser deinen Code gar nicht — dein JavaScript tut dann scheinbar nichts.",
+        },
+        {
+          frage: "Was passiert, wenn man auf den blauen Knopf klickt?",
+          code:
+            'let blueButton = document.querySelector("#blueButton");\nlet spaceScene = document.querySelector("#spaceScene");\n\nblueButton.addEventListener("click", function () {\n  spaceScene.style.backgroundColor = "blue";\n});',
+          antworten: [
+            "Der Knopf wird blau.",
+            "Die ganze Webseite wird blau.",
+            "Der Hintergrund der Weltraum-Szene wird blau.",
+            "Nichts, der Code läuft sofort beim Laden.",
+          ],
+          richtig: 2,
+          erklaerung:
+            "Der Knopf ist der <b>Auslöser</b>, die Szene ist das <b>Ziel</b>. Verändert wird immer das Element vor dem Punkt: <code>spaceScene</code>.",
+        },
+        {
+          frage: "Was macht die erste Zeile?",
+          code:
+            'let spaceScene = document.querySelector("#spaceScene");\nspaceScene.style.backgroundColor = "blue";',
+          antworten: [
+            "Sie erstellt ein neues HTML-Element.",
+            "Sie färbt das Element blau.",
+            "Sie sucht das Element mit der ID <code>spaceScene</code> und merkt es sich unter diesem Namen.",
+            "Sie löscht das Element aus der Webseite.",
+          ],
+          richtig: 2,
+          erklaerung:
+            "Schritt 1 ist immer <b>auswählen</b>, Schritt 2 ist <b>verändern</b>. Zeile 1 verändert noch gar nichts.",
+        },
+        {
+          frage: "Welcher Befehl wählt dieses Element über seine ID aus?",
+          code: '<section id="spaceScene" class="space-scene"></section>',
+          antworten: [
+            '<code>document.querySelector("spaceScene")</code>',
+            '<code>document.querySelector("#spaceScene")</code>',
+            '<code>document.querySelector("#space-scene")</code>',
+            '<code>document.getElement("spaceScene")</code>',
+          ],
+          richtig: 1,
+          erklaerung:
+            "Das <code>#</code> steht für die ID — genau wie in CSS. Und die ID heisst <code>spaceScene</code>, nicht <code>space-scene</code>.",
+        },
+        {
+          frage: "Diese CSS-Regel willst du in JavaScript schreiben. Welche Zeile ist richtig?",
+          code: "#robot {\n  border-color: yellow;\n}",
+          antworten: [
+            '<code>robot.style.border-color = "yellow";</code>',
+            '<code>robot.border-color = "yellow";</code>',
+            '<code>robot.style.BorderColor = "yellow";</code>',
+            '<code>robot.style.borderColor = "yellow";</code>',
+          ],
+          richtig: 3,
+          erklaerung:
+            "Kein Bindestrich, dafür ein grosser Buchstabe in der Mitte: <code>borderColor</code>, <code>backgroundColor</code>, <code>fontSize</code>.",
+        },
+        {
+          frage: "Was passiert mit dem Element <code>#statusText</code>?",
+          code:
+            'let statusText = document.querySelector("#statusText");\nstatusText.textContent = "Roboter ist bereit!";',
+          antworten: [
+            "Der bisherige Text im Element wird durch den neuen ersetzt.",
+            "Der neue Text wird hinten angehängt.",
+            "Das Element bekommt einen Tooltip mit diesem Text.",
+            "Der Text wird in die Datei <code>index.html</code> geschrieben.",
+          ],
+          richtig: 0,
+          erklaerung:
+            "<code>textContent</code> <b>setzt</b> den Text. Was vorher drin stand, ist weg.",
+        },
+        {
+          frage: "Warum funktioniert dieser Code nicht?",
+          code: 'robot.style.width = "200px";\nlet robot = document.querySelector("#robot");',
+          antworten: [
+            "Bei <code>width</code> dürfen keine Anführungszeichen stehen.",
+            "Das Element wird verändert, bevor es ausgewählt wurde.",
+            "Es fehlt ein <code>addEventListener</code>.",
+            "<code>#robot</code> müsste <code>.robot</code> heissen.",
+          ],
+          richtig: 1,
+          erklaerung:
+            "JavaScript liest von <b>oben nach unten</b>. In Zeile 1 kennt es <code>robot</code> noch gar nicht.",
+        },
+        {
+          frage: "Welche Farbe hat die Szene am Ende?",
+          code:
+            'let spaceScene = document.querySelector("#spaceScene");\nspaceScene.style.backgroundColor = "red";\nspaceScene.style.backgroundColor = "green";',
+          antworten: [
+            "Rot, die erste Zeile gilt.",
+            "Grün, die letzte Zeile gilt.",
+            "Beide Farben werden gemischt.",
+            "Keine, die zwei Zeilen heben sich auf.",
+          ],
+          richtig: 1,
+          erklaerung:
+            "Von oben nach unten: Zeile 3 überschreibt Zeile 2. Zu sehen ist nur das Ergebnis am Schluss.",
+        },
+        {
+          frage: "Was macht dieser Code?",
+          code: 'let energy = document.querySelector("#energy");\nenergy.remove();',
+          antworten: [
+            "Er entfernt das Element aus der Webseite im Browser.",
+            "Er macht das Element unsichtbar, lässt es aber stehen.",
+            "Er löscht den Text im Element.",
+            "Er löscht die Zeile in der Datei <code>index.html</code>.",
+          ],
+          richtig: 0,
+          erklaerung:
+            "Beim Neuladen ist das Element wieder da: die Datei <code>index.html</code> bleibt unverändert.",
+        },
+        {
+          frage: "Welche Zeile löscht das Element richtig?",
+          code: 'let energy = document.querySelector("#energy");\n// ???',
+          antworten: [
+            "<code>energy.remove;</code>",
+            "<code>energy.remove = true;</code>",
+            "<code>energy.remove();</code>",
+            '<code>energy.remove("#energy");</code>',
+          ],
+          richtig: 2,
+          erklaerung:
+            "<code>remove()</code> ist ein <b>Befehl</b>: runde Klammern, kein <code>=</code>. Das Element steht schon vor dem Punkt.",
+        },
+        {
+          frage:
+            'Im HTML steht <code>&lt;img id="robot" src="..."&gt;</code>. Warum findet diese Zeile nichts?',
+          code: 'let robot = document.querySelector("robot");',
+          antworten: [
+            "Der Name müsste gross geschrieben werden.",
+            "Es fehlt das <code>#</code> für die ID.",
+            "Bilder kann man nicht auswählen.",
+            "Es fehlt <code>let</code> vor <code>document</code>.",
+          ],
+          richtig: 1,
+          erklaerung:
+            "Ohne <code>#</code> sucht JavaScript nach einem HTML-Element namens <code>&lt;robot&gt;</code> — das gibt es nicht.",
+        },
+        {
+          frage: "Warum erscheint hier kein Text?",
+          code:
+            'let statusText = document.querySelector("#statusText");\nstatusText.style.textContent = "Alarm!";',
+          antworten: [
+            "<code>textContent</code> gehört nicht zu <code>style</code>.",
+            "Der Text ist zu kurz.",
+            "Es fehlen die Anführungszeichen.",
+            "<code>statusText</code> ist ein verbotener Name.",
+          ],
+          richtig: 0,
+          erklaerung:
+            'Nach <code>style.</code> kommen nur CSS-Eigenschaften. Richtig ist: <code>statusText.textContent = "Alarm!";</code>',
+        },
+      ];
+
+      const wissenFragen = [
+        {
+          frage: "Wo liegt das Silicon Valley?",
+          antworten: [
+            "In Kalifornien (USA)",
+            "In Texas (USA)",
+            "In New York (USA)",
+            "In Ontario (Kanada)",
+          ],
+          richtig: 0,
+          erklaerung:
+            "Es liegt südlich von San Francisco. Dort sitzen Firmen wie Apple, Google und Meta.",
+        },
+        {
+          frage:
+            "Nokia ist nicht nur eine Handymarke, sondern auch ein Ort. In welchem Land liegt er?",
+          antworten: ["Schweden", "Finnland", "Norwegen", "Dänemark"],
+          richtig: 1,
+          erklaerung:
+            "Die Firma wurde nach der Stadt Nokia benannt und war ursprünglich eine Papierfabrik.",
+        },
+        {
+          frage: "Welche dieser ist eine Suchmaschine?",
+          antworten: ["DuckDuckGo", "BugBugCrawl", "BirdBirdFly", "DogDogWalk"],
+          richtig: 0,
+          erklaerung:
+            "DuckDuckGo speichert keine persönlichen Daten. Die anderen drei gibt es nicht.",
+        },
+        {
+          frage: "Welches dieser Programme ist KEIN Browser?",
+          antworten: ["Safari", "Vivaldi", "Opera", "Thunderbird"],
+          richtig: 3,
+          erklaerung:
+            "Thunderbird ist ein E-Mail-Programm von Mozilla (den Machern von Firefox).",
+        },
+        {
+          frage: "Wie heisst das allererste YouTube-Video (2005)?",
+          antworten: ["Charlie bit my finger", "Me at the zoo", "Gangnam Style", "Keyboard Cat"],
+          richtig: 1,
+          erklaerung: "Mitgründer Jawed Karim steht 19 Sekunden lang vor Elefanten im Zoo.",
+        },
+        {
+          frage: "In welchem Jahr kam die PlayStation 4 auf den Markt?",
+          antworten: ["2011", "2013", "2015", "2017"],
+          richtig: 1,
+          erklaerung: "In den USA am 15. November, in Europa und der Schweiz am 29. November 2013.",
+        },
+        {
+          frage: "Welcher Instagram-Account hat weltweit am meisten Follower?",
+          antworten: ["Cristiano Ronaldo", "Lionel Messi", "Selena Gomez", "Instagram selbst"],
+          richtig: 3,
+          erklaerung:
+            "@instagram liegt vorne (ca. 690 Mio.). Die meistgefolgte Person ist Cristiano Ronaldo (ca. 670 Mio.).",
+        },
+        {
+          frage: "Welcher Schweizer Instagram-Account hat am meisten Follower?",
+          antworten: ["Roger Federer", "Alisha Lehmann", "Granit Xhaka", "Dean Schneider"],
+          richtig: 1,
+          erklaerung: "Die Fussballerin hat über 16 Mio. Follower, Roger Federer knapp 13 Mio.",
+        },
+        {
+          frage: "Welches ist das meistverkaufte Videospiel aller Zeiten?",
+          antworten: ["GTA V", "Tetris", "Minecraft", "Fortnite"],
+          richtig: 2,
+          erklaerung: "Über 300 Mio. verkaufte Exemplare. Fortnite ist gratis und zählt deshalb nicht.",
+        },
+        {
+          frage: "Woher kommt der Name «WhatsApp»?",
+          antworten: [
+            "Von «What's up?»",
+            "Von «What's happening?»",
+            "Vom Gründer Walter Whats",
+            "Von «Wide Area Telephone App»",
+          ],
+          richtig: 0,
+          erklaerung: "Ein Wortspiel aus «What's up?» (Wie geht's?) und «App».",
+        },
+      ];
+
+      /* ---------------- Zustand ---------------- */
+
+      const keys = ["a", "b", "c", "d"];
+      const pools = { js: jsFragen, wissen: wissenFragen };
+      const labels = { js: "JavaScript", wissen: "Varia" };
+      const total = jsFragen.length + wissenFragen.length;
+
+      /* deck = alle noch nicht gestellten Fragen, gemischt. Jeder Eintrag ist ein Rad-Segment. */
+      let deck = [];
+      let view = "wheel";
+      let spinning = false;
+      let landed = null;
+      let current = null;
+      let revealed = false;
+      let chosen = null;
+      let richtig = 0;
+      let gestellt = 0;
+      let rot = 0;
+
+      const stage = document.getElementById("stage");
+      const mainBtn = document.getElementById("mainBtn");
+      const themeBtn = document.getElementById("themeBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const scoreBox = document.getElementById("scoreBox");
+      const bar = document.getElementById("bar");
+
+      function mischen(liste) {
+        for (let i = liste.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [liste[i], liste[j]] = [liste[j], liste[i]];
+        }
+        return liste;
+      }
+
+      function uebrig(cat) {
+        return deck.filter((e) => e.cat === cat).length;
+      }
+
+      function reset() {
+        deck = mischen(
+          jsFragen
+            .map((_, i) => ({ cat: "js", idx: i }))
+            .concat(wissenFragen.map((_, i) => ({ cat: "wissen", idx: i }))),
+        );
+        view = "wheel";
+        spinning = false;
+        landed = null;
+        current = null;
+        revealed = false;
+        chosen = null;
+        richtig = 0;
+        gestellt = 0;
+        rot = 0;
+        render();
+      }
+
+      function renderStatus() {
+        scoreBox.textContent = richtig + " richtig";
+        bar.style.width = (gestellt / total) * 100 + "%";
+      }
+
+      /* ---------------- Rad ---------------- */
+
+      function wheelMarkup() {
+        /* Ein Segment pro übriger Frage — das Rad zeigt direkt, was noch im Spiel ist. */
+        const n = deck.length;
+        const seg = 360 / n;
+        const stops = deck
+          .map(
+            (e, i) =>
+              "var(--" + e.cat + "-soft) " + i * seg + "deg " + (i + 1) * seg + "deg",
+          )
+          .join(", ");
+
+        return (
+          '<div class="wheel-wrap"><div class="pointer"></div>' +
+          '<div class="wheel" id="wheel" style="transform: rotate(' +
+          rot +
+          "deg); background: conic-gradient(" +
+          stops +
+          ')">' +
+          '<div class="spokes" style="--segdeg: ' +
+          seg +
+          'deg"></div>' +
+          "</div>" +
+          '<div class="hub"><b>' +
+          n +
+          "</b><span>" +
+          (n === 1 ? "Frage" : "Fragen") +
+          "</span></div>" +
+          "</div>"
+        );
+      }
+
+      function legendMarkup() {
+        return (
+          '<div class="legend">' +
+          '<span class="count js"><i></i>' +
+          uebrig("js") +
+          " JavaScript</span>" +
+          '<span class="count wissen"><i></i>' +
+          uebrig("wissen") +
+          " Varia</span>" +
+          "</div>"
+        );
+      }
+
+      function renderWheel() {
+        let kopf;
+        if (landed) {
+          kopf =
+            '<div class="landed" data-cat="' +
+            landed.cat +
+            '">' +
+            labels[landed.cat] +
+            "</div>" +
+            '<p class="wheel-sub">Das Rad hat eine Frage aus «' +
+            labels[landed.cat] +
+            '» gezogen.</p>';
+        } else if (spinning) {
+          kopf =
+            '<h2 class="wheel-title">Das Rad dreht …</h2>' +
+            '<p class="wheel-sub">Gleich wissen wir, was als Nächstes drankommt.</p>';
+        } else {
+          kopf =
+            '<h2 class="wheel-title">' +
+            (gestellt === 0 ? "Dreh das Rad" : "Weiter geht's") +
+            "</h2>" +
+            legendMarkup();
+        }
+
+        stage.innerHTML = '<div class="stage-wheel">' + wheelMarkup() + kopf + "</div>";
+
+        mainBtn.disabled = spinning;
+        mainBtn.textContent = landed ? "Frage anzeigen" : "Rad drehen";
+      }
+
+      function spin() {
+        if (spinning) return;
+        if (deck.length === 0) return ende();
+
+        /* Jedes übrige Segment ist gleich wahrscheinlich — je mehr von einer Sorte
+           noch im Rad sind, desto eher kommt sie dran. */
+        const seg = 360 / deck.length;
+        const ziel = Math.floor(Math.random() * deck.length);
+        const eintrag = deck[ziel];
+        const mitte = ziel * seg + seg / 2;
+        const basis = ((360 - mitte) % 360 + 360) % 360;
+        const aktuell = ((rot % 360) + 360) % 360;
+        /* 4 bis 6 volle Umdrehungen, damit nicht jede Drehung gleich aussieht. */
+        const runden = 4 + Math.floor(Math.random() * 3);
+        const neuRot = rot + 360 * runden + ((((basis - aktuell) % 360) + 360) % 360);
+
+        spinning = true;
+        landed = null;
+        /* Wichtig: zuerst in der ALTEN Position zeichnen, erst danach auf die neue drehen. */
+        renderWheel();
+
+        const wheel = document.getElementById("wheel");
+        const schnell = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* Reflow erzwingen: der Browser übernimmt die Startposition, erst dann dreht er. */
+        void wheel.offsetWidth;
+        rot = neuRot;
+        wheel.style.transform = "rotate(" + rot + "deg)";
+
+        window.setTimeout(
+          () => {
+            spinning = false;
+            landed = { cat: eintrag.cat, pos: ziel };
+            renderWheel();
+          },
+          schnell ? 150 : 4000,
+        );
+      }
+
+      /* ---------------- Frage ---------------- */
+
+      function frageZiehen(treffer) {
+        /* Das getroffene Segment verlässt das Rad. */
+        const eintrag = deck.splice(treffer.pos, 1)[0];
+        const q = pools[eintrag.cat][eintrag.idx];
+
+        /* Antworten jedes Mal neu mischen, damit die richtige nicht immer
+           an derselben Stelle steht. Die Frage selbst bleibt unverändert. */
+        const gemischt = mischen(
+          q.antworten.map((text, i) => ({ text: text, istRichtig: i === q.richtig })),
+        );
+
+        current = {
+          cat: eintrag.cat,
+          q: q,
+          antworten: gemischt.map((a) => a.text),
+          richtig: gemischt.findIndex((a) => a.istRichtig),
+        };
+        revealed = false;
+        chosen = null;
+        gestellt++;
+        view = "question";
+        render();
+      }
+
+      function renderFrage() {
+        const q = current.q;
+        const parts = [];
+
+        parts.push(
+          '<div class="meta"><span class="chip" data-cat="' +
+            current.cat +
+            '">' +
+            labels[current.cat] +
+            "</span><span>Frage " +
+            gestellt +
+            " von " +
+            total +
+            "</span></div>",
+        );
+        parts.push("<h1>" + q.frage + "</h1>");
+
+        if (q.code) {
+          const esc = q.code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          parts.push("<pre><code>" + esc + "</code></pre>");
+        }
+
+        parts.push('<div class="answers">');
+        current.antworten.forEach((text, i) => {
+          let state = "";
+          if (revealed) {
+            if (i === current.richtig) state = "correct";
+            else if (i === chosen) state = "wrong";
+            else state = "dim";
+          }
+          parts.push(
+            '<button class="answer" type="button" data-i="' +
+              i +
+              '"' +
+              (state ? ' data-state="' + state + '"' : "") +
+              (revealed ? " disabled" : "") +
+              '><span class="key">' +
+              keys[i] +
+              ')</span><span class="label">' +
+              text +
+              "</span></button>",
+          );
+        });
+        parts.push("</div>");
+
+        if (revealed) parts.push('<p class="explain">' + q.erklaerung + "</p>");
+
+        stage.innerHTML =
+          '<div class="card" data-cat="' + current.cat + '">' + parts.join("") + "</div>";
+
+        stage.querySelectorAll(".answer").forEach((btn) => {
+          btn.addEventListener("click", () => waehlen(Number(btn.dataset.i)));
+        });
+
+        mainBtn.disabled = false;
+        mainBtn.textContent = revealed
+          ? deck.length === 0
+            ? "Auswertung"
+            : "Rad drehen"
+          : "Auflösen";
+      }
+
+      function waehlen(i) {
+        if (revealed) return;
+        chosen = i;
+        revealed = true;
+        if (i === current.richtig) richtig++;
+        render();
+      }
+
+      function aufloesen() {
+        if (revealed) return;
+        revealed = true;
+        render();
+      }
+
+      /* ---------------- Schluss ---------------- */
+
+      function ende() {
+        view = "end";
+        render();
+      }
+
+      function renderEnde() {
+        stage.innerHTML =
+          '<div class="card end">' +
+          '<div class="meta"><span class="chip" data-cat="js">Fertig</span></div>' +
+          "<h1>Alle Fragen gespielt</h1>" +
+          '<div class="big-score">' +
+          richtig +
+          " / " +
+          total +
+          "</div>" +
+          "<p>Die Befehle aus Kapitel 1 und 2 stehen alle im Cheatsheet — nachschauen ist erlaubt.</p>" +
+          "</div>";
+        mainBtn.textContent = "Nochmals spielen";
+        mainBtn.disabled = false;
+      }
+
+      /* ---------------- Steuerung ---------------- */
+
+      function render() {
+        renderStatus();
+        if (view === "wheel") renderWheel();
+        else if (view === "question") renderFrage();
+        else renderEnde();
+      }
+
+      function weiter() {
+        if (view === "end") return reset();
+        if (view === "wheel") {
+          if (spinning) return;
+          if (landed) return frageZiehen(landed);
+          return spin();
+        }
+        if (!revealed) return aufloesen();
+        if (deck.length === 0) return ende();
+        view = "wheel";
+        landed = null;
+        render();
+      }
+
+      mainBtn.addEventListener("click", weiter);
+      resetBtn.addEventListener("click", reset);
+
+      themeBtn.addEventListener("click", () => {
+        const dark =
+          document.documentElement.dataset.theme === "dark" ||
+          (!document.documentElement.dataset.theme &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "light" : "dark";
+      });
+
+      document.addEventListener("keydown", (e) => {
+        const k = e.key.toLowerCase();
+        if (e.key === " " || e.key === "Enter" || e.key === "ArrowRight") {
+          e.preventDefault();
+          weiter();
+        } else if (keys.includes(k)) {
+          if (view === "question" && !revealed) waehlen(keys.indexOf(k));
+        } else if (k === "f") {
+          if (document.fullscreenElement) document.exitFullscreen();
+          else document.documentElement.requestFullscreen?.().catch(() => {});
+        }
+      });
+
+      reset();
+    </script>
+  </body>
+</html>
