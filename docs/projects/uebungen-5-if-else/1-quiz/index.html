@@ -15,20 +15,35 @@
     <main class="inhalt">
       <div class="card">
         <h1>Quiz</h1>
-        <p class="hint">Zwei Fragen, zwei Auswertungen.</p>
+        <p class="hint">Drei Fragen, drei Auswertungen.</p>
+
+        <p id="scoreText" class="punktestand">Punkte: 0</p>
 
         <div class="frage">
-          <p><b>Frage 1:</b> Wie heisst die Hauptstadt von Spanien?</p>
-          <input id="cityField" type="text" placeholder="Deine Antwort" />
-          <button id="cityButton">Prüfen</button>
-          <p id="cityResult" class="resultat">Noch nicht geprüft.</p>
+          <p class="text"><span class="nummer">1</span> Wie heisst die Hauptstadt von Spanien?</p>
+
+          <input id="question1Field" type="text" placeholder="Deine Antwort" />
+          <button id="question1Button">Prüfen</button>
+
+          <p id="question1Result" class="resultat">Noch nicht geprüft.</p>
         </div>
 
         <div class="frage">
-          <p><b>Frage 2:</b> Wie viele Einwohner hat die Schweiz (in Millionen)?</p>
-          <input id="guessField" type="text" placeholder="Deine Schätzung" />
-          <button id="guessButton">Prüfen</button>
-          <p id="guessResult" class="resultat">Noch nicht geschätzt.</p>
+          <p class="text"><span class="nummer">2</span> Wie heisst die Hauptstadt von Ungarn?</p>
+
+          <input id="question2Field" type="text" placeholder="Deine Antwort" />
+          <button id="question2Button">Prüfen</button>
+
+          <p id="question2Result" class="resultat">Noch nicht geprüft.</p>
+        </div>
+
+        <div class="frage">
+          <p class="text"><span class="nummer">3</span> Wie viele Kilometer Luftlinie gibt es zwischen Biel und Rom?</p>
+
+          <input id="question3Field" type="text" placeholder="Deine Schätzung in km" />
+          <button id="question3Button">Prüfen</button>
+
+          <p id="question3Result" class="resultat">Noch nicht geprüft.</p>
         </div>
       </div>
     </main>

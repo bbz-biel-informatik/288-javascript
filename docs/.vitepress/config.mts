@@ -6,8 +6,10 @@ import { createContentNavigation } from "../../scripts/content/navigation.mjs";
 import { createZipAssetsPlugin } from "../../scripts/assets/vite-plugin.mjs";
 import { createContentStructurePlugin } from "../../scripts/content/vite-plugin.mjs";
 import { createExcalidrawExportPlugin } from "../../scripts/excalidraw/vite-plugin.mjs";
+import { createSolutionsPlugin } from "../../scripts/content/solutions-plugin.mjs";
 
 const docsRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const repoRoot = path.resolve(docsRoot, "..");
 const { nav, sidebar, rewrites, linkAliases } = createContentNavigation({ docsRoot });
 
 export default defineConfig({
@@ -25,6 +27,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
+      createSolutionsPlugin({ docsRoot, repoRoot }),
       createContentStructurePlugin({ docsRoot, linkAliases, base }),
       createExcalidrawExportPlugin({ docsRoot }),
       createZipAssetsPlugin({ docsRoot, base })

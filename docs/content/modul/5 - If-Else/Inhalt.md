@@ -1,10 +1,6 @@
 # 5 - If-Else
 
-Bis jetzt läuft unser Code immer gleich ab: Der Goblin arbeitet Zeile für Zeile ab, was wir ihm aufgetragen haben. Ein Programm muss aber **Entscheidungen** treffen können:
-
-- Ist die eingetippte Antwort richtig oder falsch?
-- Ist es heute warm genug für ein T-Shirt?
-- Welches Team hat mehr Tore?
+Bis jetzt läuft unser Code immer gleich ab: JavaScript arbeitet Zeile für Zeile ab, was wir ihm aufgetragen haben. Ein Programm muss aber **Entscheidungen** treffen können: Ist die Antwort richtig? Reicht der Punktestand zum Gewinnen?
 
 Dafür brauchen wir `if` und `else`. Übersetzt bedeuten diese Wörter **wenn** und **sonst**. Und wir brauchen **Vergleiche**, um zwei Werte miteinander zu vergleichen.
 
@@ -17,122 +13,116 @@ Nach diesem Kapitel kannst du:
 - einen Vergleich als Bedingung in einer `if`-Anweisung verwenden und
 - mit `else if` mehrere Möglichkeiten unterscheiden.
 
+## Unser Beispiel in diesem Kapitel
+
+In diesem Kapitel nehmen wir ein Quiz als Beispiel: Fragen werden beantwortet und Scores werden verglichen.
+
 ## Wie schreiben wir eine `if` Anweisung?
 
 Eine `if`-Anweisung besteht aus einer **Bedingung** und einer **Aktion**:
 
 ```js
-if (temperatur >= 25) {
-  outfitText.textContent = "T-Shirt";
+if (score >= 3) {
+  statusText.textContent = "Gewonnen!";
 }
 ```
 
 Wir lesen diesen Code so:
 
-> Wenn `temperatur` grösser oder gleich `25` ist, zeige «T-Shirt» an.
+> Wenn `score` grösser oder gleich `3` ist, zeige «Gewonnen!» an.
 
 JavaScript geht dabei Schritt für Schritt vor:
 
 1. `if` kündigt eine Entscheidung an.
-2. In den runden Klammern steht die Bedingung: Ist `temperatur` grösser oder gleich `25`?
+2. In den runden Klammern steht die Bedingung: Ist `score` grösser oder gleich `3`?
 3. Ist die Antwort «ja», wird der Code zwischen `{` und `}` ausgeführt.
 4. Ist die Antwort «nein», überspringt JavaScript den ganzen Block.
 
 Die Schreibweise von [`if`](../10-cheatsheet#if-else) findest du auch im Cheatsheet.
-
-<details>
-<summary>Analogie: Der Goblin steht an einer Kreuzung</summary>
-
-Unser kleiner JavaScript-Goblin kommt an eine Kreuzung. Dort liest er ein Schild:
-
-> Ist `temperatur` grösser oder gleich `25`?
-
-Ist die Antwort «ja», geht er den Weg mit den Aufträgen in den geschweiften Klammern. Ist die Antwort «nein», läuft er daran vorbei und macht beim nächsten Auftrag weiter.
-
-</details>
 
 ## Was macht `else`?
 
 Manchmal soll JavaScript auch handeln, wenn die Antwort «nein» lautet. Dafür verwenden wir `else`. `else` bedeutet **sonst**:
 
 ```js
-if (cityField.value == "Madrid") {
-  cityResult.textContent = "Richtig!";
+if (score >= 3) {
+  statusText.textContent = "Gewonnen!";
 } else {
-  cityResult.textContent = "Falsch!";
+  statusText.textContent = "Leider verloren.";
 }
 ```
 
 JavaScript wählt genau einen Weg:
 
-- Steht `Madrid` im Feld, erscheint `Richtig!`.
-- Sonst erscheint `Falsch!`.
+- Ist der score hoch genug, erscheint `Gewonnen!`.
+- Sonst erscheint `Leider verloren.`.
 
 Ein `else` ist nicht immer nötig. Soll bei der Antwort «nein» einfach nichts passieren, lassen wir es weg.
 
 ## Eine Entscheidung in einem Event
 
-Eine Entscheidung steht fast immer in einem [Event](../3-events/inhalt). Erst wenn geklickt wird, gibt es etwas zu entscheiden:
+Eine Entscheidung steht fast immer in einem [Event](../3-events/inhalt). Erst wenn geklickt wird, gibt es etwas zu entscheiden. In unserem Quiz prüfen wir beim Klick, was eingetippt wurde:
 
 ```js
-let cityField = document.querySelector("#cityField");
-let cityResult = document.querySelector("#cityResult");
+let answerField = document.querySelector("#answerField");
+let statusText = document.querySelector("#statusText");
 
-cityButton.addEventListener("click", function () {
-  if (cityField.value == "Madrid") {
-    cityResult.textContent = "Richtig!";
+checkButton.addEventListener("click", function () {
+  if (answerField.value == "Madrid") {
+    statusText.textContent = "Richtig!";
+    score = score + 1;
   } else {
-    cityResult.textContent = "Falsch!";
+    statusText.textContent = "Falsch!";
   }
 });
 ```
 
 Bei jedem Klick prüft JavaScript die Bedingung neu. Deshalb kann dieselbe Entscheidung einmal «ja» und ein anderes Mal «nein» ergeben.
 
-Das Event findest du unter [Events](../10-cheatsheet#events), das Auslesen eines Textfeldes mit [`value`](../10-cheatsheet#html-elemente-bearbeiten) im Cheatsheet.
+Das Event findest du unter [Events](../10-cheatsheet#events), das Auslesen eines Textfeldes unter [Text auslesen](../4-variablen/inhalt#text-auslesen).
 
 ## Werte vergleichen
 
 In den runden Klammern von `if (...)` steht eine Bedingung. Ihr Ergebnis kann nur **wahr** oder **falsch** sein. Am häufigsten steht dort ein **Vergleich**.
 
-Nehmen wir an, Team A hat `3` Tore geschossen:
+Nehmen wir an, die Spielerin hat `3` Punkte gesammelt:
 
 ```js
-let toreA = 3;
+let score = 3;
 ```
 
 Mit diesen Zeichen vergleichen wir den Wert mit einer anderen Zahl:
 
 ```js
-toreA == 3; // gleich
-toreA != 0; // nicht gleich
-toreA > 1; // grösser als
-toreA < 5; // kleiner als
-toreA >= 3; // grösser oder gleich
-toreA <= 2; // kleiner oder gleich
+score == 3; // gleich
+score != 0; // nicht gleich
+score > 1; // grösser als
+score < 5; // kleiner als
+score >= 3; // grösser oder gleich
+score <= 2; // kleiner oder gleich
 ```
 
-| Vergleich    | Frage                                | Ergebnis     |
-| ------------ | ------------------------------------ | ------------ |
-| `toreA == 3` | Hat Team A genau 3 Tore?             | stimmt       |
-| `toreA != 0` | Hat Team A nicht 0 Tore?             | stimmt       |
-| `toreA > 1`  | Hat Team A mehr als ein Tor?         | stimmt       |
-| `toreA < 5`  | Hat Team A weniger als 5 Tore?       | stimmt       |
-| `toreA >= 3` | Hat Team A 3 oder mehr Tore?         | stimmt       |
-| `toreA <= 2` | Hat Team A höchstens 2 Tore?         | stimmt nicht |
+| Vergleich    | Frage                         | Ergebnis     |
+| ------------ | ----------------------------- | ------------ |
+| `score == 3` | Sind es genau 3 Punkte?       | stimmt       |
+| `score != 0` | Sind es nicht 0 Punkte?       | stimmt       |
+| `score > 1`  | Ist es mehr als ein Punkt?    | stimmt       |
+| `score < 5`  | Sind es weniger als 5 Punkte? | stimmt       |
+| `score >= 3` | Sind es 3 oder mehr Punkte?   | stimmt       |
+| `score <= 2` | Sind es höchstens 2 Punkte?   | stimmt nicht |
 
 Wir können auch zwei Variablen miteinander vergleichen:
 
 ```js
-if (toreA > toreB) {
-  winnerText.textContent = "Team A gewinnt";
+if (scoreA > scoreB) {
+  statusText.textContent = "Spielerin A gewinnt";
 }
 ```
 
-Und wir können Texte vergleichen:
+Und wir können Texte vergleichen. Texte stehen dabei in Anführungszeichen:
 
 ```js
-cityField.value == "Madrid"; // Steht genau «Madrid» im Textfeld?
+answerField.value == "Madrid"; // Steht genau «Madrid» im Textfeld?
 ```
 
 Die Vergleichszeichen findest du unter [If / Else](../10-cheatsheet#if-else) im Cheatsheet.
@@ -142,8 +132,8 @@ Die Vergleichszeichen findest du unter [If / Else](../10-cheatsheet#if-else) im 
 Wir müssen aufpassen, dass wir `=` und `==` nicht verwechseln. Die beiden Zeichen sehen ähnlich aus, haben aber verschiedene Aufgaben:
 
 ```js
-toreA = 3; // setzt den Wert auf 3
-toreA == 3; // fragt, ob der Wert gleich 3 ist
+score = 3; // setzt den Wert auf 3
+score == 3; // fragt, ob der Wert gleich 3 ist
 ```
 
 - Mit einem einzelnen `=` geben wir einer Variable einen Wert.
@@ -151,30 +141,30 @@ toreA == 3; // fragt, ob der Wert gleich 3 ist
 
 ## Mehrere Möglichkeiten mit `else if`
 
-Oft gibt es mehr als zwei Fälle. Dann hängen wir mit `else if` weitere Fragen an:
+Oft gibt es mehr als zwei Fälle. Unser Quiz soll am Schluss nicht nur «gewonnen» sagen, sondern einen Rang vergeben. Dafür hängen wir mit `else if` weitere Fragen an:
 
 ```js
-if (temperatur >= 25) {
-  outfitText.textContent = "T-Shirt";
-} else if (temperatur >= 15) {
-  outfitText.textContent = "Pullover";
-} else if (temperatur >= 5) {
-  outfitText.textContent = "Jacke";
+if (score >= 5) {
+  statusText.textContent = "Gold";
+} else if (score >= 3) {
+  statusText.textContent = "Silber";
+} else if (score >= 1) {
+  statusText.textContent = "Bronze";
 } else {
-  outfitText.textContent = "Wintermantel";
+  statusText.textContent = "Kein Rang";
 }
 ```
 
 Wichtig ist die Reihenfolge: JavaScript prüft die Bedingungen von oben nach unten und nimmt den **ersten** Weg, der stimmt. Alle anderen werden übersprungen.
 
-| Temperatur | Angezeigtes Outfit |
-| ---------- | ------------------ |
-| `30`       | `T-Shirt`          |
-| `18`       | `Pullover`         |
-| `8`        | `Jacke`            |
-| `-2`       | `Wintermantel`     |
+| Wert von `score` | Angezeigter Rang |
+| ---------------- | ---------------- |
+| `6`              | `Gold`           |
+| `4`              | `Silber`         |
+| `2`              | `Bronze`         |
+| `0`              | `Kein Rang`      |
 
-Beginne deshalb immer beim «extremsten» Fall. Würden wir mit `temperatur >= 5` starten, käme `T-Shirt` nie zum Zug: Bei `30` Grad stimmt bereits die erste Bedingung.
+Beginne deshalb immer beim «extremsten» Fall. Würden wir mit `score >= 1` starten, käme `Gold` nie zum Zug: Bei `6` Punkten stimmt bereits die erste Bedingung.
 
 ## Zusammenfassung
 

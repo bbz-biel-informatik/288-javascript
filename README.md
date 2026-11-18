@@ -23,10 +23,38 @@ Weitere Befehle:
 
 - `npm run diagrams:build` exportiert alle `*.excalidraw.json`-Dateien nach SVG.
 - `npm run zips:build` erstellt für jeden Unterordner in `docs/projects/` eine gleichnamige `.zip`-Datei in `docs/assets/zips/`.
+- `npm run loesungen` zeigt und schaltet die Lösungen pro Kapitel (siehe unten).
 - `npm run build` erstellt die statische Website lokal.
 - `npm run preview` startet eine lokale Vorschau der gebauten Website.
 - `npm run deploy` baut lokal, veröffentlicht den Inhalt von `docs/.vitepress/dist` mit `gh-pages` und pusht anschliessend die Quellen auf `main`.
 - `npm run push:main` committet offene Änderungen und pusht `main` (wird von `npm run deploy` automatisch aufgerufen).
+
+## Lösungen ein- und ausblenden
+
+Die Lösungen in den Aufgaben stehen als `<details>`-Blöcke im Markdown. Ob sie auf der Website erscheinen, steuert [loesungen.config.mjs](loesungen.config.mjs) pro Kapitel.
+
+```bash
+npm run loesungen
+```
+
+zeigt den aktuellen Stand aller Kapitel. Umschalten:
+
+```bash
+npm run loesungen -- 5 an
+npm run loesungen -- 5 aus
+npm run loesungen -- alle aus
+```
+
+Als Kapitel genügt die Nummer (`5`) oder der ganze Slug (`5-if-else`). Alternativ kannst du die Werte in `loesungen.config.mjs` direkt bearbeiten.
+
+Wichtig:
+
+- Ausgeblendete Lösungen werden **vor** dem Rendern aus dem Markdown entfernt. Sie stehen danach weder im HTML noch im Suchindex, sind also auch über die Entwicklerkonsole nicht auffindbar.
+- Tipp-Blöcke (`💡 Tipp anzeigen`) bleiben immer sichtbar. Entfernt wird nur, was im `<summary>` das Wort «Lösung» enthält.
+- Auf Seiten mit ausgeblendeten Lösungen erscheint ein kurzer Hinweis. Text und Anzeige lassen sich in der Config über `hinweisAnzeigen` und `hinweisText` ändern.
+- Damit die veröffentlichte Website den neuen Stand zeigt, braucht es danach ein `npm run deploy`. Im Dev-Server (`npm run dev`) wird die Änderung automatisch neu geladen.
+
+Die Logik liegt in [scripts/content/solutions.mjs](scripts/content/solutions.mjs) und [scripts/content/solutions-plugin.mjs](scripts/content/solutions-plugin.mjs), das Kommandozeilen-Tool in [scripts/content/toggle-solutions.mjs](scripts/content/toggle-solutions.mjs).
 
 ## Shared Layout
 

@@ -7,15 +7,6 @@ body {
   line-height: 1.5;
 }
 
-.card {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 24px;
-  border: 1px solid #e1e6ea;
-  border-radius: 12px;
-  background-color: white;
-}
-
 h1 {
   margin: 0 0 4px;
   font-size: 22px;
@@ -27,10 +18,24 @@ h1 {
   font-size: 14px;
 }
 
+input {
+  padding: 10px 12px;
+  border: 1px solid #c7cfd6;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #165f68;
+  box-shadow: 0 0 0 3px rgba(22, 95, 104, 0.15);
+}
+
 button {
-  padding: 8px 14px;
+  padding: 10px 16px;
   border: 1px solid #165f68;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #165f68;
   color: white;
   font-size: 15px;
@@ -41,37 +46,58 @@ button:hover {
   background-color: #11484f;
 }
 
-input {
-  padding: 8px 10px;
-  border: 1px solid #c7cfd6;
-  border-radius: 8px;
-  font-size: 15px;
+.inhalt {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 40px 16px;
 }
 
+.card {
+  padding: 24px;
+  border: 1px solid #e1e6ea;
+  border-radius: 12px;
+  background-color: white;
+  text-align: center;
+}
+
+.hint {
+  margin-bottom: 24px;
+}
+
+/* Die Temperatur ist die wichtigste Zahl auf der Seite. */
 .eingabe {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .eingabe input {
-  width: 80px;
+  width: 120px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
 }
 
+.einheit {
+  color: #6b7785;
+  font-size: 24px;
+}
+
+#outfitButton {
+  width: 100%;
+}
+
+/* Der Vorschlag erscheint auf einer dunklen Anzeige. */
 .resultat {
   margin: 20px 0 0;
-  padding-top: 16px;
-  border-top: 1px solid #e1e6ea;
-  font-size: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #101936;
+  color: #ffd166;
+  font-size: 22px;
   font-weight: bold;
-  color: #165f68;
-}
-
-/* Der Bereich unter dem Header. */
-.inhalt {
-  display: block;
-  padding: 40px 16px;
 }
 
 /* Der Seiten-Header. */

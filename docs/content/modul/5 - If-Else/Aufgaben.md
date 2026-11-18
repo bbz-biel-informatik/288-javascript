@@ -6,52 +6,15 @@ Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
 Entpacke den Ordner und starte den Live Server auf der `index.html` im Hauptordner. Von dort kommst du zu allen drei Übungen.
 
-## 🎯 5.1 – Vergleiche einschätzen
-
-Diese Aufgabe machst du ohne Computer. Lies dir den Abschnitt [Werte vergleichen](./inhalt#werte-vergleichen) nochmals durch.
-
-Eine Spielfigur hat `600` Leben:
-
-```js
-let life = 600;
-```
-
-Entscheide bei jedem Vergleich, ob er **stimmt** oder **nicht stimmt**:
-
-```js
-life == 600;
-life != 0;
-life > 1000;
-life < 1000;
-life >= 600;
-life <= 100;
-```
-
-<details>
-<summary>✅ Lösung anzeigen</summary>
-
-| Vergleich     | Ergebnis     | Begründung                                 |
-| ------------- | ------------ | ------------------------------------------ |
-| `life == 600` | stimmt       | `life` enthält den Wert `600`.             |
-| `life != 0`   | stimmt       | `600` ist nicht gleich `0`.                |
-| `life > 1000` | stimmt nicht | `600` ist nicht grösser als `1000`.        |
-| `life < 1000` | stimmt       | `600` ist kleiner als `1000`.              |
-| `life >= 600` | stimmt       | `600` ist grösser oder gleich `600`.       |
-| `life <= 100` | stimmt nicht | `600` ist weder kleiner noch gleich `100`. |
-
-</details>
-
-## 🎯 5.2 – Quiz
+## 🎯 5.1 – Quiz
 
 👉 Ordner `1-quiz`
 
-`index.html`
+Wir bauen ein Quiz mit drei Fragen. Öffne das Projekt im Browser und schaue es dir an. Die ersten beiden Fragen haben genau eine richtige Antwort, die dritte ist eine Schätzfrage. Deine Aufgaben sind folgende:
 
-<<< @/projects/uebungen-5-if-else/1-quiz/index.html
+**a)** Beim Klick auf `question1Button` soll in `question1Result` `Richtig!` stehen, wenn im Feld `question1Field` genau `Madrid` eingetippt wurde. Sonst soll `Falsch!` erscheinen.
 
-**a)** Beim Klick auf `cityButton` soll in `cityResult` `Richtig!` stehen, wenn im Feld `cityField` genau `Madrid` eingetippt wurde. Sonst soll `Falsch!` erscheinen.
-
-Die Theorie dazu findest du unter [Eine Entscheidung in einem Event](./inhalt#eine-entscheidung-in-einem-event).
+Neben den vorangehenden Kapiteln "Events" und "Variablen" brauchen wir hier nun diese Kapitel der Theorie: [Eine Entscheidung in einem Event](./inhalt#eine-entscheidung-in-einem-event) und [Werte vergleichen](./inhalt#werte-vergleichen).
 
 <details>
 <summary>💡 Tipp anzeigen</summary>
@@ -59,7 +22,7 @@ Die Theorie dazu findest du unter [Eine Entscheidung in einem Event](./inhalt#ei
 Texte vergleichst du gleich wie Zahlen, nur stehen sie in Anführungszeichen:
 
 ```js
-if (cityField.value == "Madrid") {
+if (question1Field.value == "Madrid") {
   // ...
 }
 ```
@@ -72,15 +35,15 @@ Das Auslesen des Feldes mit [`value`](../10-cheatsheet#html-elemente-bearbeiten)
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let cityField = document.querySelector("#cityField");
-let cityButton = document.querySelector("#cityButton");
-let cityResult = document.querySelector("#cityResult");
+let question1Field = document.querySelector("#question1Field");
+let question1Button = document.querySelector("#question1Button");
+let question1Result = document.querySelector("#question1Result");
 
-cityButton.addEventListener("click", function () {
-  if (cityField.value == "Madrid") {
-    cityResult.textContent = "Richtig!";
+question1Button.addEventListener("click", function () {
+  if (question1Field.value == "Madrid") {
+    question1Result.textContent = "Richtig!";
   } else {
-    cityResult.textContent = "Falsch!";
+    question1Result.textContent = "Falsch!";
   }
 });
 ```
@@ -89,25 +52,20 @@ Die Befehle findest du unter [Events](../10-cheatsheet#events), [If / Else](../1
 
 </details>
 
-**b)** Die zweite Frage ist eine Schätzfrage: Die Schweiz hat rund `9` Millionen Einwohner. Beim Klick auf `guessButton` sollen in `guessResult` Punkte erscheinen:
+**b)** Die zweite Frage funktioniert gleich: `question2Button` prüft, ob in `question2Field` die Hauptstadt von Ungarn steht, und schreibt das Ergebnis in `question2Result`. Die richtige Antwort ist `Budapest`.
 
-| Schätzung                 | Ausgabe              |
-| ------------------------- | -------------------- |
-| genau `9`                 | `3 Punkte - perfekt` |
-| `8` oder `10`             | `2 Punkte - knapp`   |
-| `5` bis `13`              | `1 Punkt - fast`     |
-| alles andere              | `0 Punkte`           |
+**c)** Die dritte Frage ist eine Schätzfrage. Die Luftlinie zwischen Biel und Rom beträgt rund `700` Kilometer. Beim Klick auf `question3Button` soll in `question3Result` stehen, **wie weit die Schätzung daneben liegt**, zum Beispiel `Du liegst 120 km daneben.`.
 
-Verwende dafür eine Kette mit `else if`, siehe [Mehrere Möglichkeiten mit `else if`](./inhalt#mehrere-moglichkeiten-mit-else-if). Denke daran, die Eingabe mit `Number(...)` in eine Zahl zu verwandeln.
+Denke daran, die Eingabe mit `Number(...)` in eine Zahl zu verwandeln.
 
 <details>
 <summary>💡 Tipp anzeigen</summary>
 
-Rechne zuerst aus, wie weit die Schätzung daneben liegt:
+Rechne zuerst die Differenz aus:
 
 ```js
-let schaetzung = Number(guessField.value);
-let differenz = schaetzung - 9;
+let schaetzung = Number(question3Field.value);
+let differenz = schaetzung - 700;
 ```
 
 Schätzt jemand zu tief, ist `differenz` negativ. Mit einer kleinen Entscheidung machen wir daraus eine positive Zahl:
@@ -118,59 +76,46 @@ if (differenz < 0) {
 }
 ```
 
-Danach brauchst du nur noch eine `else if`-Kette, die von klein nach gross prüft.
-
 </details>
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let guessField = document.querySelector("#guessField");
-let guessButton = document.querySelector("#guessButton");
-let guessResult = document.querySelector("#guessResult");
+let question3Field = document.querySelector("#question3Field");
+let question3Button = document.querySelector("#question3Button");
+let question3Result = document.querySelector("#question3Result");
 
-guessButton.addEventListener("click", function () {
-  let schaetzung = Number(guessField.value);
-
-  let differenz = schaetzung - 9;
+question3Button.addEventListener("click", function () {
+  let schaetzung = Number(question3Field.value);
+  let differenz = schaetzung - 700;
 
   if (differenz < 0) {
     differenz = differenz * -1;
   }
 
-  if (differenz == 0) {
-    guessResult.textContent = "3 Punkte - perfekt";
-  } else if (differenz <= 1) {
-    guessResult.textContent = "2 Punkte - knapp";
-  } else if (differenz <= 4) {
-    guessResult.textContent = "1 Punkt - fast";
-  } else {
-    guessResult.textContent = "0 Punkte";
-  }
+  question3Result.textContent = "Du liegst " + differenz + " km daneben.";
 });
 ```
 
 </details>
 
-**c) Erklären:** Was würde passieren, wenn die Bedingung `differenz <= 4` zuoberst stünde? Teste es und beschreibe das Ergebnis.
+**d)** Was passiert, wenn jemand `madrid` klein schreibt? Teste es und überlege dir, warum das so ist.
 
-## 🎯 5.3 – Outfit-Chooser
+## 🎯 5.2 – Outfit-Chooser
 
 👉 Ordner `2-outfit`
 
-`index.html`
+Hier gibt man die Temperatur von heute ein und das Programm schlägt ein Outfit vor. Je nach Temperatur ist das ein anderes. Öffne zuerst das Projekt im Browser.
 
-<<< @/projects/uebungen-5-if-else/2-outfit/index.html
+**a)** Beim Klick auf `outfitButton` soll in `outfitText` ein Outfit vorgeschlagen werden. Die Temperatur steht im Feld `tempField`.
 
-Beim Klick auf `outfitButton` soll in `outfitText` ein Outfit vorgeschlagen werden. Die Temperatur steht im Feld `tempField`.
-
-| Temperatur        | Vorschlag       |
-| ----------------- | --------------- |
-| `25` oder mehr    | `T-Shirt`       |
-| `15` bis `24`     | `Pullover`      |
-| `5` bis `14`      | `Jacke`         |
-| weniger als `5`   | `Wintermantel`  |
+| Temperatur      | Vorschlag      |
+| --------------- | -------------- |
+| `25` oder mehr  | `T-Shirt`      |
+| `15` bis `24`   | `Pullover`     |
+| `5` bis `14`    | `Jacke`        |
+| weniger als `5` | `Wintermantel` |
 
 <details>
 <summary>💡 Tipp anzeigen</summary>
@@ -214,17 +159,15 @@ outfitButton.addEventListener("click", function () {
 
 </details>
 
-**Zusatz:** Ergänze unter `0` Grad den Vorschlag `Wintermantel und Mütze`.
+**b)** Ergänze unter `0` Grad den Vorschlag `Wintermantel und Mütze`.
 
-## 🎯 5.4 – Match-Counter
+**c)** Warum ist die Reihenfolge der Bedingungen wichtig? Drehe sie testweise um und beschreibe, was passiert.
+
+## 🎯 5.3 – Match-Counter
 
 👉 Ordner `3-match`
 
-Hier kombinierst du Variablen aus [Kapitel 4](../4-variablen/inhalt) mit Entscheidungen.
-
-`index.html`
-
-<<< @/projects/uebungen-5-if-else/3-match/index.html
+Wir zählen die Tore eines Fussballspiels und bestimmen am Schluss den Sieger. Hier kombinierst du Variablen aus [Kapitel 4](../4-variablen/inhalt) mit Entscheidungen.
 
 **a)** Erstelle zwei Variablen `toreA` und `toreB` mit dem Wert `0`. Die Knöpfe `goalButtonA` und `goalButtonB` erhöhen den jeweiligen Wert um `1` und zeigen ihn in `scoreA` beziehungsweise `scoreB` an.
 
@@ -273,7 +216,7 @@ winnerButton.addEventListener("click", function () {
 
 **c)** Zeige zusätzlich an, wie gross der Vorsprung ist, zum Beispiel `Team A gewinnt mit 2 Toren Vorsprung`. Rechne dafür `toreA - toreB`.
 
-**d) Zusatz – Tennis-Zähler:** Beim Tennis heissen die Punkte nicht `1, 2, 3`, sondern `15, 30, 40` und dann `Spiel`. Zeige statt der Toranzahl den passenden Tennis-Stand an:
+**d) Tennis-Zähler:** Beim Tennis heissen die Punkte nicht `1, 2, 3`, sondern `15, 30, 40` und dann `Spiel`. Zeige statt der Toranzahl den passenden Tennis-Stand an:
 
 | Punkte | Anzeige |
 | ------ | ------- |
@@ -297,3 +240,140 @@ if (punkteA == 0) {
 ```
 
 </details>
+
+## 🎯 5.4 – Vergleiche einschätzen
+
+Diese Aufgabe machst du ohne Computer. Lies dir den Abschnitt [Werte vergleichen](./inhalt#werte-vergleichen) nochmals durch.
+
+Die Spielerin hat `12` Punkte gesammelt:
+
+```js
+let score = 12;
+```
+
+Entscheide bei jedem Vergleich, ob er **stimmt** oder **nicht stimmt**:
+
+```js
+score == 12;
+score != 0;
+score > 20;
+score < 20;
+score >= 12;
+score <= 5;
+```
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+| Vergleich     | Ergebnis     | Begründung                              |
+| ------------- | ------------ | --------------------------------------- |
+| `score == 12` | stimmt       | `score` enthält den Wert `12`.          |
+| `score != 0`  | stimmt       | `12` ist nicht gleich `0`.              |
+| `score > 20`  | stimmt nicht | `12` ist nicht grösser als `20`.        |
+| `score < 20`  | stimmt       | `12` ist kleiner als `20`.              |
+| `score >= 12` | stimmt       | `12` ist grösser oder gleich `12`.      |
+| `score <= 5`  | stimmt nicht | `12` ist weder kleiner noch gleich `5`. |
+
+</details>
+
+## 🎯 5.5 – Zusatz: Punkte im Quiz zählen
+
+👉 Ordner `1-quiz`
+
+Zurück zum Quiz aus Aufgabe 5.1. Bisher sagt es nur, ob eine Antwort richtig oder falsch war. Jetzt zählen wir einen Punktestand mit und zeigen ihn in `scoreText` an.
+
+**a)** Erstelle eine Variable `score` mit dem Wert `0` und zeige sie in `scoreText` an, zum Beispiel `Punkte: 0`.
+
+**b)** Ergänze die beiden Hauptstadt-Fragen:
+
+| Antwort | Punkte       |
+| ------- | ------------ |
+| richtig | `score += 3` |
+| falsch  | `score -= 3` |
+
+Nach jedem Klick soll `scoreText` den neuen Punktestand anzeigen.
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
+let scoreText = document.querySelector("#scoreText");
+
+let score = 0;
+
+question1Button.addEventListener("click", function () {
+  if (question1Field.value == "Madrid") {
+    question1Result.textContent = "Richtig!";
+    score += 3;
+  } else {
+    question1Result.textContent = "Falsch!";
+    score -= 3;
+  }
+
+  scoreText.textContent = "Punkte: " + score;
+});
+```
+
+Die zweite Frage funktioniert genau gleich, nur mit `Budapest`.
+
+</details>
+
+**c)** Bei der Schätzfrage gibt es Punkte je nachdem, wie nahe die Schätzung liegt. Du hast die Differenz in Aufgabe 5.1 bereits berechnet:
+
+| Differenz         | Punkte |
+| ----------------- | ------ |
+| bis `50` km       | `+3`   |
+| bis `150` km      | `+2`   |
+| bis `300` km      | `+1`   |
+| bis `600` km      | `-1`   |
+| mehr als `600` km | `-3`   |
+
+Verwende dafür eine `else if`-Kette und beginne bei der kleinsten Differenz.
+
+<details>
+<summary>💡 Tipp anzeigen</summary>
+
+```js
+if (differenz <= 50) {
+  score += 3;
+} else if (differenz <= 150) {
+  // ...
+}
+```
+
+Zeige danach wieder die Differenz **und** den neuen Punktestand an.
+
+</details>
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
+question3Button.addEventListener("click", function () {
+  let schaetzung = Number(question3Field.value);
+  let differenz = schaetzung - 700;
+
+  if (differenz < 0) {
+    differenz = differenz * -1;
+  }
+
+  if (differenz <= 50) {
+    score += 3;
+  } else if (differenz <= 150) {
+    score += 2;
+  } else if (differenz <= 300) {
+    score += 1;
+  } else if (differenz <= 600) {
+    score -= 1;
+  } else {
+    score -= 3;
+  }
+
+  question3Result.textContent = "Du liegst " + differenz + " km daneben.";
+  scoreText.textContent = "Punkte: " + score;
+});
+```
+
+</details>
+
+**d)** Was würde passieren, wenn du bei der Schätzfrage mit `differenz <= 600` beginnen würdest? Teste es und beschreibe das Ergebnis.
