@@ -6,6 +6,8 @@ Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
 Entpacke den Ordner und starte den Live Server auf der `index.html` im Hauptordner. Von dort kommst du zu allen drei Übungen.
 
+In den `script.js`-Dateien sind die `document.querySelector(...)`-Zeilen bereits vorbereitet. Die Variablen mit den HTML-Elementen kannst du also direkt verwenden, zum Beispiel `question1Field.value`. Wie das funktioniert, siehst du im [Kapitel 2](../2-html-elemente-auswaehlen-und-veraendern/inhalt).
+
 ## 🎯 5.1 – Quiz
 
 👉 Ordner `1-quiz`
@@ -35,9 +37,7 @@ Das Auslesen des Feldes mit [`value`](../10-cheatsheet#html-elemente-bearbeiten)
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let question1Field = document.querySelector("#question1Field");
-let question1Button = document.querySelector("#question1Button");
-let question1Result = document.querySelector("#question1Result");
+// Die querySelector-Zeilen stehen bereits in deiner script.js.
 
 question1Button.addEventListener("click", function () {
   if (question1Field.value == "Madrid") {
@@ -86,9 +86,7 @@ if (differenz < 0) {
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let question3Field = document.querySelector("#question3Field");
-let question3Button = document.querySelector("#question3Button");
-let question3Result = document.querySelector("#question3Result");
+// Die querySelector-Zeilen stehen bereits in deiner script.js.
 
 question3Button.addEventListener("click", function () {
   let schaetzung = Number(question3Field.value);
@@ -142,9 +140,7 @@ Weil JavaScript den ersten passenden Weg nimmt, ist bei `else if (temperatur >= 
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let tempField = document.querySelector("#tempField");
-let outfitButton = document.querySelector("#outfitButton");
-let outfitText = document.querySelector("#outfitText");
+// Die querySelector-Zeilen stehen bereits in deiner script.js.
 
 outfitButton.addEventListener("click", function () {
   let temperatur = Number(tempField.value);
@@ -185,12 +181,7 @@ Wir zählen die Tore eines Fussballspiels und bestimmen am Schluss den Sieger. H
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let scoreA = document.querySelector("#scoreA");
-let scoreB = document.querySelector("#scoreB");
-let goalButtonA = document.querySelector("#goalButtonA");
-let goalButtonB = document.querySelector("#goalButtonB");
-let winnerButton = document.querySelector("#winnerButton");
-let winnerText = document.querySelector("#winnerText");
+// Die querySelector-Zeilen stehen bereits in deiner script.js.
 
 let toreA = 0;
 let toreB = 0;
@@ -301,7 +292,7 @@ Nach jedem Klick soll `scoreText` den neuen Punktestand anzeigen.
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-let scoreText = document.querySelector("#scoreText");
+// Die querySelector-Zeile für scoreText steht bereits in deiner script.js.
 
 let score = 0;
 
