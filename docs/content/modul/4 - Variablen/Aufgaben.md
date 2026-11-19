@@ -69,7 +69,7 @@ minusButton.addEventListener("click", function () {
 
 </details>
 
-**c)** Der `resetButton` setzt die Zahl wieder auf `0`. Achtung: Hier schreibst du **kein** zweites `let`. Die Variable existiert bereits, siehe [Den Wert verändern](./inhalt#den-wert-verandern).
+**c)** Der `resetButton` setzt die Zahl wieder auf `0`.
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
@@ -87,7 +87,7 @@ resetButton.addEventListener("click", function () {
 
 **d)** Der `plusThreeButton` zählt in `3er`-Schritten, der `doubleButton` verdoppelt die Zahl mit `count = count * 2`. Probiere beides aus und beschreibe, was passiert.
 
-**e)** Warum steht `let count = 0;` ausserhalb des Events und nicht darin? Beschreibe es in eigenen Worten.
+**e)** Warum steht `let count = 0;` ausserhalb des Events und nicht darin? Überlege dir diese Frage.
 
 ## 🎯 4.2 – Umrechner
 
@@ -137,9 +137,7 @@ meterButton.addEventListener("click", function () {
 
 </details>
 
-**b)** Teste, was passiert, wenn du `Number(...)` weglässt und `inputField.value + 1` rechnest. Erkläre das Ergebnis mit dem Abschnitt [Zahl oder Text? - Datentypen](./inhalt#zahl-oder-text-datentypen).
-
-**c)** Ergänze die beiden anderen Knöpfe und übersetze auch diese Rechnungen selbst in JavaScript:
+**b)** Ergänze die beiden anderen Knöpfe und übersetze auch diese Rechnungen selbst in JavaScript:
 
 | Knopf           | Umrechnung           | Rechnung                        |
 | --------------- | -------------------- | ------------------------------- |
@@ -168,13 +166,13 @@ pfundButton.addEventListener("click", function () {
 
 </details>
 
-**d)** Der `dollarButton` rechnet Dollar in Franken um:
+**c)** Der `dollarButton` rechnet Dollar in Franken um:
 
 > Franken = Dollar × Kurs
 
 Der Wechselkurs ändert sich täglich. Speichere ihn deshalb in einer eigenen Variable zuoberst in deiner Datei, zum Beispiel `let kurs = 0.89;`, und rechne damit.
 
-**e)** Warum ist es praktisch, den Kurs in einer Variable zu speichern, statt die Zahl direkt in die Rechnung zu schreiben?
+**d)** Warum ist es praktisch, den Kurs in einer Variable zu speichern, statt die Zahl direkt in die Rechnung zu schreiben?
 
 ## 🎯 4.3 – Shop
 

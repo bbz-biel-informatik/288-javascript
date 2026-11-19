@@ -54,7 +54,11 @@ Die Befehle findest du unter [Events](../10-cheatsheet#events), [If / Else](../1
 
 **b)** Die zweite Frage funktioniert gleich: `question2Button` prüft, ob in `question2Field` die Hauptstadt von Ungarn steht, und schreibt das Ergebnis in `question2Result`. Die richtige Antwort ist `Budapest`.
 
-**c)** Die dritte Frage ist eine Schätzfrage. Die Luftlinie zwischen Biel und Rom beträgt rund `700` Kilometer. Beim Klick auf `question3Button` soll in `question3Result` stehen, **wie weit die Schätzung daneben liegt**, zum Beispiel `Du liegst 120 km daneben.`.
+**c)** Die dritte Frage ist eine Schätzfrage. Die Luftlinie zwischen Biel und Rom beträgt rund `700` Kilometer. Beim Klick auf `question3Button` soll in `question3Result` folgendes stehen:
+
+- Wenn die Schätzung grösser als 700 ist: "Das ist zu viel"
+- Wenn die Schätzung kleiner als 700 ist: "Das ist zu wenig"
+- Wenn die Schätzung genau 700 ist: "Richtig!"
 
 Denke daran, die Eingabe mit `Number(...)` in eine Zahl zu verwandeln.
 
