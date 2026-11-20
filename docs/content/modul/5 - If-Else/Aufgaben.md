@@ -65,19 +65,20 @@ Denke daran, die Eingabe mit `Number(...)` in eine Zahl zu verwandeln.
 <details>
 <summary>💡 Tipp anzeigen</summary>
 
-Rechne zuerst die Differenz aus:
-
 ```js
-let schaetzung = Number(question3Field.value);
-let differenz = schaetzung - 700;
-```
+// Du wirst hier eine Verkettung brauchen:
 
-Schätzt jemand zu tief, ist `differenz` negativ. Mit einer kleinen Entscheidung machen wir daraus eine positive Zahl:
+// ...
 
-```js
-if (differenz < 0) {
-  differenz = differenz * -1;
+if (schaetzung > 700) {
+  //... Hier kommt etwas
+} else if (schaetzung < 700) {
+  //... Hier kommt etwas
+} else if (schaetzung == 700) {
+  //... Hier kommt etwas
 }
+
+// ...
 ```
 
 </details>

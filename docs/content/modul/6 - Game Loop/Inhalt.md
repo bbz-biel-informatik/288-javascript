@@ -23,18 +23,9 @@ button.addEventListener("click", function () {
 
 Ein Game Loop wird dagegen während des Spiels immer wieder ausgeführt. So kann JavaScript laufend Eingaben, Bewegungen und Kollisionen prüfen.
 
-<details>
-<summary>Analogie: Der Game Loop ist wie ein Film</summary>
-
-Ein Film besteht aus vielen einzelnen Bildern, die schnell nacheinander gezeigt werden. Bei jedem neuen Bild kann sich eine Figur ein kleines Stück bewegen. Dadurch sieht die Bewegung für uns flüssig aus.
-
-Der Game Loop funktioniert ähnlich: Bei jedem neuen Bild schickt JavaScript unseren kleinen Goblin durch das HTML und lässt ihn seine Aufträge ausführen. Er bewegt Spielfiguren, prüft Eingaben oder kontrolliert Kollisionen. Danach beginnt beim nächsten Bild ein neuer Durchlauf.
-
-</details>
-
 ## Aufbau eines Game Loops
 
-Ein Game Loop wird als Funktion geschrieben. Funktionen behandeln wir später ausführlich. Für den Moment kannst du diesen Aufbau als festes Muster übernehmen:
+Ein Game loop ist eine Funktion, welche ständig nacheinander wiederholt wird. Er wird als Funktion geschrieben. Für den Moment kannst du diesen Aufbau als festes Muster übernehmen:
 
 ```js
 function gameLoop() {
