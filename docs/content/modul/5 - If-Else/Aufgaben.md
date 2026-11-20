@@ -60,8 +60,6 @@ Die Befehle findest du unter [Events](../10-cheatsheet#events), [If / Else](../1
 - Wenn die Schätzung kleiner als 700 ist: "Das ist zu wenig"
 - Wenn die Schätzung genau 700 ist: "Richtig!"
 
-Denke daran, die Eingabe mit `Number(...)` in eine Zahl zu verwandeln.
-
 <details>
 <summary>💡 Tipp anzeigen</summary>
 
