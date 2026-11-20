@@ -4,17 +4,19 @@
 
 Die Theorie zu diesen Aufgaben findest du im [Inhalt](./inhalt) dieses Kapitels.
 
-Entpacke den Ordner und starte den Live Server auf der `index.html` im Hauptordner. Alle drei Übungen verwenden das [Game Framework](/jsgame/3-framework-docs). Es ist in der `index.html` bereits eingebunden.
+Entpacke den Ordner und starte den Live Server auf der `index.html`. Die Übung verwendet das [Game Framework](/jsgame/3-framework-docs). Es ist in der `index.html` bereits eingebunden.
 
-## 🎯 6.1 – Bewegung
+Du arbeitest an **einem einzigen Projekt**. Die drei Aufgaben bauen aufeinander auf: Dein Code aus 6.1 bleibt stehen und wird in 6.2 und 6.3 erweitert. Geschrieben wird alles in der `script.js`.
 
-👉 Ordner `1-bewegung`
+Das Spielfeld enthält nur den Roboter und ein Alien. Es gibt keine Knöpfe. Alles, was passiert, steuerst du im Game Loop.
 
 `index.html`
 
-<<< @/projects/uebungen-6-game-loop/1-bewegung/index.html
+<<< @/projects/uebungen-6-game-loop/index.html
 
-**a)** Lass den Roboter automatisch von links nach rechts fahren. Gehe so vor:
+## 🎯 6.1 – Den Roboter bewegen
+
+**a)** Lass den Roboter automatisch von links nach rechts fliegen. Gehe so vor:
 
 - Wähle den Roboter mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) aus.
 - Setze ihn mit [`setPosition(...)`](/jsgame/3-framework-docs#setposition) an eine Startposition.
@@ -42,14 +44,14 @@ gameLoop();
 
 </details>
 
-**b)** Verändere den Code nacheinander so, dass Folgendes geschieht:
+**b)** Verändere die Zahlen im `moveElement(...)` nacheinander so, dass Folgendes geschieht:
 
-- Der Roboter bewegt sich nach oben.
-- Der Roboter bewegt sich diagonal nach oben rechts.
-- Der Roboter bewegt sich sehr schnell nach rechts.
-- Der Roboter bewegt sich nach unten. Tipp: Verändere die Anfangsposition, um den Effekt zu sehen.
-- Der Roboter bewegt sich sehr langsam nach unten.
-- Der Roboter bewegt sich nach links.
+- Der Roboter fliegt nach oben.
+- Der Roboter fliegt diagonal nach oben rechts.
+- Der Roboter fliegt sehr schnell nach rechts.
+- Der Roboter fliegt nach unten. Tipp: Verändere die Anfangsposition, um den Effekt zu sehen.
+- Der Roboter fliegt sehr langsam nach unten.
+- Der Roboter fliegt nach links.
 
 > Denke dabei visuell und stelle dir das Spielfeld als Koordinatensystem vor.
 
@@ -73,22 +75,11 @@ Wie sich die drei Angaben des Befehls auswirken, findest du bei [`moveElement(..
 
 **c) Erklären:** Warum steht `setPosition(...)` **vor** dem Game Loop und nicht darin? Teste es und beschreibe, was passiert.
 
-## 🎯 6.2 – Steuerung
+## 🎯 6.2 – Den Roboter mit Tasten steuern
 
-👉 Ordner `2-steuerung`
+Jetzt soll der Roboter nicht mehr von selbst fliegen, sondern auf die Pfeiltasten reagieren. Du arbeitest in **derselben** `script.js` weiter.
 
-`index.html`
-
-<<< @/projects/uebungen-6-game-loop/2-steuerung/index.html
-
-**a)** Steuere den Roboter mit den Pfeiltasten. Die Theorie findest du unter [Eine Spielfigur mit Tasten steuern](./inhalt#eine-spielfigur-mit-tasten-steuern). Beachte die genaue Schreibweise der Tastennamen:
-
-| Richtung | Tastenname     |
-| -------- | -------------- |
-| rechts   | `"ArrowRight"` |
-| links    | `"ArrowLeft"`  |
-| oben     | `"ArrowUp"`    |
-| unten    | `"ArrowDown"`  |
+**a)** Ersetze das `moveElement(...)` im Game Loop durch eine [`if`-Anweisung](../5-if-else/inhalt#wie-schreiben-wir-eine-if-anweisung): Der Roboter soll nur nach rechts fliegen, solange die Taste Pfeil rechts gedrückt ist. Die Theorie findest du unter [Eine Spielfigur mit Tasten steuern](./inhalt#eine-spielfigur-mit-tasten-steuern).
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
@@ -98,6 +89,41 @@ let player = document.querySelector("#player");
 
 setPosition(player, 60, 60);
 
+function gameLoop() {
+  if (isKeyPressed("ArrowRight")) {
+    moveElement(player, 3, 0);
+  }
+
+  window.requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+```
+
+Nur der Game Loop hat sich verändert: Die Bewegung steht jetzt in einer `if`-Anweisung.
+
+</details>
+
+**b)** Ergänze die drei anderen Pfeiltasten. Beachte die genaue Schreibweise der Tastennamen:
+
+| Richtung | Tastenname     |
+| -------- | -------------- |
+| rechts   | `"ArrowRight"` |
+| links    | `"ArrowLeft"`  |
+| oben     | `"ArrowUp"`    |
+| unten    | `"ArrowDown"`  |
+
+<details>
+<summary>💡 Tipp anzeigen</summary>
+
+Jede Richtung bekommt eine **eigene** `if`-Anweisung. Schreibe sie untereinander in den Game Loop. Mit einem negativen Wert fliegt der Roboter in die Gegenrichtung.
+
+</details>
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
 function gameLoop() {
   if (isKeyPressed("ArrowRight")) {
     moveElement(player, 3, 0);
@@ -117,140 +143,96 @@ function gameLoop() {
 
   window.requestAnimationFrame(gameLoop);
 }
-
-gameLoop();
 ```
-
-Wenn zwei passende Tasten gedrückt sind, stimmen zwei Bedingungen. Beide Bewegungsbefehle werden ausgeführt und der Roboter fährt diagonal.
 
 </details>
 
-**b)** Setze die Energiekiste (`#energy`) mit [`setPosition(...)`](/jsgame/3-framework-docs#setposition) an eine Stelle im Spielfeld, zum Beispiel `600, 200`.
-
-**c)** Lass die Energiekiste verschwinden, wenn der Roboter sie berührt. Die Theorie dazu steht unter [Kollisionen sind ebenfalls Fragen](./inhalt#kollisionen-sind-ebenfalls-fragen).
+**c)** Probiere aus, was passiert, wenn du zwei Pfeiltasten gleichzeitig drückst. Erkläre, warum das so ist.
 
 <details>
-<summary>💡 Tipp anzeigen</summary>
+<summary>✅ Lösung anzeigen</summary>
 
-Wähle die Energiekiste einmal **vor** dem Game Loop aus:
-
-```js
-let energy = document.querySelector("#energy");
-```
-
-Prüfe danach **im** Game Loop mit [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding), ob sich `player` und `energy` berühren, und lösche sie mit [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
+Der Roboter fliegt diagonal. Die `if`-Anweisungen werden unabhängig voneinander geprüft. Sind zwei passende Tasten gedrückt, stimmen zwei Bedingungen und beide Bewegungsbefehle werden im selben Durchlauf ausgeführt.
 
 </details>
+
+**d)** Verändere die Geschwindigkeit des Roboters. Verwende dafür eine [Variable](../4-variablen/inhalt) `speed`, die **vor** dem Game Loop steht.
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
 
 ```js
-// NEU: Energiekiste vor dem Game Loop auswählen und platzieren
-let energy = document.querySelector("#energy");
-setPosition(energy, 600, 200);
+let speed = 3;
 
-function gameLoop() {
-  // Die Steuerung von oben bleibt hier stehen.
-
-  // NEU: Kollision prüfen und Energiekiste löschen
-  if (isColliding(player, energy)) {
-    energy.remove();
-  }
-
-  window.requestAnimationFrame(gameLoop);
-}
-```
-
-</details>
-
-**d)** Zeige im `statusText` an, was gerade passiert, zum Beispiel `Energie eingesammelt`.
-
-## 🎯 6.3 – Energie-Spiel
-
-👉 Ordner `3-energie`
-
-Jetzt bauen wir ein kleines Spiel. Du brauchst dafür alles aus den Kapiteln [Variablen](../4-variablen/inhalt), [If-Else](../5-if-else/inhalt) und [Game Loop](./inhalt).
-
-`index.html`
-
-<<< @/projects/uebungen-6-game-loop/3-energie/index.html
-
-Programmiere Schritt für Schritt:
-
-**a)** Die Steuerung mit den Pfeiltasten wie in Übung 6.2.
-
-**b)** Eine Variable `energie` mit dem Wert `100`. Sie steht **vor** dem Game Loop. Bei jeder Bewegung verliert der Roboter `0.2` Energie.
-
-**c)** `energyText` zeigt laufend die aktuelle Energie an, zum Beispiel `Energie: 87`.
-
-**d)** Berührt der Roboter die Energiekiste, wird `energie` wieder auf `100` gesetzt und die Kiste gelöscht.
-
-**e)** `gameStatus` zeigt `Spiel läuft.`, solange `energie` grösser als `0` ist. Sonst erscheint `Game Over`.
-
-<details>
-<summary>💡 Tipp anzeigen</summary>
-
-Die Energie sinkt nur, wenn sich der Roboter tatsächlich bewegt. Die Rechnung gehört deshalb **in denselben `if`-Block** wie der Bewegungsbefehl:
-
-```js
+// ... im Game Loop:
 if (isKeyPressed("ArrowRight")) {
   moveElement(player, speed, 0);
-  energie -= 0.2;
 }
 ```
 
-Für die Anzeige runden wir die Zahl mit `Math.round(energie)`, sonst erscheinen sehr viele Nachkommastellen.
+So musst du nur eine einzige Zahl ändern, wenn der Roboter schneller oder langsamer werden soll.
+
+</details>
+
+## 🎯 6.3 – Das Alien einfangen
+
+Im Spielfeld steht von Anfang an ein Alien mit der ID `alien`. Bisher passiert damit nichts. Das ändern wir jetzt - wieder in **derselben** `script.js`.
+
+**a)** Wähle das Alien **vor** dem Game Loop mit [`document.querySelector(...)`](../10-cheatsheet#html-elemente-auswahlen) aus und speichere es in einer Variable `alien`.
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
+let alien = document.querySelector("#alien");
+```
+
+Die Zeile steht zuoberst bei den anderen `querySelector`-Zeilen. Im Game Loop hat sie nichts verloren: JavaScript müsste das Alien sonst bei jedem Bild erneut suchen.
+
+</details>
+
+**b)** Lass das Alien verschwinden, sobald der Roboter es berührt. Die Theorie dazu steht unter [Kollisionen sind ebenfalls Fragen](./inhalt#kollisionen-sind-ebenfalls-fragen).
+
+<details>
+<summary>💡 Tipp anzeigen</summary>
+
+Prüfe **im** Game Loop mit [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding), ob sich `player` und `alien` berühren, und lösche das Alien mit [`remove()`](../10-cheatsheet#html-elemente-bearbeiten).
 
 </details>
 
 <details>
 <summary>✅ Lösung anzeigen</summary>
+
+So sieht die fertige `script.js` nach allen drei Aufgaben aus:
 
 ```js
 let player = document.querySelector("#player");
-let energy = document.querySelector("#energy");
-let energyText = document.querySelector("#energyText");
-let gameStatus = document.querySelector("#gameStatus");
+let alien = document.querySelector("#alien");
 
 let speed = 3;
-let energie = 100;
 
 setPosition(player, 60, 60);
-setPosition(energy, 600, 200);
 
 function gameLoop() {
   if (isKeyPressed("ArrowRight")) {
     moveElement(player, speed, 0);
-    energie -= 0.2;
   }
 
   if (isKeyPressed("ArrowLeft")) {
     moveElement(player, -speed, 0);
-    energie -= 0.2;
   }
 
   if (isKeyPressed("ArrowUp")) {
     moveElement(player, 0, speed);
-    energie -= 0.2;
   }
 
   if (isKeyPressed("ArrowDown")) {
     moveElement(player, 0, -speed);
-    energie -= 0.2;
   }
 
-  if (isColliding(player, energy)) {
-    energie = 100;
-    energy.remove();
-  }
-
-  energyText.textContent = "Energie: " + Math.round(energie);
-
-  if (energie > 0) {
-    gameStatus.textContent = "Spiel läuft.";
-  } else {
-    gameStatus.textContent = "Game Over";
+  // NEU: Kollision prüfen und Alien löschen
+  if (isColliding(player, alien)) {
+    alien.remove();
   }
 
   window.requestAnimationFrame(gameLoop);
@@ -259,8 +241,38 @@ function gameLoop() {
 gameLoop();
 ```
 
-Die verwendeten Befehle findest du unter [Variablen](../10-cheatsheet#variablen), [If / Else](../10-cheatsheet#if-else) und [Listen und Loops](../10-cheatsheet#listen-und-loops) sowie bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed), [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) und [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding).
+Die verwendeten Befehle findest du unter [If / Else](../10-cheatsheet#if-else) und [HTML-Elemente bearbeiten](../10-cheatsheet#html-elemente-bearbeiten) sowie bei [`isKeyPressed(...)`](/jsgame/3-framework-docs#iskeypressed), [`moveElement(...)`](/jsgame/3-framework-docs#moveelement) und [`isColliding(...)`](/jsgame/3-framework-docs#iscolliding).
 
 </details>
 
-**f) Zusatz:** Bei `Game Over` soll sich der Roboter nicht mehr bewegen können. Überlege dir, wo du dafür eine Bedingung einbauen kannst.
+**c)** Statt das Alien zu löschen: Setze es bei einer Berührung mit [`setPosition(...)`](/jsgame/3-framework-docs#setposition) an eine neue Stelle. So kannst du es immer wieder einfangen.
+
+<details>
+<summary>✅ Lösung anzeigen</summary>
+
+```js
+if (isColliding(player, alien)) {
+  setPosition(alien, 200, 300);
+}
+```
+
+</details>
+
+**d) Zusatz:** Zähle mit einer [Variable](../4-variablen/inhalt), wie oft der Roboter das Alien schon eingefangen hat, und schreibe die Zahl mit `console.log(...)` in die [Konsole](../11-debugging).
+
+<details>
+<summary>💡 Tipp anzeigen</summary>
+
+Die Variable steht **vor** dem Game Loop:
+
+```js
+let punkte = 0;
+```
+
+Im Game Loop erhöhst du sie bei einer Berührung:
+
+```js
+punkte = punkte + 1;
+```
+
+</details>

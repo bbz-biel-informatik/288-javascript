@@ -128,7 +128,7 @@ Eine Funktion darf eine andere Funktion aufrufen. `rechneMeterInMeilen(...)` ver
 
 👉 Ordner `3-game`
 
-In diesem Ordner liegt das fertige Energie-Spiel aus [Kapitel 6](../6-game-loop/aufgaben). Der Game Loop ist dabei sehr lang geworden.
+In diesem Ordner liegt ein fertiges Energie-Spiel. Es verwendet den [Game Loop](../6-game-loop/inhalt) aus Kapitel 6: Steuerung mit den Pfeiltasten, eine Energiekiste und eine Energie-Anzeige. Der Game Loop ist dabei sehr lang geworden.
 
 `script.js`
 

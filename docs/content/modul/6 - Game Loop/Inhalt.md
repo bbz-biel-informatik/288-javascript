@@ -120,16 +120,16 @@ Die Schreibweise der Entscheidung findest du unter [If / Else](../10-cheatsheet#
 Eine Bedingung kann auch prüfen, ob sich zwei Spielelemente berühren:
 
 ```js
-if (isColliding(player, energy)) {
-  energy.remove();
+if (isColliding(player, alien)) {
+  alien.remove();
 }
 ```
 
-[`isColliding(player, energy)`](/jsgame/3-framework-docs#iscolliding) fragt:
+[`isColliding(player, alien)`](/jsgame/3-framework-docs#iscolliding) fragt:
 
-> Berühren sich der Roboter und die Energiekiste?
+> Berühren sich der Roboter und das Alien?
 
-Wenn die Antwort stimmt, löscht [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) die Energiekiste. Wenn sie nicht stimmt, wird der Befehl übersprungen.
+Wenn die Antwort stimmt, löscht [`remove()`](../10-cheatsheet#html-elemente-bearbeiten) das Alien. Wenn sie nicht stimmt, wird der Befehl übersprungen.
 
 Auch diese Frage gehört in den Game Loop. Die Figur bewegt sich fortlaufend, deshalb kann die Berührung bei jedem neuen Bild an einer anderen Stelle passieren.
 
@@ -141,7 +141,7 @@ In den Game Loop gehört Code, der während des Spiels ständig geprüft oder ak
 - Spielfiguren bewegen und
 - Kollisionen prüfen.
 
-Einmalige Vorbereitungen gehören nicht in den Game Loop. HTML-Elemente wählen wir zum Beispiel vor dem Game Loop aus, damit JavaScript sie nicht bei jedem Durchlauf erneut suchen muss. Dasselbe gilt für Variablen: `let energie = 100;` steht vor dem Game Loop, sonst würde der Wert bei jedem Bild wieder von vorne beginnen.
+Einmalige Vorbereitungen gehören nicht in den Game Loop. HTML-Elemente wählen wir zum Beispiel vor dem Game Loop aus, damit JavaScript sie nicht bei jedem Durchlauf erneut suchen muss. Dasselbe gilt für Variablen: `let punkte = 0;` steht vor dem Game Loop, sonst würde der Wert bei jedem Bild wieder von vorne beginnen.
 
 Im nächsten Kapitel [Funktionen](../7-funktionen/inhalt) lernst du, wie du einen lang gewordenen Game Loop wieder übersichtlich machst.
 

@@ -1,3 +1,5 @@
 // Schreibe hier deinen JavaScript-Code.
-// Wichtige IDs: player, energy, energyText, gameStatus
+//
+// Wichtige IDs: player, alien
 // Framework: setPosition(...), moveElement(...), isKeyPressed(...), isColliding(...)
+

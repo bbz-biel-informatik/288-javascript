@@ -7,19 +7,21 @@
   </head>
 
   <body>
-    <div class="card">
-      <h1>Kapitel 6: Game Loop</h1>
-      <p class="hint">Starte den Live Server auf dieser Seite und wähle eine Übung aus.</p>
+    <header class="site-header">
+      <span class="kapitel">Kapitel 6: Game Loop</span>
+    </header>
 
-      <a class="uebung" href="./1-bewegung/index.html">1 - Bewegung
-        <span>Den Roboter automatisch fahren lassen.</span>
-      </a>
-      <a class="uebung" href="./2-steuerung/index.html">2 - Steuerung
-        <span>Mit den Pfeiltasten steuern und Energie einsammeln.</span>
-      </a>
-      <a class="uebung" href="./3-energie/index.html">3 - Energie-Spiel
-        <span>Energie verbrauchen, auftanken und Game Over anzeigen.</span>
-      </a>
-    </div>
+    <main class="app">
+      <h1>Der Roboter im Weltall</h1>
+      <p class="hint">Alle drei Aufgaben baust du in der <code>script.js</code> aufeinander auf.</p>
+
+      <div id="playground">
+        <img id="player" src="./assets/robot.png" alt="Roboter" />
+        <img id="alien" class="gameobject" src="./assets/alien.png" alt="Alien" style="left: 600px; bottom: 200px;" />
+      </div>
+    </main>
+
+    <script src="https://bbz-biel-informatik.github.io/288-javascript/game-framework/bbzgame.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

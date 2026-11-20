@@ -1,73 +1,77 @@
 /* Grundstil - den musst du nicht anpassen. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  /* Kein Scrollen: So scrollen die Pfeiltasten die Seite nicht weg. */
+  overflow: hidden;
+}
+
 body {
   margin: 0;
-  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f4f6f8;
   color: #1f2933;
-  line-height: 1.5;
 }
 
-.card {
-  max-width: 420px;
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 24px;
-  border: 1px solid #e1e6ea;
-  border-radius: 12px;
-  background-color: white;
+  padding: 24px 16px;
 }
 
 h1 {
-  margin: 0 0 4px;
+  margin: 0;
   font-size: 22px;
 }
 
 .hint {
-  margin: 0 0 20px;
+  margin: 0;
   color: #6b7785;
   font-size: 14px;
 }
 
-button {
-  padding: 8px 14px;
-  border: 1px solid #165f68;
-  border-radius: 8px;
-  background-color: #165f68;
+/* Das Spielfeld. Der Game Loop bewegt die Elemente darin. */
+#playground {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(#101936, #1d2b53);
+}
+
+#player {
+  width: 70px;
+}
+
+#alien {
+  width: 64px;
+}
+
+/* Der Seiten-Header. */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 56px;
+  background-color: #101936;
   color: white;
+}
+
+.site-header .kapitel {
   font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #11484f;
-}
-
-input {
-  padding: 8px 10px;
-  border: 1px solid #c7cfd6;
-  border-radius: 8px;
-  font-size: 15px;
-}
-
-.uebung {
-  display: block;
-  margin-top: 12px;
-  padding: 14px 16px;
-  border: 1px solid #e1e6ea;
-  border-radius: 10px;
-  color: #165f68;
-  text-decoration: none;
   font-weight: bold;
-}
-
-.uebung:hover {
-  border-color: #165f68;
-  background-color: #f0f7f8;
-}
-
-.uebung span {
-  display: block;
-  color: #6b7785;
-  font-weight: normal;
-  font-size: 14px;
 }
